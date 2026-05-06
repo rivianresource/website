@@ -65,9 +65,14 @@
     }
 
     .site-logo {
-      width: 120px;
       max-width: 100%;
-      margin-bottom: 25px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .large-logo {
+      width: 260px;
+      margin-bottom: 30px;
     }
 
     .site-subtitle {
@@ -75,12 +80,6 @@
       color: #c7d2e0;
       max-width: 760px;
       margin: 0 auto 20px;
-    }
-
-    h1 {
-      font-size: 54px;
-      margin-bottom: 20px;
-      letter-spacing: -1px;
     }
 
     h2 {
@@ -258,12 +257,8 @@
 
     @media (max-width: 768px) {
 
-      .site-logo {
-        width: 90px;
-      }
-
-      h1 {
-        font-size: 40px;
+      .large-logo {
+        width: 180px;
       }
 
       h2 {
@@ -292,10 +287,8 @@
       <img
         src="logo.png"
         alt="Rivian Reward Hub Logo"
-        class="site-logo"
+        class="site-logo large-logo"
       >
-
-      <h1>Rivian Reward Hub</h1>
 
       <p class="site-subtitle">
         Real-world Rivian ownership, accessories, charging,
