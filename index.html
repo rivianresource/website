@@ -1,14 +1,15 @@
+```html id="qf6j9p"
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <title>Rivian Reward Hub | Rivian Referral Code & Owner Resources</title>
 
   <meta
     name="description"
-    content="Independent Rivian owner community sharing referral rewards, ownership experiences, charging tips, road trips, and Rivian resources."
+    content="Independent Rivian owner community sharing referral rewards, ownership experiences, charging tips, road trips, camping setups, and Rivian resources."
   />
 
   <style>
@@ -62,17 +63,25 @@
       display: inline-block;
       background: #10b981;
       color: white;
-      text-decoration: none;
+      border: none;
       padding: 18px 34px;
       border-radius: 14px;
       font-size: 18px;
       font-weight: bold;
+      cursor: pointer;
       transition: 0.2s ease;
     }
 
     .button:hover {
       opacity: 0.9;
       transform: translateY(-2px);
+    }
+
+    #copiedMessage {
+      display: none;
+      margin-top: 15px;
+      color: #10b981;
+      font-weight: bold;
     }
 
     .grid {
@@ -90,7 +99,7 @@
     }
 
     .card p {
-      margin-bottom: 0;
+      margin-bottom: 15px;
     }
 
     .center {
@@ -105,6 +114,16 @@
       display: block;
       margin-bottom: 10px;
       color: white;
+    }
+
+    a.resource-link {
+      color: #10b981;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.resource-link:hover {
+      text-decoration: underline;
     }
 
     footer {
@@ -127,7 +146,6 @@
 
       .button {
         width: 100%;
-        text-align: center;
       }
 
     }
@@ -149,13 +167,13 @@
         camping setups, and Rivian resources.
       </p>
 
-      <a
-        class="button"
-        href="https://rivian.com/configurations/list?reprCode=SCOTT4395475"
-        target="_blank"
-      >
-        Use Referral Code SCOTT4395475
-      </a>
+      <button class="button" onclick="copyCode()">
+        Copy Referral Code SCOTT4395475
+      </button>
+
+      <p id="copiedMessage">
+        Referral code copied. Opening Rivian...
+      </p>
 
     </section>
 
@@ -166,7 +184,7 @@
         <h2>How It Works</h2>
 
         <p>
-          Use the referral link when ordering your Rivian vehicle.
+          Use the referral code when ordering your Rivian vehicle.
           Eligible purchases may receive Rivian Rewards gear credits
           for both the buyer and referring owner.
         </p>
@@ -216,6 +234,125 @@
           <p>• EV road trip planning</p>
           <p>• Camping gear setups</p>
         </div>
+
+      </div>
+
+    </section>
+
+    <section class="card" style="margin-top: 40px;">
+
+      <h2 class="center">Helpful Rivian Resources</h2>
+
+      <div class="grid">
+
+        <div>
+
+          <p>
+            <strong>Rivian Roamer</strong><br>
+            Inventory tracker, VIN lookup, and Rivian configuration search tools.
+          </p>
+
+          <p>
+            <a
+              class="resource-link"
+              href="https://rivianroamer.com"
+              target="_blank"
+            >
+              Visit Rivian Roamer
+            </a>
+          </p>
+
+        </div>
+
+        <div>
+
+          <p>
+            <strong>Rivian Reddit Community</strong><br>
+            Large owner and enthusiast community discussing deliveries,
+            charging, accessories, and ownership experiences.
+          </p>
+
+          <p>
+            <a
+              class="resource-link"
+              href="https://www.reddit.com/r/Rivian/"
+              target="_blank"
+            >
+              Visit r/Rivian
+            </a>
+          </p>
+
+        </div>
+
+        <div>
+
+          <p>
+            <strong>Rivian Forums</strong><br>
+            Active forum community covering R1S, R1T, R2,
+            software updates, modifications, and troubleshooting.
+          </p>
+
+          <p>
+            <a
+              class="resource-link"
+              href="https://www.rivianforums.com/forum/"
+              target="_blank"
+            >
+              Visit Rivian Forums
+            </a>
+          </p>
+
+        </div>
+
+        <div>
+
+          <p>
+            <strong>Rivian Facebook Groups</strong><br>
+            Local and national owner communities sharing photos,
+            charging tips, deliveries, and trip experiences.
+          </p>
+
+          <p>
+            <a
+              class="resource-link"
+              href="https://www.facebook.com/search/groups/?q=rivian"
+              target="_blank"
+            >
+              Browse Facebook Groups
+            </a>
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="card" style="margin-top: 40px;">
+
+      <h2 class="center">Latest Rivian News</h2>
+
+      <div id="news-feed">
+
+        <p>
+          <a
+            class="resource-link"
+            href="https://news.google.com/search?q=Rivian"
+            target="_blank"
+          >
+            View Latest Rivian News on Google News
+          </a>
+        </p>
+
+        <p>
+          <a
+            class="resource-link"
+            href="https://www.reddit.com/r/Rivian/"
+            target="_blank"
+          >
+            Visit the Rivian Reddit Community
+          </a>
+        </p>
 
       </div>
 
@@ -279,5 +416,27 @@
 
   </div>
 
+  <script>
+
+    function copyCode() {
+
+      navigator.clipboard.writeText("SCOTT4395475");
+
+      document.getElementById("copiedMessage").style.display = "block";
+
+      setTimeout(() => {
+
+        window.open(
+          "https://rivian.com/configurations/list?reprCode=SCOTT4395475",
+          "_blank"
+        );
+
+      }, 700);
+
+    }
+
+  </script>
+
 </body>
 </html>
+```
