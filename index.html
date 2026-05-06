@@ -1,4 +1,4 @@
-```html id="qf6j9p"
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +28,7 @@
 
     .container {
       width: 90%;
-      max-width: 1100px;
+      max-width: 1150px;
       margin: 0 auto;
       padding: 60px 0;
     }
@@ -40,7 +40,7 @@
     }
 
     h1 {
-      font-size: 56px;
+      font-size: 58px;
       margin-bottom: 20px;
     }
 
@@ -73,7 +73,7 @@
     }
 
     .button:hover {
-      opacity: 0.9;
+      opacity: 0.92;
       transform: translateY(-2px);
     }
 
@@ -86,14 +86,14 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 25px;
       margin-top: 40px;
     }
 
     .card {
       background: #1e293b;
-      border-radius: 22px;
+      border-radius: 24px;
       padding: 35px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
@@ -126,6 +126,27 @@
       text-decoration: underline;
     }
 
+    .reward-card {
+      text-align: center;
+      color: white;
+    }
+
+    .reward-card p {
+      color: white;
+    }
+
+    .reward-box {
+      background: rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 25px;
+      margin-top: 25px;
+    }
+
+    .reward-box p {
+      margin: 12px 0;
+      color: white;
+    }
+
     footer {
       margin-top: 70px;
       padding-bottom: 50px;
@@ -137,7 +158,7 @@
     @media (max-width: 768px) {
 
       h1 {
-        font-size: 40px;
+        font-size: 42px;
       }
 
       h2 {
@@ -174,6 +195,63 @@
       <p id="copiedMessage">
         Referral code copied. Opening Rivian...
       </p>
+
+    </section>
+
+    <section class="grid" style="margin-top: 10px;">
+
+      <div
+        class="card reward-card"
+        style="background: linear-gradient(135deg, #ff6a00, #ff006e);"
+      >
+
+        <div style="font-size:60px; margin-bottom:20px;">
+          🎁
+        </div>
+
+        <h2>Buyer Rewards</h2>
+
+        <p style="font-weight:bold;">
+          Earn Rivian Rewards points based on your configuration
+        </p>
+
+        <div class="reward-box">
+
+          <p><strong>500 points</strong> — Tri or Quad Motor</p>
+          <p><strong>250 points</strong> — Dual Large Battery</p>
+          <p><strong>250 points</strong> — Dual Max Battery</p>
+          <p><strong>100 points</strong> — Dual Standard</p>
+
+        </div>
+
+        <p style="margin-top:25px;">
+          Use points in the Rivian Gear Shop and eligible accessories.
+        </p>
+
+      </div>
+
+      <div
+        class="card reward-card"
+        style="background: linear-gradient(135deg, #2d7ff9, #00c2a8);"
+      >
+
+        <div style="font-size:60px; margin-bottom:20px;">
+          ⚡
+        </div>
+
+        <h2>3 Months Free Charging</h2>
+
+        <p style="font-weight:bold;">
+          Rivian Adventure Network access included
+        </p>
+
+        <p style="margin-top:30px;">
+          Both the buyer and referring owner receive complimentary
+          Rivian Adventure Network charging when a qualifying order
+          is placed using a referral code.
+        </p>
+
+      </div>
 
     </section>
 
