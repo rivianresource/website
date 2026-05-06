@@ -13,13 +13,28 @@
     content="Use Rivian referral code SCOTT4395475 for eligible Rivian Rewards benefits. Independent Rivian R1S, R1T, and R2 owner resource covering charging, accessories, ownership, road trips, and Rivian news."
   />
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rivian Reward Hub" />
+  <meta
+    property="og:description"
+    content="Independent Rivian owner community and referral resource."
+  />
+  <meta
+    property="og:image"
+    content="https://www.rivianrewardhub.com/r1s.jpg"
+  />
+  <meta
+    property="og:url"
+    content="https://www.rivianrewardhub.com/"
+  />
+  <meta property="og:type" content="website" />
+
   <!-- Cloudflare Web Analytics -->
   <script
     defer
     src="https://static.cloudflareinsights.com/beacon.min.js"
     data-cf-beacon='{"token": "aabd2c264abb41589ccfd2223c79ae42"}'>
   </script>
-  <!-- End Cloudflare Web Analytics -->
 
   <style>
 
@@ -79,7 +94,15 @@
 
     .hero p {
       max-width: 760px;
-      margin: 0 auto 35px;
+      margin: 0 auto 25px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
     }
 
     .button {
@@ -93,6 +116,12 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.2s ease;
+      text-decoration: none;
+    }
+
+    .secondary-button {
+      background: #1e293b;
+      border: 1px solid rgba(255,255,255,0.12);
     }
 
     .button:hover {
@@ -102,7 +131,7 @@
 
     #copiedMessage {
       display: none;
-      margin-top: 15px;
+      margin-top: 20px;
       color: #14b87a;
       font-weight: bold;
     }
@@ -208,6 +237,10 @@
         font-size: 26px;
       }
 
+      .button-row {
+        flex-direction: column;
+      }
+
       .button {
         width: 100%;
       }
@@ -226,14 +259,31 @@
       <h1>Rivian Reward Hub</h1>
 
       <p>
-        Independent Rivian owner community sharing referral rewards,
-        ownership experiences, road trip inspiration, charging tips,
-        camping setups, and Rivian resources.
+        Real-world Rivian ownership, accessories, charging,
+        road trips, and referral rewards from an R1S owner.
       </p>
 
-      <button class="button" onclick="copyCode()">
-        Copy Referral Code SCOTT4395475
-      </button>
+      <p>
+        Independent Rivian owner community sharing referral rewards,
+        ownership experiences, charging tips, camping setups,
+        and Rivian resources for the R1S, R1T, and upcoming R2.
+      </p>
+
+      <div class="button-row">
+
+        <button class="button" onclick="copyCode()">
+          Copy Referral Code SCOTT4395475
+        </button>
+
+        <a
+          class="button secondary-button"
+          href="https://rivian.com/configurations/list?reprCode=SCOTT4395475"
+          target="_blank"
+        >
+          Configure Your Rivian
+        </a>
+
+      </div>
 
       <p id="copiedMessage">
         Referral code copied. Opening Rivian...
@@ -376,7 +426,6 @@
               <h3>Accessories Purchased</h3>
 
               <ul>
-                <li>Tesla Wall Charger</li>
                 <li>All-Weather Mats (R1S Gen-2)</li>
                 <li>Compact Spare Tire Kit</li>
                 <li>A2Z CCS1 to NACS Adapter</li>
@@ -391,6 +440,19 @@
         </div>
 
       </div>
+
+    </section>
+
+    <section class="card center" style="margin-top: 40px;">
+
+      <h2>About Me</h2>
+
+      <p>
+        Based in Las Vegas, I created Rivian Reward Hub to share
+        real-world Rivian ownership experiences, charging resources,
+        accessories, road trips, and referral rewards with other
+        Rivian owners and future buyers.
+      </p>
 
     </section>
 
@@ -592,7 +654,8 @@
 
     <footer>
 
-      Independent Rivian owner site. Not affiliated with or endorsed by Rivian.
+      Rivian Reward Hub is an independent owner-operated website
+      and is not affiliated with or endorsed by Rivian Automotive, Inc.
 
     </footer>
 
