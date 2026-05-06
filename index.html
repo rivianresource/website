@@ -4,12 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>RIVIAN REWARD HUB | Rivian Referral Code & Owner Resources</title>
+  <title>Rivian Reward Hub | Rivian Referral Code & Owner Resources</title>
 
   <meta
     name="description"
     content="Independent Rivian owner community sharing referral rewards, ownership experiences, charging tips, road trips, camping setups, and Rivian resources."
   />
+
+  <!-- Cloudflare Web Analytics -->
+  <script
+    defer
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token": "aabd2c264abb41589ccfd2223c79ae42"}'>
+  </script>
+  <!-- End Cloudflare Web Analytics -->
 
   <style>
 
@@ -49,9 +57,22 @@
       margin-bottom: 20px;
     }
 
+    h3 {
+      margin-bottom: 10px;
+    }
+
     p {
       color: #c7d2e0;
       font-size: 18px;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: #c7d2e0;
+    }
+
+    li {
+      margin-bottom: 10px;
     }
 
     .hero p {
@@ -147,6 +168,26 @@
       text-decoration: underline;
     }
 
+    .vehicle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 25px;
+    }
+
+    .vehicle-image {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+    }
+
+    .contact-box {
+      background: rgba(255,255,255,0.05);
+      border-radius: 18px;
+      padding: 25px;
+      margin-top: 20px;
+    }
+
     footer {
       margin-top: 70px;
       padding-bottom: 50px;
@@ -202,10 +243,7 @@
 
       <div
         class="card reward-card"
-        style="
-          background:
-          linear-gradient(135deg, #4f46e5, #2563eb);
-        "
+        style="background: linear-gradient(135deg, #4f46e5, #2563eb);"
       >
 
         <div style="font-size:58px; margin-bottom:20px;">
@@ -235,10 +273,7 @@
 
       <div
         class="card reward-card"
-        style="
-          background:
-          linear-gradient(135deg, #0f766e, #14b8a6);
-        "
+        style="background: linear-gradient(135deg, #0f766e, #14b8a6);"
       >
 
         <div style="font-size:58px; margin-bottom:20px;">
@@ -256,6 +291,73 @@
           Rivian Adventure Network charging when a qualifying order
           is placed using a referral code.
         </p>
+
+      </div>
+
+    </section>
+
+    <section class="card" style="margin-top: 40px; overflow:hidden;">
+
+      <div
+        style="
+          display:grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap:40px;
+          align-items:center;
+        "
+      >
+
+        <div>
+
+          <img
+            src="r1s.jpg"
+            alt="2026 Rivian R1S El Cap Granite"
+            class="vehicle-image"
+          >
+
+        </div>
+
+        <div>
+
+          <h2>My Rivian R1S Configuration</h2>
+
+          <p>
+            Current personal Rivian configuration and accessories.
+          </p>
+
+          <div class="vehicle-grid">
+
+            <div>
+
+              <h3>Vehicle Specs</h3>
+
+              <ul>
+                <li>2026 Dual Performance</li>
+                <li>Max Battery</li>
+                <li>El Cap Granite paint</li>
+                <li>22" Sport Dark Wheel Package</li>
+                <li>Black Mountain + Dark Ash Wood interior</li>
+              </ul>
+
+            </div>
+
+            <div>
+
+              <h3>Accessories Purchased</h3>
+
+              <ul>
+                <li>All-Weather Mats (R1S Gen-2)</li>
+                <li>Compact Spare Tire Kit</li>
+                <li>A2Z CCS1 to NACS Adapter</li>
+                <li>TWRAPS Armrest Organizer</li>
+                <li>TWRAPS Screen Protectors (Matte)</li>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -300,28 +402,6 @@
       </section>
 
     </div>
-
-    <section class="card" style="margin-top: 40px;">
-
-      <h2 class="center">Popular Rivian Resources</h2>
-
-      <div class="grid">
-
-        <div>
-          <p>• Rivian R1S ownership guide</p>
-          <p>• R1T accessories</p>
-          <p>• Rivian R2 updates</p>
-        </div>
-
-        <div>
-          <p>• Las Vegas charging tips</p>
-          <p>• EV road trip planning</p>
-          <p>• Camping gear setups</p>
-        </div>
-
-      </div>
-
-    </section>
 
     <section class="card" style="margin-top: 40px;">
 
@@ -416,29 +496,25 @@
 
       <h2 class="center">Latest Rivian News</h2>
 
-      <div id="news-feed">
+      <p>
+        <a
+          class="resource-link"
+          href="https://news.google.com/search?q=Rivian"
+          target="_blank"
+        >
+          View Latest Rivian News on Google News
+        </a>
+      </p>
 
-        <p>
-          <a
-            class="resource-link"
-            href="https://news.google.com/search?q=Rivian"
-            target="_blank"
-          >
-            View Latest Rivian News on Google News
-          </a>
-        </p>
-
-        <p>
-          <a
-            class="resource-link"
-            href="https://www.reddit.com/r/Rivian/"
-            target="_blank"
-          >
-            Visit the Rivian Reddit Community
-          </a>
-        </p>
-
-      </div>
+      <p>
+        <a
+          class="resource-link"
+          href="https://www.reddit.com/r/Rivian/"
+          target="_blank"
+        >
+          Visit the Rivian Reddit Community
+        </a>
+      </p>
 
     </section>
 
@@ -473,8 +549,8 @@
         <strong>Can I contact you with ownership questions?</strong>
 
         <p>
-          Yes. Future updates will include owner Q&A, charging resources,
-          travel guides, and additional Rivian ownership content.
+          Future updates will include ownership impressions,
+          charging experiences, accessories, road trips, and more.
         </p>
 
       </div>
@@ -483,12 +559,24 @@
 
     <section class="card center" style="margin-top: 40px;">
 
-      <h2>More Features Coming Soon</h2>
+      <h2>Questions?</h2>
 
-      <p>
-        Referral rotation, owner submissions, Rivian trip guides,
-        charging maps, delivery photos, and community resources.
-      </p>
+      <div class="contact-box">
+
+        <p>
+          Contact:
+        </p>
+
+        <p>
+          <a
+            class="resource-link"
+            href="mailto:rivianrewardhub@gmail.com"
+          >
+            rivianrewardhub@gmail.com
+          </a>
+        </p>
+
+      </div>
 
     </section>
 
@@ -523,3 +611,4 @@
 
 </body>
 </html>
+```
