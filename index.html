@@ -13,7 +13,6 @@
     content="Use Rivian referral code SCOTT4395475 for eligible Rivian Rewards benefits. Independent Rivian R1S, R1T, and R2 owner resource covering charging, accessories, ownership, road trips, and Rivian news."
   />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Rivian Reward Hub" />
   <meta
     property="og:description"
@@ -28,6 +27,8 @@
     content="https://www.rivianrewardhub.com/"
   />
   <meta property="og:type" content="website" />
+
+  <link rel="icon" type="image/png" href="logo.png">
 
   <!-- Cloudflare Web Analytics -->
   <script
@@ -54,17 +55,30 @@
       width: 90%;
       max-width: 1150px;
       margin: 0 auto;
-      padding: 60px 0;
+      padding: 50px 0 60px;
     }
 
     .hero {
       text-align: center;
-      padding-top: 40px;
+      padding-top: 20px;
       padding-bottom: 40px;
     }
 
+    .site-logo {
+      width: 120px;
+      max-width: 100%;
+      margin-bottom: 25px;
+    }
+
+    .site-subtitle {
+      font-size: 18px;
+      color: #c7d2e0;
+      max-width: 760px;
+      margin: 0 auto 20px;
+    }
+
     h1 {
-      font-size: 58px;
+      font-size: 54px;
       margin-bottom: 20px;
       letter-spacing: -1px;
     }
@@ -94,7 +108,7 @@
 
     .hero p {
       max-width: 760px;
-      margin: 0 auto 25px;
+      margin: 0 auto 20px;
     }
 
     .button-row {
@@ -219,6 +233,21 @@
       margin-top: 20px;
     }
 
+    .keyword-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .keyword-tag {
+      background: rgba(255,255,255,0.08);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: #d8e3f0;
+    }
+
     footer {
       margin-top: 70px;
       padding-bottom: 50px;
@@ -229,8 +258,12 @@
 
     @media (max-width: 768px) {
 
+      .site-logo {
+        width: 90px;
+      }
+
       h1 {
-        font-size: 42px;
+        font-size: 40px;
       }
 
       h2 {
@@ -256,9 +289,15 @@
 
     <section class="hero">
 
+      <img
+        src="logo.png"
+        alt="Rivian Reward Hub Logo"
+        class="site-logo"
+      >
+
       <h1>Rivian Reward Hub</h1>
 
-      <p>
+      <p class="site-subtitle">
         Real-world Rivian ownership, accessories, charging,
         road trips, and referral rewards from an R1S owner.
       </p>
@@ -356,7 +395,7 @@
 
         <p>
           Use the referral code when ordering your Rivian vehicle.
-          Eligible purchases may receive Rivian Rewards gear credits
+          Eligible purchases may receive Rivian Rewards credits
           for both the buyer and referring owner.
         </p>
 
@@ -575,18 +614,28 @@
 
       <h2 class="center">Popular Rivian Configurations & Topics</h2>
 
-      <p>
-        Rivian R1S, Rivian R1T, Rivian R2, Dual Performance,
-        Dual Max, Large Battery, Max Battery, Tri Motor,
-        Quad Motor, El Cap Granite, Black Mountain interior,
-        Dark Ash Wood, Rivian Adventure Network, Rivian charging,
-        Rivian accessories, Rivian delivery experience,
-        Rivian road trips, Rivian camping setup,
-        Rivian ownership, Rivian referral code,
-        Rivian rewards points, Rivian gear shop,
-        Rivian software updates, Rivian off-road capability,
-        Rivian towing, Rivian EV SUV, Rivian electric truck.
-      </p>
+      <div class="keyword-tags">
+
+        <div class="keyword-tag">Rivian R1S</div>
+        <div class="keyword-tag">Rivian R1T</div>
+        <div class="keyword-tag">Rivian R2</div>
+        <div class="keyword-tag">Dual Performance</div>
+        <div class="keyword-tag">Dual Max</div>
+        <div class="keyword-tag">Max Battery</div>
+        <div class="keyword-tag">Large Battery</div>
+        <div class="keyword-tag">Tri Motor</div>
+        <div class="keyword-tag">Quad Motor</div>
+        <div class="keyword-tag">El Cap Granite</div>
+        <div class="keyword-tag">Adventure Network</div>
+        <div class="keyword-tag">Rivian Accessories</div>
+        <div class="keyword-tag">Rivian Referral Code</div>
+        <div class="keyword-tag">Rivian Charging</div>
+        <div class="keyword-tag">Rivian Road Trips</div>
+        <div class="keyword-tag">Rivian Camping</div>
+        <div class="keyword-tag">Rivian Ownership</div>
+        <div class="keyword-tag">Rivian Gear Shop</div>
+
+      </div>
 
     </section>
 
@@ -635,9 +684,7 @@
 
       <div class="contact-box">
 
-        <p>
-          Contact:
-        </p>
+        <p>Contact:</p>
 
         <p>
           <a
