@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +20,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0f172a;
+      background: #081120;
       color: white;
       line-height: 1.6;
     }
@@ -42,6 +41,7 @@
     h1 {
       font-size: 58px;
       margin-bottom: 20px;
+      letter-spacing: -1px;
     }
 
     h2 {
@@ -50,7 +50,7 @@
     }
 
     p {
-      color: #cbd5e1;
+      color: #c7d2e0;
       font-size: 18px;
     }
 
@@ -61,7 +61,7 @@
 
     .button {
       display: inline-block;
-      background: #10b981;
+      background: #14b87a;
       color: white;
       border: none;
       padding: 18px 34px;
@@ -80,7 +80,7 @@
     #copiedMessage {
       display: none;
       margin-top: 15px;
-      color: #10b981;
+      color: #14b87a;
       font-weight: bold;
     }
 
@@ -92,7 +92,7 @@
     }
 
     .card {
-      background: #1e293b;
+      background: #111c2d;
       border-radius: 24px;
       padding: 35px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
@@ -106,6 +106,27 @@
       text-align: center;
     }
 
+    .reward-card {
+      text-align: center;
+      color: white;
+    }
+
+    .reward-card p {
+      color: rgba(255,255,255,0.92);
+    }
+
+    .reward-box {
+      background: rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 25px;
+      margin-top: 25px;
+    }
+
+    .reward-box p {
+      margin: 12px 0;
+      color: white;
+    }
+
     .faq-item {
       margin-bottom: 30px;
     }
@@ -117,7 +138,7 @@
     }
 
     a.resource-link {
-      color: #10b981;
+      color: #14b87a;
       text-decoration: none;
       font-weight: bold;
     }
@@ -126,32 +147,11 @@
       text-decoration: underline;
     }
 
-    .reward-card {
-      text-align: center;
-      color: white;
-    }
-
-    .reward-card p {
-      color: white;
-    }
-
-    .reward-box {
-      background: rgba(255,255,255,0.12);
-      border-radius: 18px;
-      padding: 25px;
-      margin-top: 25px;
-    }
-
-    .reward-box p {
-      margin: 12px 0;
-      color: white;
-    }
-
     footer {
       margin-top: 70px;
       padding-bottom: 50px;
       text-align: center;
-      color: #94a3b8;
+      color: #7c8ba1;
       font-size: 14px;
     }
 
@@ -202,10 +202,13 @@
 
       <div
         class="card reward-card"
-        style="background: linear-gradient(135deg, #ff6a00, #ff006e);"
+        style="
+          background:
+          linear-gradient(135deg, #4f46e5, #2563eb);
+        "
       >
 
-        <div style="font-size:60px; margin-bottom:20px;">
+        <div style="font-size:58px; margin-bottom:20px;">
           🎁
         </div>
 
@@ -232,10 +235,13 @@
 
       <div
         class="card reward-card"
-        style="background: linear-gradient(135deg, #2d7ff9, #00c2a8);"
+        style="
+          background:
+          linear-gradient(135deg, #0f766e, #14b8a6);
+        "
       >
 
-        <div style="font-size:60px; margin-bottom:20px;">
+        <div style="font-size:58px; margin-bottom:20px;">
           ⚡
         </div>
 
@@ -517,4 +523,3 @@
 
 </body>
 </html>
-```
