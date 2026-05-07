@@ -508,15 +508,22 @@
       gap: 18px;
     }
 
-    .news-featured {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.25s ease, transform 0.25s ease;
+    .news-featured-image {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 22px;
+  display: block;
+  background: rgba(255,255,255,0.03);
+}
+
+.news-featured {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  overflow: hidden;
     }
 
     .news-featured:hover {
@@ -1232,19 +1239,66 @@
     const featured = articles[0];
     const rest = articles.slice(1);
 
-    feedContainer.innerHTML = `
-      <div class="news-grid">
+feedContainer.innerHTML = `
+  <div class="news-grid">
 
-        <a href="${featured.link}"
+    <a href="${featured.link}"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="news-featured">
+
+      ${
+        featured.thumbnail
+          ? `
+            <img
+              src="${featured.thumbnail}"
+              alt="${cleanTitle(featured.title)}"
+              class="news-featured-image"
+              loading="lazy"
+            >
+          `
+          : ""
+      }
+
+      <span class="news-badge">Featured Story</span>
+
+      <div class="news-featured-title">
+        ${cleanTitle(featured.title)}
+      </div>
+
+      <div class="news-meta">
+        <span>${getSource(featured.title)}</span>
+        <span class="news-meta-dot">&middot;</span>
+        <span>${formatDate(featured.pubDate)}</span>
+      </div>
+
+    </a>
+
+    <div class="news-list">
+
+      ${rest.map(article => `
+        <a href="${article.link}"
            target="_blank"
            rel="noopener noreferrer"
-           class="news-featured">
+           class="news-item">
 
-          <span class="news-badge">Featured Story</span>
-
-          <div class="news-featured-title">
-            ${cleanTitle(featured.title)}
+          <div class="news-item-title">
+            ${cleanTitle(article.title)}
           </div>
+
+          <div class="news-item-meta">
+            <span>${getSource(article.title)}</span>
+            <span>&middot;</span>
+            <span>${formatDate(article.pubDate)}</span>
+          </div>
+
+        </a>
+      `).join("")}
+
+    </div>
+
+  </div>
+`;
 
           <div class="news-meta">
             <span>${getSource(featured.title)}</span>
