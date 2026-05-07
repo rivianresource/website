@@ -622,31 +622,19 @@
 
     </section>
 
-    <section class="card" style="margin-top: 40px;">
+   <section class="card" style="margin-top: 40px;">
 
-      <h2 class="center">Latest Rivian News</h2>
+  <h2 class="center">Latest Rivian News</h2>
 
-      <p>
-        <a
-          class="resource-link"
-          href="https://news.google.com/search?q=Rivian"
-          target="_blank"
-        >
-          View Latest Rivian News on Google News
-        </a>
-      </p>
+  <div id="newsFeed" style="margin-top:30px;">
 
-      <p>
-        <a
-          class="resource-link"
-          href="https://www.reddit.com/r/Rivian/"
-          target="_blank"
-        >
-          Visit the Rivian Reddit Community
-        </a>
-      </p>
+    <p style="text-align:center; color:#94a3b8;">
+      Loading latest Rivian news...
+    </p>
 
-    </section>
+  </div>
+
+</section>
 
     <section class="card" style="margin-top: 40px;">
 
@@ -795,6 +783,89 @@
     }
 
   </script>
+
+  <script>
+
+async function loadRivianNews() {
+
+  const feedContainer = document.getElementById("newsFeed");
+
+  try {
+
+    const rssUrl =
+      "https://news.google.com/rss/search?q=Rivian";
+
+    const apiUrl =
+      "https://api.rss2json.com/v1/api.json?rss_url=" +
+      encodeURIComponent(rssUrl);
+
+    const response = await fetch(apiUrl);
+
+    const data = await response.json();
+
+    if (!data.items || data.items.length === 0) {
+
+      feedContainer.innerHTML =
+        "<p>No news articles available right now.</p>";
+
+      return;
+
+    }
+
+    const articles = data.items.slice(0, 6);
+
+    feedContainer.innerHTML = articles.map(article => `
+
+      <div
+        style="
+          padding:22px;
+          border-radius:18px;
+          background:rgba(255,255,255,0.04);
+          margin-bottom:18px;
+        "
+      >
+
+        <a
+          href="${article.link}"
+          target="_blank"
+          style="
+            color:#14b87a;
+            font-size:22px;
+            font-weight:bold;
+            text-decoration:none;
+          "
+        >
+          ${article.title}
+        </a>
+
+        <p
+          style="
+            margin-top:10px;
+            color:#c7d2e0;
+            font-size:15px;
+          "
+        >
+          ${new Date(article.pubDate).toLocaleDateString()}
+        </p>
+
+      </div>
+
+    `).join("");
+
+  }
+
+  catch (error) {
+
+    feedContainer.innerHTML =
+      "<p>Unable to load Rivian news right now.</p>";
+
+  }
+
+}
+
+loadRivianNews();
+
+</script>
 
 </body>
 </html>
