@@ -1155,82 +1155,124 @@
       if (!isOpen) item.classList.add("open");
     }
 
-    async function loadRivianNews() {
-      const feedContainer = document.getElementById("newsFeed");
-      try {
-        // Google News RSS blocks direct browser fetches via CORS.
-        // corsproxy.io is a reliable open CORS proxy — no API key needed.
-        const rssUrl   = "https://news.google.com/rss/search?q=Rivian+EV&hl=en-US&gl=US&ceid=US:en";
-        const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(rssUrl);
-        const response = await fetch(proxyUrl);
-        if (!response.ok) throw new Error("fetch failed");
+   async function loadRivianNews() {
 
-        const xmlText = await response.text();
-        const parser  = new DOMParser();
-        const doc     = parser.parseFromString(xmlText, "text/xml");
-        const items   = Array.from(doc.querySelectorAll("item")).slice(0, 6);
+  const feedContainer = document.getElementById("newsFeed");
 
-        if (items.length === 0) {
-          feedContainer.innerHTML = '<p style="color:var(--text-muted)">No news available right now.</p>';
-          return;
-        }
+  try {
 
-        function getTag(item, tag) {
-          const el = item.querySelector(tag);
-          return el ? el.textContent.trim() : "";
-        }
-        function source(title) {
-          const p = title.split(" - ");
-          return p.length > 1 ? p[p.length - 1] : "";
-        }
-        function clean(title) {
-          return title.replace(/\s-\s[^-]+$/, "");
-        }
-        function fmtDate(d) {
-          const dt = new Date(d);
-          return isNaN(dt) ? "" : dt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-        }
+    // Use rss2json public API instead of browser-side XML proxying
+    const rssFeed = encodeURIComponent(
+      "https://news.google.com/rss/search?q=Rivian+EV&hl=en-US&gl=US&ceid=US:en"
+    );
 
-        const articles = items.map(item => ({
-          title:   getTag(item, "title"),
-          link:    getTag(item, "link") || item.querySelector("guid")?.textContent || "#",
-          pubDate: getTag(item, "pubDate"),
-        }));
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}`;
 
-        const featured = articles[0];
-        const rest     = articles.slice(1);
+    const response = await fetch(apiUrl);
 
-        feedContainer.innerHTML = `
-          <div class="news-grid">
-            <a href="${featured.link}" target="_blank" rel="noopener" class="news-featured">
-              <span class="news-badge">Featured Story</span>
-              <div class="news-featured-title">${clean(featured.title)}</div>
-              <div class="news-meta">
-                <span>${source(featured.title)}</span>
-                <span class="news-meta-dot">&middot;</span>
-                <span>${fmtDate(featured.pubDate)}</span>
-              </div>
-            </a>
-            <div class="news-list">
-              ${rest.map(a => `
-                <a href="${a.link}" target="_blank" rel="noopener" class="news-item">
-                  <div class="news-item-title">${clean(a.title)}</div>
-                  <div class="news-item-meta">
-                    <span>${source(a.title)}</span>
-                    <span>&middot;</span>
-                    <span>${fmtDate(a.pubDate)}</span>
-                  </div>
-                </a>
-              `).join("")}
-            </div>
-          </div>
-        `;
-      } catch (e) {
-        feedContainer.innerHTML = '<p style="color:var(--text-muted)">Unable to load news right now.</p>';
-      }
+    if (!response.ok) {
+      throw new Error("News request failed");
     }
 
-    loadRivianNews();
+    const data = await response.json();
+
+    if (!data.items || !data.items.length) {
+      feedContainer.innerHTML =
+        '<p style="color:var(--text-muted)">No news available right now.</p>';
+      return;
+    }
+
+    const articles = data.items.slice(0, 6);
+
+    function cleanTitle(title) {
+      return title.replace(/\s-\s[^-]+$/, "");
+    }
+
+    function getSource(title) {
+      const parts = title.split(" - ");
+      return parts.length > 1 ? parts[parts.length - 1] : "News Source";
+    }
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+
+      return date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      });
+    }
+
+    const featured = articles[0];
+    const rest = articles.slice(1);
+
+    feedContainer.innerHTML = `
+      <div class="news-grid">
+
+        <a href="${featured.link}"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="news-featured">
+
+          <span class="news-badge">Featured Story</span>
+
+          <div class="news-featured-title">
+            ${cleanTitle(featured.title)}
+          </div>
+
+          <div class="news-meta">
+            <span>${getSource(featured.title)}</span>
+            <span class="news-meta-dot">&middot;</span>
+            <span>${formatDate(featured.pubDate)}</span>
+          </div>
+
+        </a>
+
+        <div class="news-list">
+
+          ${rest.map(article => `
+            <a href="${article.link}"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="news-item">
+
+              <div class="news-item-title">
+                ${cleanTitle(article.title)}
+              </div>
+
+              <div class="news-item-meta">
+                <span>${getSource(article.title)}</span>
+                <span>&middot;</span>
+                <span>${formatDate(article.pubDate)}</span>
+              </div>
+
+            </a>
+          `).join("")}
+
+        </div>
+
+      </div>
+    `;
+
+  } catch (error) {
+
+    console.error("News feed error:", error);
+
+    feedContainer.innerHTML = `
+      <div style="
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+        color: var(--text-muted);
+      ">
+        Unable to load news right now.
+      </div>
+    `;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadRivianNews);
 
   </script>
 
