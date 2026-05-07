@@ -1239,8 +1239,13 @@
       });
     }
 
-    const featured = articles[0];
-    const rest = articles.slice(1);
+const featured = articles[0];
+const rest = articles.slice(1);
+
+const featuredImage =
+  featured.thumbnail ||
+  featured.enclosure?.link ||
+  "r1s.jpg";
 
 feedContainer.innerHTML = `
   <div class="news-grid">
