@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -14,18 +15,22 @@
   />
 
   <meta property="og:title" content="Rivian Reward Hub" />
+
   <meta
     property="og:description"
     content="Independent Rivian owner community and referral resource."
   />
+
   <meta
     property="og:image"
     content="https://www.rivianrewardhub.com/r1s.jpg"
   />
+
   <meta
     property="og:url"
     content="https://www.rivianrewardhub.com/"
   />
+
   <meta property="og:type" content="website" />
 
   <link rel="icon" type="image/png" href="logo.png">
@@ -60,8 +65,8 @@
 
     .hero {
       text-align: center;
-      padding-top: 20px;
-      padding-bottom: 40px;
+      padding-top: 40px;
+      padding-bottom: 60px;
     }
 
     .site-logo {
@@ -72,11 +77,18 @@
 
     .large-logo {
       width: 260px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+    }
+
+    .hero-title {
+      font-size: 54px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      margin-top: 0;
     }
 
     .site-subtitle {
-      font-size: 18px;
+      font-size: 20px;
       color: #c7d2e0;
       max-width: 760px;
       margin: 0 auto 20px;
@@ -86,16 +98,16 @@
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px;
-      padding: 28px;
-      max-width: 860px;
-      margin: 30px auto 0;
+      padding: 32px;
+      max-width: 900px;
+      margin: 20px auto 35px;
       text-align: left;
     }
 
     .referral-description h2 {
       margin-top: 0;
-      margin-bottom: 15px;
-      font-size: 28px;
+      margin-bottom: 18px;
+      font-size: 34px;
     }
 
     .referral-description p {
@@ -103,12 +115,13 @@
     }
 
     h2 {
-      font-size: 32px;
+      font-size: 34px;
       margin-bottom: 20px;
     }
 
     h3 {
       margin-bottom: 10px;
+      font-size: 22px;
     }
 
     p {
@@ -125,17 +138,12 @@
       margin-bottom: 10px;
     }
 
-    .hero p {
-      max-width: 760px;
-      margin: 0 auto 20px;
-    }
-
     .button-row {
       display: flex;
-      gap: 15px;
+      gap: 20px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 30px;
+      margin-top: 20px;
     }
 
     .button {
@@ -143,28 +151,28 @@
       background: #14b87a;
       color: white;
       border: none;
-      padding: 18px 34px;
-      border-radius: 14px;
-      font-size: 18px;
+      padding: 20px 38px;
+      border-radius: 16px;
+      font-size: 20px;
       font-weight: bold;
       cursor: pointer;
       transition: 0.2s ease;
       text-decoration: none;
     }
 
-    .secondary-button {
-  background: #e7cb22;
-  color: #081120;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.secondary-button:hover {
-  background: #f2d93a;
-}
-
     .button:hover {
       opacity: 0.92;
       transform: translateY(-2px);
+    }
+
+    .secondary-button {
+      background: #e7cb22;
+      color: #081120;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .secondary-button:hover {
+      background: #f2d93a;
     }
 
     #copiedMessage {
@@ -184,12 +192,8 @@
     .card {
       background: #111c2d;
       border-radius: 24px;
-      padding: 35px;
+      padding: 38px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-
-    .card p {
-      margin-bottom: 15px;
     }
 
     .center {
@@ -218,13 +222,14 @@
     }
 
     .faq-item {
-      margin-bottom: 30px;
+      margin-bottom: 35px;
     }
 
     .faq-item strong {
       display: block;
       margin-bottom: 10px;
       color: white;
+      font-size: 20px;
     }
 
     a.resource-link {
@@ -250,13 +255,6 @@
       display: block;
     }
 
-    .contact-box {
-      background: rgba(255,255,255,0.05);
-      border-radius: 18px;
-      padding: 25px;
-      margin-top: 20px;
-    }
-
     .keyword-tags {
       display: flex;
       flex-wrap: wrap;
@@ -270,6 +268,17 @@
       border-radius: 999px;
       font-size: 14px;
       color: #d8e3f0;
+    }
+
+    .coming-soon {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(231,203,34,0.15);
+      color: #e7cb22;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: bold;
     }
 
     footer {
@@ -286,8 +295,12 @@
         width: 180px;
       }
 
+      .hero-title {
+        font-size: 40px;
+      }
+
       h2 {
-        font-size: 26px;
+        font-size: 28px;
       }
 
       .button-row {
@@ -299,12 +312,13 @@
       }
 
       .referral-description {
-        padding: 22px;
+        padding: 24px;
       }
 
     }
 
   </style>
+
 </head>
 
 <body>
@@ -319,56 +333,58 @@
         class="site-logo large-logo"
       >
 
+      <h1 class="hero-title">
+        Rivian Referral Code & Owner Resource
+      </h1>
+
       <p class="site-subtitle">
         Real-world Rivian ownership, accessories, charging,
-        road trips, and referral rewards from an R1S owner.
+        road trips, referral rewards, and Rivian news from an R1S owner.
       </p>
 
+      <div class="referral-description">
 
-<div class="referral-description">
+        <h2>How Rivian Referral Codes Work</h2>
 
-  <h2>How Rivian Referral Codes Work</h2>
+        <p>
+          Rivian owners receive a referral code that can be shared
+          with new buyers through Rivian’s official Rivian Rewards program.
+          When a qualifying Rivian order is placed using a referral code,
+          both the buyer and referring owner may receive Rivian Rewards points
+          and complimentary Rivian Adventure Network charging.
+        </p>
 
-  <p>
-    Rivian owners receive a unique referral code that can be shared
-    with new buyers through Rivian’s official Rivian Rewards program.
-    When a qualifying vehicle order is placed using a referral code,
-    both the buyer and the referring owner may receive Rivian Rewards
-    points and complimentary Rivian Adventure Network charging.
-  </p>
+        <p>
+          Current qualifying purchases can earn up to 500 Rivian Rewards points
+          plus 3 months of Rivian Adventure Network charging depending on
+          configuration and battery selection.
+        </p>
 
-  <p>
-    Reward amounts vary based on vehicle configuration and battery
-    selection. Current qualifying purchases can earn up to 500 Rivian
-    Rewards points plus 3 months of Rivian Adventure Network charging.
-  </p>
+      </div>
 
-</div>
+      <div class="button-row">
 
-<div class="button-row">
+        <button class="button" onclick="copyCode()">
+          Copy Referral Code SCOTT4395475
+        </button>
 
-  <button class="button" onclick="copyCode()">
-    Copy Referral Code SCOTT4395475
-  </button>
+        <a
+          class="button secondary-button"
+          href="https://rivian.com/configurations/list?reprCode=SCOTT4395475"
+          target="_blank"
+        >
+          Configure Your Rivian
+        </a>
 
-  <a
-    class="button secondary-button"
-    href="https://rivian.com/configurations/list?reprCode=SCOTT4395475"
-    target="_blank"
-  >
-    Configure Your Rivian
-  </a>
+      </div>
 
-</div>
-
-<p id="copiedMessage">
-  Referral code copied. Opening Rivian...
-</p>
-
+      <p id="copiedMessage">
+        Referral code copied. Opening Rivian...
+      </p>
 
     </section>
 
-    <section class="grid" style="margin-top: 10px;">
+    <section class="grid" style="margin-top: 0;">
 
       <div
         class="card reward-card"
@@ -394,10 +410,6 @@
 
         </div>
 
-        <p style="margin-top:25px;">
-          Use points in the Rivian Gear Shop and eligible accessories.
-        </p>
-
       </div>
 
       <div
@@ -416,42 +428,67 @@
         </p>
 
         <p style="margin-top:30px;">
-          Both the buyer and referring owner receive complimentary
-          Rivian Adventure Network charging when a qualifying order
-          is placed using a referral code.
+          Complimentary Rivian Adventure Network charging
+          is included with qualifying referral purchases.
         </p>
 
       </div>
 
     </section>
 
-    <div class="grid">
+    <section class="card" style="margin-top: 40px;">
 
-      <section class="card">
+      <h2 class="center">Latest Rivian News</h2>
 
-        <h2>How It Works</h2>
+      <div id="newsFeed" style="margin-top:30px;">
 
-        <p>
-          Use the referral code when ordering your Rivian vehicle.
-          Eligible purchases may receive Rivian Rewards credits
-          for both the buyer and referring owner.
+        <p style="text-align:center; color:#94a3b8;">
+          Loading latest Rivian news...
         </p>
 
-      </section>
+      </div>
 
-      <section class="card">
+    </section>
 
-        <h2>Why Rivian?</h2>
+    <section class="card" style="margin-top: 40px;">
 
-        <p>
-          Rivian combines premium technology, EV performance,
-          adventure capability, towing, camping, and everyday comfort
-          into one platform built for real-world use.
-        </p>
+      <h2 class="center">Upcoming Rivian Content</h2>
 
-      </section>
+      <div class="grid">
 
-    </div>
+        <div>
+
+          <h3>Favorite Accessories</h3>
+
+          <p>
+            Reviews and recommendations for useful Rivian accessories,
+            charging gear, organizers, floor mats, adapters, and more.
+          </p>
+
+          <span class="coming-soon">
+            Coming Soon
+          </span>
+
+        </div>
+
+        <div>
+
+          <h3>Rivian R1S Dual Performance Review</h3>
+
+          <p>
+            Real-world impressions covering performance, ride quality,
+            range, charging, daily driving, and ownership experience.
+          </p>
+
+          <span class="coming-soon">
+            Coming Soon
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
 
     <section class="card" style="margin-top: 40px; overflow:hidden;">
 
@@ -478,10 +515,6 @@
 
           <h2>My Rivian R1S Configuration</h2>
 
-          <p>
-            Current personal Rivian configuration and accessories.
-          </p>
-
           <div class="vehicle-grid">
 
             <div>
@@ -491,9 +524,9 @@
               <ul>
                 <li>2026 Dual Performance</li>
                 <li>Max Battery</li>
-                <li>El Cap Granite paint</li>
+                <li>El Cap Granite</li>
                 <li>22" Sport Dark Wheel Package</li>
-                <li>Black Mountain + Dark Ash Wood interior</li>
+                <li>Black Mountain + Dark Ash Wood</li>
               </ul>
 
             </div>
@@ -503,11 +536,11 @@
               <h3>Accessories Purchased</h3>
 
               <ul>
-                <li>All-Weather Mats (R1S Gen-2)</li>
+                <li>All-Weather Mats (Gen 2)</li>
                 <li>Compact Spare Tire Kit</li>
                 <li>A2Z CCS1 to NACS Adapter</li>
                 <li>TWRAPS Armrest Organizer</li>
-                <li>TWRAPS Screen Protectors (Matte)</li>
+                <li>TWRAPS Matte Screen Protectors</li>
               </ul>
 
             </div>
@@ -520,19 +553,6 @@
 
     </section>
 
-    <section class="card center" style="margin-top: 40px;">
-
-      <h2>About Me</h2>
-
-      <p>
-        Based in Las Vegas, I created Rivian Reward Hub to share
-        real-world Rivian ownership experiences, charging resources,
-        accessories, road trips, and referral rewards with other
-        Rivian owners and future buyers.
-      </p>
-
-    </section>
-
     <section class="card" style="margin-top: 40px;">
 
       <h2 class="center">Helpful Rivian Resources</h2>
@@ -541,218 +561,141 @@
 
         <div>
 
-          <p>
-            <strong>Rivian Roamer</strong><br>
-            Inventory tracker, VIN lookup, and Rivian configuration search tools.
-          </p>
+          <h3>Rivian Roamer</h3>
 
           <p>
-            <a
-              class="resource-link"
-              href="https://rivianroamer.com"
-              target="_blank"
-            >
-              Visit Rivian Roamer
-            </a>
+            Inventory tracker, VIN lookup, and configuration tools.
           </p>
+
+          <a
+            class="resource-link"
+            href="https://rivianroamer.com"
+            target="_blank"
+          >
+            Visit Rivian Roamer
+          </a>
 
         </div>
 
         <div>
 
-          <p>
-            <strong>Rivian Reddit Community</strong><br>
-            Large owner and enthusiast community discussing deliveries,
-            charging, accessories, and ownership experiences.
-          </p>
+          <h3>Rivian Reddit</h3>
 
           <p>
-            <a
-              class="resource-link"
-              href="https://www.reddit.com/r/Rivian/"
-              target="_blank"
-            >
-              Visit r/Rivian
-            </a>
+            Large Rivian owner and enthusiast community.
           </p>
+
+          <a
+            class="resource-link"
+            href="https://www.reddit.com/r/Rivian/"
+            target="_blank"
+          >
+            Visit r/Rivian
+          </a>
 
         </div>
 
         <div>
 
-          <p>
-            <strong>Rivian Forums</strong><br>
-            Active forum community covering R1S, R1T, R2,
-            software updates, modifications, and troubleshooting.
-          </p>
+          <h3>Rivian Forums</h3>
 
           <p>
-            <a
-              class="resource-link"
-              href="https://www.rivianforums.com/forum/"
-              target="_blank"
-            >
-              Visit Rivian Forums
-            </a>
+            Discussion forums for R1S, R1T, R2, charging, and software.
           </p>
 
-        </div>
-
-        <div>
-
-          <p>
-            <strong>Rivian Facebook Groups</strong><br>
-            Local and national owner communities sharing photos,
-            charging tips, deliveries, and trip experiences.
-          </p>
-
-          <p>
-            <a
-              class="resource-link"
-              href="https://www.facebook.com/search/groups/?q=rivian"
-              target="_blank"
-            >
-              Browse Facebook Groups
-            </a>
-          </p>
+          <a
+            class="resource-link"
+            href="https://www.rivianforums.com/forum/"
+            target="_blank"
+          >
+            Visit Rivian Forums
+          </a>
 
         </div>
 
       </div>
 
     </section>
-
-   <section class="card" style="margin-top: 40px;">
-
-  <h2 class="center">Latest Rivian News</h2>
-
-  <div id="newsFeed" style="margin-top:30px;">
-
-    <p style="text-align:center; color:#94a3b8;">
-      Loading latest Rivian news...
-    </p>
-
-  </div>
-
-</section>
 
     <section class="card" style="margin-top: 40px;">
 
-      <h2 class="center">Popular Rivian Configurations & Topics</h2>
+      <h2 class="center">Frequently Asked Questions</h2>
 
-      <div class="keyword-tags">
+      <div class="faq-item">
 
-        <div class="keyword-tag">Rivian R1S</div>
-        <div class="keyword-tag">Rivian R1T</div>
-        <div class="keyword-tag">Rivian R2</div>
-        <div class="keyword-tag">Dual Performance</div>
-        <div class="keyword-tag">Dual Max</div>
-        <div class="keyword-tag">Max Battery</div>
-        <div class="keyword-tag">Large Battery</div>
-        <div class="keyword-tag">Tri Motor</div>
-        <div class="keyword-tag">Quad Motor</div>
-        <div class="keyword-tag">El Cap Granite</div>
-        <div class="keyword-tag">Adventure Network</div>
-        <div class="keyword-tag">Rivian Accessories</div>
-        <div class="keyword-tag">Rivian Referral Code</div>
-        <div class="keyword-tag">Rivian Charging</div>
-        <div class="keyword-tag">Rivian Road Trips</div>
-        <div class="keyword-tag">Rivian Camping</div>
-        <div class="keyword-tag">Rivian Ownership</div>
-        <div class="keyword-tag">Rivian Gear Shop</div>
+        <strong>What if I forgot to use a referral code?</strong>
+
+        <p>
+          Rivian sales guides can usually add a referral code
+          before delivery if it was missed during ordering.
+        </p>
+
+      </div>
+
+      <div class="faq-item">
+
+        <strong>When are Rivian Rewards points added?</strong>
+
+        <p>
+          Points are generally added within approximately
+          two weeks after delivery.
+        </p>
+
+      </div>
+
+      <div class="faq-item">
+
+        <strong>Do Rivian Rewards points expire?</strong>
+
+        <p>
+          Yes. Points currently expire two years after
+          they are added to your Rivian account.
+        </p>
+
+      </div>
+
+      <div class="faq-item">
+
+        <strong>How does Rivian Adventure Network charging work?</strong>
+
+        <p>
+          Simply plug in and charge. Complimentary charging
+          is automatically connected to your Rivian account.
+        </p>
+
+      </div>
+
+      <div class="faq-item">
+
+        <strong>Is this an official Rivian website?</strong>
+
+        <p>
+          No. Rivian Reward Hub is an independent owner-operated
+          website and is not affiliated with Rivian Automotive, Inc.
+        </p>
 
       </div>
 
     </section>
 
-   <section class="card" style="margin-top: 40px;">
+    <section class="card center" style="margin-top: 40px;">
 
-  <h2 class="center">Frequently Asked Questions</h2>
+      <h2>Contact</h2>
 
-  <div class="faq-item">
+      <p>
+        Questions, ownership discussions, or accessory recommendations:
+      </p>
 
-    <strong>What if I forgot to use a referral code?</strong>
+      <p>
+        <a
+          class="resource-link"
+          href="mailto:rivianrewardhub@gmail.com"
+        >
+          rivianrewardhub@gmail.com
+        </a>
+      </p>
 
-    <p>
-      If you forgot to apply a referral code during the ordering process,
-      your Rivian sales guide can usually add it before vehicle delivery.
-    </p>
-
-  </div>
-
-  <div class="faq-item">
-
-    <strong>When are Rivian Rewards points added?</strong>
-
-    <p>
-      Rivian Rewards points are typically added to both the buyer and
-      referring owner accounts within approximately two weeks after delivery.
-    </p>
-
-  </div>
-
-  <div class="faq-item">
-
-    <strong>How can Rivian Rewards points be used?</strong>
-
-    <p>
-      Rewards points may be redeemed toward products in the Rivian Gear Shop,
-      R1 Shop, and select eligible purchases available through your Rivian account.
-    </p>
-
-  </div>
-
-  <div class="faq-item">
-
-    <strong>Do Rivian Rewards points expire?</strong>
-
-    <p>
-      Yes. Points currently expire two years after they are added
-      to your Rivian account.
-    </p>
-
-  </div>
-
-  <div class="faq-item">
-
-    <strong>How does the Rivian Adventure Network charging reward work?</strong>
-
-    <p>
-      Complimentary Rivian Adventure Network charging is automatically tied
-      to your Rivian account. Simply plug in and charge with no additional steps.
-    </p>
-
-    <p>
-      Eligible owners can accumulate up to 36 total months of Rivian
-      Adventure Network charging rewards.
-    </p>
-
-  </div>
-
-  <div class="faq-item">
-
-    <strong>Can Rivian Rewards points be used toward service or accessories?</strong>
-
-    <p>
-      Rewards points may be applied toward select Rivian accessories
-      and eligible installed products such as wheel and tire packages,
-      wireless chargers, and powered tonneau covers.
-    </p>
-
-  </div>
-
-  <div class="faq-item">
-
-    <strong>Is this an official Rivian website?</strong>
-
-    <p>
-      No. Rivian Reward Hub is an independent owner-operated community
-      resource and is not affiliated with or endorsed by Rivian Automotive, Inc.
-    </p>
-
-  </div>
-
-</section>
+    </section>
 
     <footer>
 
@@ -786,86 +729,86 @@
 
   <script>
 
-async function loadRivianNews() {
+    async function loadRivianNews() {
 
-  const feedContainer = document.getElementById("newsFeed");
+      const feedContainer = document.getElementById("newsFeed");
 
-  try {
+      try {
 
-    const rssUrl =
-      "https://news.google.com/rss/search?q=Rivian";
+        const rssUrl =
+          "https://news.google.com/rss/search?q=Rivian";
 
-    const apiUrl =
-      "https://api.rss2json.com/v1/api.json?rss_url=" +
-      encodeURIComponent(rssUrl);
+        const apiUrl =
+          "https://api.rss2json.com/v1/api.json?rss_url=" +
+          encodeURIComponent(rssUrl);
 
-    const response = await fetch(apiUrl);
+        const response = await fetch(apiUrl);
 
-    const data = await response.json();
+        const data = await response.json();
 
-    if (!data.items || data.items.length === 0) {
+        if (!data.items || data.items.length === 0) {
 
-      feedContainer.innerHTML =
-        "<p>No news articles available right now.</p>";
+          feedContainer.innerHTML =
+            "<p>No news articles available right now.</p>";
 
-      return;
+          return;
+
+        }
+
+        const articles = data.items.slice(0, 6);
+
+        feedContainer.innerHTML = articles.map(article => `
+
+          <div
+            style="
+              padding:22px;
+              border-radius:18px;
+              background:rgba(255,255,255,0.04);
+              margin-bottom:18px;
+            "
+          >
+
+            <a
+              href="${article.link}"
+              target="_blank"
+              style="
+                color:#14b87a;
+                font-size:22px;
+                font-weight:bold;
+                text-decoration:none;
+              "
+            >
+              ${article.title}
+            </a>
+
+            <p
+              style="
+                margin-top:10px;
+                color:#c7d2e0;
+                font-size:15px;
+              "
+            >
+              ${new Date(article.pubDate).toLocaleDateString()}
+            </p>
+
+          </div>
+
+        `).join("");
+
+      }
+
+      catch (error) {
+
+        feedContainer.innerHTML =
+          "<p>Unable to load Rivian news right now.</p>";
+
+      }
 
     }
 
-    const articles = data.items.slice(0, 6);
+    loadRivianNews();
 
-    feedContainer.innerHTML = articles.map(article => `
-
-      <div
-        style="
-          padding:22px;
-          border-radius:18px;
-          background:rgba(255,255,255,0.04);
-          margin-bottom:18px;
-        "
-      >
-
-        <a
-          href="${article.link}"
-          target="_blank"
-          style="
-            color:#14b87a;
-            font-size:22px;
-            font-weight:bold;
-            text-decoration:none;
-          "
-        >
-          ${article.title}
-        </a>
-
-        <p
-          style="
-            margin-top:10px;
-            color:#c7d2e0;
-            font-size:15px;
-          "
-        >
-          ${new Date(article.pubDate).toLocaleDateString()}
-        </p>
-
-      </div>
-
-    `).join("");
-
-  }
-
-  catch (error) {
-
-    feedContainer.innerHTML =
-      "<p>Unable to load Rivian news right now.</p>";
-
-  }
-
-}
-
-loadRivianNews();
-
-</script>
+  </script>
 
 </body>
 </html>
