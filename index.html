@@ -1266,40 +1266,6 @@ feedContainer.innerHTML = `
         ${cleanTitle(featured.title)}
       </div>
 
-      <div class="news-meta">
-        <span>${getSource(featured.title)}</span>
-        <span class="news-meta-dot">&middot;</span>
-        <span>${formatDate(featured.pubDate)}</span>
-      </div>
-
-    </a>
-
-    <div class="news-list">
-
-      ${rest.map(article => `
-        <a href="${article.link}"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="news-item">
-
-          <div class="news-item-title">
-            ${cleanTitle(article.title)}
-          </div>
-
-          <div class="news-item-meta">
-            <span>${getSource(article.title)}</span>
-            <span>&middot;</span>
-            <span>${formatDate(article.pubDate)}</span>
-          </div>
-
-        </a>
-      `).join("")}
-
-    </div>
-
-  </div>
-`;
-
           <div class="news-meta">
             <span>${getSource(featured.title)}</span>
             <span class="news-meta-dot">&middot;</span>
