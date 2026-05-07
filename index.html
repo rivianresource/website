@@ -504,7 +504,7 @@
     /* ─── NEWS ─── */
     .news-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: 1.25fr 0.9fr;
       gap: 18px;
     }
 
@@ -529,10 +529,10 @@
   transition: border-color 0.25s ease, transform 0.25s ease;
 }
 
-    .news-featured:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-3px);
-    }
+.news-featured:hover,
+.news-item:hover {
+  box-shadow: 0 10px 34px rgba(0,0,0,0.22);
+}
 
     .news-badge {
       display: inline-block;
@@ -554,7 +554,7 @@
       font-weight: 700;
       color: #fff;
       line-height: 1.25;
-      flex: 1;
+        max-width: 18ch;
       margin-bottom: 20px;
     }
 
