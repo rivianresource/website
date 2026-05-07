@@ -524,7 +524,10 @@
   border-radius: var(--radius);
   padding: 24px;
   overflow: hidden;
-    }
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
 
     .news-featured:hover {
       border-color: var(--border-hover);
