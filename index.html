@@ -319,45 +319,94 @@
         road trips, and referral rewards from an R1S owner.
       </p>
 
-      <div class="button-row">
+    Replace this section order:
 
-        <button class="button" onclick="copyCode()">
-          Copy Referral Code SCOTT4395475
-        </button>
+```html
+<div class="button-row">
 
-        <a
-          class="button secondary-button"
-          href="https://rivian.com/configurations/list?reprCode=SCOTT4395475"
-          target="_blank"
-        >
-          Configure Your Rivian
-        </a>
+  <button class="button" onclick="copyCode()">
+    Copy Referral Code SCOTT4395475
+  </button>
 
-      </div>
+  <a
+    class="button secondary-button"
+    href="https://rivian.com/configurations/list?reprCode=SCOTT4395475"
+    target="_blank"
+  >
+    Configure Your Rivian
+  </a>
 
-      <p id="copiedMessage">
-        Referral code copied. Opening Rivian...
-      </p>
+</div>
 
-      <div class="referral-description">
+<p id="copiedMessage">
+  Referral code copied. Opening Rivian...
+</p>
 
-        <h2>How Rivian Referral Codes Work</h2>
+<div class="referral-description">
 
-        <p>
-          Rivian owners receive a unique referral code that can be shared
-          with new buyers through Rivian’s official Rivian Rewards program.
-          When a qualifying vehicle order is placed using a referral code,
-          both the buyer and the referring owner may receive Rivian Rewards
-          points and complimentary Rivian Adventure Network charging.
-        </p>
+  <h2>How Rivian Referral Codes Work</h2>
 
-        <p>
-          Reward amounts vary based on vehicle configuration and battery
-          selection. Current qualifying purchases can earn up to 500 Rivian
-          Rewards points plus 3 months of Rivian Adventure Network charging. :contentReference[oaicite:0]{index=0}
-        </p>
+  <p>
+    Rivian owners receive a unique referral code that can be shared
+    with new buyers through Rivian’s official Rivian Rewards program.
+    When a qualifying vehicle order is placed using a referral code,
+    both the buyer and the referring owner may receive Rivian Rewards
+    points and complimentary Rivian Adventure Network charging.
+  </p>
 
-      </div>
+  <p>
+    Reward amounts vary based on vehicle configuration and battery
+    selection. Current qualifying purchases can earn up to 500 Rivian
+    Rewards points plus 3 months of Rivian Adventure Network charging.
+  </p>
+
+</div>
+```
+
+With this:
+
+```html
+<div class="referral-description">
+
+  <h2>How Rivian Referral Codes Work</h2>
+
+  <p>
+    Rivian owners receive a unique referral code that can be shared
+    with new buyers through Rivian’s official Rivian Rewards program.
+    When a qualifying vehicle order is placed using a referral code,
+    both the buyer and the referring owner may receive Rivian Rewards
+    points and complimentary Rivian Adventure Network charging.
+  </p>
+
+  <p>
+    Reward amounts vary based on vehicle configuration and battery
+    selection. Current qualifying purchases can earn up to 500 Rivian
+    Rewards points plus 3 months of Rivian Adventure Network charging.
+  </p>
+
+</div>
+
+<div class="button-row">
+
+  <button class="button" onclick="copyCode()">
+    Copy Referral Code SCOTT4395475
+  </button>
+
+  <a
+    class="button secondary-button"
+    href="https://rivian.com/configurations/list?reprCode=SCOTT4395475"
+    target="_blank"
+  >
+    Configure Your Rivian
+  </a>
+
+</div>
+
+<p id="copiedMessage">
+  Referral code copied. Opening Rivian...
+</p>
+```
+
 
     </section>
 
