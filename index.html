@@ -1255,18 +1255,18 @@ feedContainer.innerHTML = `
        rel="noopener noreferrer"
        class="news-featured">
 
-      ${
-        featured.thumbnail
-          ? `
-            <img
-              src="${featured.thumbnail}"
-              alt="${cleanTitle(featured.title)}"
-              class="news-featured-image"
-              loading="lazy"
-            >
-          `
-          : ""
-      }
+     ${
+  featuredImage
+    ? `
+      <img
+        src="${featuredImage}"
+        alt="${cleanTitle(featured.title)}"
+        class="news-featured-image"
+        loading="lazy"
+      >
+    `
+    : ""
+}
 
       <span class="news-badge">Featured Story</span>
 
