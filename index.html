@@ -1243,9 +1243,9 @@ const featured = articles[0];
 const rest = articles.slice(1);
 
 const featuredImage =
-  featured.thumbnail ||
+  featured.thumbnail?.replace("s72-c", "s1200") ||
   featured.enclosure?.link ||
-  "r1s.jpg";
+  null;
 
 feedContainer.innerHTML = `
   <div class="news-grid">
