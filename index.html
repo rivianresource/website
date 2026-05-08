@@ -722,10 +722,11 @@
     .news-meta-dot { color: var(--text-dim); }
 
     .news-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
 
     .news-item {
       background: var(--bg-card);
@@ -1259,14 +1260,16 @@
     <section>
       <div class="section-label">Stay current</div>
       <h2 class="section-title">Latest Rivian news</h2>
-
+      <p class="section-sub">
+        Major Rivian announcements, EV industry updates, charging expansion, software releases, and production news.
+      </p>
       <div class="news-layout">
 
         <div class="news-main">
           <div id="newsFeed">
             <div style="display:grid; grid-template-columns:1.25fr 0.9fr; gap:18px;">
-              <div class="skeleton" style="height: 420px; border-radius: 20px;"></div>
-              <div style="display:flex; flex-direction:column; gap: 12px;">
+              <div class="skeleton" style="height:420px; border-radius:20px;"></div>
+              <div style="display:flex; flex-direction:column; gap:12px;">
                 <div class="skeleton" style="height:95px; border-radius:12px;"></div>
                 <div class="skeleton" style="height:95px; border-radius:12px;"></div>
                 <div class="skeleton" style="height:95px; border-radius:12px;"></div>
@@ -1554,7 +1557,7 @@ feedContainer.innerHTML = `
      ${featuredImage ? `
   <img src="${featuredImage}" alt="${cleanTitle(featured.title)}" class="news-featured-image" loading="lazy">
 ` : `
-  <div style="height:120px; border-radius:14px; margin-bottom:22px; background:linear-gradient(135deg, rgba(18,184,122,0.12), rgba(18,184,122,0.04)); display:flex; align-items:center; padding:0 20px;">
+  <div style="height:60px; border-radius:14px; margin-bottom:22px; background:linear-gradient(135deg, rgba(18,184,122,0.12), rgba(18,184,122,0.04)); display:flex; align-items:center; padding:0 20px;">
     <span style="color:var(--green); font-weight:700; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">${getSource(featured.title)}</span>
   </div>
 `}
@@ -1565,7 +1568,7 @@ feedContainer.innerHTML = `
         ${cleanTitle(featured.title)}
       </div>
 
-          <div class="news-meta">
+          <div class="news-meta" style="margin-bottom:8px;">
             <span>${getSource(featured.title)}</span>
             <span class="news-meta-dot">&middot;</span>
             <span>${formatDate(featured.pubDate)}</span>
