@@ -1360,72 +1360,233 @@
       if (!isOpen) item.classList.add("open");
     }
 
-    async function loadRivianNews() {
-      const feedContainer = document.getElementById("newsFeed");
-      try {
-        const rssFeed = encodeURIComponent("https://news.google.com/rss/search?q=Rivian+EV&hl=en-US&gl=US&ceid=US:en");
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}`;
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error("News request failed");
-        const data = await response.json();
-        if (!data.items || !data.items.length) {
-          feedContainer.innerHTML = '<p style="color:var(--text-muted)">No news available right now.</p>';
-          return;
-        }
-        const articles = data.items.slice(0, 6);
-        function cleanTitle(title) { return title.replace(/\s-\s[^-]+$/, ""); }
-        function getSource(title) {
-          const parts = title.split(" - ");
-          return parts.length > 1 ? parts[parts.length - 1] : "News Source";
-        }
-        function formatDate(dateString) {
-          return new Date(dateString).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-        }
-        const featured = articles[0];
-        const rest = articles.slice(1);
-        const featuredImage = featured.thumbnail?.replace("s72-c", "s1200") || featured.enclosure?.link || null;
-        feedContainer.innerHTML = `
-          <div style="
-  display:grid;
-  grid-template-columns:1.25fr 0.85fr 0.75fr;
-  gap:18px;
-  align-items:stretch;
-">
-            <a href="${featured.link}" target="_blank" rel="noopener noreferrer" class="news-featured">
-              ${featuredImage ? `
-                <img src="${featuredImage}" alt="${cleanTitle(featured.title)}" class="news-featured-image" loading="lazy">
-              ` : ``}
-              <span class="news-badge">Featured Story</span>
-              <div class="news-featured-title">${cleanTitle(featured.title)}</div>
-              <div class="news-meta" style="margin-bottom:8px;">
-                <span>${getSource(featured.title)}</span>
-                <span class="news-meta-dot">&middot;</span>
-                <span>${formatDate(featured.pubDate)}</span>
-              </div>
-            </a>
-            <div class="news-list">
-              ${rest.map(article => `
-                <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="news-item">
-                  <div class="news-item-title">${cleanTitle(article.title)}</div>
-                  <div class="news-item-meta">
-                    <span>${getSource(article.title)}</span>
-                    <span>&middot;</span>
-                    <span>${formatDate(article.pubDate)}</span>
-                  </div>
-                </a>
-              `).join("")}
-            </div>
-          </div>
-        `;
-      } catch (error) {
-        console.error("News feed error:", error);
-        feedContainer.innerHTML = `
-          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;color:var(--text-muted);">
-            Unable to load news right now.
-          </div>
-        `;
-      }
+   async function loadRivianNews() {
+  const feedContainer = document.getElementById("newsFeed");
+
+  try {
+
+    const rssFeed = encodeURIComponent(
+      "https://news.google.com/rss/search?q=Rivian+EV&hl=en-US&gl=US&ceid=US:en"
+    );
+
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}`;
+
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error("News request failed");
     }
+
+    const data = await response.json();
+
+    if (!data.items || !data.items.length) {
+      feedContainer.innerHTML = `
+        <p style="color:var(--text-muted)">
+          No news available right now.
+        </p>
+      `;
+      return;
+    }
+
+    const articles = data.items.slice(0, 6);
+
+    function cleanTitle(title) {
+      return title.replace(/\s-\s[^-]+$/, "");
+    }
+
+    function getSource(title) {
+      const parts = title.split(" - ");
+      return parts.length > 1
+        ? parts[parts.length - 1]
+        : "News Source";
+    }
+
+    function formatDate(dateString) {
+      return new Date(dateString).toLocaleDateString(
+        "en-US",
+        {
+          month: "short",
+          day: "numeric",
+          year: "numeric"
+        }
+      );
+    }
+
+    const featured = articles[0];
+    const rest = articles.slice(1);
+
+    const featuredImage =
+      featured.thumbnail?.replace("s72-c", "s1200") ||
+      featured.enclosure?.link ||
+      null;
+
+    feedContainer.innerHTML = `
+
+      <div style="
+        display:grid;
+        grid-template-columns:1.25fr 0.85fr 0.75fr;
+        gap:18px;
+        align-items:stretch;
+      ">
+
+        <!-- Featured Story -->
+        <a
+          href="${featured.link}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="news-featured"
+        >
+
+          ${featuredImage ? `
+
+            <img
+              src="${featuredImage}"
+              alt="${cleanTitle(featured.title)}"
+              class="news-featured-image"
+              loading="lazy"
+            >
+
+          ` : ``}
+
+          <span class="news-badge">
+            Featured Story
+          </span>
+
+          <div class="news-featured-title">
+            ${cleanTitle(featured.title)}
+          </div>
+
+          <div class="news-meta" style="margin-bottom:8px;">
+            <span>${getSource(featured.title)}</span>
+            <span class="news-meta-dot">&middot;</span>
+            <span>${formatDate(featured.pubDate)}</span>
+          </div>
+
+        </a>
+
+        <!-- News List -->
+        <div class="news-list">
+
+          ${rest.map(article => `
+
+            <a
+              href="${article.link}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="news-item"
+            >
+
+              <div class="news-item-title">
+                ${cleanTitle(article.title)}
+              </div>
+
+              <div class="news-item-meta">
+                <span>${getSource(article.title)}</span>
+                <span>&middot;</span>
+                <span>${formatDate(article.pubDate)}</span>
+              </div>
+
+            </a>
+
+          `).join("")}
+
+        </div>
+
+        <!-- Stock Sidebar -->
+        <div style="
+          display:flex;
+          flex-direction:column;
+          gap:18px;
+        ">
+
+          <div class="stock-widget-card">
+
+            <div
+              class="section-label"
+              style="margin-bottom:8px;"
+            >
+              NASDAQ
+            </div>
+
+            <h3
+              class="stock-title"
+              style="
+                font-size:24px;
+                margin-bottom:18px;
+              "
+            >
+              Rivian Automotive (RIVN)
+            </h3>
+
+            <div
+              class="tradingview-widget-container"
+              style="height:420px;"
+            >
+
+              <div
+                id="tradingview_rivn"
+                style="
+                  height:100%;
+                  min-height:420px;
+                "
+              ></div>
+
+            </div>
+
+            <a
+              href="https://www.nasdaq.com/market-activity/stocks/rivn"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="stock-link"
+              style="
+                margin-top:18px;
+                display:inline-flex;
+              "
+            >
+              View Market Data →
+            </a>
+
+          </div>
+
+          <div class="card">
+
+            <div class="section-label">
+              Market Snapshot
+            </div>
+
+            <p style="
+              color:var(--text-muted);
+              font-size:15px;
+              line-height:1.75;
+            ">
+              Rivian remains one of the most closely watched EV manufacturers as production ramps, R2 development progresses, and charging infrastructure expands.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  } catch (error) {
+
+    console.error("News feed error:", error);
+
+    feedContainer.innerHTML = `
+      <div style="
+        background:var(--bg-card);
+        border:1px solid var(--border);
+        border-radius:var(--radius);
+        padding:28px;
+        color:var(--text-muted);
+      ">
+        Unable to load news right now.
+      </div>
+    `;
+  }
+}
 
     document.addEventListener("DOMContentLoaded", loadRivianNews);
   </script>
