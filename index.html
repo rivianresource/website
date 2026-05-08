@@ -1385,7 +1385,12 @@
         const rest = articles.slice(1);
         const featuredImage = featured.thumbnail?.replace("s72-c", "s1200") || featured.enclosure?.link || null;
         feedContainer.innerHTML = `
-          <div style="display:grid; grid-template-columns:1.25fr 0.9fr; gap:18px; align-items:start;">
+          <div style="
+  display:grid;
+  grid-template-columns:1.25fr 0.85fr 0.75fr;
+  gap:18px;
+  align-items:stretch;
+">
             <a href="${featured.link}" target="_blank" rel="noopener noreferrer" class="news-featured">
               ${featuredImage ? `
                 <img src="${featuredImage}" alt="${cleanTitle(featured.title)}" class="news-featured-image" loading="lazy">
