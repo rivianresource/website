@@ -475,15 +475,22 @@
     }
 
     /* ─── CARD ─── */
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px;
-      transition: border-color 0.25s ease;
-    }
+ .card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
 
-    .card:hover { border-color: var(--border-hover); }
+.card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.22);
+}
 
     /* ─── HOW IT WORKS ─── */
  .how-inner {
@@ -677,6 +684,7 @@
 
 .news-featured:hover,
 .news-item:hover {
+  transform: translateY(-2px);
   box-shadow: 0 10px 34px rgba(0,0,0,0.22);
 }
 
@@ -1474,8 +1482,8 @@
   <footer>
     <div class="container">
       <img src="logo.png" alt="Rivian Rewards Hub" style="width: 100px; opacity: 0.35; display: block; margin: 0 auto 16px;">
-      Rivian Rewards Hub is an independent, owner-operated website.<br>
-      Not affiliated with or endorsed by Rivian Automotive, Inc.
+      Independent Rivian owner resource featuring reviews, referral rewards, charging impressions, and ownership content.<br>
+Not affiliated with or endorsed by Rivian Automotive, Inc.
     </div>
   </footer>
 
