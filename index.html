@@ -561,7 +561,13 @@
       display: block;
       background: rgba(255,255,255,0.03);
     }
+.news-featured-image {
+  transition: transform 0.45s ease;
+}
 
+.news-featured:hover .news-featured-image {
+  transform: scale(1.03);
+}
     .news-featured {
       background: var(--bg-card);
       border: 1px solid var(--border);
