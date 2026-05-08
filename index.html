@@ -1069,15 +1069,15 @@
 
         <!-- Loading Skeleton -->
         <div style="
-  display:grid;
-  grid-template-columns:1.2fr 0.9fr;
-  gap:18px;
-  align-items:stretch;
-">
+          display:grid;
+          grid-template-columns:1.2fr 0.9fr;
+          gap:18px;
+          align-items:start;
+        ">
 
           <!-- Featured Story -->
           <div class="skeleton" style="
-            min-height: 240px;
+            height:260px;
             border-radius:20px;
           "></div>
 
@@ -1088,87 +1088,82 @@
             gap:12px;
           ">
 
-            <div class="skeleton" style="
-              height:95px;
-              border-radius:12px;
-            "></div>
-
-            <div class="skeleton" style="
-              height:95px;
-              border-radius:12px;
-            "></div>
-
-            <div class="skeleton" style="
-              height:95px;
-              border-radius:12px;
-            "></div>
-
-            <div class="skeleton" style="
-              height:95px;
-              border-radius:12px;
-            "></div>
+            <div class="skeleton" style="height:95px; border-radius:12px;"></div>
+            <div class="skeleton" style="height:95px; border-radius:12px;"></div>
+            <div class="skeleton" style="height:95px; border-radius:12px;"></div>
+            <div class="skeleton" style="height:95px; border-radius:12px;"></div>
 
           </div>
 
-          <div style="margin-top:24px;">
-
-  <div class="stock-widget-card">
-
-    <div style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:18px;
-      gap:18px;
-      flex-wrap:wrap;
-    ">
-
-      <div>
-
-        <div class="section-label" style="margin-bottom:8px;">
-          NASDAQ
         </div>
-
-        <h3 class="stock-title" style="
-          font-size:28px;
-          margin:0;
-        ">
-          Rivian Automotive (RIVN)
-        </h3>
 
       </div>
 
-      <a
-        href="https://www.nasdaq.com/market-activity/stocks/rivn"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="stock-link"
-      >
-        View Market Data →
-      </a>
+      <!-- STOCK SECTION -->
+      <div style="margin-top:24px;">
 
-    </div>
+        <div class="stock-widget-card">
 
-    <div
-      class="tradingview-widget-container"
-      style="
-        height:420px;
-        border-radius:14px;
-        overflow:hidden;
-      "
-    >
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:18px;
+            gap:18px;
+            flex-wrap:wrap;
+          ">
 
-      <div
-        id="tradingview_rivn"
-        style="height:100%;"
-      ></div>
+            <div>
 
-    </div>
+              <div class="section-label" style="margin-bottom:8px;">
+                NASDAQ
+              </div>
+
+              <h3 class="stock-title" style="
+                font-size:28px;
+                margin:0;
+              ">
+                Rivian Automotive (RIVN)
+              </h3>
+
+            </div>
+
+            <a
+              href="https://www.nasdaq.com/market-activity/stocks/rivn"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="stock-link"
+            >
+              View Market Data →
+            </a>
+
+          </div>
+
+          <div
+            class="tradingview-widget-container"
+            style="
+              height:420px;
+              border-radius:14px;
+              overflow:hidden;
+            "
+          >
+
+            <div
+              id="tradingview_rivn"
+              style="height:100%;"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
 
   </div>
 
 </div>
-          
 
 <hr class="divider">
 
@@ -1404,7 +1399,7 @@
 
       <div style="
         display:grid;
-        grid-template-columns:1.25fr 0.85fr 0.75fr;
+        grid-template-columns:1.2fr 0.9fr;
         gap:18px;
         align-items:stretch;
       ">
@@ -1471,78 +1466,6 @@
           `).join("")}
 
         </div>
-
-        <!-- Stock Sidebar -->
-        <div style="
-          display:flex;
-          flex-direction:column;
-          gap:18px;
-        ">
-
-          <div class="stock-widget-card">
-
-            <div
-              class="section-label"
-              style="margin-bottom:8px;"
-            >
-              NASDAQ
-            </div>
-
-            <h3
-              class="stock-title"
-              style="
-                font-size:24px;
-                margin-bottom:18px;
-              "
-            >
-              Rivian Automotive (RIVN)
-            </h3>
-
-            <div
-              class="tradingview-widget-container"
-              style="height:420px;"
-            >
-
-              <div
-                id="tradingview_rivn"
-                style="
-                  height:100%;
-                  min-height:420px;
-                "
-              ></div>
-
-            </div>
-
-            <a
-              href="https://www.nasdaq.com/market-activity/stocks/rivn"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="stock-link"
-              style="
-                margin-top:18px;
-                display:inline-flex;
-              "
-            >
-              View Market Data →
-            </a>
-
-          </div>
-
-          <div class="card">
-
-            <div class="section-label">
-              Market Snapshot
-            </div>
-
-            <p style="
-              color:var(--text-muted);
-              font-size:15px;
-              line-height:1.75;
-            ">
-              Rivian remains one of the most closely watched EV manufacturers as production ramps, R2 development progresses, and charging infrastructure expands.
-            </p>
-
-          </div>
 
         </div>
 
