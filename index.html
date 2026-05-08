@@ -1518,6 +1518,20 @@ align-items:start;
       </div>
 
     `;
+    
+    new TradingView.widget({
+  container_id: "tradingview_rivn",
+  symbol: "NASDAQ:RIVN",
+  theme: "dark",
+  locale: "en",
+  autosize: true,
+  height: 420,
+  hide_top_toolbar: false,
+  hide_legend: false,
+  save_image: false,
+  backgroundColor: "#0d1a2d",
+  gridColor: "rgba(255,255,255,0.05)"
+});
 
   } catch (error) {
 
