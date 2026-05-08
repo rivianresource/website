@@ -2,18 +2,620 @@
 <html lang="en">
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>2026 Rivian R1S Review After 90 Days</title>
+  <title>2026 Rivian R1S Dual Max Review After 90 Days | Rivian Rewards Hub</title>
+
+  <meta
+    name="description"
+    content="Real-world 90 day review of a 2026 Rivian R1S Dual Max in Las Vegas. Charging experience, service issues, Sound + Vision impressions, tires, software quirks, and ownership thoughts."
+  />
+
+  <link
+    rel="canonical"
+    href="https://www.rivianrewardshub.com/reviews/2026-rivian-r1s-90-day-review/"
+  />
+
+  <meta property="og:title" content="2026 Rivian R1S Review After 90 Days" />
+  <meta
+    property="og:description"
+    content="Real-world ownership impressions after 90 days with a 2026 Rivian R1S Dual Max."
+  />
+  <meta
+    property="og:image"
+    content="https://www.rivianrewardshub.com/r1s.jpg"
+  />
+  <meta
+    property="og:url"
+    content="https://www.rivianrewardshub.com/reviews/2026-rivian-r1s-90-day-review/"
+  />
+
+  <meta property="og:type" content="article" />
+
+  <link rel="icon" type="image/png" href="/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag(){
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-SB8DBC8NBQ');
+  </script>
+
+  <style>
+
+    :root {
+      --bg: #07101f;
+      --card: #0f1b2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --text-muted: rgba(255,255,255,0.72);
+      --accent: #d7f26b;
+      --shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(7,16,31,0.88);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .hero {
+      padding: 90px 0 40px;
+    }
+
+    .section-label {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.02;
+      margin-bottom: 24px;
+      max-width: 900px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 19px;
+      max-width: 760px;
+    }
+
+    .hero-image {
+      margin-top: 42px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-image img {
+      width: 100%;
+      display: block;
+    }
+
+    .article {
+      padding-bottom: 80px;
+    }
+
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 42px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .review-card h2 {
+      font-size: 34px;
+      margin-bottom: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .review-card p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 17px;
+    }
+
+    .review-card ul {
+      padding-left: 22px;
+      color: var(--text-muted);
+    }
+
+    .review-card li {
+      margin-bottom: 10px;
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .spec-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .spec-item strong {
+      display: block;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0 60px;
+      color: var(--text-muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+
+      .review-card {
+        padding: 28px;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .review-card h2 {
+        font-size: 28px;
+      }
+
+      .topbar-inner {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+    }
+
+  </style>
 
 </head>
-
 <body>
 
-<h1>2026 Rivian R1S Review After 90 Days</h1>
+  <div class="topbar">
 
-<p>Review page coming soon.</p>
+    <div class="container topbar-inner">
+
+      <a href="/" class="brand">
+        <img src="/logo.png" alt="Rivian Rewards Hub Logo">
+        <span>Rivian Rewards Hub</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <main>
+
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="section-label">Owner Review</div>
+
+        <h1>
+          90 Days With My 2026 Rivian R1S Dual Max
+        </h1>
+
+        <p>
+          Real-world ownership impressions after daily driving in Las Vegas including charging, software quirks, service experience, Sound + Vision impressions, suspension settings, and tire decisions.
+        </p>
+
+        <div class="hero-image">
+          <img src="/r1s.jpg" alt="2026 Rivian R1S">
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="article">
+
+      <div class="container">
+
+        <div class="review-card">
+
+          <h2>Vehicle Configuration</h2>
+
+          <div class="spec-grid">
+
+            <div class="spec-item">
+              <strong>Model</strong>
+              R1S Dual
+            </div>
+
+            <div class="spec-item">
+              <strong>Battery</strong>
+              Max Pack
+            </div>
+
+            <div class="spec-item">
+              <strong>Drive</strong>
+              Dual Motor AWD
+            </div>
+
+            <div class="spec-item">
+              <strong>Upgrade</strong>
+              Performance Upgrade
+            </div>
+
+            <div class="spec-item">
+              <strong>Exterior</strong>
+              El Cap Granite
+            </div>
+
+            <div class="spec-item">
+              <strong>Interior</strong>
+              Black Mountain + Dark Ash Wood
+            </div>
+
+            <div class="spec-item">
+              <strong>Wheels</strong>
+              22" Sport Dark Wheels
+            </div>
+
+            <div class="spec-item">
+              <strong>Packages</strong>
+              Darkout + Sound & Vision
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="review-card">
+
+          <h2>Taking Delivery</h2>
+
+          <p>
+            Delivery from the Las Vegas service center was smooth overall. Before pickup, I used a Rivian delivery inspection checklist that helped me go through the vehicle more carefully than I probably would have on my own.
+          </p>
+
+          <p>
+            Because of that checklist, I noticed a few issues immediately including two doors needing alignment, a defect in part of the wood trim, and a heater issue where the cabin would not warm properly.
+          </p>
+
+          <p>
+            Rivian made the service request process very easy through the app. While I obviously would have preferred a perfect delivery, I appreciated having a clear process and support system for getting the issues documented immediately.
+          </p>
+
+        </div>
+
+        <div class="review-card">
+
+          <h2>Service Experience</h2>
+
+          <p>
+            Rivian repaired the alignment and trim issues without much trouble. The heater situation, however, has been more inconsistent.
+          </p>
+
+          <p>
+            Sometimes it works perfectly. Other times it takes close to twenty minutes before warm air starts coming through the vents. I would estimate it behaves correctly about sixty percent of the time right now.
+          </p>
+
+          <p>
+            Rivian is sending a mobile technician to my house next week to continue troubleshooting. I’ve also noticed a slight rattle from the front passenger door. It becomes most noticeable during bass-heavy songs or on roads that are less than perfectly smooth.
+          </p>
+
+          <p>
+            Even with these issues, the service experience itself has been straightforward so far.
+          </p>
+
+        </div>
+
+        <div class="review-card">
+
+          <h2>Charging</h2>
+
+          <p>
+            There’s a Rivian charging station about fifteen minutes from my house, so I’ve taken advantage of the included three months of free charging several times.
+          </p>
+
+          <p>
+            Every time I visited, there were open chargers available even during late morning or afternoon hours.
+          </p>
+
+          <p>
+            Most of my charging happens at home though. I use a Tesla Wall Charger on Level 2 charging and typically cap the battery around seventy percent for daily use.
+          </p>
+
+          <p>
+            I haven’t taken the vehicle on a true road trip yet, so I can’t fully speak to the long-distance charging experience. Still, having the native NACS port is a major advantage. Being able to use Tesla Superchargers without an adapter makes the ownership experience feel much less stressful.
+          </p>
+
+          <p>
+            I do feel slightly guilty taking up extra space at some Supercharger stations though.
+          </p>
+
+        </div>
+
+        <div class="review-card">
+
+          <h2>Driving Experience</h2>
+
+          <p>
+            The driving experience is easily the highlight of the vehicle.
+          </p>
+
+          <p>
+            It’s incredibly smooth, quiet, and refined. Occasionally I hear the air suspension compressor or the HVAC system working aggressively during heavy cooling or heating, but thankfully it has not been nearly as intrusive as some examples I’ve seen online.
+          </p>
+
+          <p>
+            I really enjoy the auto-kneel function when parking. I did disable automatic ride height adjustments while driving because I wanted to reduce how often the suspension constantly raises and lowers itself.
+          </p>
+
+          <p>
+            Oddly enough, every so often the setting seems to re-enable itself after getting back in the vehicle. I’ve already tried both soft and hard resets without consistent success.
+          </p>
+
+          <p>
+            Another strange software behavior involves the middle-row climate vents. Sometimes the middle-row airflow is active when the car starts, other times it is not. Since I have children in car seats, I find myself manually checking the rear airflow regularly.
+          </p>
+
+          <p>
+            Software quirks aside, I absolutely love driving this thing.
+          </p>
+
+          <p>
+            The acceleration with the Performance Upgrade is absurdly quick while still remaining smooth and controlled. The turning radius is surprisingly tight for a vehicle this size, and I’ve become very comfortable with the height and proportions of the R1S.
+          </p>
+
+        </div>
+
+        <div class="review-card">
+
+          <h2>Sound & Vision Package</h2>
+
+          <p>
+            This may be controversial, but I think the updated 2026 Sound & Vision package sounds significantly better than many reviews suggest.
+          </p>
+
+          <p>
+            SiriusXM audio quality is average at best, but Apple Music with Dolby Atmos tracks genuinely sounds impressive.
+          </p>
+
+          <p>
+            Albums like Pink Floyd’s <em>Dark Side of the Moon</em>, Fleetwood Mac’s <em>Rumours</em>, John Coltrane’s <em>Blue Train</em>, and Illenium’s <em>Odyssey</em> all sound fantastic in the cabin.
+          </p>
+
+          <p>
+            Some albums definitely sound flatter than others, but that seems to come down more to the mix itself than the system.
+          </p>
+
+          <p>
+            I do think Rivian could push more power to the subwoofer in future software updates. Certain songs feel like they’re missing that final layer of low-end punch.
+          </p>
+
+          <p>
+            The dynamic glass roof is cool too. It borders on gimmicky, but in Las Vegas heat I’ll gladly take anything that helps reduce cabin temperatures.
+          </p>
+
+        </div>
+
+        <div class="review-card">
+
+          <h2>Tires and Wheel Choice</h2>
+
+          <p>
+            Tire wear is still too early to judge, but I’m watching it closely and fully expect these tires to wear faster than traditional SUV tires.
+          </p>
+
+          <p>
+            At the moment I still feel good about choosing the 22-inch Sport wheels.
+          </p>
+
+          <p>
+            When my vehicle was in service, Rivian loaned me a Launch Edition R1T equipped with all-terrain tires and the Meridian audio system.
+          </p>
+
+          <p>
+            Honestly, I thought the audio system in my R1S sounded noticeably better.
+          </p>
+
+          <p>
+            The all-terrain tires were also much louder than I expected. The truck had around 40,000 miles on it, so tire age may have played a role, but the road noise was distracting enough that it reinforced my decision to stay with the Sport setup.
+          </p>
+
+          <p>
+            I still think the all-terrain setup looks better visually on the R1S, but since about eighty-five percent of my driving is on pavement, I’d rather prioritize ride comfort and road noise.
+          </p>
+
+          <p>
+            Thankfully, the 22-inch Sport Dark wheels still look excellent.
+          </p>
+
+        </div>
+
+        <div class="review-card">
+
+          <h2>Do I Miss ICE Vehicles?</h2>
+
+          <p>
+            Not at all.
+          </p>
+
+          <p>
+            My previous vehicles included a Jeep Grand Cherokee 4xe and a Land Rover Discovery. Both had their own issues, especially the Jeep.
+          </p>
+
+          <p>
+            At this point I no longer expect any modern vehicle to be perfect. That includes EVs.
+          </p>
+
+          <p>
+            But if the long-term driving experience remains this enjoyable, the R1S will very likely end up being the best vehicle I’ve ever owned.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section style="padding-bottom:80px;">
+
+      <div class="container">
+
+        <div class="review-card">
+
+          <h2>Final Thoughts</h2>
+
+          <p>
+            Even with a few software quirks and some early service visits, the R1S has still been one of the most enjoyable vehicles I’ve owned.
+          </p>
+
+          <p>
+            Every time I walk up to it or get behind the wheel, it still feels special. The combination of acceleration, ride comfort, practicality, technology, and overall driving character makes it hard to go back to traditional SUVs.
+          </p>
+
+          <p>
+            I’m especially curious to see how the ownership experience evolves over the next year as Rivian continues refining the software platform and expanding charging access.
+          </p>
+
+          <p>
+            For now, the positives overwhelmingly outweigh the negatives.
+          </p>
+
+        </div>
+
+        <div class="review-card">
+
+          <h2>What’s Next</h2>
+
+          <p>
+            I plan to continue updating the site with additional ownership impressions and long-term updates including:
+          </p>
+
+          <ul>
+            <li>6 month ownership update</li>
+            <li>1 year ownership review</li>
+            <li>Tire wear and replacement costs</li>
+            <li>Road trip charging experiences</li>
+            <li>Accessory reviews</li>
+            <li>Software update impressions</li>
+            <li>Service follow-up results</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+
+    <div class="container">
+      © 2026 Rivian Rewards Hub · Independent Rivian owner website.
+    </div>
+
+  </footer>
 
 </body>
 </html>
