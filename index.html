@@ -1110,6 +1110,7 @@ align-items:start;
   display:flex;
   flex-direction:column;
   gap:18px;
+  height:100%;
 ">
 
   <!-- Featured Story -->
@@ -1432,7 +1433,11 @@ align-items:start;
 
         </a>
 
-        <div class="stock-widget-card">
+        <div class="stock-widget-card" style="
+  display:flex;
+  flex-direction:column;
+  flex:1;
+">
 
   <div style="
     display:flex;
@@ -1469,14 +1474,16 @@ align-items:start;
 
   </div>
 
-  <div
-    class="tradingview-widget-container"
-    style="
-      height:420px;
-      border-radius:14px;
-      overflow:hidden;
-    "
-  >
+ <div
+  class="tradingview-widget-container"
+  style="
+    height:100%;
+    min-height:520px;
+    border-radius:14px;
+    overflow:hidden;
+    flex:1;
+  "
+>
 
     <div
       id="tradingview_rivn"
@@ -1527,7 +1534,7 @@ align-items:start;
   theme: "dark",
   locale: "en",
   autosize: true,
-  height: 420,
+  height: "100%",
   hide_top_toolbar: false,
   hide_legend: false,
   save_image: false,
