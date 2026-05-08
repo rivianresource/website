@@ -263,12 +263,18 @@
       align-items: center;
     }
 
-    .review-image img {
-      width: 100%;
-      border-radius: var(--radius);
-      display: block;
-      border: 1px solid var(--border);
-    }
+.review-image img {
+  width: 100%;
+  border-radius: var(--radius);
+  display: block;
+  border: 1px solid var(--border);
+  transition: transform 0.35s ease;
+  cursor: pointer;
+}
+
+.review-image a:hover img {
+  transform: scale(1.02);
+}
 
     .section-title {
       font-family: 'DM Sans', sans-serif;
