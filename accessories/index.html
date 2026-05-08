@@ -33,6 +33,7 @@
       --border-hover: rgba(255,255,255,0.13);
       --text: #e8edf4;
       --text-muted: #8a9ab5;
+      --text-dim: #667892;
       --radius: 20px;
       --radius-sm: 14px;
     }
@@ -41,6 +42,10 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -101,16 +106,27 @@
       color: var(--text-muted);
       text-decoration: none;
       transition: 0.2s ease;
+      position: relative;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: #fff;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: var(--green);
+      border-radius: 999px;
+      margin-top: 6px;
     }
 
     /* HERO */
 
     .hero {
-      padding: 80px 0 60px;
+      padding: 90px 0 70px;
     }
 
     .section-label {
@@ -135,16 +151,16 @@
     .hero-sub {
       color: var(--text-muted);
       font-size: 18px;
-      max-width: 680px;
+      max-width: 700px;
     }
 
-    /* GRID */
+    /* ACCESSORY GRID */
 
     .accessories-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 22px;
-      padding-bottom: 80px;
+      padding-bottom: 90px;
     }
 
     .accessory-card {
@@ -203,9 +219,19 @@
       margin-bottom: 22px;
     }
 
-    .rating {
-      color: #f5c451;
-      font-size: 16px;
+    .coming-soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 999px;
       margin-bottom: 20px;
     }
 
@@ -223,11 +249,65 @@
       gap: 12px;
     }
 
+    /* REVIEW SECTIONS */
+
+    .review-section {
+      padding: 90px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .review-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .review-image img {
+      width: 100%;
+      border-radius: var(--radius);
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(32px, 5vw, 46px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .review-text {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.85;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 28px;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
     /* FOOTER */
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 40px 0 60px;
+      padding: 44px 0 60px;
       text-align: center;
       color: var(--text-muted);
       font-size: 14px;
@@ -235,19 +315,31 @@
 
     .affiliate-note {
       margin-top: 18px;
-      color: #667892;
+      color: var(--text-dim);
       font-size: 13px;
     }
 
-    @media (max-width: 700px) {
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+
+      .review-layout {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 820px) {
 
       .nav-inner {
         flex-direction: column;
         gap: 18px;
       }
 
-      .hero {
-        padding-top: 60px;
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px 20px;
       }
 
     }
@@ -266,15 +358,15 @@
 
       <a href="/" class="nav-brand">
         <img src="/logo.png" alt="Rivian Rewards Hub">
-        <span>Rivian Rewards Hub</span>
+        <span>RIVIAN REWARDS HUB</span>
       </a>
 
-   <div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/reviews/2026-rivian-r1s-90-day-review/">R1S Review</a>
-  <a href="/accessories/">Accessories</a>
-  <a href="/about/">About</a>
-</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/reviews/2026-rivian-r1s-90-day-review/">Review</a>
+        <a href="/accessories/" class="active">Accessories</a>
+        <a href="/about/">About</a>
+      </div>
 
     </div>
 
@@ -295,7 +387,7 @@
       </h1>
 
       <p class="hero-sub">
-        Real-world reviews, install impressions, photos, charging gear, storage upgrades, and tested accessories for the Rivian R1S and R1T.
+        Real-world reviews, install impressions, charging gear, storage upgrades, emergency equipment, and tested accessories for the Rivian R1S and R1T.
       </p>
 
     </section>
@@ -329,33 +421,19 @@
           </h2>
 
           <p class="accessory-desc">
-            Tesla Supercharger access for the R1S and R1T. Real-world charging impressions, compatibility notes, and long-term use experience.
+            Tesla Supercharger access for the R1S and R1T with real-world charging impressions and compatibility notes.
           </p>
 
-    <div style="
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  color:var(--text-muted);
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  padding:8px 14px;
-  border-radius:999px;
-  margin-bottom:20px;
-">
-  Coming Soon
-</div>
+          <div class="coming-soon">
+            Coming Soon
+          </div>
 
-         <div class="review-link" style="
-  opacity:0.55;
-  cursor:default;
-">
-  Review In Progress →
-</div>
+          <a
+            href="#a2z-adapter"
+            class="review-link"
+          >
+            Jump to Section →
+          </a>
 
         </div>
 
@@ -382,19 +460,19 @@
           </h2>
 
           <p class="accessory-desc">
-            Matte vs gloss impressions, install difficulty, visibility, fingerprint resistance, and long-term durability.
+            Matte vs gloss impressions, install difficulty, visibility, and long-term durability.
           </p>
 
-          <div class="rating">
-            ★★★★☆
+          <div class="coming-soon">
+            Coming Soon
           </div>
 
-       <div class="review-link" style="
-  opacity:0.55;
-  cursor:default;
-">
-  Review In Progress →
-</div>
+          <a
+            href="#screen-protectors"
+            class="review-link"
+          >
+            Jump to Section →
+          </a>
 
         </div>
 
@@ -421,23 +499,161 @@
           </h2>
 
           <p class="accessory-desc">
-            Storage fitment, road trip practicality, cargo impact, and whether carrying a spare is worth it for the R1S.
+            Storage fitment, road trip practicality, cargo impact, and emergency preparedness for the R1S.
           </p>
 
-          <div class="rating">
-            ★★★★★
+          <div class="coming-soon">
+            Coming Soon
           </div>
 
-      <div class="review-link" style="
-  opacity:0.55;
-  cursor:default;
-">
-  Review In Progress →
-</div>
+          <a
+            href="#spare-kit"
+            class="review-link"
+          >
+            Jump to Section →
+          </a>
 
         </div>
 
       </article>
+
+    </div>
+
+  </div>
+
+  <!-- REVIEW SECTION -->
+
+  <div id="a2z-adapter" class="review-section">
+
+    <div class="container">
+
+      <div class="review-layout">
+
+        <div class="review-image">
+
+          <img
+            src="/accessories/images/a2z-adapter.jpg"
+            alt="A2Z NACS Adapter"
+          >
+
+        </div>
+
+        <div>
+
+          <div class="section-label">
+            Charging Accessory
+          </div>
+
+          <h2 class="section-title">
+            A2Z NACS Adapter Review
+          </h2>
+
+          <p class="review-text">
+            Full review coming soon. This section will include Tesla Supercharger compatibility, charging speed impressions, build quality, adapter handling, and long-term ownership notes.
+          </p>
+
+          <a
+            href="#"
+            class="btn"
+          >
+            Amazon Link Coming Soon
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- REVIEW SECTION -->
+
+  <div id="screen-protectors" class="review-section">
+
+    <div class="container">
+
+      <div class="review-layout">
+
+        <div class="review-image">
+
+          <img
+            src="/accessories/images/screen-protectors.jpg"
+            alt="TWRAPS Screen Protectors"
+          >
+
+        </div>
+
+        <div>
+
+          <div class="section-label">
+            Interior Accessory
+          </div>
+
+          <h2 class="section-title">
+            TWRAPS Screen Protectors
+          </h2>
+
+          <p class="review-text">
+            Full review coming soon. This review will cover installation difficulty, glare reduction, fingerprint resistance, screen clarity, and overall fitment quality.
+          </p>
+
+          <a
+            href="#"
+            class="btn"
+          >
+            Amazon Link Coming Soon
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- REVIEW SECTION -->
+
+  <div id="spare-kit" class="review-section">
+
+    <div class="container">
+
+      <div class="review-layout">
+
+        <div class="review-image">
+
+          <img
+            src="/accessories/images/spare-kit.jpg"
+            alt="Compact Spare Tire Kit"
+          >
+
+        </div>
+
+        <div>
+
+          <div class="section-label">
+            Emergency Equipment
+          </div>
+
+          <h2 class="section-title">
+            Compact Spare Tire Kit
+          </h2>
+
+          <p class="review-text">
+            Full review coming soon. This section will cover cargo storage impact, installation, road trip practicality, and whether carrying a spare tire is worthwhile for the R1S.
+          </p>
+
+          <a
+            href="#"
+            class="btn"
+          >
+            Amazon Link Coming Soon
+          </a>
+
+        </div>
+
+      </div>
 
     </div>
 
