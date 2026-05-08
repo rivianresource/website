@@ -422,6 +422,206 @@
     </section>
 
   </main>
+<!-- ============================================================
+     REFERRAL CTA BANNER
+     Use on BOTH pages:
+       - /accessories/index.html
+       - /reviews/2026-rivian-r1s-90-day-review/index.html
+
+     INSERT before the <footer> tag on each page.
+     ============================================================ -->
+
+<style>
+  .rrh-referral-cta {
+    max-width: 960px;
+    margin: 64px auto 0;
+    padding: 0 24px 64px;
+  }
+
+  .rrh-referral-cta-inner {
+    background: linear-gradient(135deg, #0d1f1c 0%, #0f2230 100%);
+    border: 1px solid #2ec4a5;
+    border-radius: 16px;
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  @media (max-width: 680px) {
+    .rrh-referral-cta-inner {
+      flex-direction: column;
+      padding: 32px 28px;
+      text-align: center;
+    }
+  }
+
+  .rrh-referral-cta-text .cta-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #2ec4a5;
+    margin-bottom: 8px;
+  }
+
+  .rrh-referral-cta-text h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+
+  .rrh-referral-cta-text p {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin: 0;
+    line-height: 1.6;
+    max-width: 420px;
+  }
+
+  .rrh-referral-cta-actions {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .rrh-code-pill {
+    background: rgba(46, 196, 165, 0.12);
+    border: 1px solid rgba(46, 196, 165, 0.4);
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #2ec4a5;
+    white-space: nowrap;
+  }
+
+  .rrh-cta-copy-btn {
+    background: #2ec4a5;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 11px 24px;
+    border-radius: 6px;
+    width: 100%;
+    transition: background 0.2s ease;
+  }
+
+  .rrh-cta-copy-btn:hover {
+    background: #25a98e;
+  }
+
+  .rrh-cta-copy-btn.copied {
+    background: #1a7a67;
+    color: #ffffff;
+  }
+
+  .rrh-cta-open-link {
+    display: block;
+    font-size: 0.78rem;
+    color: #6b7280;
+    text-decoration: none;
+    text-align: center;
+    transition: color 0.2s ease;
+  }
+
+  .rrh-cta-open-link:hover {
+    color: #2ec4a5;
+  }
+
+  .rrh-perks-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 680px) {
+    .rrh-perks-row {
+      justify-content: center;
+    }
+  }
+
+  .rrh-perk {
+    font-size: 0.78rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .rrh-perk span.dot {
+    color: #2ec4a5;
+    font-size: 1rem;
+    line-height: 1;
+  }
+</style>
+
+<section class="rrh-referral-cta">
+  <div class="rrh-referral-cta-inner">
+
+    <div class="rrh-referral-cta-text">
+      <div class="cta-label">Rivian Referral Program</div>
+      <h3>Ordering a Rivian? Use my referral code.</h3>
+      <p>Get up to 500 Rewards Points and 3 months of free Adventure Network charging when you use a referral code on a qualifying order. Enter it during configuration or ask your Rivian Guide to add it before delivery.</p>
+      <div class="rrh-perks-row">
+        <div class="rrh-perk"><span class="dot">⚡</span> 3 months free charging</div>
+        <div class="rrh-perk"><span class="dot">🎁</span> Up to 500 Rewards Points</div>
+        <div class="rrh-perk"><span class="dot">✓</span> Works on R1S, R1T &amp; R2</div>
+      </div>
+    </div>
+
+    <div class="rrh-referral-cta-actions">
+      <div class="rrh-code-pill" id="rrh-cta-code">SCOTT4395475</div>
+      <button class="rrh-cta-copy-btn" id="rrh-cta-copy-btn" onclick="rrhCtaCopy()">
+        Copy Code &amp; Configure
+      </button>
+      <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475"
+         target="_blank"
+         rel="nofollow"
+         class="rrh-cta-open-link">
+        Or open Rivian configurator directly →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function rrhCtaCopy() {
+    navigator.clipboard.writeText('SCOTT4395475').then(function() {
+      var btn = document.getElementById('rrh-cta-copy-btn');
+      btn.textContent = '✓ Code Copied!';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.textContent = 'Copy Code & Configure';
+        btn.classList.remove('copied');
+      }, 3000);
+    }).catch(function() {
+      // Fallback for older browsers
+      var el = document.getElementById('rrh-cta-code');
+      var range = document.createRange();
+      range.selectNode(el);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+    });
+  }
+</script>
+
+<!-- ============================================================
+     END REFERRAL CTA BANNER
+     ============================================================ -->
 
   <footer class="footer">
 
