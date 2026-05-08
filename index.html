@@ -598,7 +598,12 @@
       transform: translateY(-2px);
       box-shadow: 0 10px 34px rgba(0,0,0,0.22);
     }
-
+    
+.news-featured,
+.news-list,
+.stock-widget-card {
+  height: 100%;
+}
     .news-badge {
       display: inline-block;
       background: var(--green-dim);
@@ -1075,15 +1080,15 @@
 
         <!-- Loading Skeleton -->
         <div style="
-          display:grid;
-          grid-template-columns:1.25fr 0.85fr 0.75fr;
-          gap:18px;
-          align-items:start;
-        ">
+  display:grid;
+  grid-template-columns:1.25fr 0.85fr 0.75fr;
+  gap:18px;
+  align-items:stretch;
+">
 
           <!-- Featured Story -->
           <div class="skeleton" style="
-            height:420px;
+            min-height: 360px;
             border-radius:20px;
           "></div>
 
@@ -1136,9 +1141,14 @@
                 Rivian Automotive (RIVN)
               </h3>
 
-              <div class="tradingview-widget-container">
-                <div id="tradingview_rivn"></div>
-              </div>
+              <div class="tradingview-widget-container" style="height:420px;">
+
+  <div
+    id="tradingview_rivn"
+    style="height:100%; min-height:420px;"
+  ></div>
+
+</div>
 
               <a
                 href="https://www.nasdaq.com/market-activity/stocks/rivn"
