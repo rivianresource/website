@@ -1060,7 +1060,9 @@
 
   <!-- ─── NEWS — bg-alt ─── -->
 <div class="section-alt">
+
   <div class="container">
+
     <section>
 
       <div class="section-label">Latest News</div>
@@ -1068,51 +1070,117 @@
       <h2 class="section-title">
         Rivian & EV Industry News
       </h2>
-      <div class="news-layout">
-        <div class="news-main">
-          <div id="newsFeed">
-            <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:18px; align-items:start;">
-  <div class="skeleton" style="height:420px; border-radius:20px;"></div>
-  <div style="display:flex; flex-direction:column; gap:12px;">
-    <div class="skeleton" style="height:95px; border-radius:12px;"></div>
-    <div class="skeleton" style="height:95px; border-radius:12px;"></div>
-    <div class="skeleton" style="height:95px; border-radius:12px;"></div>
-  </div>
-</div>
-        </div>
 
-        <div class="news-sidebar">
-          <div class="stock-widget-card">
-            <div class="section-label" style="margin-bottom:8px;">NASDAQ</div>
-            <h3 class="stock-title" style="font-size:24px; margin-bottom:18px;">
-              Rivian Automotive (RIVN)
-            </h3>
-            <div class="tradingview-widget-container">
-              <div id="tradingview_rivn"></div>
+      <div id="newsFeed" style="margin-top:32px;">
+
+        <!-- Loading Skeleton -->
+        <div style="
+          display:grid;
+          grid-template-columns:1.25fr 0.85fr 0.75fr;
+          gap:18px;
+          align-items:start;
+        ">
+
+          <!-- Featured Story -->
+          <div class="skeleton" style="
+            height:420px;
+            border-radius:20px;
+          "></div>
+
+          <!-- Story List -->
+          <div style="
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+          ">
+
+            <div class="skeleton" style="
+              height:95px;
+              border-radius:12px;
+            "></div>
+
+            <div class="skeleton" style="
+              height:95px;
+              border-radius:12px;
+            "></div>
+
+            <div class="skeleton" style="
+              height:95px;
+              border-radius:12px;
+            "></div>
+
+            <div class="skeleton" style="
+              height:95px;
+              border-radius:12px;
+            "></div>
+
+          </div>
+
+          <!-- Stock Sidebar -->
+          <div style="
+            display:flex;
+            flex-direction:column;
+            gap:18px;
+          ">
+
+            <div class="stock-widget-card">
+
+              <div class="section-label" style="margin-bottom:8px;">
+                NASDAQ
+              </div>
+
+              <h3 class="stock-title" style="
+                font-size:24px;
+                margin-bottom:18px;
+              ">
+                Rivian Automotive (RIVN)
+              </h3>
+
+              <div class="tradingview-widget-container">
+                <div id="tradingview_rivn"></div>
+              </div>
+
+              <a
+                href="https://www.nasdaq.com/market-activity/stocks/rivn"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="stock-link"
+                style="margin-top:18px; display:inline-flex;"
+              >
+                View Market Data →
+              </a>
+
             </div>
-            
-              <a href="https://www.nasdaq.com/market-activity/stocks/rivn"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="stock-link"
-              style="margin-top:18px; display:inline-flex;"
-            >
-              View Market Data →
-            </a>
+
+            <div class="card">
+
+              <div class="section-label">
+                Market Snapshot
+              </div>
+
+              <p style="
+                color:var(--text-muted);
+                font-size:15px;
+                line-height:1.75;
+              ">
+                Rivian remains one of the most closely watched EV manufacturers as production ramps, R2 development progresses, and charging infrastructure expands.
+              </p>
+
+            </div>
+
           </div>
-          <div class="card">
-            <div class="section-label">Market Snapshot</div>
-            <p style="color:var(--text-muted); font-size:15px; line-height:1.75;">
-              Rivian remains one of the most closely watched EV manufacturers as production ramps, R2 development progresses, and charging infrastructure expands.
-            </p>
-          </div>
+
         </div>
 
       </div>
+
     </section>
+
   </div>
 
-  <hr class="divider">
+</div>
+
+<hr class="divider">
 
   <!-- ─── RESOURCES ─── -->
   <div class="container">
