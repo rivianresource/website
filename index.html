@@ -115,7 +115,6 @@
       overflow-x: hidden;
     }
 
-    /* ─── Noise texture overlay ─── */
     body::before {
       content: '';
       position: fixed;
@@ -128,12 +127,8 @@
       background-size: 200px 200px;
     }
 
-    /* ─── Alternating section backgrounds ─── */
-    .section-alt {
-      background: var(--bg-alt);
-    }
+    .section-alt { background: var(--bg-alt); }
 
-    /* ─── Ambient glow ─── */
     .hero-glow {
       position: absolute;
       top: -120px;
@@ -211,13 +206,8 @@
     .fade-up-4 { animation-delay: 0.46s; }
 
     /* ─── HERO ─── */
-    .hero-wrap {
-      position: relative;
-      overflow: hidden;
-    }
-
+    .hero-wrap { position: relative; overflow: hidden; }
     .hero { padding: 72px 0 80px; text-align: center; }
-
     .site-logo { width: 200px; display: block; margin: 0 auto 28px; }
 
     .hero-eyebrow {
@@ -316,36 +306,15 @@
     }
 
     .btn-primary { background: var(--green); color: #fff; }
-
-    .btn-primary:hover {
-      background: #10cc85;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(18,184,122,0.28);
-    }
-
+    .btn-primary:hover { background: #10cc85; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(18,184,122,0.28); }
     .btn-primary:active { transform: translateY(0); }
 
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border-hover);
-    }
-
-    .btn-secondary:hover {
-      border-color: rgba(255,255,255,0.22);
-      background: rgba(255,255,255,0.04);
-      transform: translateY(-2px);
-    }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border-hover); }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.04); transform: translateY(-2px); }
 
     .btn-icon { width: 18px; height: 18px; flex-shrink: 0; }
 
-    #copiedMessage {
-      display: none;
-      margin-top: 18px;
-      color: var(--green);
-      font-weight: 600;
-      font-size: 15px;
-    }
+    #copiedMessage { display: none; margin-top: 18px; color: var(--green); font-weight: 600; font-size: 15px; }
 
     /* ─── SECTION WRAPPERS ─── */
     section { padding: 64px 0; }
@@ -370,12 +339,7 @@
       margin-bottom: 14px;
     }
 
-    .section-sub {
-      color: var(--text-muted);
-      font-size: 17px;
-      max-width: 520px;
-      margin-bottom: 44px;
-    }
+    .section-sub { color: var(--text-muted); font-size: 17px; max-width: 520px; margin-bottom: 44px; }
 
     /* ─── CARD ─── */
     .card {
@@ -386,35 +350,15 @@
       transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 36px rgba(0,0,0,0.22);
-    }
-
-    /* ─── Green left border accent ─── */
-    .card-accented {
-      border-left: 3px solid var(--green);
-    }
+    .card:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,0.22); }
+    .card-accented { border-left: 3px solid var(--green); }
 
     /* ─── HOW IT WORKS ─── */
-    .how-inner { display: block; }
-
-    .how-text p {
-      color: var(--text-muted);
-      font-size: 16px;
-      line-height: 1.7;
-      margin-bottom: 18px;
-    }
-
+    .how-text p { color: var(--text-muted); font-size: 16px; line-height: 1.7; margin-bottom: 18px; }
     .how-text p:last-child { margin-bottom: 0; }
 
     /* ─── REWARDS GRID ─── */
-    .rewards-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 20px;
-    }
+    .rewards-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
 
     .reward-card-points {
       background: var(--bg-card);
@@ -460,205 +404,73 @@
     .reward-card-charge:hover { border-color: var(--border-hover); }
 
     .reward-icon { font-size: 36px; margin-bottom: 18px; display: block; line-height: 1; }
-
-    .reward-card-title {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-
+    .reward-card-title { font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; }
     .reward-card-sub { color: var(--text-muted); font-size: 15px; margin-bottom: 28px; }
 
-    .points-table {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
+    .points-table { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; }
 
-    .points-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--bg-card-alt);
-      padding: 14px 18px;
-    }
-
+    .points-row { display: flex; justify-content: space-between; align-items: center; background: var(--bg-card-alt); padding: 14px 18px; }
     .points-row:first-child { border-radius: 12px 12px 0 0; }
     .points-row:last-child  { border-radius: 0 0 12px 12px; }
 
     .points-config { color: var(--text-muted); font-size: 15px; }
+    .points-value { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; color: var(--green); }
 
-    .points-value {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--green);
-    }
-
-    .charge-big {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 72px;
-      font-weight: 800;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .charge-unit {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
+    .charge-big { font-family: 'DM Sans', sans-serif; font-size: 72px; font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .charge-unit { font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 700; color: var(--text-muted); margin-bottom: 18px; }
     .charge-note { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
 
-    /* ─── STOCK TICKER ─── */
-    .stock-widget-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      overflow: hidden;
-      transition: border-color 0.25s ease;
-    }
-
-    .stock-widget-card:hover { border-color: var(--border-hover); }
-
-    .stock-title {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.2;
-    }
-
-    .stock-link {
-      color: var(--green);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      transition: opacity 0.2s ease;
-    }
-
-    .stock-link:hover { opacity: 0.8; }
-
-    .tradingview-widget-container { width: 100%; overflow: hidden; border-radius: 14px; }
-
-    /* ─── NEWS ─── */
-   .news-featured-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 22px;
-  display: block;
-  background: rgba(255,255,255,0.03);
-  transition: transform 0.45s ease;
-}
-
-.news-featured:hover .news-featured-image {
-  transform: scale(1.03);
-}
-    .news-featured {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      min-height: 220px;
-      justify-content: space-between;
-      overflow: hidden;
+    /* ─── NEWS TEASER ─── */
+    .news-teaser-grid {
       display: flex;
       flex-direction: column;
-      transition: border-color 0.25s ease, transform 0.25s ease;
-      text-decoration: none;
+      gap: 10px;
+      margin-bottom: 24px;
     }
 
-    .news-featured:hover,
-    .news-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 34px rgba(0,0,0,0.22);
-    }
-    
-
-    .news-badge {
-      display: inline-block;
-      background: var(--green-dim);
-      color: var(--green);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 999px;
-      margin-bottom: 20px;
-      width: fit-content;
-    }
-
-    .news-featured-title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.25;
-  margin-bottom: 20px;
-  max-width: 95%;
-}
-
-    .news-meta {
-      color: var(--text-dim);
-      font-size: 13px;
+    .news-teaser-item {
       display: flex;
-      gap: 8px;
+      justify-content: space-between;
       align-items: center;
-    }
-
-    .news-meta-dot { color: var(--text-dim); }
-
-    .news-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-    .news-item {
+      gap: 16px;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 20px;
+      padding: 16px 20px;
       text-decoration: none;
       transition: border-color 0.2s ease, transform 0.2s ease;
     }
 
-    .news-item:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-    }
+    .news-teaser-item:hover { border-color: var(--border-hover); transform: translateY(-2px); }
 
-    .news-item-title {
+    .news-teaser-title {
       font-family: 'DM Sans', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
+      font-size: 15px;
+      font-weight: 600;
       color: #fff;
       line-height: 1.35;
-      margin-bottom: 10px;
     }
 
-    .news-item-meta { color: var(--text-dim); font-size: 13px; display: flex; gap: 8px; }
+    .news-teaser-meta { color: var(--text-dim); font-size: 12px; white-space: nowrap; flex-shrink: 0; }
+
+    .news-teaser-arrow { color: var(--text-dim); font-size: 16px; flex-shrink: 0; }
+
+    .news-view-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--green);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: gap 0.2s ease;
+    }
+
+    .news-view-all:hover { gap: 10px; }
+    .news-view-all::after { content: '→'; }
 
     /* ─── VEHICLE CONFIG ─── */
-    .vehicle-wrap {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 44px;
-      align-items: center;
-    }
+    .vehicle-wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 44px; align-items: center; }
 
     .vehicle-img-wrap { border-radius: var(--radius); overflow: hidden; position: relative; }
 
@@ -673,12 +485,7 @@
 
     .vehicle-img-wrap img { width: 100%; display: block; border-radius: var(--radius); }
 
-    .config-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 28px;
-    }
+    .config-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
 
     .config-group h4 {
       font-family: 'Figtree', sans-serif;
@@ -692,13 +499,7 @@
 
     .config-group ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
 
-    .config-group li {
-      color: var(--text);
-      font-size: 15px;
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
-    }
+    .config-group li { color: var(--text); font-size: 15px; display: flex; align-items: flex-start; gap: 9px; }
 
     .config-group li::before {
       content: '';
@@ -711,198 +512,65 @@
     }
 
     /* ─── RESOURCES ─── */
-    .resources-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-    }
+    .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
 
-    .resource-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 26px;
-      transition: border-color 0.2s ease, transform 0.2s ease;
-    }
-
+    .resource-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 26px; transition: border-color 0.2s ease, transform 0.2s ease; }
     .resource-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
-
-    .resource-card h3 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-
+    .resource-card h3 { font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 8px; }
     .resource-card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
 
-    .resource-link {
-      color: var(--green);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: gap 0.2s ease;
-    }
-
+    .resource-link { color: var(--green); text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap 0.2s ease; }
     .resource-link:hover { gap: 9px; }
     .resource-link::after { content: '→'; }
 
     /* ─── FAQ ─── */
     .faq-list { display: flex; flex-direction: column; gap: 2px; border-radius: var(--radius-sm); overflow: hidden; }
 
-    .faq-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 8px; }
 
-    .faq-q {
-      width: 100%;
-      background: none;
-      border: none;
-      text-align: left;
-      padding: 22px 26px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: 'Figtree', sans-serif;
-      font-size: 17px;
-      font-weight: 600;
-      color: #fff;
-      transition: background 0.2s ease;
-      gap: 20px;
-    }
-
+    .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 22px 26px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Figtree', sans-serif; font-size: 17px; font-weight: 600; color: #fff; transition: background 0.2s ease; gap: 20px; }
     .faq-q:hover { background: rgba(255,255,255,0.03); }
 
-    .faq-chevron {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      color: var(--text-dim);
-      transition: transform 0.3s ease;
-    }
-
+    .faq-chevron { flex-shrink: 0; width: 20px; height: 20px; color: var(--text-dim); transition: transform 0.3s ease; }
     .faq-item.open .faq-chevron { transform: rotate(180deg); }
 
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-      padding: 0 26px;
-    }
-
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 26px; }
     .faq-item.open .faq-a { max-height: 200px; padding: 0 26px 22px; }
-
     .faq-a p { color: var(--text-muted); font-size: 16px; line-height: 1.7; }
 
     /* ─── CONTACT ─── */
-    .contact-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 52px;
-      text-align: center;
-    }
-
+    .contact-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 52px; text-align: center; }
     .contact-card p { color: var(--text-muted); font-size: 17px; margin-bottom: 22px; }
-
-    .contact-link {
-      color: var(--green);
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 600;
-    }
-
+    .contact-link { color: var(--green); text-decoration: none; font-size: 18px; font-weight: 600; }
     .contact-link:hover { text-decoration: underline; }
 
     /* ─── DIVIDER ─── */
     .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
     /* ─── FOOTER ─── */
-    footer {
-      padding: 40px 0 50px;
-      text-align: center;
-      color: var(--text-dim);
-      font-size: 13px;
-      line-height: 1.6;
-    }
+    footer { padding: 40px 0 50px; text-align: center; color: var(--text-dim); font-size: 13px; line-height: 1.6; }
 
-    /* ─── LOADING SKELETON ─── */
-    @keyframes shimmer {
-      0%   { background-position: -600px 0; }
-      100% { background-position: 600px 0; }
-    }
-
-    .skeleton {
-      border-radius: 8px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.04) 75%);
-      background-size: 600px 100%;
-      animation: shimmer 1.5s infinite;
-    }
+    /* ─── SKELETON ─── */
+    @keyframes shimmer { 0% { background-position: -600px 0; } 100% { background-position: 600px 0; } }
+    .skeleton { border-radius: 8px; background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.04) 75%); background-size: 600px 100%; animation: shimmer 1.5s infinite; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
+      .rewards-grid, .vehicle-wrap { grid-template-columns: 1fr; }
+      .config-cols { grid-template-columns: 1fr 1fr; }
+      .hero { padding: 52px 0 60px; }
+      .code-block { flex-direction: column; gap: 10px; }
+      .code-divider { width: 80px; height: 1px; }
+    }
 
-  .rewards-grid,
-  .vehicle-wrap {
-    grid-template-columns: 1fr;
-  }
-
-  .config-cols {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .hero {
-    padding: 52px 0 60px;
-  }
-
-  .code-block {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .code-divider {
-    width: 80px;
-    height: 1px;
-  }
-
-  #newsFeed > div:first-child {
-    grid-template-columns: 1fr !important;
-  }
-
-}
-
-@media (max-width: 600px) {
-
-  .btn-row {
-    flex-direction: column;
-  }
-
-  .btn {
-    justify-content: center;
-  }
-
-  .card {
-    padding: 24px;
-  }
-
-  .contact-card {
-    padding: 36px 24px;
-  }
-
-  .config-cols {
-    grid-template-columns: 1fr;
-  }
-
-}
+    @media (max-width: 600px) {
+      .btn-row { flex-direction: column; }
+      .btn { justify-content: center; }
+      .card { padding: 24px; }
+      .contact-card { padding: 36px 24px; }
+      .config-cols { grid-template-columns: 1fr; }
+      .news-teaser-meta { display: none; }
+    }
 
   </style>
 
@@ -916,12 +584,13 @@
         <img src="logo.png" alt="Rivian Rewards Hub">
         <span>Rivian Rewards Hub</span>
       </a>
-    <div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/reviews/2026-rivian-r1s-90-day-review/">R1S Review</a>
-  <a href="/accessories/">Accessories</a>
-  <a href="/about/">About</a>
-</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/reviews/2026-rivian-r1s-90-day-review/">R1S Review</a>
+        <a href="/accessories/">Accessories</a>
+        <a href="/news/">News</a>
+        <a href="/about/">About</a>
+      </div>
     </div>
   </div>
 
@@ -971,7 +640,7 @@
 
   <hr class="divider">
 
-  <!-- ─── HOW IT WORKS — bg-alt ─── -->
+  <!-- ─── HOW IT WORKS ─── -->
   <div class="section-alt">
     <div class="container">
       <section>
@@ -979,12 +648,8 @@
           <div class="how-text">
             <div class="section-label">How it works</div>
             <h2 class="section-title" style="margin-bottom: 20px;">Referral rewards, explained</h2>
-            <p>
-              Rivian's official Rewards program lets owners share referral codes. When you place a qualifying order using a code, both you and the referring owner receive Rivian Rewards points and complimentary Adventure Network charging.
-            </p>
-            <p>
-              Points are added to your account within approximately two weeks of delivery and are valid for two years. Just enter the code during configuration — or ask your Rivian Guide to add it before delivery.
-            </p>
+            <p>Rivian's official Rewards program lets owners share referral codes. When you place a qualifying order using a code, both you and the referring owner receive Rivian Rewards points and complimentary Adventure Network charging.</p>
+            <p>Points are added to your account within approximately two weeks of delivery and are valid for two years. Just enter the code during configuration — or ask your Rivian Guide to add it before delivery.</p>
           </div>
         </div>
       </section>
@@ -1005,22 +670,10 @@
           <div class="reward-card-title">Rivian Rewards Points</div>
           <div class="reward-card-sub">Earn up to 500 points based on your configuration</div>
           <div class="points-table">
-            <div class="points-row">
-              <span class="points-config">Tri or Quad Motor</span>
-              <span class="points-value">500 pts</span>
-            </div>
-            <div class="points-row">
-              <span class="points-config">Dual Max Battery</span>
-              <span class="points-value">250 pts</span>
-            </div>
-            <div class="points-row">
-              <span class="points-config">Dual Large Battery</span>
-              <span class="points-value">250 pts</span>
-            </div>
-            <div class="points-row">
-              <span class="points-config">Dual Standard</span>
-              <span class="points-value">100 pts</span>
-            </div>
+            <div class="points-row"><span class="points-config">Tri or Quad Motor</span><span class="points-value">500 pts</span></div>
+            <div class="points-row"><span class="points-config">Dual Max Battery</span><span class="points-value">250 pts</span></div>
+            <div class="points-row"><span class="points-config">Dual Large Battery</span><span class="points-value">250 pts</span></div>
+            <div class="points-row"><span class="points-config">Dual Standard</span><span class="points-value">100 pts</span></div>
           </div>
         </div>
         <div class="reward-card-charge">
@@ -1041,15 +694,13 @@
 
   <hr class="divider">
 
-  <!-- ─── FEATURED REVIEW — bg-alt ─── -->
+  <!-- ─── FEATURED REVIEW ─── -->
   <div class="section-alt">
     <div class="container">
       <section>
         <div class="section-label">Featured Review</div>
         <h2 class="section-title">90 Days With My 2026 Rivian R1S</h2>
-        <p class="section-sub">
-          Real-world ownership impressions after daily driving in Las Vegas including charging, service experience, software quirks, Sound + Vision impressions, and tire decisions.
-        </p>
+        <p class="section-sub">Real-world ownership impressions after daily driving in Las Vegas including charging, service experience, software quirks, Sound + Vision impressions, and tire decisions.</p>
         <div class="card card-accented">
           <p style="color:var(--text-muted); font-size:16px; line-height:1.85; margin-bottom:28px; max-width:760px;">
             After 90 days, the R1S has become one of the most enjoyable vehicles I've owned. The driving experience is exceptional, though a few software quirks and service issues still exist.
@@ -1063,272 +714,145 @@
   <hr class="divider">
 
   <!-- ─── ACCESSORIES ─── -->
-<div class="container">
-  <section>
-
-    <div class="section-label">
-      Gear &amp; Accessories
-    </div>
-
-    <h2 class="section-title">
-      Rivian Accessory Reviews
-    </h2>
-
-    <p class="section-sub">
-      Real-world reviews, install impressions, photos, and tested accessories for the R1S and R1T.
-    </p>
-
-    <div class="card card-accented" style="
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:28px;
-      flex-wrap:wrap;
-    ">
-
-      <div style="max-width:620px;">
-
-        <h3 style="
-          font-family:'DM Sans', sans-serif;
-          font-size:24px;
-          font-weight:700;
-          margin-bottom:12px;
-          color:#fff;
-        ">
-          Browse Accessory Reviews
-        </h3>
-
-        <p style="
-          color:var(--text-muted);
-          font-size:16px;
-          line-height:1.75;
-        ">
-          Floor mats, adapters, organizers, spare tire kits, charging accessories, screen protectors, and more — with photos, ownership notes, and direct product links.
-        </p>
-
-      </div>
-
-      <a
-        href="/accessories/"
-        class="btn btn-primary"
-      >
-        View Reviews
-      </a>
-
-    </div>
-
-  </section>
-</div>
-
-  <hr class="divider">
-
-  <!-- ─── NEWS — bg-alt ─── -->
-<div class="section-alt">
-
-  <div class="container">
-
-    <section>
-
-      <div class="section-label">Latest News</div>
-
-      <h2 class="section-title">
-        Rivian & EV Industry News
-      </h2>
-
-      <div id="newsFeed" style="margin-top:32px;">
-
-        <!-- Loading Skeleton -->
-        <div style="
-          display:grid;
-grid-template-columns:1.15fr 0.85fr;
-gap:18px;
-align-items:start;
-        ">
-
-          <!-- LEFT COLUMN -->
-<div style="
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-  height:100%;
-">
-
-  <!-- Featured Story -->
-  <div class="skeleton" style="
-    height:220px;
-    border-radius:20px;
-  "></div>
-
-  <!-- Stock Widget -->
-  <div class="stock-widget-card skeleton" style="
-    height:420px;
-    border-radius:20px;
-  "></div>
-
-</div>
-
-<!-- RIGHT COLUMN -->
-<div style="
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-">
-
-            <div class="skeleton" style="height:95px; border-radius:12px;"></div>
-            <div class="skeleton" style="height:95px; border-radius:12px;"></div>
-            <div class="skeleton" style="height:95px; border-radius:12px;"></div>
-            <div class="skeleton" style="height:95px; border-radius:12px;"></div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </div>
-
-</div>
-
-<hr class="divider">
-
-  <!-- ─── RESOURCES ─── -->
   <div class="container">
     <section>
-      <div class="section-label">Helpful links</div>
-      <h2 class="section-title">Rivian owner resources</h2>
-      <p class="section-sub">The best third-party tools and communities for R1S, R1T, and R2 owners.</p>
-      <div class="resources-grid">
-        <div class="resource-card">
-          <h3>Rivian Roamer</h3>
-          <p>Inventory tracker, VIN lookup, window sticker decoder, and configuration tools.</p>
-          <a class="resource-link" href="https://rivianroamer.com" target="_blank">Visit Rivian Roamer</a>
+      <div class="section-label">Gear &amp; Accessories</div>
+      <h2 class="section-title">Rivian Accessory Reviews</h2>
+      <p class="section-sub">Real-world reviews, install impressions, photos, and tested accessories for the R1S and R1T.</p>
+      <div class="card card-accented" style="display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap;">
+        <div style="max-width:620px;">
+          <h3 style="font-family:'DM Sans', sans-serif; font-size:24px; font-weight:700; margin-bottom:12px; color:#fff;">Browse Accessory Reviews</h3>
+          <p style="color:var(--text-muted); font-size:16px; line-height:1.75;">Floor mats, adapters, organizers, spare tire kits, charging accessories, screen protectors, and more — with photos, ownership notes, and direct product links.</p>
         </div>
-        <div class="resource-card">
-          <h3>Charging Map</h3>
-          <p>Official Rivian Adventure Network and Waypoint charging station map.</p>
-          <a class="resource-link" href="https://rivian.com/experience/charging#map" target="_blank">View Charging Map</a>
-        </div>
-        <div class="resource-card">
-          <h3>Rivian Forums</h3>
-          <p>Dedicated community forums for R1S, R1T, R2, software updates, and tips.</p>
-          <a class="resource-link" href="https://www.rivianforums.com/forum/" target="_blank">Visit Forums</a>
-        </div>
-        <div class="resource-card">
-          <h3>r/Rivian</h3>
-          <p>Large and active Reddit community for Rivian owners and enthusiasts.</p>
-          <a class="resource-link" href="https://www.reddit.com/r/Rivian/" target="_blank">Visit r/Rivian</a>
-        </div>
+        <a href="/accessories/" class="btn btn-primary">View Reviews</a>
       </div>
     </section>
   </div>
 
   <hr class="divider">
 
-  <!-- ─── VEHICLE CONFIG — bg-alt ─── -->
+  <!-- ─── NEWS TEASER ─── -->
   <div class="section-alt">
     <div class="container">
       <section>
-        <div class="section-label">Owner Vehicle</div>
-        <h2 class="section-title">Current Rivian Configuration</h2>
-        <div class="vehicle-wrap">
-          <div class="vehicle-img-wrap">
-            <img src="r1s.jpg" loading="lazy" alt="2026 Rivian R1S El Cap Granite">
+        <div class="section-label">Latest News</div>
+        <h2 class="section-title">Rivian &amp; EV Industry News</h2>
+        <div id="newsTeaserFeed" style="margin-top: 32px;">
+          <!-- Skeletons while loading -->
+          <div class="news-teaser-grid">
+            <div class="skeleton" style="height: 56px; border-radius: 12px;"></div>
+            <div class="skeleton" style="height: 56px; border-radius: 12px;"></div>
+            <div class="skeleton" style="height: 56px; border-radius: 12px;"></div>
           </div>
-          <div>
-            <p style="color: var(--text-muted); font-size: 16px; line-height: 1.7;">
-              Dual Performance, Max Battery, El Cap Granite. Las Vegas–based — daily driver and road trip rig to Big Bear, Zion, and the Eastern Sierra.
-            </p>
-            <div class="config-cols">
-              <div class="config-group">
-                <h4>Vehicle specs</h4>
-                <ul>
-                  <li>2026 Dual Performance</li>
-                  <li>Max Battery</li>
-                  <li>El Cap Granite</li>
-                  <li>22&quot; Sport Dark Wheels</li>
-                  <li>Black Mountain + Dark Ash Wood</li>
-                </ul>
-              </div>
-              <div class="config-group">
-                <h4>Accessories</h4>
-                <ul>
-                  <li>All-Weather Mats (Gen 2)</li>
-                  <li>Compact Spare Tire Kit</li>
-                  <li>A2Z CCS1 to NACS Adapter</li>
-                  <li>TWRAPS Armrest Organizer</li>
-                  <li>TWRAPS Screen Protectors</li>
-                </ul>
-              </div>
+        </div>
+        <a href="/news/" class="news-view-all">View all Rivian news </a>
+      </section>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ─── VEHICLE CONFIG ─── -->
+  <div class="container">
+    <section>
+      <div class="section-label">Owner Vehicle</div>
+      <h2 class="section-title">Current Rivian Configuration</h2>
+      <div class="vehicle-wrap">
+        <div class="vehicle-img-wrap">
+          <img src="r1s.jpg" loading="lazy" alt="2026 Rivian R1S El Cap Granite">
+        </div>
+        <div>
+          <p style="color: var(--text-muted); font-size: 16px; line-height: 1.7;">
+            Dual Performance, Max Battery, El Cap Granite. Las Vegas–based — daily driver and road trip rig to Big Bear, Zion, and the Eastern Sierra.
+          </p>
+          <div class="config-cols">
+            <div class="config-group">
+              <h4>Vehicle specs</h4>
+              <ul>
+                <li>2026 Dual Performance</li>
+                <li>Max Battery</li>
+                <li>El Cap Granite</li>
+                <li>22&quot; Sport Dark Wheels</li>
+                <li>Black Mountain + Dark Ash Wood</li>
+              </ul>
+            </div>
+            <div class="config-group">
+              <h4>Accessories</h4>
+              <ul>
+                <li>All-Weather Mats (Gen 2)</li>
+                <li>Compact Spare Tire Kit</li>
+                <li>A2Z CCS1 to NACS Adapter</li>
+                <li>TWRAPS Armrest Organizer</li>
+                <li>TWRAPS Screen Protectors</li>
+              </ul>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
 
   <hr class="divider">
 
   <!-- ─── FAQ ─── -->
-  <div class="container">
-    <section>
-      <div class="section-label">Questions</div>
-      <h2 class="section-title">Frequently asked</h2>
-      <div class="faq-list" style="margin-top: 32px;">
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            What if I forgot to enter the referral code?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-a"><p>Rivian Guides can typically add a referral code after ordering as long as your vehicle hasn't been delivered yet. Contact Rivian support through the app or website.</p></div>
+  <div class="section-alt">
+    <div class="container">
+      <section>
+        <div class="section-label">Questions</div>
+        <h2 class="section-title">Frequently asked</h2>
+        <div class="faq-list" style="margin-top: 32px;">
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              What if I forgot to enter the referral code?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a"><p>Rivian Guides can typically add a referral code after ordering as long as your vehicle hasn't been delivered yet. Contact Rivian support through the app or website.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              When are points added to my account?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a"><p>Points are generally credited within two weeks of your vehicle being delivered. You'll see them in your Rivian Rewards account in the app.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              Do Rivian Rewards points expire?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a"><p>Yes — points currently expire two years after being added to your account. Plan your redemptions accordingly.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              How does free Adventure Network charging work?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a"><p>Complimentary charging is linked directly to your Rivian account after delivery. Just plug in at any Rivian Adventure Network charger — billing is handled automatically.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              Is this an official Rivian website?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a"><p>No. Rivian Rewards Hub is an independent, owner-operated website and is not affiliated with or endorsed by Rivian Automotive, Inc.</p></div>
+          </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            When are points added to my account?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-a"><p>Points are generally credited within two weeks of your vehicle being delivered. You'll see them in your Rivian Rewards account in the app.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            Do Rivian Rewards points expire?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-a"><p>Yes — points currently expire two years after being added to your account. Plan your redemptions accordingly.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            How does free Adventure Network charging work?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-a"><p>Complimentary charging is linked directly to your Rivian account after delivery. Just plug in at any Rivian Adventure Network charger — billing is handled automatically.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            Is this an official Rivian website?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-a"><p>No. Rivian Rewards Hub is an independent, owner-operated website and is not affiliated with or endorsed by Rivian Automotive, Inc.</p></div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 
   <hr class="divider">
 
-  <!-- ─── CONTACT — bg-alt ─── -->
-  <div class="section-alt">
-    <div class="container">
-      <section style="padding-bottom: 32px;">
-        <div class="contact-card">
-          <div class="section-label" style="margin-bottom: 12px;">Get in touch</div>
-          <h2 class="section-title" style="margin-bottom: 14px;">Questions or ownership chat?</h2>
-          <p>Accessory recommendations, road trip tips, referral questions — happy to talk Rivian.</p>
-          <a class="contact-link" href="mailto:rivianrewardshub@gmail.com">rivianrewardshub@gmail.com</a>
-        </div>
-      </section>
-    </div>
+  <!-- ─── CONTACT ─── -->
+  <div class="container">
+    <section style="padding-bottom: 32px;">
+      <div class="contact-card">
+        <div class="section-label" style="margin-bottom: 12px;">Get in touch</div>
+        <h2 class="section-title" style="margin-bottom: 14px;">Questions or ownership chat?</h2>
+        <p>Accessory recommendations, road trip tips, referral questions — happy to talk Rivian.</p>
+        <a class="contact-link" href="mailto:rivianrewardshub@gmail.com">rivianrewardshub@gmail.com</a>
+      </div>
+    </section>
   </div>
 
   <!-- ─── FOOTER ─── -->
@@ -1341,8 +865,6 @@ align-items:start;
   </footer>
 
   <!-- ─── SCRIPTS ─── -->
-  <script src="https://s3.tradingview.com/tv.js"></script>
-  
   <script>
     function trackCopyClick() { gtag('event', 'copy_referral_code'); }
     function trackConfiguratorClick() { gtag('event', 'open_rivian_configurator'); }
@@ -1363,245 +885,39 @@ align-items:start;
       if (!isOpen) item.classList.add("open");
     }
 
-   async function loadRivianNews() {
-  const feedContainer = document.getElementById("newsFeed");
+    async function loadNewsTeaser() {
+      const container = document.getElementById("newsTeaserFeed");
+      try {
+        const rssFeed = encodeURIComponent("https://news.google.com/rss/search?q=Rivian+EV&hl=en-US&gl=US&ceid=US:en");
+        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}`);
+        if (!response.ok) throw new Error("Feed failed");
+        const data = await response.json();
+        if (!data.items?.length) throw new Error("No items");
 
-  try {
+        const articles = data.items.slice(0, 3);
 
-    const rssFeed = encodeURIComponent(
-      "https://news.google.com/rss/search?q=Rivian+EV&hl=en-US&gl=US&ceid=US:en"
-    );
+        function cleanTitle(title) { return title.replace(/\s-\s[^-]+$/, ""); }
+        function getSource(title) { const p = title.split(" - "); return p.length > 1 ? p[p.length - 1] : ""; }
+        function formatDate(d) { return new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); }
 
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}`;
-
-    const response = await fetch(apiUrl);
-
-    if (!response.ok) {
-      throw new Error("News request failed");
-    }
-
-    const data = await response.json();
-
-    if (!data.items || !data.items.length) {
-      feedContainer.innerHTML = `
-        <p style="color:var(--text-muted)">
-          No news available right now.
-        </p>
-      `;
-      return;
-    }
-
-    const articles = data.items.slice(0, 6);
-
-    function cleanTitle(title) {
-      return title.replace(/\s-\s[^-]+$/, "");
-    }
-
-    function getSource(title) {
-      const parts = title.split(" - ");
-      return parts.length > 1
-        ? parts[parts.length - 1]
-        : "News Source";
-    }
-
-    function formatDate(dateString) {
-      return new Date(dateString).toLocaleDateString(
-        "en-US",
-        {
-          month: "short",
-          day: "numeric",
-          year: "numeric"
-        }
-      );
-    }
-
-    const featured = articles[0];
-    const rest = articles.slice(1);
-
-    const featuredImage =
-      featured.thumbnail?.replace("s72-c", "s1200") ||
-      featured.enclosure?.link ||
-      null;
-
-    feedContainer.innerHTML = `
-
-      <div style="
-        display:grid;
-        grid-template-columns:1.15fr 0.85fr;
-        gap:18px;
-        align-items:stretch;
-      ">
-
-        <!-- LEFT COLUMN -->
-<div style="
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-">
-
-<a
-          href="${featured.link}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="news-featured"
-        >
-
-          ${featuredImage ? `
-
-            <img
-              src="${featuredImage}"
-              alt="${cleanTitle(featured.title)}"
-              class="news-featured-image"
-              loading="lazy"
-            >
-
-          ` : ``}
-
-          <span class="news-badge">
-            Featured Story
-          </span>
-
-          <div class="news-featured-title">
-            ${cleanTitle(featured.title)}
+        container.innerHTML = `
+          <div class="news-teaser-grid">
+            ${articles.map(a => `
+              <a href="${a.link}" target="_blank" rel="noopener noreferrer" class="news-teaser-item">
+                <div class="news-teaser-title">${cleanTitle(a.title)}</div>
+                <div class="news-teaser-meta">${getSource(a.title)} &middot; ${formatDate(a.pubDate)}</div>
+                <div class="news-teaser-arrow">→</div>
+              </a>
+            `).join("")}
           </div>
+        `;
+      } catch (e) {
+        container.innerHTML = `<p style="color:var(--text-muted); margin-bottom: 16px;">Latest news available on the <a href="/news/" style="color:var(--green);">News page</a>.</p>`;
+      }
+    }
 
-          <div class="news-meta" style="margin-bottom:8px;">
-            <span>${getSource(featured.title)}</span>
-            <span class="news-meta-dot">&middot;</span>
-            <span>${formatDate(featured.pubDate)}</span>
-          </div>
-
-        </a>
-
-        <div class="stock-widget-card" style="
-  display:flex;
-  flex-direction:column;
-  flex:1;
-">
-
-  <div style="
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px;
-    gap:18px;
-    flex-wrap:wrap;
-  ">
-
-    <div>
-
-      <div class="section-label" style="margin-bottom:8px;">
-        NASDAQ
-      </div>
-
-      <h3 class="stock-title" style="
-        font-size:28px;
-        margin:0;
-      ">
-        Rivian Automotive (RIVN)
-      </h3>
-
-    </div>
-
-    <a
-      href="https://www.nasdaq.com/market-activity/stocks/rivn"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="stock-link"
-    >
-      View Market Data →
-    </a>
-
-  </div>
-
- <div
-  class="tradingview-widget-container"
-  style="
-    height:100%;
-    min-height:520px;
-    border-radius:14px;
-    overflow:hidden;
-    flex:1;
-  "
->
-
-    <div
-      id="tradingview_rivn"
-      style="height:100%;"
-    ></div>
-
-  </div>
-
-</div>
-
-</div>
-
-        <!-- News List -->
-        <div class="news-list">
-
-          ${rest.map(article => `
-
-            <a
-              href="${article.link}"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="news-item"
-            >
-
-              <div class="news-item-title">
-                ${cleanTitle(article.title)}
-              </div>
-
-              <div class="news-item-meta">
-                <span>${getSource(article.title)}</span>
-                <span>&middot;</span>
-                <span>${formatDate(article.pubDate)}</span>
-              </div>
-
-            </a>
-
-          `).join("")}
-
-        </div>
-
-      </div>
-
-    `;
-    
-    new TradingView.widget({
-  container_id: "tradingview_rivn",
-  symbol: "NASDAQ:RIVN",
-  theme: "dark",
-  locale: "en",
-  autosize: true,
-  height: "100%",
-  hide_top_toolbar: false,
-  hide_legend: false,
-  save_image: false,
-  backgroundColor: "#0d1a2d",
-  gridColor: "rgba(255,255,255,0.05)"
-});
-
-  } catch (error) {
-
-    console.error("News feed error:", error);
-
-    feedContainer.innerHTML = `
-      <div style="
-        background:var(--bg-card);
-        border:1px solid var(--border);
-        border-radius:var(--radius);
-        padding:28px;
-        color:var(--text-muted);
-      ">
-        Unable to load news right now.
-      </div>
-    `;
-    
-  }
-}
-
-    document.addEventListener("DOMContentLoaded", loadRivianNews);
+    document.addEventListener("DOMContentLoaded", loadNewsTeaser);
   </script>
+
 </body>
 </html>
