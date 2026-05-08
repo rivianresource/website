@@ -1102,87 +1102,43 @@
         <!-- Loading Skeleton -->
         <div style="
           display:grid;
-          grid-template-columns:1.2fr 0.9fr;
-          gap:18px;
-          align-items:start;
+grid-template-columns:1.15fr 0.85fr;
+gap:18px;
+align-items:start;
         ">
 
-          <!-- Featured Story -->
-          <div class="skeleton" style="
-            height:260px;
-            border-radius:20px;
-          "></div>
+          <!-- LEFT COLUMN -->
+<div style="
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+">
 
-          <!-- Story List -->
-          <div style="
-            display:flex;
-            flex-direction:column;
-            gap:12px;
-          ">
+  <!-- Featured Story -->
+  <div class="skeleton" style="
+    height:220px;
+    border-radius:20px;
+  "></div>
+
+  <!-- Stock Widget -->
+  <div class="stock-widget-card skeleton" style="
+    height:420px;
+    border-radius:20px;
+  "></div>
+
+</div>
+
+<!-- RIGHT COLUMN -->
+<div style="
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+">
 
             <div class="skeleton" style="height:95px; border-radius:12px;"></div>
             <div class="skeleton" style="height:95px; border-radius:12px;"></div>
             <div class="skeleton" style="height:95px; border-radius:12px;"></div>
             <div class="skeleton" style="height:95px; border-radius:12px;"></div>
-
-          </div>
-
-        </div>
-          </div>
-
-      <!-- STOCK SECTION -->
-      <div style="margin-top:24px;">
-
-        <div class="stock-widget-card">
-
-          <div style="
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            margin-bottom:18px;
-            gap:18px;
-            flex-wrap:wrap;
-          ">
-
-            <div>
-
-              <div class="section-label" style="margin-bottom:8px;">
-                NASDAQ
-              </div>
-
-              <h3 class="stock-title" style="
-                font-size:28px;
-                margin:0;
-              ">
-                Rivian Automotive (RIVN)
-              </h3>
-
-            </div>
-
-            <a
-              href="https://www.nasdaq.com/market-activity/stocks/rivn"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="stock-link"
-            >
-              View Market Data →
-            </a>
-
-          </div>
-
-          <div
-            class="tradingview-widget-container"
-            style="
-              height:420px;
-              border-radius:14px;
-              overflow:hidden;
-            "
-          >
-
-            <div
-              id="tradingview_rivn"
-              style="height:100%;"
-            ></div>
 
           </div>
 
@@ -1430,13 +1386,19 @@
 
       <div style="
         display:grid;
-        grid-template-columns:1.2fr 0.9fr;
+        grid-template-columns:1.15fr 0.85fr;
         gap:18px;
         align-items:stretch;
       ">
 
-        <!-- Featured Story -->
-        <a
+        <!-- LEFT COLUMN -->
+<div style="
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+">
+
+<a
           href="${featured.link}"
           target="_blank"
           rel="noopener noreferrer"
@@ -1469,6 +1431,63 @@
           </div>
 
         </a>
+
+        <div class="stock-widget-card">
+
+  <div style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+    gap:18px;
+    flex-wrap:wrap;
+  ">
+
+    <div>
+
+      <div class="section-label" style="margin-bottom:8px;">
+        NASDAQ
+      </div>
+
+      <h3 class="stock-title" style="
+        font-size:28px;
+        margin:0;
+      ">
+        Rivian Automotive (RIVN)
+      </h3>
+
+    </div>
+
+    <a
+      href="https://www.nasdaq.com/market-activity/stocks/rivn"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="stock-link"
+    >
+      View Market Data →
+    </a>
+
+  </div>
+
+  <div
+    class="tradingview-widget-container"
+    style="
+      height:420px;
+      border-radius:14px;
+      overflow:hidden;
+    "
+  >
+
+    <div
+      id="tradingview_rivn"
+      style="height:100%;"
+    ></div>
+
+  </div>
+
+</div>
+
+</div>
 
         <!-- News List -->
         <div class="news-list">
