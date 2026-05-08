@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>About | Rivian Rewards Hub</title>
+
+  <meta
+    name="description"
+    content="About the owner behind Rivian Rewards Hub including Rivian ownership experience, why the site was created, and long-term R1S ownership impressions."
+  />
+
+  <link rel="canonical" href="https://www.rivianrewardshub.com/about/" />
+
+  <meta property="og:title" content="About Rivian Rewards Hub" />
+
+  <meta
+    property="og:description"
+    content="Independent Rivian owner website featuring real-world reviews, charging impressions, accessories, and ownership resources."
+  />
+
+  <meta
+    property="og:image"
+    content="https://www.rivianrewardshub.com/r1s.jpg"
+  />
+
+  <meta
+    property="og:url"
+    content="https://www.rivianrewardshub.com/about/"
+  />
+
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" type="image/png" href="/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Figtree:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag(){
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-SB8DBC8NBQ');
+  </script>
+
+  <style>
+
+    :root {
+      --bg: #07101f;
+      --card: #0f1b2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --text-muted: rgba(255,255,255,0.72);
+      --accent: #12b87a;
+      --shadow: 0 10px 40px rgba(0,0,0,0.25);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Figtree', sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(7,16,31,0.88);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .nav-brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .hero {
+      padding: 90px 0 50px;
+    }
+
+    .section-label {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+      max-width: 880px;
+    }
+
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 19px;
+      max-width: 760px;
+    }
+
+    .content-section {
+      padding-bottom: 80px;
+    }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 42px;
+      margin-bottom: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-card h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+
+    .about-card p {
+      color: var(--text-muted);
+      font-size: 17px;
+      margin-bottom: 20px;
+    }
+
+    .about-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .info-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .info-item strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0 60px;
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+
+      .nav-inner {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .about-card {
+        padding: 28px;
+      }
+
+      .about-card h2 {
+        font-size: 28px;
+      }
+
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─── -->
+  <div class="top-nav">
+
+    <div class="container nav-inner">
+
+      <a href="/" class="nav-brand">
+        <img src="/logo.png" alt="Rivian Rewards Hub">
+        <span>Rivian Rewards Hub</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/reviews/2026-rivian-r1s-90-day-review/">Review</a>
+        <a href="/about/">About</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <main>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="section-label">About The Site</div>
+
+        <h1 class="hero-title">
+          Built by a real Rivian owner.
+        </h1>
+
+        <p class="hero-sub">
+          Rivian Rewards Hub was created to share real-world ownership experiences, charging impressions, reviews, and useful resources for current and future Rivian owners.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- ─── CONTENT ─── -->
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="about-card">
+
+          <h2>Why I Created This Site</h2>
+
+          <p>
+            After ordering my Rivian R1S, I spent months researching ownership experiences, charging, accessories, software updates, and delivery expectations.
+          </p>
+
+          <p>
+            I found a lot of useful information scattered across YouTube videos, Reddit threads, forums, and Facebook groups, but there wasn’t one simple place that combined practical ownership information with a cleaner and more straightforward experience.
+          </p>
+
+          <p>
+            Rivian Rewards Hub started as a simple referral page, but quickly evolved into a broader ownership-focused site where I can document long-term experiences and share resources that I personally found helpful.
+          </p>
+
+        </div>
+
+        <div class="about-card">
+
+          <h2>About Me</h2>
+
+          <p>
+            I’m based in Las Vegas and use the R1S as both a daily driver and a family vehicle. Most driving is pavement-focused, but the vehicle will also be used for road trips throughout the Southwest including Zion, Big Bear, and the Eastern Sierra.
+          </p>
+
+          <p>
+            Prior vehicles included a Jeep Grand Cherokee 4xe and a Land Rover Discovery, so I came into Rivian ownership with realistic expectations about modern vehicle reliability and technology.
+          </p>
+
+          <p>
+            Outside of Rivian ownership, I also have experience in photography and graphic design, which heavily influenced the visual direction and overall feel of the site.
+          </p>
+
+          <div class="info-grid">
+
+            <div class="info-item">
+              <strong>Vehicle</strong>
+              2026 Rivian R1S Dual Max
+            </div>
+
+            <div class="info-item">
+              <strong>Location</strong>
+              Las Vegas, Nevada
+            </div>
+
+            <div class="info-item">
+              <strong>Primary Use</strong>
+              Family + Daily Driving
+            </div>
+
+            <div class="info-item">
+              <strong>Charging</strong>
+              Home Level 2 + RAN
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="about-card">
+
+          <h2>What You’ll Find Here</h2>
+
+          <p>
+            The goal is to create a useful long-term ownership resource rather than another generic automotive news site.
+          </p>
+
+          <p>
+            Future content will include:
+          </p>
+
+          <div class="info-grid">
+
+            <div class="info-item">
+              <strong>Ownership Reviews</strong>
+              Long-term impressions and updates
+            </div>
+
+            <div class="info-item">
+              <strong>Charging Experiences</strong>
+              Real-world charging observations and road trips
+            </div>
+
+            <div class="info-item">
+              <strong>Accessory Reviews</strong>
+              Hands-on product impressions and recommendations
+            </div>
+
+            <div class="info-item">
+              <strong>Software Updates</strong>
+              UI changes, bugs, and feature impressions
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="about-card">
+
+          <h2>Transparency</h2>
+
+          <p>
+            Rivian Rewards Hub is an independent website operated by a Rivian owner and is not affiliated with or endorsed by Rivian Automotive, Inc.
+          </p>
+
+          <p>
+            Some pages may contain referral links or product links that help support the site, but reviews and opinions are based entirely on personal ownership experience.
+          </p>
+
+          <p>
+            The goal is to keep the site practical, visually clean, and genuinely useful for other owners and future buyers.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+
+    <div class="container">
+      © 2026 Rivian Rewards Hub · Independent Rivian owner website.
+    </div>
+
+  </footer>
+
+</body>
+</html>
