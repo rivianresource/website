@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Rivian Accessory Reviews | Rivian Rewards Hub</title>
+
+  <meta
+    name="description"
+    content="Hands-on Rivian accessory reviews including charging adapters, floor mats, organizers, screen protectors, spare tire kits, and real-world R1S/R1T upgrades."
+  />
+
+  <link rel="canonical" href="https://www.rivianrewardshub.com/accessories/" />
+
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+
+    :root {
+      --green: #12b87a;
+      --green-dim: rgba(18, 184, 122, 0.12);
+      --bg: #07101f;
+      --bg-alt: #0a1422;
+      --bg-card: #0d1a2d;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.13);
+      --text: #e8edf4;
+      --text-muted: #8a9ab5;
+      --radius: 20px;
+      --radius-sm: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    /* NAV */
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(7,16,31,0.88);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .nav-brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 80px 0 60px;
+    }
+
+    .section-label {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 22px;
+      max-width: 760px;
+    }
+
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 18px;
+      max-width: 680px;
+    }
+
+    /* GRID */
+
+    .accessories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+      padding-bottom: 80px;
+    }
+
+    .accessory-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .accessory-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+    }
+
+    .accessory-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .accessory-content {
+      padding: 24px;
+    }
+
+    .accessory-category {
+      display: inline-block;
+      background: var(--green-dim);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    .accessory-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .accessory-desc {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 22px;
+    }
+
+    .rating {
+      color: #f5c451;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .review-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+      transition: gap 0.2s ease;
+    }
+
+    .review-link:hover {
+      gap: 12px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0 60px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .affiliate-note {
+      margin-top: 18px;
+      color: #667892;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+
+      .nav-inner {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAV -->
+
+  <div class="top-nav">
+
+    <div class="container nav-inner">
+
+      <a href="/" class="nav-brand">
+        <img src="/logo.png" alt="Rivian Rewards Hub">
+        <span>Rivian Rewards Hub</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/reviews/2026-rivian-r1s-90-day-review/">Review</a>
+        <a href="/accessories/">Accessories</a>
+        <a href="/about/">About</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- HERO -->
+
+  <div class="container">
+
+    <section class="hero">
+
+      <div class="section-label">
+        Gear & Accessories
+      </div>
+
+      <h1 class="hero-title">
+        Rivian Accessory Reviews
+      </h1>
+
+      <p class="hero-sub">
+        Real-world reviews, install impressions, photos, charging gear, storage upgrades, and tested accessories for the Rivian R1S and R1T.
+      </p>
+
+    </section>
+
+  </div>
+
+  <!-- ACCESSORY GRID -->
+
+  <div class="container">
+
+    <div class="accessories-grid">
+
+      <!-- CARD -->
+
+      <article class="accessory-card">
+
+        <img
+          src="/accessories/images/a2z-adapter.jpg"
+          alt="A2Z NACS Adapter"
+          loading="lazy"
+        >
+
+        <div class="accessory-content">
+
+          <div class="accessory-category">
+            Charging
+          </div>
+
+          <h2 class="accessory-title">
+            A2Z NACS Adapter
+          </h2>
+
+          <p class="accessory-desc">
+            Tesla Supercharger access for the R1S and R1T. Real-world charging impressions, compatibility notes, and long-term use experience.
+          </p>
+
+          <div class="rating">
+            ★★★★★
+          </div>
+
+          <a
+            href="/accessories/a2z-nacs-adapter/"
+            class="review-link"
+          >
+            Read Review →
+          </a>
+
+        </div>
+
+      </article>
+
+      <!-- CARD -->
+
+      <article class="accessory-card">
+
+        <img
+          src="/accessories/images/screen-protectors.jpg"
+          alt="TWRAPS Screen Protectors"
+          loading="lazy"
+        >
+
+        <div class="accessory-content">
+
+          <div class="accessory-category">
+            Interior
+          </div>
+
+          <h2 class="accessory-title">
+            TWRAPS Screen Protectors
+          </h2>
+
+          <p class="accessory-desc">
+            Matte vs gloss impressions, install difficulty, visibility, fingerprint resistance, and long-term durability.
+          </p>
+
+          <div class="rating">
+            ★★★★☆
+          </div>
+
+          <a
+            href="/accessories/twraps-screen-protectors/"
+            class="review-link"
+          >
+            Read Review →
+          </a>
+
+        </div>
+
+      </article>
+
+      <!-- CARD -->
+
+      <article class="accessory-card">
+
+        <img
+          src="/accessories/images/spare-kit.jpg"
+          alt="Compact Spare Tire Kit"
+          loading="lazy"
+        >
+
+        <div class="accessory-content">
+
+          <div class="accessory-category">
+            Emergency Gear
+          </div>
+
+          <h2 class="accessory-title">
+            Compact Spare Tire Kit
+          </h2>
+
+          <p class="accessory-desc">
+            Storage fitment, road trip practicality, cargo impact, and whether carrying a spare is worth it for the R1S.
+          </p>
+
+          <div class="rating">
+            ★★★★★
+          </div>
+
+          <a
+            href="/accessories/compact-spare-kit/"
+            class="review-link"
+          >
+            Read Review →
+          </a>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container">
+
+      <img
+        src="/logo.png"
+        alt="Rivian Rewards Hub"
+        style="
+          width:90px;
+          opacity:0.35;
+          margin-bottom:18px;
+        "
+      >
+
+      <div>
+        Independent Rivian owner accessory reviews and recommendations.
+      </div>
+
+      <div class="affiliate-note">
+        This page may contain affiliate links. As an Amazon Associate, I may earn from qualifying purchases.
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
