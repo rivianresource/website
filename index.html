@@ -644,17 +644,6 @@
   min-width: 0;
 }
 
-.news-layout {
-  display: grid;
-  grid-template-columns: 1.5fr 0.7fr;
-  gap: 22px;
-  align-items: start;
-}
-
-.news-main {
-  min-width: 0;
-}
-
 .news-sidebar {
   display: flex;
   flex-direction: column;
@@ -1000,7 +989,17 @@
   .rewards-grid,
   .vehicle-wrap { grid-template-columns: 1fr; }
 
-      .news-grid { grid-template-columns: 1fr; }
+      .news-layout {
+  grid-template-columns: 1fr;
+}
+
+.news-sidebar {
+  position: static;
+}
+
+.news-grid {
+  grid-template-columns: 1fr;
+}
 
       .config-cols { grid-template-columns: 1fr 1fr; }
 
@@ -1362,8 +1361,10 @@
   <!-- ─── VEHICLE CONFIG ─── -->
   <div class="container">
     <section>
-      <div class="section-label">My build</div>
-      <h2 class="section-title">2026 Rivian R1S</h2>
+      <div class="section-label">Owner Vehicle</div>
+      <h2 class="section-title">
+  Current Rivian Configuration
+</h2>
 
       <div class="vehicle-wrap">
         <div class="vehicle-img-wrap">
