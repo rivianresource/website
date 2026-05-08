@@ -1254,79 +1254,57 @@
 
 <hr class="divider">
   
-  <!-- ─── NEWS ─── -->
+ <!-- ─── NEWS ─── -->
   <div class="container">
     <section>
       <div class="section-label">Stay current</div>
       <h2 class="section-title">Latest Rivian news</h2>
       <p class="section-sub">
-  Major Rivian announcements, EV industry updates, charging expansion, software releases, and production news.
-</p>
+        Major Rivian announcements, EV industry updates, charging expansion, software releases, and production news.
+      </p>
       <div class="news-layout">
 
-  <div class="news-main">
-
-    <div id="newsFeed" style="margin-top: 32px;">
-        <div class="news-grid">
-          <div class="skeleton" style="height: 240px; border-radius: 20px;"></div>
-          <div style="display:flex; flex-direction:column; gap: 12px;">
-            <div class="skeleton" style="height:95px; border-radius:12px;"></div>
-            <div class="skeleton" style="height:95px; border-radius:12px;"></div>
-            <div class="skeleton" style="height:95px; border-radius:12px;"></div>
+        <div class="news-main">
+          <div id="newsFeed">
+            <div style="display:grid; grid-template-columns:1.25fr 0.9fr; gap:18px;">
+              <div class="skeleton" style="height: 420px; border-radius: 20px;"></div>
+              <div style="display:flex; flex-direction:column; gap: 12px;">
+                <div class="skeleton" style="height:95px; border-radius:12px;"></div>
+                <div class="skeleton" style="height:95px; border-radius:12px;"></div>
+                <div class="skeleton" style="height:95px; border-radius:12px;"></div>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div class="news-sidebar">
+          <div class="stock-widget-card">
+            <div class="section-label" style="margin-bottom:8px;">NASDAQ</div>
+            <h3 class="stock-title" style="font-size:24px; margin-bottom:18px;">
+              Rivian Automotive (RIVN)
+            </h3>
+            <div class="tradingview-widget-container">
+              <div id="tradingview_rivn"></div>
+            </div>
+            
+              href="https://www.nasdaq.com/market-activity/stocks/rivn"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="stock-link"
+              style="margin-top:18px; display:inline-flex;"
+            >
+              View Market Data →
+            </a>
+          </div>
+          <div class="card">
+            <div class="section-label">Market Snapshot</div>
+            <p style="color:var(--text-muted); font-size:15px; line-height:1.75;">
+              Rivian remains one of the most closely watched EV manufacturers as production ramps, R2 development progresses, and charging infrastructure expands.
+            </p>
+          </div>
+        </div>
+
       </div>
-      </div>
-
-  <div class="news-sidebar">
-
-    <div class="stock-widget-card">
-
-      <div class="section-label" style="margin-bottom:8px;">
-        NASDAQ
-      </div>
-
-      <h3 class="stock-title" style="font-size:24px; margin-bottom:18px;">
-        Rivian Automotive (RIVN)
-      </h3>
-
-      <div class="tradingview-widget-container">
-
-        <div id="tradingview_rivn"></div>
-
-      </div>
-
-      <a
-        href="https://www.nasdaq.com/market-activity/stocks/rivn"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="stock-link"
-        style="margin-top:18px; display:inline-flex;"
-      >
-        View Market Data →
-      </a>
-
-    </div>
-
-    <div class="card">
-
-      <div class="section-label">
-        Market Snapshot
-      </div>
-
-      <p style="
-        color:var(--text-muted);
-        font-size:15px;
-        line-height:1.75;
-      ">
-        Rivian remains one of the most closely watched EV manufacturers as production ramps, R2 development progresses, and charging infrastructure expands.
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
     </section>
   </div>
 
@@ -1338,7 +1316,6 @@
       <div class="section-label">Helpful links</div>
       <h2 class="section-title">Rivian owner resources</h2>
       <p class="section-sub">The best third-party tools and communities for R1S, R1T, and R2 owners.</p>
-
       <div class="resources-grid">
         <div class="resource-card">
           <h3>Rivian Roamer</h3>
