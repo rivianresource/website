@@ -91,24 +91,74 @@
 
   <style>
 
-    :root {
-      --green: #12b87a;
-      --green-dim: rgba(18, 184, 122, 0.12);
-      --green-glow: rgba(18, 184, 122, 0.25);
-      --gold: #d4a832;
-      --gold-dim: rgba(212, 168, 50, 0.12);
-      --bg: #07101f;
-      --bg-card: #0d1a2d;
-      --bg-card-alt: #0a1525;
-      --border: rgba(255,255,255,0.07);
-      --border-hover: rgba(255,255,255,0.13);
-      --text: #e8edf4;
-      --text-muted: #8a9ab5;
-      --text-dim: #5a6a82;
-      --radius: 20px;
-      --radius-sm: 12px;
-    }
+   :root {
+  --green: #12b87a;
+  --green-dim: rgba(18, 184, 122, 0.12);
+  --green-glow: rgba(18, 184, 122, 0.25);
+  --gold: #d4a832;
+  --gold-dim: rgba(212, 168, 50, 0.12);
+  --bg: #07101f;
+  --bg-card: #0d1a2d;
+  --bg-card-alt: #0a1525;
+  --border: rgba(255,255,255,0.07);
+  --border-hover: rgba(255,255,255,0.13);
+  --text: #e8edf4;
+  --text-muted: #8a9ab5;
+  --text-dim: #5a6a82;
+  --radius: 20px;
+  --radius-sm: 12px;
+}
 
+/* ─── STOCK TICKER ─── */
+
+.stock-widget-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.stock-widget-card:hover {
+  border-color: var(--border-hover);
+}
+
+.stock-widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.stock-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.stock-link {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: opacity 0.2s ease;
+}
+
+.stock-link:hover {
+  opacity: 0.8;
+}
+
+.tradingview-widget-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+}
+    
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
@@ -516,12 +566,6 @@
       font-size: 15px;
       line-height: 1.6;
     }
-<hr class="divider">
-
-    </div>
-
-  <hr class="divider">
-
  
 
 
@@ -1026,7 +1070,6 @@
     </section>
   </div>
 
-  <hr class="divider">
 <hr class="divider">
 
 <!-- ─── VEHICLE REVIEW ─── -->
@@ -1289,6 +1332,7 @@
         <a
           href="https://www.nasdaq.com/market-activity/stocks/rivn"
           target="_blank"
+          rel="noopener noreferrer"
           class="stock-link"
         >
           View Market Data →
@@ -1306,8 +1350,8 @@
 
         <script type="text/javascript">
           new TradingView.widget({
-            "width": "100%",
-            "height": 220,
+            "autosize": true,
+            "height": 260,
             "symbol": "NASDAQ:RIVN",
             "interval": "D",
             "timezone": "America/Los_Angeles",
