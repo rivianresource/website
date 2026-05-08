@@ -1553,18 +1553,13 @@ feedContainer.innerHTML = `
        rel="noopener noreferrer"
        class="news-featured">
 
-     ${
-  featuredImage
-    ? `
-      <img
-        src="${featuredImage}"
-        alt="${cleanTitle(featured.title)}"
-        class="news-featured-image"
-        loading="lazy"
-      >
-    `
-    : ""
-}
+     ${featuredImage ? `
+  <img src="${featuredImage}" alt="${cleanTitle(featured.title)}" class="news-featured-image" loading="lazy">
+` : `
+  <div style="height:120px; border-radius:14px; margin-bottom:22px; background:linear-gradient(135deg, rgba(18,184,122,0.12), rgba(18,184,122,0.04)); display:flex; align-items:center; padding:0 20px;">
+    <span style="color:var(--green); font-weight:700; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">${getSource(featured.title)}</span>
+  </div>
+`}
 
       <span class="news-badge">Featured Story</span>
 
@@ -1637,7 +1632,7 @@ document.addEventListener("DOMContentLoaded", loadRivianNews);
       theme: "dark",
       locale: "en",
       autosize: true,
-      height: 300,
+      height: 360,
       hide_top_toolbar: false,
       hide_legend: false,
       save_image: false,
