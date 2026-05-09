@@ -7,17 +7,14 @@
 
   <title>Rivian Referral Code + Rewards Points | Real Owner Reviews</title>
 
-<meta
-  name="description"
-  content="Use Rivian referral code SCOTT4395475 for Rivian Rewards points and complimentary Adventure Network charging. Real Rivian R1S owner reviews, accessories, charging impressions, and ownership resources."
-/> <link rel="canonical" href="https://www.rivianrewardshub.com/" />
-<meta
-  property="og:title"
-  content="Rivian Referral Code — Rewards Points + Free Charging"
-/> <meta
-  property="og:description"
-  content="Use Rivian referral code SCOTT4395475 for Rivian Rewards points and complimentary Adventure Network charging. Independent Rivian owner reviews and ownership resources."
-/> <meta property="og:image" content="https://www.rivianrewardshub.com/r1s.jpg" />
+  <meta
+    name="description"
+    content="Use Rivian referral code SCOTT4395475 for Rivian Rewards points and complimentary Adventure Network charging. Real Rivian R1S owner reviews, accessories, charging impressions, and ownership resources."
+  />
+  <link rel="canonical" href="https://www.rivianrewardshub.com/" />
+  <meta property="og:title" content="Rivian Referral Code — Rewards Points + Free Charging"/>
+  <meta property="og:description" content="Use Rivian referral code SCOTT4395475 for Rivian Rewards points and complimentary Adventure Network charging. Independent Rivian owner reviews and ownership resources."/>
+  <meta property="og:image" content="https://www.rivianrewardshub.com/r1s.jpg" />
   <meta property="og:url" content="https://www.rivianrewardshub.com/" />
   <meta property="og:type" content="website" />
 
@@ -322,6 +319,57 @@
 
     #copiedMessage { display: none; margin-top: 18px; color: var(--green); font-weight: 600; font-size: 15px; }
 
+    /* ─── STEPS STRIP ─── */
+    .steps-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      max-width: 680px;
+      margin: 48px auto 0;
+    }
+
+    .step {
+      background: var(--bg-card);
+      padding: 22px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--green-dim);
+      border: 1px solid rgba(18,184,122,0.25);
+      color: var(--green);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-text strong {
+      display: block;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .step-text span {
+      color: var(--text-dim);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
     /* ─── SECTION WRAPPERS ─── */
     section { padding: 64px 0; }
 
@@ -358,10 +406,6 @@
 
     .card:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,0.22); }
     .card-accented { border-left: 3px solid var(--green); }
-
-    /* ─── HOW IT WORKS ─── */
-    .how-text p { color: var(--text-muted); font-size: 16px; line-height: 1.7; margin-bottom: 18px; }
-    .how-text p:last-child { margin-bottom: 0; }
 
     /* ─── REWARDS GRID ─── */
     .rewards-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
@@ -475,48 +519,6 @@
     .news-view-all:hover { gap: 10px; }
     .news-view-all::after { content: '→'; }
 
-    /* ─── VEHICLE CONFIG ─── */
-    .vehicle-wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 44px; align-items: center; }
-
-    .vehicle-img-wrap { border-radius: var(--radius); overflow: hidden; position: relative; }
-
-    .vehicle-img-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      pointer-events: none;
-    }
-
-    .vehicle-img-wrap img { width: 100%; display: block; border-radius: var(--radius); }
-
-    .config-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
-
-    .config-group h4 {
-      font-family: 'Figtree', sans-serif;
-      font-weight: 600;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 14px;
-    }
-
-    .config-group ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-
-    .config-group li { color: var(--text); font-size: 15px; display: flex; align-items: flex-start; gap: 9px; }
-
-    .config-group li::before {
-      content: '';
-      flex-shrink: 0;
-      margin-top: 7px;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--green);
-    }
-
     /* ─── RESOURCES ─── */
     .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
 
@@ -562,11 +564,14 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      .rewards-grid, .vehicle-wrap { grid-template-columns: 1fr; }
-      .config-cols { grid-template-columns: 1fr 1fr; }
+      .rewards-grid { grid-template-columns: 1fr; }
       .hero { padding: 52px 0 60px; }
       .code-block { flex-direction: column; gap: 10px; }
       .code-divider { width: 80px; height: 1px; }
+    }
+
+    @media (max-width: 700px) {
+      .steps-strip { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 600px) {
@@ -574,7 +579,6 @@
       .btn { justify-content: center; }
       .card { padding: 24px; }
       .contact-card { padding: 36px 24px; }
-      .config-cols { grid-template-columns: 1fr; }
       .news-teaser-meta { display: none; }
     }
 
@@ -590,18 +594,17 @@
         <img src="logo.png" alt="Rivian Rewards Hub">
         <span>Rivian Rewards Hub</span>
       </a>
-     <div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/rivian-referral-code/">Referral Code</a>
-  <a href="/reviews/2026-rivian-r1s-90-day-review/">R1S Review</a>
-  <a href="/accessories/">Accessories</a>
-  <a href="/news/">News</a>
-  <a href="/about/">About</a>
-</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/reviews/2026-rivian-r1s-90-day-review/">R1S Review</a>
+        <a href="/accessories/">Accessories</a>
+        <a href="/news/">News</a>
+        <a href="/about/">About</a>
+      </div>
     </div>
   </div>
 
-   <!-- ─── HERO ─── -->
+  <!-- ─── HERO ─── -->
   <div class="hero-wrap">
     <div class="hero-glow"></div>
 
@@ -610,65 +613,42 @@
 
         <img src="logo.png" alt="Rivian Rewards Hub" class="site-logo fade-up fade-up-1">
 
-        <div class="hero-eyebrow fade-up fade-up-1">
-          Rivian Referral Code + Owner Reviews
-        </div>
-
         <h1 class="hero-title fade-up fade-up-2">
           Rivian Referral Code:<br>
           <span>Rewards Points + Free Charging</span>
         </h1>
 
         <p class="hero-sub fade-up fade-up-3">
-          Use referral code <strong>SCOTT4395475</strong> when ordering a new
-          Rivian R1S, R1T, or R2 to receive Rivian Rewards points and
-          complimentary Adventure Network charging.
+          Use code <strong>SCOTT4395475</strong> when ordering an R1S, R1T, or R2
+          to unlock Rewards points and 3 months of complimentary Adventure Network charging.
         </p>
 
         <div class="code-block fade-up fade-up-3">
-
           <div>
             <div class="code-label">Referral Code</div>
             <div class="code-value">SCOTT4395475</div>
           </div>
-
           <div class="code-divider"></div>
-
           <div>
             <div class="code-label">Free Charging</div>
-            <div class="code-value" style="color: var(--gold);">
-              3 Months
-            </div>
+            <div class="code-value" style="color: var(--gold);">3 Months</div>
           </div>
-
           <div class="code-divider"></div>
-
           <div>
             <div class="code-label">Max Rewards</div>
             <div class="code-value">500 Points</div>
           </div>
-
         </div>
 
         <div class="btn-row fade-up fade-up-4">
-
           <button
             class="btn btn-primary"
             onclick="trackCopyClick(); copyCode();"
           >
-            <svg
-              class="btn-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="9" y="9" width="13" height="13" rx="2"/>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
             </svg>
-
             Copy Code &amp; Open Rivian
           </button>
 
@@ -678,114 +658,42 @@
             target="_blank"
             onclick="trackConfiguratorClick()"
           >
-            <svg
-              class="btn-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
               <polyline points="15 3 21 3 21 9"/>
               <line x1="10" y1="14" x2="21" y2="3"/>
             </svg>
-
             Configure Your Rivian
           </a>
-
         </div>
-<!-- TRUST SIGNALS -->
-<p
-  class="fade-up fade-up-4"
-  style="
-    margin-top:18px;
-    color:var(--text-dim);
-    font-size:14px;
-    text-align:center;
-  "
->
-  Independent Rivian owner • Real-world reviews • No paywall • No signup required
-</p>
 
-<p id="copiedMessage">
-  ✓ Referral code copied — opening Rivian configurator…
-</p>
-        
-  
+        <p id="copiedMessage">
+          ✓ Referral code copied — opening Rivian configurator…
+        </p>
 
-        <!-- TRUST / OWNER CONTENT -->
-        <div
-          class="card card-accented fade-up fade-up-4"
-          style="
-            max-width: 840px;
-            margin: 42px auto 0;
-            text-align: left;
-            background: rgba(255,255,255,0.02);
-          "
-        >
-
-          <div
-            style="
-              display:flex;
-              gap:22px;
-              align-items:flex-start;
-              flex-wrap:wrap;
-            "
-          >
-
-            <div style="flex:1; min-width:260px;">
-
-              <div
-                style="
-                  color:var(--green);
-                  font-size:12px;
-                  font-weight:600;
-                  letter-spacing:.08em;
-                  text-transform:uppercase;
-                  margin-bottom:10px;
-                "
-              >
-                Real Ownership Content
-              </div>
-
-              <h2
-                style="
-                  font-family:'DM Sans', sans-serif;
-                  font-size:28px;
-                  line-height:1.2;
-                  margin-bottom:14px;
-                  color:#fff;
-                "
-              >
-                Real Rivian owner reviews, charging impressions, accessories, and ownership resources
-              </h2>
-
-              <p
-                style="
-                  color:var(--text-muted);
-                  font-size:16px;
-                  line-height:1.75;
-                  margin-bottom:22px;
-                "
-              >
-                Independent Rivian ownership content from a Las Vegas-based
-                R1S owner including road trip charging, software impressions,
-                accessories, service experiences, and long-term ownership notes.
-              </p>
-
-              <a
-                href="/reviews/2026-rivian-r1s-90-day-review/"
-                class="btn btn-secondary"
-              >
-                Read the 90-Day R1S Review
-              </a>
-
+        <!-- 3-step strip — replaces the separate "How it works" section -->
+        <div class="steps-strip fade-up fade-up-4">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <strong>Copy the code</strong>
+              <span>Use the button above or copy SCOTT4395475 manually</span>
             </div>
-
           </div>
-
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <strong>Apply at checkout</strong>
+              <span>Enter during your R1S, R1T, or R2 order — or ask a Rivian Guide to add it before delivery</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <strong>Receive rewards</strong>
+              <span>Points and free charging are linked to your account after delivery</span>
+            </div>
+          </div>
         </div>
 
       </section>
@@ -794,39 +702,7 @@
 
   <hr class="divider">
 
-  <!-- ─── HOW IT WORKS ─── -->
-  <div class="section-alt">
-    <div class="container">
-      <section>
-        <div class="how-inner card card-accented">
-          <div class="how-text">
-            <div class="section-label">How it works</div>
-           <h2 class="section-title" style="margin-bottom: 20px;">
-  How Rivian Referral Rewards Work
-</h2>
-
-<p>
-  Use referral code <strong>SCOTT4395475</strong> during checkout when ordering
-  a qualifying Rivian vehicle.
-</p>
-
-<p>
-  After delivery, your Rivian account receives Rewards points plus
-  complimentary Rivian Adventure Network charging.
-</p>
-
-<p>
-  Forgot to add the code? Rivian Guides can usually apply it before delivery.
-</p>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- ─── REWARDS ─── -->
+  <!-- ─── REWARDS BREAKDOWN ─── -->
   <div class="container">
     <section>
       <div class="section-label">What you get</div>
@@ -853,44 +729,13 @@
           <div>
             <div class="charge-big">3</div>
             <div class="charge-unit">months free</div>
-            <p class="charge-note">Automatically connected to your Rivian account. No activation needed — just plug in and charge at any Rivian Adventure Network station.</p>
+            <p class="charge-note">Automatically connected to your account. No activation needed — just plug in at any Rivian Adventure Network station.</p>
           </div>
         </div>
       </div>
     </section>
   </div>
-<section>
-  <div class="section-label">Quick Steps</div>
 
-  <h2 class="section-title">
-    How To Use The Referral Code
-  </h2>
-
-  <div class="resources-grid">
-
-    <div class="resource-card">
-      <h3>1. Copy The Code</h3>
-      <p>
-        Copy referral code SCOTT4395475 directly from this page.
-      </p>
-    </div>
-
-    <div class="resource-card">
-      <h3>2. Configure Your Rivian</h3>
-      <p>
-        Apply the code while ordering your R1S, R1T, or R2.
-      </p>
-    </div>
-
-    <div class="resource-card">
-      <h3>3. Receive Rewards</h3>
-      <p>
-        Rewards points and complimentary charging are added after delivery.
-      </p>
-    </div>
-
-  </div>
-</section>
   <hr class="divider">
 
   <!-- ─── FEATURED REVIEW ─── -->
@@ -899,7 +744,7 @@
       <section>
         <div class="section-label">Featured Review</div>
         <h2 class="section-title">90 Days With My 2026 Rivian R1S</h2>
-        <p class="section-sub">Real-world ownership impressions after daily driving in Las Vegas including charging, service experience, software quirks, Sound + Vision impressions, and tire decisions.</p>
+        <p class="section-sub">Real-world ownership impressions after daily driving in Las Vegas — charging, service experience, software quirks, Sound + Vision impressions, and tire decisions.</p>
         <div class="card card-accented">
           <p style="color:var(--text-muted); font-size:16px; line-height:1.85; margin-bottom:28px; max-width:760px;">
             After 90 days, the R1S has become one of the most enjoyable vehicles I've owned. The driving experience is exceptional, though a few software quirks and service issues still exist.
@@ -937,7 +782,6 @@
         <div class="section-label">Latest News</div>
         <h2 class="section-title">Rivian &amp; EV Industry News</h2>
         <div id="newsTeaserFeed" style="margin-top: 32px;">
-          <!-- Skeletons while loading -->
           <div class="news-teaser-grid">
             <div class="skeleton" style="height: 56px; border-radius: 12px;"></div>
             <div class="skeleton" style="height: 56px; border-radius: 12px;"></div>
@@ -952,43 +796,48 @@
   <hr class="divider">
 
   <!-- ─── FAQ ─── -->
-  <div class="section-alt">
-    <div class="container">
-      <section>
-        <div class="section-label">Questions</div>
-        <h2 class="section-title">Frequently asked</h2>
-        <div class="faq-list" style="margin-top: 32px;">
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              What if I forgot to enter the referral code?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-a"><p>Rivian Guides can typically add a referral code after ordering as long as your vehicle hasn't been delivered yet. Contact Rivian support through the app or website.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              When are points added to my account?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-a"><p>Points are generally credited within two weeks of your vehicle being delivered. You'll see them in your Rivian Rewards account in the app.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              How does free Adventure Network charging work?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-a"><p>Complimentary charging is linked directly to your Rivian account after delivery. Just plug in at any Rivian Adventure Network charger — billing is handled automatically.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              Is this an official Rivian website?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-a"><p>No. Rivian Rewards Hub is an independent, owner-operated website and is not affiliated with or endorsed by Rivian Automotive, Inc.</p></div>
-          </div>
+  <div class="container">
+    <section>
+      <div class="section-label">Questions</div>
+      <h2 class="section-title">Frequently asked</h2>
+      <div class="faq-list" style="margin-top: 32px;">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What if I forgot to enter the referral code?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Rivian Guides can typically add a referral code after ordering as long as your vehicle hasn't been delivered yet. Contact Rivian support through the app or website.</p></div>
         </div>
-      </section>
-    </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            When are points added to my account?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Points are generally credited within two weeks of your vehicle being delivered. You'll see them in your Rivian Rewards account in the app.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do Rivian Rewards points expire?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Yes. Points currently expire two years after being added to your account, so plan your redemptions accordingly.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How does free Adventure Network charging work?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Complimentary charging is linked directly to your Rivian account after delivery. Just plug in at any Rivian Adventure Network charger — billing is handled automatically.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is this an official Rivian website?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>No. Rivian Rewards Hub is an independent, owner-operated website and is not affiliated with or endorsed by Rivian Automotive, Inc.</p></div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <hr class="divider">
@@ -1005,7 +854,7 @@
     </section>
   </div>
 
-  <!-- ─── FOOTER ─── -->
+  <!-- ─── FOOTER ─── */
   <footer>
     <div class="container">
       <img src="logo.png" alt="Rivian Rewards Hub" style="width: 100px; opacity: 0.35; display: block; margin: 0 auto 16px;">
