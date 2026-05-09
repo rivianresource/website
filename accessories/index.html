@@ -250,12 +250,12 @@
       border-top: 1px solid var(--border);
     }
 
-    .review-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 54px;
-      align-items: center;
-    }
+.review-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 54px;
+  align-items: start;
+}
 
 .review-image img {
   width: 100%;
@@ -264,6 +264,9 @@
   border: 1px solid var(--border);
   transition: transform 0.35s ease;
   cursor: pointer;
+  position: sticky;
+  top: 88px; 
+
 }
 
 .review-image a:hover img {
