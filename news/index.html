@@ -592,9 +592,9 @@
         </div>
       `;
 
-      setTimeout(() => {
-        loadStockWidget();
-      }, 300);
+      requestAnimationFrame(() => {
+  loadStockWidget();
+});
 
     } catch (error) {
 
