@@ -25,7 +25,7 @@
     gtag('config', 'G-SB8DBC8NBQ');
   </script>
 
-  <link rel="icon" type="image/png" href="/images/logo.svg"/>
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,9 +58,7 @@
     }
 
     @media (max-width: 900px) {
-      .builder-grid {
-        grid-template-columns: 1fr;
-      }
+      .builder-grid { grid-template-columns: 1fr; }
     }
 
     .builder-card {
@@ -304,15 +302,11 @@
 
 <div class="page-header">
   <div class="container">
-
     <div class="page-eyebrow">Configuration Comparison</div>
-
     <h1 class="page-title">Rivian R1S vs R2</h1>
-
     <p class="page-sub">
       Build and compare Rivian configurations with dynamically calculated specs, pricing, range, and capability.
     </p>
-
   </div>
 </div>
 
@@ -321,7 +315,7 @@
   <div class="compare-page">
 
     <div class="disclaimer">
-      Specifications, pricing, charging speeds, and estimated ranges may change over time and can vary based on wheels, tires, options, software updates, and production revisions. Displayed pricing does not include destination fees, taxes, registration, premium paint colors, interior upgrades, accessories, or optional equipment. R2 specifications are based on Rivian public announcements and pre-production information and remain subject to change. Always verify final configuration details directly at Rivian.com before ordering.
+      Specifications, pricing, charging speeds, and estimated ranges may change over time and can vary based on wheels, tires, options, software updates, and production revisions. Displayed pricing does not include destination fees ($1,895), taxes, registration, premium paint colors, interior upgrades, accessories, or optional equipment. R2 specifications are based on Rivian public announcements and pre-production information and remain subject to change. Ranges shown are EPA estimates based on standard wheel configurations; actual range varies. Always verify final configuration details directly at Rivian.com before ordering.
     </div>
 
     <!-- BUILDERS -->
@@ -329,20 +323,16 @@
     <div class="builder-grid">
 
       <!-- R1S -->
-
       <div class="builder-card">
-
         <div class="builder-header">
           <div class="builder-title">R1S Builder</div>
-          <div class="builder-sub">Current Gen 2 configuration system</div>
+          <div class="builder-sub">2026 Gen 2 · All configs AWD</div>
         </div>
-
         <div class="builder-content">
 
           <div class="builder-group">
             <div class="builder-label">Drive System</div>
-
-            <select class="builder-select" id="r1sDrive" onchange="updateComparison()">
+            <select class="builder-select" id="r1sDrive" onchange="onDriveChange()">
               <option value="dual" selected>Dual Motor</option>
               <option value="tri">Tri Motor</option>
               <option value="quad">Quad Motor</option>
@@ -351,71 +341,63 @@
 
           <div class="builder-group">
             <div class="builder-label">Battery Pack</div>
-
             <select class="builder-select" id="r1sBattery" onchange="updateComparison()">
-              <option value="standard">Standard</option>
-              <option value="large">Large</option>
-              <option value="max" selected>Max</option>
+              <option value="standard">Standard — 92.5 kWh · 270 mi</option>
+              <option value="large">Large — 108.5 kWh · 329 mi</option>
+              <option value="max" selected>Max — 141.5 kWh · 410 mi</option>
             </select>
           </div>
 
-          <div class="builder-group">
-            <div class="builder-label">Performance Upgrade</div>
-
+          <div class="builder-group" id="perfGroup">
+            <div class="builder-label">Performance Upgrade <span style="font-size:10px;color:var(--text-dim);">+$5,000 · Large &amp; Max only</span></div>
             <select class="builder-select" id="r1sPerformance" onchange="updateComparison()">
-              <option value="standard">Standard Output</option>
-              <option value="performance" selected>Performance</option>
+              <option value="standard">Standard Output — 533 hp · 4.5s 0-60</option>
+              <option value="performance" selected>Performance — 665 hp · 3.4s 0-60</option>
             </select>
           </div>
 
           <div class="builder-group">
             <div class="builder-label">Wheels</div>
-
             <select class="builder-select" id="r1sWheels" onchange="updateComparison()">
-              <option value="20">20" All-Terrain</option>
-              <option value="22">22" Sport</option>
-              <option value="22range" selected>22" Range</option>
+              <option value="20">20" All-Terrain (−18 mi range)</option>
+              <option value="22sport">22" Sport (−8 mi range)</option>
+              <option value="22range" selected>22" Range / Aero (EPA baseline)</option>
             </select>
           </div>
 
           <div class="builder-note">
-            Pricing excludes destination, taxes, premium paint, accessories, and optional upgrades.
+            Performance Upgrade available on Large and Max packs only. Adds Sport and Soft Sand drive modes.
           </div>
 
         </div>
       </div>
 
       <!-- R2 -->
-
       <div class="builder-card">
-
         <div class="builder-header">
           <div class="builder-title">R2 Builder</div>
-          <div class="builder-sub">Estimated production configurations</div>
+          <div class="builder-sub">2026 · Dual Motor AWD · 87.9 kWh</div>
         </div>
-
         <div class="builder-content">
 
           <div class="builder-group">
             <div class="builder-label">Trim</div>
-
             <select class="builder-select" id="r2Trim" onchange="updateComparison()">
-              <option value="premium">Premium</option>
-              <option value="performance" selected>Performance</option>
+              <option value="premium">Premium — 450 hp · $53,990</option>
+              <option value="performance" selected>Performance — 656 hp · $57,990</option>
             </select>
           </div>
 
           <div class="builder-group">
             <div class="builder-label">Wheels</div>
-
             <select class="builder-select" id="r2Wheels" onchange="updateComparison()">
-              <option value="20">20" All-Terrain</option>
-              <option value="21" selected>21" Road</option>
+              <option value="std" selected>Standard (trim default)</option>
+              <option value="alt">Alternate wheel option</option>
             </select>
           </div>
 
-          <div class="builder-note">
-            R2 specifications and pricing remain estimated until Rivian releases final production configurations.
+          <div class="builder-note" id="r2WheelNote">
+            Performance standard: 21" Liquid Tungsten All-Season (330 mi EPA). Optional: 20" Black Sand All-Terrain (range est., not EPA-rated). Premium standard: 20" Bicolor Carbon All-Season (330 mi EPA). Optional: 21" Liquid Tungsten All-Season. Towing requires optional tow package (~$1,500).
           </div>
 
         </div>
@@ -424,37 +406,22 @@
     </div>
 
     <!-- HEADER -->
-
     <div class="compare-header">
-
       <div class="compare-header-empty"></div>
-
       <div class="compare-header-col">
-
         <div class="vehicle-name">R1S</div>
-
         <div class="vehicle-config" id="r1sConfigText"></div>
-
         <div class="vehicle-price" id="r1sPriceHeader"></div>
-
       </div>
-
       <div class="compare-header-col">
-
         <div class="vehicle-name">R2</div>
-
         <div class="vehicle-config" id="r2ConfigText"></div>
-
         <div class="vehicle-price" id="r2PriceHeader"></div>
-
       </div>
-
     </div>
 
     <!-- PRICE & RANGE -->
-
     <div class="compare-section rounded">
-
       <div class="compare-section-header">Price & Range</div>
 
       <div class="compare-row">
@@ -484,15 +451,19 @@
     </div>
 
     <!-- PERFORMANCE -->
-
     <div class="compare-section">
-
       <div class="compare-section-header">Performance</div>
 
       <div class="compare-row">
         <div class="compare-label">Horsepower</div>
         <div class="compare-cell" id="r1s-hp"></div>
         <div class="compare-cell" id="r2-hp"></div>
+      </div>
+
+      <div class="compare-row">
+        <div class="compare-label">Torque</div>
+        <div class="compare-cell" id="r1s-torque"></div>
+        <div class="compare-cell" id="r2-torque"></div>
       </div>
 
       <div class="compare-row">
@@ -510,9 +481,7 @@
     </div>
 
     <!-- CAPABILITY -->
-
     <div class="compare-section">
-
       <div class="compare-section-header">Capability</div>
 
       <div class="compare-row">
@@ -524,33 +493,37 @@
       <div class="compare-row">
         <div class="compare-label">Towing</div>
         <div class="compare-cell winner">7,700 lb</div>
-        <div class="compare-cell">~5,000 lb est.</div>
+        <div class="compare-cell">4,400 lb (w/ tow pkg)</div>
       </div>
 
       <div class="compare-row">
         <div class="compare-label">Ground clearance</div>
-        <div class="compare-cell winner">14.9 in</div>
-        <div class="compare-cell">~9.8 in est.</div>
+        <div class="compare-cell winner">14.9 in (air susp.)</div>
+        <div class="compare-cell">9.6 in</div>
       </div>
 
       <div class="compare-row">
         <div class="compare-label">Suspension</div>
         <div class="compare-cell winner">Adaptive air suspension</div>
-        <div class="compare-cell">Coil + adaptive dampers</div>
+        <div class="compare-cell">Semi-active (Perf.) / Fixed (Prem.)</div>
       </div>
 
       <div class="compare-row">
         <div class="compare-label">Water fording</div>
         <div class="compare-cell winner">43 in</div>
-        <div class="compare-cell">~20 in est.</div>
+        <div class="compare-cell">~20 in</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="compare-label">Frunk storage</div>
+        <div class="compare-cell winner">11.1 cu ft</div>
+        <div class="compare-cell">5.2 cu ft</div>
       </div>
 
     </div>
 
     <!-- TECH -->
-
     <div class="compare-section">
-
       <div class="compare-section-header">Tech & Features</div>
 
       <div class="compare-row">
@@ -577,10 +550,21 @@
         <div class="compare-cell">No</div>
       </div>
 
+      <div class="compare-row">
+        <div class="compare-label">Rivian Assistant</div>
+        <div class="compare-cell same">Yes (Connect+ req.)</div>
+        <div class="compare-cell same">Yes (Connect+ req.)</div>
+      </div>
+
+    </div>
+
+    <div class="note-card">
+      <p><strong>Owner perspective:</strong> Most buyers considering both models should think about the R2 first. The price gap is significant — $30K+ less than an R1S Dual Max — and for the majority of daily driving situations, 330 miles of range is plenty and 5 seats is enough.</p>
+      <p>The R1S earns its premium if you actually use the third row, tow regularly, or do serious off-roading where the air suspension, 43-inch water fording depth, and locking differentials matter. <strong>The deciding question is usually seating, not performance.</strong></p>
     </div>
 
     <div class="disclaimer" style="margin-top:18px;">
-      Estimated specifications are based on publicly available information as of May 2026.
+      Specifications sourced from Rivian, U.S. News, Car and Driver, and Rivian Roamer as of May 2026. R2 range on 20" wheels is estimated — Rivian has not published official EPA figures for that configuration.
     </div>
 
   </div>
@@ -589,375 +573,295 @@
 
 <script>
 
-  // ----------------------------------------
-  // HELPERS
-  // ----------------------------------------
+  // ── PRICING ──────────────────────────────
 
-  function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
-  function setCompare(id, leftText, rightText, leftValue, rightValue, higherWins = true) {
-
-    const left = document.getElementById(`r1s-${id}`);
-    const right = document.getElementById(`r2-${id}`);
-
-    const leftWins = higherWins
-      ? leftValue > rightValue
-      : leftValue < rightValue;
-
-    const rightWins = higherWins
-      ? rightValue > leftValue
-      : rightValue < leftValue;
-
-    left.className = leftWins
-      ? 'compare-cell winner'
-      : 'compare-cell';
-
-    right.className = rightWins
-      ? 'compare-cell winner'
-      : 'compare-cell';
-
-    left.textContent = leftText;
-    right.textContent = rightText;
-
-  }
-
-  // ----------------------------------------
-  // PRICING
-  // ----------------------------------------
-
-  const PRICING = {
-
+  // Base prices (excl. destination, options)
+  // Source: Rivian.com / confirmed press pricing May 2026
+  const BASE_PRICE = {
     dual: {
+      standard: 76990,   // Dual Standard — no Performance option
+      large:    83990,   // Dual Large base
+      max:      90990,   // Dual Max base
+    },
+    tri:  { max: 106990 },
+    quad: { max: 121990 },
+  };
 
+  const PERF_UPGRADE = 5000; // Available on Large and Max only
+
+  const WHEEL_ADDER = {
+    '20':      3500,  // 20" AT upgrade cost
+    '22sport': 1800,  // 22" Sport upgrade cost
+    '22range': 0,     // 22" Range is standard/included
+  };
+
+  // Confirmed specs per powertrain
+  // Sources: EPA, Rivian, U.S. News, Car and Driver
+  const R1S_SPECS = {
+    dual: {
       standard: {
-        standard: 76990,
-        performance: 81990
+        standard: { hp: 533, torque: 610, zero60: 4.5, charge: '220 kW' },
       },
-
       large: {
-        standard: 83990,
-        performance: 88990
+        standard:    { hp: 533, torque: 610, zero60: 4.5, charge: '220 kW' },
+        performance: { hp: 665, torque: 829, zero60: 3.4, charge: '220 kW' },
       },
-
       max: {
-        standard: 90990,
-        performance: 95990
-      }
-
+        standard:    { hp: 533, torque: 610, zero60: 4.5, charge: '220 kW' },
+        performance: { hp: 665, torque: 829, zero60: 3.4, charge: '220 kW' },
+      },
     },
-
-    tri: {
-      max: 106990
-    },
-
-    quad: {
-      max: 123885
-    }
-
+    tri:  { max: { performance: { hp: 850, torque: 1103, zero60: 2.9, charge: '220 kW' } } },
+    quad: { max: { performance: { hp: 1025, torque: 1198, zero60: 2.6, charge: '220 kW' } } },
   };
 
-  const WHEEL_PRICING = {
-    '20': 3500,
-    '22': 1800,
-    '22range': 0
+  // EPA range per battery (22" Range/Aero baseline — EPA test configuration)
+  // Sources: EPA / U.S. News / Rivian
+  const R1S_RANGE = {
+    dual: { standard: 270, large: 329, max: 410 },
+    tri:  { max: 371 },
+    quad: { max: 374 },
   };
 
-  // ----------------------------------------
-  // R1S
-  // ----------------------------------------
+  const R1S_BATTERY = {
+    standard: '92.5 kWh',
+    large:    '108.5 kWh',   // CORRECTED from 109.4
+    max:      '141.5 kWh',
+  };
 
-  function buildR1S() {
+  // Wheel range adjustments vs EPA baseline (22" Range/Aero)
+  const R1S_WHEEL_ADJ = {
+    '22range': 0,
+    '22sport': -8,
+    '20':     -18,
+  };
 
+  // R2 specs — source: rivian.com live spec page, May 2026
+  // Performance standard wheel: 21" Liquid Tungsten All-Season (330 mi EPA)
+  // Performance optional wheel: 20" Black Sand All-Terrain (range not yet EPA-rated)
+  // Premium standard wheel: 20" Bicolor Carbon All-Season (330 mi EPA)
+  // Premium optional wheel: 21" Liquid Tungsten All-Season (range not yet EPA-rated)
+  const R2_SPECS = {
+    performance: {
+      hp: 656, torque: 609, zero60: 3.6, price: 57990,
+      stdWheel: '21', stdRange: 330, altRange: 315, // 20" AT est.
+    },
+    premium: {
+      hp: 450, torque: 537, zero60: 4.6, price: 53990,
+      stdWheel: '20', stdRange: 330, altRange: 332, // 21" all-season est. (similar range)
+    },
+  };
+
+  // ── HELPERS ──────────────────────────────
+
+  function fmt(n) { return n.toLocaleString(); }
+
+  function setCell(id, text, win) {
+    const el = document.getElementById(id);
+    el.textContent = text;
+    el.className = win ? 'compare-cell winner' : 'compare-cell';
+  }
+
+  function setEqual(id, text) {
+    const el = document.getElementById(id);
+    el.textContent = text;
+    el.className = 'compare-cell same';
+  }
+
+  // ── DRIVE CHANGE ─────────────────────────
+
+  function onDriveChange() {
+    const drive = document.getElementById('r1sDrive').value;
     const battery = document.getElementById('r1sBattery');
-    const drive = document.getElementById('r1sDrive');
-    const performance = document.getElementById('r1sPerformance');
-    const wheels = document.getElementById('r1sWheels');
+    const perf = document.getElementById('r1sPerformance');
+    const perfGroup = document.getElementById('perfGroup');
 
-    battery.disabled = false;
-    performance.disabled = false;
-
-    if (drive.value === 'tri' || drive.value === 'quad') {
-
+    // Tri and Quad: lock to Max, lock to Performance
+    if (drive === 'tri' || drive === 'quad') {
       battery.value = 'max';
       battery.disabled = true;
-
-      performance.value = 'performance';
-      performance.disabled = true;
-
-    }
-
-    const config = {
-      price: 0,
-      range: 0,
-      hp: 0,
-      zero60: 0,
-      battery: '',
-      charge: 220,
-      drivetrain: '',
-      name: ''
-    };
-
-    const wheelAdjustments = {
-      '20': -18,
-      '22': -8,
-      '22range': 0
-    };
-
-    // DUAL
-
-    if (drive.value === 'dual') {
-
-      config.drivetrain = 'Dual Motor AWD';
-
-      config.price =
-        PRICING.dual[battery.value][performance.value];
-
-      config.price += WHEEL_PRICING[wheels.value];
-
+      perf.value = 'performance';
+      perf.disabled = true;
+      perfGroup.style.opacity = '0.5';
+    } else {
+      battery.disabled = false;
+      perf.disabled = false;
+      perfGroup.style.opacity = '1';
+      // Standard pack: no Performance option
       if (battery.value === 'standard') {
-        config.range = 280;
-        config.battery = '92.5 kWh';
+        perf.value = 'standard';
+        perf.disabled = true;
+        perfGroup.style.opacity = '0.5';
       }
-
-      if (battery.value === 'large') {
-        config.range = 352;
-        config.battery = '109.4 kWh';
-      }
-
-      if (battery.value === 'max') {
-        config.range = 410;
-        config.battery = '141.5 kWh';
-      }
-
-      config.range += wheelAdjustments[wheels.value];
-
-      if (performance.value === 'performance') {
-        config.hp = 665;
-        config.zero60 = 3.4;
-      } else {
-        config.hp = 533;
-        config.zero60 = 4.5;
-      }
-
-      config.name =
-        `Dual ${capitalize(battery.value)} · ${
-          performance.value === 'performance'
-            ? 'Performance'
-            : 'Standard Output'
-        }`;
-
     }
-
-    // TRI
-
-    if (drive.value === 'tri') {
-
-      config.name = 'Tri Max';
-
-      config.price = PRICING.tri.max;
-
-      config.price +=
-        wheels.value === '20'
-          ? 3500
-          : 0;
-
-      config.range =
-        wheels.value === '20'
-          ? 353
-          : 371;
-
-      config.hp = 850;
-      config.zero60 = 2.9;
-      config.battery = '141.5 kWh';
-      config.drivetrain = 'Tri Motor AWD';
-
-    }
-
-    // QUAD
-
-    if (drive.value === 'quad') {
-
-      config.name = 'Quad';
-
-      config.price = PRICING.quad.max;
-
-      config.range =
-        wheels.value === '20'
-          ? 320
-          : 338;
-
-      config.hp = 1025;
-      config.zero60 = 2.5;
-      config.battery = '141.5 kWh';
-      config.drivetrain = 'Quad Motor AWD';
-
-    }
-
-    return config;
-
+    updateComparison();
   }
 
-  // ----------------------------------------
-  // R2
-  // ----------------------------------------
-
-  function buildR2() {
-
-    const trim = document.getElementById('r2Trim').value;
-    const wheels = document.getElementById('r2Wheels').value;
-
-    const config = {
-      name: '',
-      price: 0,
-      range: 0,
-      hp: 0,
-      zero60: 0,
-      battery: '87.9 kWh',
-      charge: '~210 kW',
-      drivetrain: 'Dual Motor AWD'
-    };
-
-    if (trim === 'premium') {
-
-      config.name = 'Premium';
-      config.price = 53990;
-      config.range = wheels === '20' ? 315 : 330;
-      config.hp = 450;
-      config.zero60 = wheels === '20' ? 4.7 : 4.6;
-
+  // Also lock perf when battery changes to Standard
+  document.getElementById('r1sBattery').addEventListener('change', function() {
+    const drive = document.getElementById('r1sDrive').value;
+    const perf = document.getElementById('r1sPerformance');
+    const perfGroup = document.getElementById('perfGroup');
+    if (drive === 'dual' && this.value === 'standard') {
+      perf.value = 'standard';
+      perf.disabled = true;
+      perfGroup.style.opacity = '0.5';
+    } else if (drive === 'dual') {
+      perf.disabled = false;
+      perfGroup.style.opacity = '1';
     }
+    updateComparison();
+  });
 
-    if (trim === 'performance') {
-
-      config.name = 'Performance';
-      config.price = 57990;
-      config.range = wheels === '20' ? 320 : 335;
-      config.hp = 656;
-      config.zero60 = wheels === '20' ? 3.7 : 3.6;
-
-    }
-
-    return config;
-
-  }
-
-  // ----------------------------------------
-  // UPDATE
-  // ----------------------------------------
+  // ── MAIN UPDATE ──────────────────────────
 
   function updateComparison() {
 
-    const r1s = buildR1S();
-    const r2 = buildR2();
+    const drive = document.getElementById('r1sDrive').value;
+    const battery = document.getElementById('r1sBattery').value;
+    const perf = document.getElementById('r1sPerformance').value;
+    const wheels = document.getElementById('r1sWheels').value;
+    const r2trim = document.getElementById('r2Trim').value;
 
-    document.getElementById('r1sConfigText').textContent =
-      `${r1s.name} · ${r1s.battery}`;
+    // ── R1S ──
 
-    document.getElementById('r2ConfigText').textContent =
-      `${r2.name} · ${r2.battery} (est.)`;
+    let r1sSpecs;
+    let r1sDrivetrain;
+    let r1sBatteryLabel;
+    let r1sBasePrice;
+    let r1sPerfLabel;
+    let r1sConfigLabel;
 
-    document.getElementById('r1sPriceHeader').textContent =
-      `$${r1s.price.toLocaleString()}`;
+    if (drive === 'dual') {
+      r1sSpecs = R1S_SPECS.dual[battery][perf] || R1S_SPECS.dual[battery].standard;
+      r1sDrivetrain = 'Dual Motor AWD';
+      r1sBatteryLabel = R1S_BATTERY[battery];
+      r1sBasePrice = BASE_PRICE.dual[battery];
+      if (perf === 'performance' && battery !== 'standard') r1sBasePrice += PERF_UPGRADE;
+      r1sBasePrice += WHEEL_ADDER[wheels];
+      r1sPerfLabel = perf === 'performance' && battery !== 'standard' ? 'Performance' : 'Standard Output';
+      r1sConfigLabel = `Dual ${battery.charAt(0).toUpperCase() + battery.slice(1)} · ${r1sPerfLabel} · ${r1sBatteryLabel}`;
+    } else if (drive === 'tri') {
+      r1sSpecs = R1S_SPECS.tri.max.performance;
+      r1sDrivetrain = 'Tri Motor AWD';
+      r1sBatteryLabel = R1S_BATTERY.max;
+      r1sBasePrice = BASE_PRICE.tri.max + WHEEL_ADDER[wheels];
+      r1sConfigLabel = `Tri Max · ${r1sBatteryLabel}`;
+    } else {
+      r1sSpecs = R1S_SPECS.quad.max.performance;
+      r1sDrivetrain = 'Quad Motor AWD';
+      r1sBatteryLabel = R1S_BATTERY.max;
+      r1sBasePrice = BASE_PRICE.quad.max + WHEEL_ADDER[wheels];
+      r1sConfigLabel = `Quad Max · ${r1sBatteryLabel}`;
+    }
 
-    document.getElementById('r2PriceHeader').textContent =
-      `Est. $${r2.price.toLocaleString()}`;
+    const r1sRange = (drive === 'dual'
+      ? R1S_RANGE.dual[battery]
+      : R1S_RANGE[drive].max) + R1S_WHEEL_ADJ[wheels];
 
-    // PRICE
+    // ── R2 ──
 
-    const savings = r1s.price - r2.price;
+    const r2 = R2_SPECS[r2trim];
+    const useAlt = document.getElementById('r2Wheels').value === 'alt';
+    const r2Range = useAlt ? r2.altRange : r2.stdRange;
+    const r2WheelLabel = r2trim === 'performance'
+      ? (useAlt ? '20" Black Sand All-Terrain' : '21" Liquid Tungsten All-Season')
+      : (useAlt ? '21" Liquid Tungsten All-Season' : '20" Bicolor Carbon All-Season');
+    const r2RangeLabel = useAlt
+      ? `~${r2Range} mi est.`
+      : `${r2Range} mi EPA`;
+    const r2BatteryLabel = '87.9 kWh';
+    const r2ConfigLabel = `${r2trim.charAt(0).toUpperCase() + r2trim.slice(1)} · ${r2WheelLabel}`;
 
-    document.getElementById('r1s-price').className =
-      'compare-cell';
+    // ── HEADER ──
 
-    document.getElementById('r2-price').className =
-      'compare-cell winner';
+    document.getElementById('r1sConfigText').textContent = r1sConfigLabel;
+    document.getElementById('r2ConfigText').textContent = r2ConfigLabel;
+    document.getElementById('r1sPriceHeader').textContent = `$${fmt(r1sBasePrice)}`;
+    document.getElementById('r2PriceHeader').textContent = `Est. $${fmt(r2.price)}`;
 
-    document.getElementById('r1s-price').textContent =
-      `$${r1s.price.toLocaleString()}`;
+    // ── PRICE ──
 
+    const savings = r1sBasePrice - r2.price;
+    document.getElementById('r1s-price').className = 'compare-cell';
+    document.getElementById('r1s-price').textContent = `$${fmt(r1sBasePrice)}`;
+    document.getElementById('r2-price').className = 'compare-cell winner';
     document.getElementById('r2-price').innerHTML =
-      `Est. $${r2.price.toLocaleString()}
-      <span class="badge badge-better">
-        $${Math.round(savings / 1000)}K less
-      </span>`;
+      `Est. $${fmt(r2.price)} <span class="badge badge-better">$${Math.round(savings/1000)}K less</span>`;
 
-    // RANGE
+    // ── RANGE ──
 
-    setCompare(
-      'range',
-      `${r1s.range} mi`,
-      `~${r2.range} mi`,
-      r1s.range,
-      r2.range,
-      true
-    );
+    const r1sWins = r1sRange >= r2Range;
+    setCell('r1s-range', `${r1sRange} mi`, r1sWins);
+    document.getElementById('r2-range').className = r1sWins ? 'compare-cell' : 'compare-cell winner';
+    document.getElementById('r2-range').textContent = r2RangeLabel;
 
-    // BATTERY
+    // ── BATTERY ──
 
-    document.getElementById('r1s-battery').textContent =
-      r1s.battery;
+    document.getElementById('r1s-battery').className = 'compare-cell winner';
+    document.getElementById('r1s-battery').textContent = r1sBatteryLabel;
+    document.getElementById('r2-battery').className = 'compare-cell';
+    document.getElementById('r2-battery').textContent = `~${r2BatteryLabel}`;
 
-    document.getElementById('r2-battery').textContent =
-      `~${r2.battery}`;
+    // ── DC CHARGE ──
 
-    // CHARGE
+    document.getElementById('r1s-charge').className = 'compare-cell winner';
+    document.getElementById('r1s-charge').textContent = r1sSpecs.charge;
+    document.getElementById('r2-charge').className = 'compare-cell';
+    document.getElementById('r2-charge').textContent = '~210 kW';
 
-    document.getElementById('r1s-charge').className =
-      'compare-cell winner';
+    // ── HP ──
 
-    document.getElementById('r2-charge').className =
-      'compare-cell';
+    const r1sHpWins = r1sSpecs.hp >= r2.hp;
+    setCell('r1s-hp', `${fmt(r1sSpecs.hp)} hp`, r1sHpWins);
+    document.getElementById('r2-hp').className = r1sHpWins ? 'compare-cell' : 'compare-cell winner';
+    document.getElementById('r2-hp').textContent = `${fmt(r2.hp)} hp`;
 
-    document.getElementById('r1s-charge').textContent =
-      `${r1s.charge} kW`;
+    // ── TORQUE ──
 
-    document.getElementById('r2-charge').textContent =
-      r2.charge;
+    const r1sTqWins = r1sSpecs.torque >= r2.torque;
+    setCell('r1s-torque', `${fmt(r1sSpecs.torque)} lb-ft`, r1sTqWins);
+    document.getElementById('r2-torque').className = r1sTqWins ? 'compare-cell' : 'compare-cell winner';
+    document.getElementById('r2-torque').textContent = `${fmt(r2.torque)} lb-ft`;
 
-    // HP
+    // ── 0-60 ──
 
-    setCompare(
-      'hp',
-      `${r1s.hp.toLocaleString()} hp`,
-      `~${r2.hp.toLocaleString()} hp`,
-      r1s.hp,
-      r2.hp,
-      true
-    );
+    const r1s060Wins = r1sSpecs.zero60 <= r2.zero60;
+    setCell('r1s-060', `${r1sSpecs.zero60} sec`, r1s060Wins);
+    document.getElementById('r2-060').className = r1s060Wins ? 'compare-cell' : 'compare-cell winner';
+    document.getElementById('r2-060').textContent = `${r2.zero60} sec`;
 
-    // 0-60
+    // ── DRIVETRAIN ──
 
-    setCompare(
-      '060',
-      `${r1s.zero60} sec`,
-      `~${r2.zero60} sec`,
-      r1s.zero60,
-      r2.zero60,
-      false
-    );
+    setEqual('r1s-drivetrain', r1sDrivetrain);
+    setEqual('r2-drivetrain', 'Dual Motor AWD');
 
-    // DRIVETRAIN
-
-    document.getElementById('r1s-drivetrain').textContent =
-      r1s.drivetrain;
-
-    document.getElementById('r2-drivetrain').textContent =
-      r2.drivetrain;
+    // ── SUSPENSION ROW ── update dynamically for R2
+    const suspCell = document.querySelector('#r2-susp');
+    if (suspCell) {
+      suspCell.textContent = r2trim === 'performance'
+        ? 'Semi-active (Performance)'
+        : 'Fixed suspension (Premium)';
+    }
 
   }
 
-  // INIT
-
-  updateComparison();
+  // ── NAV ──────────────────────────────────
 
   fetch('/nav.html')
     .then(r => r.text())
     .then(html => {
       document.getElementById('site-nav').innerHTML = html;
+      const path = window.location.pathname;
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href !== '/' && path.startsWith(href)) a.classList.add('active');
+      });
     })
     .catch(() => {});
+
+  // INIT
+  updateComparison();
 
 </script>
 
