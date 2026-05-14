@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rivian R1S vs R2 Comparison | Which Rivian Is Right for You?</title>
+  <meta name="description" content="Side-by-side comparison of the Rivian R1S and R2. Range, price, size, towing, off-road capability, and real owner perspective to help you choose."/>
+  <link rel="canonical" href="https://www.rivianrewardshub.com/compare/"/>
+  <meta property="og:title" content="Rivian R1S vs R2 — Which Is Right for You?"/>
+  <meta property="og:type" content="website"/>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SB8DBC8NBQ');</script>
+
+  <link rel="icon" type="image/png" href="/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "aabd2c264abb41589ccfd2223c79ae42"}'></script>
+
+  <style>
+    .compare-layout {
+      padding: 32px 0 56px;
+    }
+
+    /* ─── VEHICLE TOGGLE ─── */
+    .config-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) { .config-bar { grid-template-columns: 1fr; } }
+
+    .config-col-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .config-select {
+      width: 100%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a94a8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+    }
+
+    .config-select:focus { outline: none; border-color: var(--green); }
+
+    /* ─── COMPARISON GRID ─── */
+    .compare-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .compare-section-header {
+      padding: 14px 20px;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-row:last-child { border-bottom: none; }
+
+    @media (max-width: 600px) {
+      .compare-row { grid-template-columns: 120px 1fr 1fr; }
+    }
+
+    .compare-row-label {
+      padding: 14px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+
+    .compare-cell {
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--text);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+    }
+
+    .compare-cell:last-child { border-right: none; }
+
+    .compare-cell.winner { background: var(--green-pale); color: var(--green); }
+    .compare-cell.same { color: var(--text-muted); }
+
+    .compare-cell .badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      text-transform: uppercase;
+    }
+
+    .badge-better { background: var(--green-pale); color: var(--green); }
+    .badge-worse  { background: #fef3e2; color: var(--gold); }
+
+    /* ─── COLUMN HEADERS ─── */
+    .compare-header {
+      display: grid;
+      grid-template-columns: 180px 1fr 1fr;
+      gap: 0;
+      margin-bottom: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      overflow: hidden;
+      border-bottom: none;
+    }
+
+    @media (max-width: 600px) {
+      .compare-header { grid-template-columns: 120px 1fr 1fr; }
+    }
+
+    .compare-header-empty {
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+    }
+
+    .compare-header-vehicle {
+      padding: 18px 16px;
+      background: var(--bg-card);
+      border-right: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .compare-header-vehicle:last-child { border-right: none; }
+
+    .chv-model {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .chv-trim { font-size: 12px; color: var(--text-dim); }
+    .chv-price { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; color: var(--green); margin-top: 6px; }
+
+    /* ─── WHO IS IT FOR ─── */
+    .for-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 600px) { .for-grid { grid-template-columns: 1fr; } }
+
+    .for-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .for-card h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .for-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .for-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .for-check { color: var(--green); flex-shrink: 0; font-weight: 700; margin-top: 1px; }
+    .for-cross { color: #E24B4A; flex-shrink: 0; font-weight: 700; margin-top: 1px; }
+
+    /* ─── OWNER VERDICT ─── */
+    .verdict-card {
+      background: var(--green-dark);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 16px;
+    }
+
+    .verdict-card .section-label { color: #9FE1CB; margin-bottom: 10px; }
+    .verdict-card p { font-size: 15px; color: rgba(255,255,255,0.82); line-height: 1.75; margin-bottom: 12px; }
+    .verdict-card p:last-child { margin-bottom: 0; }
+    .verdict-card strong { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav"></div>
+
+  <div class="referral-strip">
+    <div class="container strip-inner">
+      <span class="strip-label">Referral code</span>
+      <span class="strip-code">SCOTT4395475</span>
+      <span class="strip-divider"></span>
+      <span class="strip-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
+      <button class="strip-btn" onclick="stripCopyCode()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy &amp; Configure
+      </button>
+      <span class="strip-copied" id="stripCopied">✓ Copied!</span>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="page-eyebrow">Comparison Tool</div>
+      <h1 class="page-title">Rivian R1S vs R2</h1>
+      <p class="page-sub">Side-by-side specs, capability, and real owner perspective to help you decide which Rivian makes sense for your situation.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="compare-layout">
+
+      <!-- CONFIG BAR -->
+      <div class="config-bar">
+        <div>
+          <div class="config-col-label">R1S configuration</div>
+          <select class="config-select" id="r1sSelect" onchange="updateComparison()">
+            <option value="r1s-dual-max">R1S Dual Max — $91,900</option>
+            <option value="r1s-dual-large">R1S Dual Large — $83,900</option>
+            <option value="r1s-dual-std">R1S Dual Standard — $77,900</option>
+            <option value="r1s-tri-max">R1S Tri Max — $107,900</option>
+          </select>
+        </div>
+        <div>
+          <div class="config-col-label">R2 configuration</div>
+          <select class="config-select" id="r2Select" onchange="updateComparison()">
+            <option value="r2-perf">R2 Performance — $57,990</option>
+            <option value="r2-prem">R2 Premium — $53,990</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- COLUMN HEADERS -->
+      <div class="compare-header">
+        <div class="compare-header-empty"></div>
+        <div class="compare-header-vehicle">
+          <div class="chv-model" id="hdr-r1s">R1S</div>
+          <div class="chv-trim" id="hdr-r1s-trim">Dual Max · 141.5 kWh</div>
+          <div class="chv-price" id="hdr-r1s-price">From $91,900</div>
+        </div>
+        <div class="compare-header-vehicle">
+          <div class="chv-model">R2</div>
+          <div class="chv-trim" id="hdr-r2-trim">Performance · 87.9 kWh</div>
+          <div class="chv-price" id="hdr-r2-price">From $57,990</div>
+        </div>
+      </div>
+
+      <!-- SPECS TABLE -->
+      <div class="compare-section" style="border-radius: 0 0 var(--radius) var(--radius);">
+        <div class="compare-section-header">Price &amp; range</div>
+        <div class="compare-row">
+          <div class="compare-row-label">Starting price</div>
+          <div class="compare-cell" id="r1s-price">$91,900</div>
+          <div class="compare-cell winner" id="r2-price">$57,990 <span class="badge badge-better">$34K less</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">EPA range</div>
+          <div class="compare-cell winner" id="r1s-range">410 mi</div>
+          <div class="compare-cell" id="r2-range">335 mi <span class="badge badge-worse">−75 mi</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Battery</div>
+          <div class="compare-cell winner" id="r1s-battery">141.5 kWh</div>
+          <div class="compare-cell" id="r2-battery">87.9 kWh</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">DC fast charge</div>
+          <div class="compare-cell winner" id="r1s-dccharge">220 kW</div>
+          <div class="compare-cell" id="r2-dccharge">210 kW <span class="badge badge-worse">−10 kW</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">10–80% time</div>
+          <div class="compare-cell same" id="r1s-chargetime">~31 min</div>
+          <div class="compare-cell same" id="r2-chargetime">~29 min</div>
+        </div>
+      </div>
+
+      <div class="compare-section">
+        <div class="compare-section-header">Performance</div>
+        <div class="compare-row">
+          <div class="compare-row-label">Horsepower</div>
+          <div class="compare-cell winner" id="r1s-hp">533 hp</div>
+          <div class="compare-cell" id="r2-hp">656 hp <span class="badge badge-better">More</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">0–60 mph</div>
+          <div class="compare-cell" id="r1s-060">3.3 sec</div>
+          <div class="compare-cell winner" id="r2-060">3.6 sec</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Drivetrain</div>
+          <div class="compare-cell" id="r1s-drive">Dual Motor AWD</div>
+          <div class="compare-cell" id="r2-drive">Dual Motor AWD</div>
+        </div>
+      </div>
+
+      <div class="compare-section">
+        <div class="compare-section-header">Size &amp; practicality</div>
+        <div class="compare-row">
+          <div class="compare-row-label">Seating</div>
+          <div class="compare-cell winner">7 passengers <span class="badge badge-better">3 rows</span></div>
+          <div class="compare-cell">5 passengers</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Towing capacity</div>
+          <div class="compare-cell winner">7,700 lb</div>
+          <div class="compare-cell">4,400 lb <span class="badge badge-worse">−3,300 lb</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Ground clearance</div>
+          <div class="compare-cell winner">14.9 in (air susp.)</div>
+          <div class="compare-cell">9.6 in</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Suspension</div>
+          <div class="compare-cell winner">Air suspension</div>
+          <div class="compare-cell">Coil + active dampers</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Frunk storage</div>
+          <div class="compare-cell winner">11.1 cu ft</div>
+          <div class="compare-cell">5.2 cu ft</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Cargo (behind row 2)</div>
+          <div class="compare-cell winner">105 cu ft (folded)</div>
+          <div class="compare-cell">~65 cu ft (est.)</div>
+        </div>
+      </div>
+
+      <div class="compare-section">
+        <div class="compare-section-header">Off-road &amp; capability</div>
+        <div class="compare-row">
+          <div class="compare-row-label">Water fording</div>
+          <div class="compare-cell winner">43 in</div>
+          <div class="compare-cell">~20 in (est.)</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Locking differentials</div>
+          <div class="compare-cell winner">Yes — front &amp; rear</div>
+          <div class="compare-cell">No</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Off-road modes</div>
+          <div class="compare-cell winner">Rock Crawl, Sand, Mud, Snow, All-Purpose</div>
+          <div class="compare-cell">Off-Road mode only</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Approach angle</div>
+          <div class="compare-cell winner">34.1°</div>
+          <div class="compare-cell">25°</div>
+        </div>
+      </div>
+
+      <div class="compare-section">
+        <div class="compare-section-header">Tech &amp; features</div>
+        <div class="compare-row">
+          <div class="compare-row-label">Plug type</div>
+          <div class="compare-cell same">NACS (2024+) / CCS1 (2022–23)</div>
+          <div class="compare-cell same">NACS (standard)</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Gear Guard</div>
+          <div class="compare-cell same">Yes</div>
+          <div class="compare-cell same">Yes</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Driver assistance</div>
+          <div class="compare-cell same">Rivian Autonomy Platform+</div>
+          <div class="compare-cell same">Rivian Autonomy Platform (Gen 3)</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Dynamic glass roof</div>
+          <div class="compare-cell same">Yes (optional)</div>
+          <div class="compare-cell same">Yes (optional)</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">Onboard air compressor</div>
+          <div class="compare-cell winner">Yes (standard)</div>
+          <div class="compare-cell">No</div>
+        </div>
+      </div>
+
+      <!-- WHO IS IT FOR -->
+      <div class="for-grid">
+        <div class="for-card">
+          <h3>Choose the R1S if…</h3>
+          <div class="for-list">
+            <div class="for-item"><span class="for-check">✓</span>You need 7 seats for a full family</div>
+            <div class="for-item"><span class="for-check">✓</span>You regularly tow a trailer, boat, or camper</div>
+            <div class="for-item"><span class="for-check">✓</span>You do serious off-road — water crossings, rock crawling</div>
+            <div class="for-item"><span class="for-check">✓</span>Long road trips are a priority (410 mi vs 335 mi)</div>
+            <div class="for-item"><span class="for-check">✓</span>You want air suspension and max ground clearance</div>
+            <div class="for-item"><span class="for-cross">✗</span>Budget is under $90K</div>
+            <div class="for-item"><span class="for-cross">✗</span>You mainly drive city and suburban roads</div>
+          </div>
+        </div>
+        <div class="for-card">
+          <h3>Choose the R2 if…</h3>
+          <div class="for-list">
+            <div class="for-item"><span class="for-check">✓</span>Budget is the primary constraint — $30K+ less than R1S</div>
+            <div class="for-item"><span class="for-check">✓</span>5 passengers is enough for your household</div>
+            <div class="for-item"><span class="for-check">✓</span>You want capable off-road without extreme capability</div>
+            <div class="for-item"><span class="for-check">✓</span>Parking and maneuverability matter (smaller footprint)</div>
+            <div class="for-item"><span class="for-check">✓</span>335 miles of range covers your driving patterns</div>
+            <div class="for-item"><span class="for-cross">✗</span>You need to tow over 4,400 lbs regularly</div>
+            <div class="for-item"><span class="for-cross">✗</span>You need 3 rows or serious locking differentials</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OWNER VERDICT -->
+      <div class="verdict-card">
+        <div class="section-label">Owner perspective</div>
+        <p>I own the R1S Dual Max and the honest answer is: <strong>most buyers should seriously consider the R2 first</strong>. The price gap is significant — you could buy an R2 Performance and have $30,000+ left over. For the majority of daily driving situations, 335 miles of range is plenty, 5 seats is enough, and the R2's off-road capability is genuinely impressive even without locking differentials.</p>
+        <p>The R1S earns its premium if you actually use the third row, regularly tow, or do serious overlanding where ground clearance and water fording matter. The air suspension, 43-inch water fording depth, and locking differentials are real advantages in the right situations — not marketing.</p>
+        <p><strong>The deciding question is usually seating, not performance.</strong> If you have kids in car seats and regular passengers filling all three rows, the R1S is the clear choice. If your household is 2–4 people, the R2 is probably the smarter buy.</p>
+      </div>
+
+      <!-- REFERRAL -->
+      <div class="card" style="padding:24px; text-align:center; background:var(--bg-secondary);">
+        <div class="section-label" style="justify-content:center; margin-bottom:8px;">Ordering either model?</div>
+        <p style="font-size:15px; color:var(--text-muted); margin-bottom:16px;">Use referral code <strong style="color:var(--text); font-family:'DM Sans',sans-serif;">SCOTT4395475</strong> for up to 500 Rewards Points and 3 months of free Adventure Network charging.</p>
+        <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="cta-btn" style="display:inline-flex;" onclick="gtag('event','open_rivian_configurator')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Configure Your Rivian
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <img src="/images/logo.svg" alt="Rivian Rewards Hub">
+      Independent Rivian owner resource · Not affiliated with or endorsed by Rivian Automotive, Inc.
+    </div>
+  </footer>
+
+  <script>
+    const CONFIGS = {
+      'r1s-dual-max':  { trim:'Dual Max · 141.5 kWh', price:'$91,900', range:'410 mi', battery:'141.5 kWh', dccharge:'220 kW', chargetime:'~31 min', hp:'533 hp', zero60:'3.3 sec', drive:'Dual Motor AWD', savings:'$34K less', rangeDiff:'−75 mi' },
+      'r1s-dual-large':{ trim:'Dual Large · 109.4 kWh', price:'$83,900', range:'330 mi', battery:'109.4 kWh', dccharge:'220 kW', chargetime:'~35 min', hp:'533 hp', zero60:'3.3 sec', drive:'Dual Motor AWD', savings:'$26K less', rangeDiff:'−' },
+      'r1s-dual-std':  { trim:'Dual Standard · 92.5 kWh', price:'$77,900', range:'270 mi', battery:'92.5 kWh', dccharge:'200 kW', chargetime:'~42 min', hp:'533 hp', zero60:'3.3 sec', drive:'Dual Motor AWD', savings:'$20K less', rangeDiff:'+65 mi' },
+      'r1s-tri-max':   { trim:'Tri Max · 141.5 kWh', price:'$107,900', range:'371 mi', battery:'141.5 kWh', dccharge:'220 kW', chargetime:'~31 min', hp:'850 hp', zero60:'2.9 sec', drive:'Tri Motor AWD', savings:'$50K less', rangeDiff:'−36 mi' },
+      'r2-perf':       { trim:'Performance · 87.9 kWh', price:'$57,990', range:'335 mi', battery:'87.9 kWh', dccharge:'210 kW', chargetime:'~29 min', hp:'656 hp', zero60:'3.6 sec', drive:'Dual Motor AWD' },
+      'r2-prem':       { trim:'Premium · 87.9 kWh',     price:'$53,990', range:'330 mi', battery:'87.9 kWh', dccharge:'210 kW', chargetime:'~29 min', hp:'450 hp', zero60:'4.6 sec', drive:'Dual Motor AWD' },
+    };
+
+    function updateComparison() {
+      const r1sKey = document.getElementById('r1sSelect').value;
+      const r2Key  = document.getElementById('r2Select').value;
+      const r1s = CONFIGS[r1sKey];
+      const r2  = CONFIGS[r2Key];
+
+      document.getElementById('hdr-r1s-trim').textContent  = r1s.trim;
+      document.getElementById('hdr-r1s-price').textContent = 'From ' + r1s.price;
+      document.getElementById('hdr-r2-trim').textContent   = r2.trim;
+      document.getElementById('hdr-r2-price').textContent  = 'From ' + r2.price;
+
+      document.getElementById('r1s-price').innerHTML  = r1s.price;
+      document.getElementById('r2-price').innerHTML   = r2.price + ` <span class="badge badge-better">${r1s.savings}</span>`;
+      document.getElementById('r1s-range').innerHTML  = r1s.range;
+      document.getElementById('r1s-battery').textContent = r1s.battery;
+      document.getElementById('r2-battery').textContent  = r2.battery;
+      document.getElementById('r1s-dccharge').textContent = r1s.dccharge;
+      document.getElementById('r2-dccharge').textContent  = r2.dccharge;
+      document.getElementById('r1s-chargetime').textContent = r1s.chargetime;
+      document.getElementById('r2-chargetime').textContent  = r2.chargetime;
+      document.getElementById('r1s-hp').textContent   = r1s.hp;
+      document.getElementById('r2-hp').textContent    = r2.hp;
+      document.getElementById('r1s-060').textContent  = r1s.zero60;
+      document.getElementById('r2-060').textContent   = r2.zero60;
+      document.getElementById('r1s-drive').textContent = r1s.drive;
+      document.getElementById('r2-drive').textContent  = r2.drive;
+
+      const r1sRangeNum = parseInt(r1s.range);
+      const r2RangeNum  = parseInt(r2.range);
+      const rangeDiff   = r2RangeNum - r1sRangeNum;
+      const diffLabel   = rangeDiff >= 0 ? `+${rangeDiff} mi` : `${rangeDiff} mi`;
+      const diffClass   = rangeDiff >= 0 ? 'badge-better' : 'badge-worse';
+
+      document.getElementById('r1s-range').className = 'compare-cell' + (r1sRangeNum >= r2RangeNum ? ' winner' : '');
+      document.getElementById('r2-range').innerHTML  = r2.range + ` <span class="badge ${diffClass}">${diffLabel}</span>`;
+      document.getElementById('r2-range').className  = 'compare-cell' + (r2RangeNum > r1sRangeNum ? ' winner' : '');
+    }
+
+    fetch('/nav.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('site-nav').innerHTML = html;
+        const path = window.location.pathname;
+        document.querySelectorAll('.nav-links a').forEach(a => {
+          const href = a.getAttribute('href');
+          if (href !== '/' && path.startsWith(href)) a.classList.add('active');
+        });
+      }).catch(() => {});
+
+    function stripCopyCode() {
+      gtag('event', 'copy_referral_code');
+      navigator.clipboard.writeText('SCOTT4395475').then(() => {
+        const el = document.getElementById('stripCopied');
+        el.style.display = 'inline';
+        setTimeout(() => {
+          window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
+          setTimeout(() => { el.style.display = 'none'; }, 3000);
+        }, 600);
+      });
+    }
+  </script>
+
+</body>
+</html>
