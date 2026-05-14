@@ -720,7 +720,7 @@
         <!-- RIGHT COLUMN -->
         <div class="right-col">
 
-          <!-- RIVN STOCK -->
+         <!-- RIVN STOCK -->
 <div class="card stock-card">
 
   <div class="section-label">
@@ -729,34 +729,19 @@
 
   <div class="tradingview-widget-container">
 
-    <div id="tradingview_rivn"></div>
+    <div class="tradingview-widget-container__widget"></div>
 
     <script
       type="text/javascript"
-      src="https://s3.tradingview.com/tv.js">
-    </script>
-
-    <script>
-
-      new TradingView.widget({
-
-        "width": "100%",
-        "height": 260,
+      src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+      async>
+      {
         "symbol": "NASDAQ:RIVN",
-        "interval": "D",
-        "timezone": "America/Los_Angeles",
-        "theme": "light",
-        "style": "1",
+        "width": "100%",
         "locale": "en",
-        "toolbar_bg": "#f5f6f8",
-        "enable_publishing": false,
-        "hide_top_toolbar": true,
-        "hide_legend": false,
-        "save_image": false,
-        "container_id": "tradingview_rivn"
-
-      });
-
+        "colorTheme": "light",
+        "isTransparent": true
+      }
     </script>
 
   </div>
