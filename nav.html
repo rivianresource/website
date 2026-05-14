@@ -4,7 +4,18 @@
       <img src="/images/logo.svg" alt="Rivian Rewards Hub">
       <span>Rivian Rewards Hub</span>
     </a>
-    <div class="nav-links">
+    <button class="nav-hamburger" id="navHamburger" onclick="toggleNav()" aria-label="Toggle menu" aria-expanded="false">
+      <svg id="navIconMenu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+      <svg id="navIconClose" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="nav-links" id="navLinks">
       <a href="/">Home</a>
       <a href="/delivery/">Delivery Checklist</a>
       <a href="/charging/">Charging Calculator</a>
@@ -16,13 +27,110 @@
 </nav>
 
 <style>
-  /* Wrap nav links on smaller screens gracefully */
-  @media (max-width: 960px) {
+  /* ── DESKTOP NAV ── */
+  @media (min-width: 781px) {
+    .nav-hamburger { display: none; }
+    .nav-links { gap: 24px; }
+  }
+
+  @media (max-width: 960px) and (min-width: 781px) {
     .nav-links { gap: 16px; }
     .nav-links a { font-size: 14px; }
   }
+
+  /* ── MOBILE NAV ── */
   @media (max-width: 780px) {
-    .nav-inner { flex-direction: column; gap: 12px; padding: 12px 0; }
-    .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px 18px; }
+    .nav-inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      padding: 14px 0;
+    }
+
+    .nav-hamburger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--bg-secondary, #f5f6f8);
+      border: 1px solid var(--border, #e4e6ea);
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--text, #111827);
+      flex-shrink: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-hamburger:hover {
+      background: var(--green-pale, #EAF3DE);
+      border-color: var(--green, #1D9E75);
+      color: var(--green, #1D9E75);
+    }
+
+    /* Links hidden by default on mobile */
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      width: 100%;
+      padding: 8px 0 12px;
+      border-top: 1px solid var(--border, #e4e6ea);
+      margin-top: 2px;
+    }
+
+    /* Open state */
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-links a {
+      width: 100%;
+      padding: 11px 4px;
+      font-size: 15px;
+      border-bottom: 1px solid var(--border, #e4e6ea);
+    }
+
+    .nav-links a:last-child {
+      border-bottom: none;
+    }
+
+    /* Make the nav-inner a flex-wrap container when open */
+    .nav-inner.open {
+      flex-wrap: wrap;
+    }
   }
 </style>
+
+<script>
+  function toggleNav() {
+    const links = document.getElementById('navLinks');
+    const inner = document.querySelector('.nav-inner');
+    const btn   = document.getElementById('navHamburger');
+    const iconMenu  = document.getElementById('navIconMenu');
+    const iconClose = document.getElementById('navIconClose');
+    const isOpen = links.classList.toggle('open');
+    inner.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+    iconMenu.style.display  = isOpen ? 'none'  : 'block';
+    iconClose.style.display = isOpen ? 'block' : 'none';
+  }
+
+  // Close nav when a link is tapped on mobile
+  document.getElementById('navLinks').querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      const links = document.getElementById('navLinks');
+      const inner = document.querySelector('.nav-inner');
+      const btn   = document.getElementById('navHamburger');
+      const iconMenu  = document.getElementById('navIconMenu');
+      const iconClose = document.getElementById('navIconClose');
+      links.classList.remove('open');
+      inner.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      iconMenu.style.display  = 'block';
+      iconClose.style.display = 'none';
+    });
+  });
+</script>
