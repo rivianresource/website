@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Rivian Charging Time Calculator | Rivian Rewards Hub</title>
+
+  <meta
+    name="description"
+    content="Calculate Rivian charging time, miles added, and kWh delivered for your R1S or R1T. Works with Rivian Adventure Network DC fast charging, Tesla Superchargers, and Level 2 home charging."
+  />
+  <link rel="canonical" href="https://www.rivianrewardshub.com/charging/"/>
+  <meta property="og:title" content="Rivian Charging Time Calculator"/>
+  <meta property="og:description" content="Estimate charging time, range added, and kWh for your Rivian R1S or R1T across different charger types."/>
+  <meta property="og:image" content="https://www.rivianrewardshub.com/r1s.jpg"/>
+  <meta property="og:url" content="https://www.rivianrewardshub.com/charging/"/>
+  <meta property="og:type" content="website"/>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SB8DBC8NBQ');
+  </script>
+
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "aabd2c264abb41589ccfd2223c79ae42"}'></script>
+
+  <style>
+
+    /* ─── LAYOUT ─── */
+    .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 24px;
+      align-items: start;
+      padding: 32px 0 56px;
+    }
+
+    @media (max-width: 860px) {
+      .calc-layout { grid-template-columns: 1fr; }
+      .calc-sidebar { order: -1; }
+    }
+
+    .calc-main { display: flex; flex-direction: column; gap: 20px; }
+    .calc-sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 80px; }
+
+    /* ─── VEHICLE SELECTOR ─── */
+    .vehicle-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 500px) { .vehicle-grid { grid-template-columns: 1fr; } }
+
+    .vehicle-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+      font-family: 'Figtree', sans-serif;
+    }
+
+    .vehicle-btn:hover { border-color: var(--border-hover); }
+
+    .vehicle-btn.selected {
+      background: var(--green-pale);
+      border-color: var(--green);
+      border-width: 2px;
+    }
+
+    .vehicle-btn-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .vehicle-btn.selected .vehicle-btn-name { color: var(--green); }
+
+    .vehicle-btn-detail {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .vehicle-btn-pack {
+      display: inline-block;
+      background: var(--border);
+      border-radius: 3px;
+      padding: 1px 6px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .vehicle-btn.selected .vehicle-btn-pack {
+      background: rgba(29,158,117,0.15);
+      color: var(--green);
+    }
+
+    /* ─── CHARGER SELECTOR ─── */
+    .charger-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 540px) { .charger-grid { grid-template-columns: 1fr; } }
+
+    .charger-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+      font-family: 'Figtree', sans-serif;
+    }
+
+    .charger-btn:hover { border-color: var(--border-hover); }
+
+    .charger-btn.selected {
+      background: var(--green-pale);
+      border-color: var(--green);
+      border-width: 2px;
+    }
+
+    .charger-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .charger-btn.selected .charger-icon {
+      background: rgba(29,158,117,0.1);
+      border-color: rgba(29,158,117,0.3);
+    }
+
+    .charger-icon svg { width: 16px; height: 16px; stroke: var(--text-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .charger-btn.selected .charger-icon svg { stroke: var(--green); }
+
+    .charger-btn-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .charger-btn.selected .charger-btn-name { color: var(--green); }
+
+    .charger-btn-speed {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* ─── SLIDERS ─── */
+    .slider-section { display: flex; flex-direction: column; gap: 24px; margin-top: 14px; }
+
+    .slider-group { display: flex; flex-direction: column; gap: 10px; }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slider-label { font-size: 14px; font-weight: 600; color: var(--text); }
+
+    .slider-value {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    .slider-value span { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-left: 2px; }
+
+    .slider-track {
+      position: relative;
+      height: 6px;
+      background: var(--bg-secondary);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+
+    .slider-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background: var(--green);
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    input[type="range"] {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .slider-hints {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* ─── WARNING ─── */
+    .slider-warning {
+      display: none;
+      background: #fef3e2;
+      border: 1px solid rgba(186,117,23,0.25);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 600;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slider-warning.visible { display: flex; }
+
+    /* ─── RESULTS ─── */
+    .results-card { padding: 28px; }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 500px) { .results-grid { grid-template-columns: 1fr 1fr; } }
+
+    .result-tile {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-tile.primary {
+      background: var(--green-dark);
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 22px 24px;
+      flex-wrap: wrap;
+    }
+
+    .result-tile-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 6px;
+    }
+
+    .result-tile.primary .result-tile-label { color: #9FE1CB; }
+
+    .result-tile-value {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .result-tile.primary .result-tile-value { font-size: 48px; color: #fff; }
+
+    .result-tile-unit {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .result-tile.primary .result-tile-unit { color: #9FE1CB; }
+
+    .result-divider {
+      width: 1px;
+      height: 48px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .result-primary-group { text-align: center; }
+
+    /* ─── CHARGING CURVE NOTE ─── */
+    .curve-note {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .curve-note-icon { color: var(--green); flex-shrink: 0; margin-top: 1px; }
+
+    /* ─── CHARGER COMPARISON TABLE ─── */
+    .comparison-card { padding: 24px; }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    .comparison-table th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison-table td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:hover td { background: var(--bg-secondary); }
+
+    .comparison-table td:first-child { font-weight: 600; color: var(--text); }
+    .comparison-table td.highlight { color: var(--green); font-weight: 700; font-family: 'DM Sans', sans-serif; }
+
+    .comparison-table .active-row td { background: var(--green-pale); }
+    .comparison-table .active-row td:first-child { color: var(--green); }
+    .comparison-table .active-row td.highlight { color: var(--green); }
+
+    /* ─── TIPS ─── */
+    .tips-card { padding: 24px; }
+
+    .tips-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+
+    .tip-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+    }
+
+    .tip-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .tip-icon svg { width: 14px; height: 14px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .tip-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .tip-desc { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+    /* ─── SIDEBAR ─── */
+    .sidebar-stat-card { padding: 20px; }
+
+    .sidebar-stats { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: var(--radius-sm); overflow: hidden; margin-top: 12px; }
+
+    .sidebar-stat {
+      background: var(--bg-card);
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar-stat-label { font-size: 13px; color: var(--text-muted); }
+    .sidebar-stat-value { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); }
+    .sidebar-stat-value.green { color: var(--green); }
+
+    .disclaimer {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div id="site-nav"></div>
+
+  <div class="referral-strip">
+    <div class="container strip-inner">
+      <span class="strip-label">Referral code</span>
+      <span class="strip-code">SCOTT4395475</span>
+      <span class="strip-divider"></span>
+      <span class="strip-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
+      <button class="strip-btn" onclick="stripCopyCode()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy &amp; Configure
+      </button>
+      <span class="strip-copied" id="stripCopied">✓ Copied!</span>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="page-eyebrow">Owner Tool</div>
+      <h1 class="page-title">Rivian Charging Calculator</h1>
+      <p class="page-sub">Estimate charging time, miles added, and kWh delivered for your R1S or R1T across different charger types. Based on real-world charging curves.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="calc-layout">
+
+      <!-- MAIN CALCULATOR -->
+      <div class="calc-main">
+
+        <!-- VEHICLE SELECTOR -->
+        <div class="card" style="padding:24px;">
+          <div class="section-label">Your vehicle</div>
+          <div class="vehicle-grid" id="vehicleGrid">
+            <button class="vehicle-btn selected" data-vehicle="r1s-dual-max" onclick="selectVehicle(this)">
+              <div class="vehicle-btn-name">R1S Dual Motor</div>
+              <div class="vehicle-btn-detail">AWD · 410 mi EPA est.</div>
+              <span class="vehicle-btn-pack">Max Pack · 135 kWh</span>
+            </button>
+            <button class="vehicle-btn" data-vehicle="r1s-dual-large" onclick="selectVehicle(this)">
+              <div class="vehicle-btn-name">R1S Dual Motor</div>
+              <div class="vehicle-btn-detail">AWD · 321 mi EPA est.</div>
+              <span class="vehicle-btn-pack">Large Pack · 95 kWh</span>
+            </button>
+            <button class="vehicle-btn" data-vehicle="r1t-dual-max" onclick="selectVehicle(this)">
+              <div class="vehicle-btn-name">R1T Dual Motor</div>
+              <div class="vehicle-btn-detail">AWD · 420 mi EPA est.</div>
+              <span class="vehicle-btn-pack">Max Pack · 135 kWh</span>
+            </button>
+            <button class="vehicle-btn" data-vehicle="r1t-dual-large" onclick="selectVehicle(this)">
+              <div class="vehicle-btn-name">R1T Dual Motor</div>
+              <div class="vehicle-btn-detail">AWD · 314 mi EPA est.</div>
+              <span class="vehicle-btn-pack">Large Pack · 95 kWh</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CHARGER SELECTOR -->
+        <div class="card" style="padding:24px;">
+          <div class="section-label">Charger type</div>
+          <div class="charger-grid" id="chargerGrid">
+            <button class="charger-btn selected" data-charger="ran" onclick="selectCharger(this)">
+              <div class="charger-icon">
+                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="charger-btn-name">Rivian RAN</div>
+              <div class="charger-btn-speed">Up to 220 kW</div>
+            </button>
+            <button class="charger-btn" data-charger="supercharger" onclick="selectCharger(this)">
+              <div class="charger-icon">
+                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="charger-btn-name">Tesla Supercharger</div>
+              <div class="charger-btn-speed">Up to 250 kW</div>
+            </button>
+            <button class="charger-btn" data-charger="level2" onclick="selectCharger(this)">
+              <div class="charger-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div class="charger-btn-name">Level 2 Home</div>
+              <div class="charger-btn-speed">Up to 11.5 kW</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- SLIDERS -->
+        <div class="card" style="padding:24px;">
+          <div class="section-label">Session details</div>
+          <div class="slider-section">
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">Starting battery</span>
+                <span class="slider-value" id="startVal">20<span>%</span></span>
+              </div>
+              <div class="slider-track">
+                <div class="slider-fill" id="startFill" style="width:20%"></div>
+                <input type="range" id="startSlider" min="1" max="99" value="20" step="1" oninput="updateCalc()">
+              </div>
+              <div class="slider-hints"><span>1%</span><span>50%</span><span>99%</span></div>
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">Target battery</span>
+                <span class="slider-value" id="endVal">80<span>%</span></span>
+              </div>
+              <div class="slider-track">
+                <div class="slider-fill" id="endFill" style="width:80%"></div>
+                <input type="range" id="endSlider" min="2" max="100" value="80" step="1" oninput="updateCalc()">
+              </div>
+              <div class="slider-hints"><span>2%</span><span>50%</span><span>100%</span></div>
+            </div>
+
+            <div class="slider-warning" id="sliderWarning">
+              ⚠ Target must be higher than starting battery — adjusting automatically.
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="card results-card">
+          <div class="section-label">Estimated session</div>
+          <div class="results-grid" id="resultsGrid">
+            <div class="result-tile primary">
+              <div class="result-primary-group">
+                <div class="result-tile-label">Estimated time</div>
+                <div class="result-tile-value" id="resultTime">—</div>
+                <div class="result-tile-unit">minutes</div>
+              </div>
+              <div class="result-divider"></div>
+              <div class="result-primary-group">
+                <div class="result-tile-label">Miles added</div>
+                <div class="result-tile-value" id="resultMiles">—</div>
+                <div class="result-tile-unit">est. range</div>
+              </div>
+            </div>
+            <div class="result-tile">
+              <div class="result-tile-label">Energy delivered</div>
+              <div class="result-tile-value" id="resultKwh">—</div>
+              <div class="result-tile-unit">kWh</div>
+            </div>
+            <div class="result-tile">
+              <div class="result-tile-label">% added</div>
+              <div class="result-tile-value" id="resultPct">—</div>
+              <div class="result-tile-unit">battery</div>
+            </div>
+            <div class="result-tile">
+              <div class="result-tile-label">Avg charge rate</div>
+              <div class="result-tile-value" id="resultKw">—</div>
+              <div class="result-tile-unit">kW avg</div>
+            </div>
+          </div>
+          <div class="curve-note">
+            <span class="curve-note-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </span>
+            <span id="curveNote">DC fast chargers taper speed above 80% to protect battery health. Charging from 80–100% takes significantly longer than 0–80%. For road trips, stopping at 80% and driving to the next charger is almost always faster than charging to 100%.</span>
+          </div>
+        </div>
+
+        <!-- CHARGER COMPARISON -->
+        <div class="card comparison-card">
+          <div class="section-label">Charger comparison</div>
+          <p style="font-size:13px; color:var(--text-muted); margin-top:6px;">Time to charge your selected vehicle from <strong id="compStart">20%</strong> to <strong id="compEnd">80%</strong>.</p>
+          <table class="comparison-table" id="comparisonTable">
+            <thead>
+              <tr>
+                <th>Charger</th>
+                <th>Max speed</th>
+                <th>Est. time</th>
+                <th>Best for</th>
+              </tr>
+            </thead>
+            <tbody id="comparisonBody"></tbody>
+          </table>
+        </div>
+
+        <!-- TIPS -->
+        <div class="card tips-card">
+          <div class="section-label">Charging tips from a real owner</div>
+          <div class="tips-list">
+            <div class="tip-item">
+              <div class="tip-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+              <div>
+                <div class="tip-title">Daily charge limit: 70–80%</div>
+                <div class="tip-desc">Rivian recommends keeping daily charging below 80% for long-term battery health. Reserve 100% charges for road trips before a long drive.</div>
+              </div>
+            </div>
+            <div class="tip-item">
+              <div class="tip-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div>
+                <div class="tip-title">Pre-condition before DC fast charging</div>
+                <div class="tip-desc">Use the Rivian app to navigate to a fast charger — it automatically warms or cools the battery to optimal temperature, which can meaningfully improve charge speeds especially in cold weather.</div>
+              </div>
+            </div>
+            <div class="tip-item">
+              <div class="tip-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+              <div>
+                <div class="tip-title">Stop at 80% on road trips</div>
+                <div class="tip-desc">Charging slows significantly above 80% due to battery protection tapering. On a long drive, stopping at 80% and moving to the next charger is almost always faster than waiting for 100%.</div>
+              </div>
+            </div>
+            <div class="tip-item">
+              <div class="tip-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div>
+                <div class="tip-title">Las Vegas RAN: Town Square</div>
+                <div class="tip-desc">The Las Vegas Adventure Network station at Town Square (6605 S Las Vegas Blvd) consistently has open chargers, including during late morning and afternoon peak hours in my experience.</div>
+              </div>
+            </div>
+            <div class="tip-item">
+              <div class="tip-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+              <div>
+                <div class="tip-title">Use Time-of-Use rates at home</div>
+                <div class="tip-desc">NV Energy's EV TOU plan charges significantly less overnight (midnight–6am). Scheduling charging in the Rivian app for off-peak hours cuts home charging costs considerably.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="calc-sidebar">
+
+        <!-- CURRENT CONFIG -->
+        <div class="card sidebar-stat-card">
+          <div class="section-label">Selected config</div>
+          <div class="sidebar-stats">
+            <div class="sidebar-stat">
+              <span class="sidebar-stat-label">Vehicle</span>
+              <span class="sidebar-stat-value" id="sidebarVehicle">R1S Dual Max</span>
+            </div>
+            <div class="sidebar-stat">
+              <span class="sidebar-stat-label">Battery capacity</span>
+              <span class="sidebar-stat-value green" id="sidebarCapacity">135 kWh</span>
+            </div>
+            <div class="sidebar-stat">
+              <span class="sidebar-stat-label">EPA range</span>
+              <span class="sidebar-stat-value" id="sidebarRange">410 mi</span>
+            </div>
+            <div class="sidebar-stat">
+              <span class="sidebar-stat-label">Charger</span>
+              <span class="sidebar-stat-value" id="sidebarCharger">Rivian RAN</span>
+            </div>
+            <div class="sidebar-stat">
+              <span class="sidebar-stat-label">Peak speed</span>
+              <span class="sidebar-stat-value green" id="sidebarSpeed">220 kW</span>
+            </div>
+          </div>
+          <p class="disclaimer">Estimates based on real-world charging curves. Actual times vary by temperature, battery condition, and site-specific charger capacity.</p>
+        </div>
+
+        <div class="sidebar-referral">
+          <div class="sidebar-referral-label">Ordering a Rivian?</div>
+          <div class="sidebar-referral-code">SCOTT4395475</div>
+          <div class="sidebar-referral-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging.</div>
+          <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn" onclick="gtag('event','open_rivian_configurator')">
+            Configure Your Rivian →
+          </a>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <div class="section-label">Related</div>
+          <div class="resource-row">
+            <div><div class="resource-name">90-Day R1S Review</div><div class="resource-desc">Real charging impressions</div></div>
+            <a href="/reviews/2026-rivian-r1s-90-day-review/#charging" class="resource-link">Read</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">Charging Map</div><div class="resource-desc">RAN station locator</div></div>
+            <a href="https://rivian.com/experience/charging#map" target="_blank" rel="noopener noreferrer" class="resource-link">Open</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">A2Z CCS1 Adapter</div><div class="resource-desc">Reviewed for RAN use</div></div>
+            <a href="/accessories/#a2z-adapter" class="resource-link">Review</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <img src="/logo.png" alt="Rivian Rewards Hub">
+      Independent Rivian owner resource · Not affiliated with or endorsed by Rivian Automotive, Inc.
+    </div>
+  </footer>
+
+  <script>
+
+    /* ── Vehicle data ── */
+    const VEHICLES = {
+      'r1s-dual-max':   { name: 'R1S Dual Max',   capacity: 135, range: 410, label: 'R1S Dual Max' },
+      'r1s-dual-large': { name: 'R1S Dual Large',  capacity: 95,  range: 321, label: 'R1S Dual Large' },
+      'r1t-dual-max':   { name: 'R1T Dual Max',   capacity: 135, range: 420, label: 'R1T Dual Max' },
+      'r1t-dual-large': { name: 'R1T Dual Large',  capacity: 95,  range: 314, label: 'R1T Dual Large' },
+    };
+
+    /* ── Charger data: peak kW, real-world avg efficiency factor ── */
+    const CHARGERS = {
+      'ran':          { name: 'Rivian RAN',         peakKw: 220,  type: 'dc' },
+      'supercharger': { name: 'Tesla Supercharger', peakKw: 250,  type: 'dc' },
+      'level2':       { name: 'Level 2 Home',       peakKw: 11.5, type: 'ac' },
+    };
+
+    let currentVehicle = 'r1s-dual-max';
+    let currentCharger = 'ran';
+
+    /* ── DC fast charging curve model ──
+       Rivian charges at near-peak from ~5% to 55%, then tapers to ~80%,
+       then tapers heavily from 80–100%. We model this in three segments.
+       Returns minutes for a given start%, end%, capacity kWh, peak kW. */
+    function calcDcTime(startPct, endPct, capacityKwh, peakKw) {
+      const segments = [
+        { from: 0,  to: 55, rate: 0.92 },  // near peak
+        { from: 55, to: 80, rate: 0.68 },  // moderate taper
+        { from: 80, to: 90, rate: 0.38 },  // heavy taper
+        { from: 90, to: 100, rate: 0.18 }, // very slow
+      ];
+
+      let totalMinutes = 0;
+      for (const seg of segments) {
+        const lo = Math.max(startPct, seg.from);
+        const hi = Math.min(endPct, seg.to);
+        if (hi <= lo) continue;
+        const pctChunk = (hi - lo) / 100;
+        const kwh = pctChunk * capacityKwh;
+        const effectiveKw = peakKw * seg.rate;
+        totalMinutes += (kwh / effectiveKw) * 60;
+      }
+      return totalMinutes;
+    }
+
+    function calcAcTime(startPct, endPct, capacityKwh, peakKw) {
+      const kwh = ((endPct - startPct) / 100) * capacityKwh;
+      const effectiveKw = peakKw * 0.88; // onboard charger efficiency
+      return (kwh / effectiveKw) * 60;
+    }
+
+    function calcSession(vehicleKey, chargerKey, startPct, endPct) {
+      const v = VEHICLES[vehicleKey];
+      const c = CHARGERS[chargerKey];
+      const pctAdded = endPct - startPct;
+      const kwhDelivered = (pctAdded / 100) * v.capacity;
+      const milesAdded = Math.round((pctAdded / 100) * v.range);
+
+      let minutes;
+      if (c.type === 'dc') {
+        minutes = calcDcTime(startPct, endPct, v.capacity, c.peakKw);
+      } else {
+        minutes = calcAcTime(startPct, endPct, v.capacity, c.peakKw);
+      }
+
+      const avgKw = (kwhDelivered / (minutes / 60));
+
+      return {
+        minutes: Math.round(minutes),
+        milesAdded,
+        kwhDelivered: Math.round(kwhDelivered * 10) / 10,
+        pctAdded,
+        avgKw: Math.round(avgKw),
+      };
+    }
+
+    function fmtTime(mins) {
+      if (mins < 60) return mins + ' min';
+      const h = Math.floor(mins / 60);
+      const m = mins % 60;
+      return m > 0 ? `${h}h ${m}m` : `${h}h`;
+    }
+
+    function updateCalc() {
+      let start = parseInt(document.getElementById('startSlider').value);
+      let end   = parseInt(document.getElementById('endSlider').value);
+
+      const warning = document.getElementById('sliderWarning');
+      if (end <= start) {
+        end = Math.min(start + 1, 100);
+        document.getElementById('endSlider').value = end;
+        warning.classList.add('visible');
+      } else {
+        warning.classList.remove('visible');
+      }
+
+      document.getElementById('startVal').innerHTML  = start + '<span>%</span>';
+      document.getElementById('endVal').innerHTML    = end   + '<span>%</span>';
+      document.getElementById('startFill').style.width = start + '%';
+      document.getElementById('endFill').style.width   = end   + '%';
+
+      const result = calcSession(currentVehicle, currentCharger, start, end);
+
+      document.getElementById('resultTime').textContent  = fmtTime(result.minutes);
+      document.getElementById('resultMiles').textContent = result.milesAdded + ' mi';
+      document.getElementById('resultKwh').textContent   = result.kwhDelivered;
+      document.getElementById('resultPct').textContent   = '+' + result.pctAdded;
+      document.getElementById('resultKw').textContent    = result.avgKw;
+
+      /* Curve note */
+      const note = document.getElementById('curveNote');
+      if (currentCharger === 'level2') {
+        note.textContent = 'Level 2 charging adds roughly 20–25 miles per hour at home. It\'s slower than DC fast charging but ideal for overnight sessions — plug in before bed and wake up with a full charge.';
+      } else if (end > 80) {
+        note.textContent = 'Your target is above 80%. DC fast chargers taper speed significantly above 80% to protect battery health. The final 20% (80–100%) often takes as long as the first 80%. For road trips, charging to 80% and driving to the next charger is usually faster overall.';
+      } else {
+        note.textContent = 'Staying under 80% keeps you in the fast part of the charging curve. DC fast chargers operate at near-peak speeds in this range, making this the most time-efficient window for road trip charging stops.';
+      }
+
+      /* Update comparison table */
+      updateComparison(start, end);
+      document.getElementById('compStart').textContent = start + '%';
+      document.getElementById('compEnd').textContent   = end + '%';
+    }
+
+    function updateComparison(start, end) {
+      const tbody = document.getElementById('comparisonBody');
+      const bestFor = {
+        'ran':          'Road trips, fast top-ups',
+        'supercharger': 'Road trips, wide availability',
+        'level2':       'Overnight home charging',
+      };
+
+      tbody.innerHTML = Object.entries(CHARGERS).map(([key, c]) => {
+        const result = calcSession(currentVehicle, key, start, end);
+        const isActive = key === currentCharger;
+        return `
+          <tr class="${isActive ? 'active-row' : ''}">
+            <td>${c.name}</td>
+            <td>${c.peakKw >= 100 ? Math.round(c.peakKw) + ' kW' : c.peakKw + ' kW'}</td>
+            <td class="highlight">${fmtTime(result.minutes)}</td>
+            <td>${bestFor[key]}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function selectVehicle(btn) {
+      document.querySelectorAll('.vehicle-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentVehicle = btn.dataset.vehicle;
+      const v = VEHICLES[currentVehicle];
+      document.getElementById('sidebarVehicle').textContent  = v.label;
+      document.getElementById('sidebarCapacity').textContent = v.capacity + ' kWh';
+      document.getElementById('sidebarRange').textContent    = v.range + ' mi';
+      updateCalc();
+    }
+
+    function selectCharger(btn) {
+      document.querySelectorAll('.charger-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentCharger = btn.dataset.charger;
+      const c = CHARGERS[currentCharger];
+      document.getElementById('sidebarCharger').textContent = c.name;
+      document.getElementById('sidebarSpeed').textContent   = c.peakKw + ' kW';
+      updateCalc();
+    }
+
+    /* ── Nav ── */
+    fetch('/nav.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('site-nav').innerHTML = html;
+        const path = window.location.pathname;
+        document.querySelectorAll('.nav-links a').forEach(a => {
+          const href = a.getAttribute('href');
+          if (href !== '/' && path.startsWith(href)) a.classList.add('active');
+        });
+      }).catch(() => {});
+
+    function stripCopyCode() {
+      gtag('event', 'copy_referral_code');
+      navigator.clipboard.writeText('SCOTT4395475').then(() => {
+        const el = document.getElementById('stripCopied');
+        el.style.display = 'inline';
+        setTimeout(() => {
+          window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
+          setTimeout(() => { el.style.display = 'none'; }, 3000);
+        }, 600);
+      });
+    }
+
+    /* ── Init ── */
+    document.addEventListener('DOMContentLoaded', updateCalc);
+
+  </script>
+
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+    document.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && ['u','s','c','x'].includes(e.key.toLowerCase())) e.preventDefault();
+    });
+  </script>
+
+</body>
+</html>
