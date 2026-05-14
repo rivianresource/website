@@ -4,7 +4,7 @@
       <img src="/images/logo.svg" alt="Rivian Rewards Hub">
       <span>Rivian Rewards Hub</span>
     </a>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+    <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
       <svg id="navIconMenu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <line x1="3" y1="6" x2="21" y2="6"/>
         <line x1="3" y1="12" x2="21" y2="12"/>
@@ -38,6 +38,22 @@
   }
 
   @media (max-width: 780px) {
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+    padding: 8px 0 12px;
+    border-top: 1px solid var(--border, #e4e6ea);
+    margin-top: 2px;
+  }
+
+  .nav-links.open {
+    display: flex !important;
+  }
+
     .nav-inner {
       flex-direction: row !important;
       align-items: center;
@@ -95,17 +111,32 @@
   }
 </style>
   <script>
+document.addEventListener('DOMContentLoaded', function () {
+
   const navHamburger = document.getElementById('navHamburger');
   const navLinks = document.getElementById('navLinks');
   const navIconMenu = document.getElementById('navIconMenu');
   const navIconClose = document.getElementById('navIconClose');
 
-  navHamburger.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
+  if (!navHamburger || !navLinks) return;
+
+  navHamburger.addEventListener('click', function () {
+
+    navLinks.classList.toggle('open');
+
+    const isOpen = navLinks.classList.contains('open');
 
     navHamburger.setAttribute('aria-expanded', isOpen);
 
-    navIconMenu.style.display = isOpen ? 'none' : 'block';
-    navIconClose.style.display = isOpen ? 'block' : 'none';
+    if (navIconMenu) {
+      navIconMenu.style.display = isOpen ? 'none' : 'block';
+    }
+
+    if (navIconClose) {
+      navIconClose.style.display = isOpen ? 'block' : 'none';
+    }
+
   });
+
+});
 </script>
