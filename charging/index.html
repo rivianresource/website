@@ -9,7 +9,7 @@
 
   <meta
     name="description"
-    content="Calculate Rivian charging time, miles added, and kWh delivered for your R1S or R1T. Works with Rivian Adventure Network DC fast charging, Tesla Superchargers, and Level 2 home charging."
+    content="Calculate Rivian charging time, miles added, and kWh delivered for your R1S, R2 or R1T. Works with Rivian Adventure Network DC fast charging, Tesla Superchargers, and Level 2 home charging."
   />
   <link rel="canonical" href="https://www.rivianrewardshub.com/charging/"/>
   <meta property="og:title" content="Rivian Charging Time Calculator"/>
@@ -52,71 +52,66 @@
     .calc-main { display: flex; flex-direction: column; gap: 20px; }
     .calc-sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 80px; }
 
-    /* ─── VEHICLE SELECTOR ─── */
-    .vehicle-grid {
+    /* ─── MODEL SELECTOR ─── */
+    .model-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       margin-top: 14px;
     }
 
-    @media (max-width: 700px) { .vehicle-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 400px) { .vehicle-grid { grid-template-columns: 1fr; } }
-
-    .vehicle-btn {
+    .model-btn {
       background: var(--bg-secondary);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 14px 16px;
+      padding: 16px;
       cursor: pointer;
-      text-align: left;
+      text-align: center;
       transition: all 0.15s ease;
       font-family: 'Figtree', sans-serif;
     }
 
-    .vehicle-btn:hover { border-color: var(--border-hover); }
+    .model-btn:hover { border-color: var(--border-hover); }
 
-    .vehicle-btn.selected {
+    .model-btn.selected {
       background: var(--green-pale);
       border-color: var(--green);
       border-width: 2px;
     }
 
-    .vehicle-btn-name {
+    .model-btn-name {
       font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 800;
       color: var(--text);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
 
-    .vehicle-btn.selected .vehicle-btn-name { color: var(--green); }
+    .model-btn.selected .model-btn-name { color: var(--green); }
+    .model-btn-detail { font-size: 12px; color: var(--text-dim); }
 
-    .vehicle-btn-detail {
+    /* ─── TRIM GROUPS ─── */
+    .trim-gen-label {
       font-size: 12px;
+      font-weight: 700;
       color: var(--text-dim);
-      line-height: 1.4;
-    }
-
-    .vehicle-btn-pack {
-      display: inline-block;
-      background: var(--border);
-      border-radius: 3px;
-      padding: 1px 6px;
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-top: 4px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.07em;
+      margin: 14px 0 8px;
     }
 
-    .vehicle-btn.selected .vehicle-btn-pack {
-      background: rgba(29,158,117,0.15);
-      color: var(--green);
+    .trim-gen-label:first-child { margin-top: 10px; }
+
+    /* ─── VEHICLE SELECTOR ─── */
+    .vehicle-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
     }
 
-    /* ─── CHARGER SELECTOR ─── */
+    @media (max-width: 500px) { .vehicle-grid { grid-template-columns: 1fr; } }
+
+    /* ─── WHEEL SELECTOR ─── */
     .charger-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -520,7 +515,7 @@
     <div class="container">
       <div class="page-eyebrow">Owner Tool</div>
       <h1 class="page-title">Rivian Charging Calculator</h1>
-      <p class="page-sub">Estimate charging time, miles added, and kWh delivered for your R1S or R1T across different charger types. Based on real-world charging curves.</p>
+      <p class="page-sub">Estimate charging time, miles added, and kWh delivered for your R1S, R1T, or R2 across different charger types. Select your model, trim, wheels, and plug type for an accurate estimate.</p>
     </div>
   </div>
 
@@ -530,95 +525,79 @@
       <!-- MAIN CALCULATOR -->
       <div class="calc-main">
 
-        <!-- VEHICLE SELECTOR -->
+        <!-- STEP 1: MODEL -->
         <div class="card" style="padding:24px;">
-          <div class="section-label">Your vehicle</div>
-          <div class="vehicle-grid" id="vehicleGrid">
-            <button class="vehicle-btn selected" data-vehicle="r1s-dual-max" onclick="selectVehicle(this)">
-              <div class="vehicle-btn-name">R1S Dual</div>
-              <div class="vehicle-btn-detail">AWD · 410 mi est.</div>
-              <span class="vehicle-btn-pack">Max Pack · 135 kWh</span>
+          <div class="section-label">Step 1 — Model</div>
+          <div class="model-grid" id="modelGrid">
+            <button class="model-btn selected" data-model="r1s" onclick="selectModel(this)">
+              <div class="model-btn-name">R1S</div>
+              <div class="model-btn-detail">SUV · 7 seats</div>
             </button>
-            <button class="vehicle-btn" data-vehicle="r1s-dual-large" onclick="selectVehicle(this)">
-              <div class="vehicle-btn-name">R1S Dual</div>
-              <div class="vehicle-btn-detail">AWD · 321 mi est.</div>
-              <span class="vehicle-btn-pack">Large Pack · 95 kWh</span>
+            <button class="model-btn" data-model="r1t" onclick="selectModel(this)">
+              <div class="model-btn-name">R1T</div>
+              <div class="model-btn-detail">Pickup truck</div>
             </button>
-            <button class="vehicle-btn" data-vehicle="r1s-tri" onclick="selectVehicle(this)">
-              <div class="vehicle-btn-name">R1S Tri</div>
-              <div class="vehicle-btn-detail">AWD · 390 mi est.</div>
-              <span class="vehicle-btn-pack">Max Pack · 135 kWh</span>
-            </button>
-            <button class="vehicle-btn" data-vehicle="r1t-dual-max" onclick="selectVehicle(this)">
-              <div class="vehicle-btn-name">R1T Dual</div>
-              <div class="vehicle-btn-detail">AWD · 420 mi est.</div>
-              <span class="vehicle-btn-pack">Max Pack · 135 kWh</span>
-            </button>
-            <button class="vehicle-btn" data-vehicle="r1t-dual-large" onclick="selectVehicle(this)">
-              <div class="vehicle-btn-name">R1T Dual</div>
-              <div class="vehicle-btn-detail">AWD · 314 mi est.</div>
-              <span class="vehicle-btn-pack">Large Pack · 95 kWh</span>
-            </button>
-            <button class="vehicle-btn" data-vehicle="r1t-quad" onclick="selectVehicle(this)">
-              <div class="vehicle-btn-name">R1T Quad</div>
-              <div class="vehicle-btn-detail">AWD · 380 mi est.</div>
-              <span class="vehicle-btn-pack">Max Pack · 135 kWh</span>
+            <button class="model-btn" data-model="r2" onclick="selectModel(this)">
+              <div class="model-btn-name">R2</div>
+              <div class="model-btn-detail">Compact SUV · new</div>
             </button>
           </div>
         </div>
 
-        <!-- CHARGER SELECTOR -->
-        <div class="card" style="padding:24px;">
-          <div class="section-label">Charger type</div>
-          <div class="charger-grid" id="chargerGrid">
-            <button class="charger-btn selected" data-charger="ran" onclick="selectCharger(this)">
+        <!-- STEP 2: TRIM / GEN -->
+        <div class="card" style="padding:24px;" id="trimCard">
+          <div class="section-label">Step 2 — Year &amp; trim</div>
+          <div id="trimGroups"></div>
+        </div>
+
+        <!-- STEP 3: WHEELS -->
+        <div class="card" style="padding:24px;" id="wheelCard">
+          <div class="section-label">Step 3 — Wheels &amp; tires</div>
+          <p style="font-size:13px; color:var(--text-muted); margin-top:6px;">Larger wheels and all-terrain tires reduce range. Select your setup to adjust the estimate.</p>
+          <div class="wheel-grid" id="wheelGrid"></div>
+        </div>
+
+        <!-- STEP 4: PLUG TYPE -->
+        <div class="card" style="padding:24px;" id="plugCard">
+          <div class="section-label">Step 4 — Plug type</div>
+          <p style="font-size:13px; color:var(--text-muted); margin-top:6px;">Determines which DC fast chargers you can access natively.</p>
+          <div class="charger-grid" id="plugGrid">
+            <button class="charger-btn selected" data-plug="nacs" onclick="selectPlug(this)">
               <div class="charger-icon">
                 <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
               </div>
+              <div class="charger-btn-name">NACS</div>
+              <div class="charger-btn-speed">2024+ / all R2</div>
+            </button>
+            <button class="charger-btn" data-plug="ccs" onclick="selectPlug(this)">
+              <div class="charger-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+              </div>
+              <div class="charger-btn-name">CCS1</div>
+              <div class="charger-btn-speed">2022–2023</div>
+            </button>
+          </div>
+          <div id="plugNote" style="margin-top:12px; font-size:12px; color:var(--text-dim); line-height:1.6;"></div>
+        </div>
+
+        <!-- STEP 5: CHARGER TYPE -->
+        <div class="card" style="padding:24px;">
+          <div class="section-label">Step 5 — Charger type</div>
+          <div class="charger-grid" id="chargerGrid">
+            <button class="charger-btn selected" data-charger="ran" onclick="selectCharger(this)">
+              <div class="charger-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
               <div class="charger-btn-name">Rivian RAN</div>
               <div class="charger-btn-speed">Up to 220 kW</div>
             </button>
             <button class="charger-btn" data-charger="supercharger" onclick="selectCharger(this)">
-              <div class="charger-icon">
-                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              </div>
+              <div class="charger-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
               <div class="charger-btn-name">Tesla Supercharger</div>
               <div class="charger-btn-speed">Up to 250 kW</div>
             </button>
             <button class="charger-btn" data-charger="level2" onclick="selectCharger(this)">
-              <div class="charger-icon">
-                <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              </div>
+              <div class="charger-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
               <div class="charger-btn-name">Level 2 Home</div>
               <div class="charger-btn-speed">Up to 11.5 kW</div>
-            </button>
-          </div>
-        </div>
-
-        <!-- WHEEL / TIRE SELECTOR -->
-        <div class="card" style="padding:24px;">
-          <div class="section-label">Wheels &amp; tires</div>
-          <p style="font-size:13px; color:var(--text-muted); margin-top:6px;">Larger wheels and all-terrain tires reduce range. Select your setup to adjust the estimate.</p>
-          <div class="wheel-grid" id="wheelGrid">
-            <button class="wheel-btn selected" data-wheel="20at" onclick="selectWheel(this)">
-              <div class="wheel-btn-size">20"</div>
-              <div class="wheel-btn-label">All-Terrain</div>
-              <span class="wheel-btn-impact">Baseline</span>
-            </button>
-            <button class="wheel-btn" data-wheel="20sport" onclick="selectWheel(this)">
-              <div class="wheel-btn-size">20"</div>
-              <div class="wheel-btn-label">Sport / Highway</div>
-              <span class="wheel-btn-impact">+2% range</span>
-            </button>
-            <button class="wheel-btn" data-wheel="21at" onclick="selectWheel(this)">
-              <div class="wheel-btn-size">21"</div>
-              <div class="wheel-btn-label">All-Terrain</div>
-              <span class="wheel-btn-impact">−2% range</span>
-            </button>
-            <button class="wheel-btn" data-wheel="22sport" onclick="selectWheel(this)">
-              <div class="wheel-btn-size">22"</div>
-              <div class="wheel-btn-label">Sport Dark</div>
-              <span class="wheel-btn-impact">−4% range</span>
             </button>
           </div>
         </div>
@@ -820,34 +799,230 @@
 
   <script>
 
-    /* ── Vehicle data ── */
-    const VEHICLES = {
-      'r1s-dual-max':   { name: 'R1S Dual Max',   capacity: 135, range: 410, label: 'R1S Dual Max',   peakKw: 220 },
-      'r1s-dual-large': { name: 'R1S Dual Large',  capacity: 95,  range: 321, label: 'R1S Dual Large',  peakKw: 200 },
-      'r1s-tri':        { name: 'R1S Tri Motor',   capacity: 135, range: 390, label: 'R1S Tri Motor',   peakKw: 220 },
-      'r1t-dual-max':   { name: 'R1T Dual Max',    capacity: 135, range: 420, label: 'R1T Dual Max',    peakKw: 220 },
-      'r1t-dual-large': { name: 'R1T Dual Large',  capacity: 95,  range: 314, label: 'R1T Dual Large',  peakKw: 200 },
-      'r1t-quad':       { name: 'R1T Quad Motor',  capacity: 135, range: 380, label: 'R1T Quad Motor',  peakKw: 220 },
+    /* ════════════════════════════════════════════
+       VEHICLE DATA
+       capacity = usable kWh, range = EPA est. miles,
+       peakKw = max DC charge rate
+    ════════════════════════════════════════════ */
+    const TRIMS = {
+      r1s: {
+        gen1: [
+          { id:'r1s-g1-std',    label:'Standard Pack',        motor:'Dual Motor AWD', capacity:108,   range:260, peakKw:200 },
+          { id:'r1s-g1-stdp',   label:'Standard+ Pack',       motor:'Dual Motor AWD', capacity:119,   range:289, peakKw:200 },
+          { id:'r1s-g1-large',  label:'Large Pack',           motor:'Dual Motor AWD', capacity:130,   range:314, peakKw:200 },
+          { id:'r1s-g1-largep', label:'Large Pack Performance',motor:'Dual Motor AWD', capacity:130,  range:307, peakKw:200 },
+          { id:'r1s-g1-largq',  label:'Large Pack',           motor:'Quad Motor AWD', capacity:130,   range:305, peakKw:200 },
+          { id:'r1s-g1-max',    label:'Max Pack',             motor:'Dual Motor AWD', capacity:144.5, range:389, peakKw:220 },
+          { id:'r1s-g1-maxp',   label:'Max Pack Performance', motor:'Dual Motor AWD', capacity:144.5, range:381, peakKw:220 },
+        ],
+        gen2: [
+          { id:'r1s-g2-std',    label:'Standard Pack',        motor:'Dual Motor AWD', capacity:98.7,  range:270, peakKw:200 },
+          { id:'r1s-g2-large',  label:'Large Pack',           motor:'Dual Motor AWD', capacity:111,   range:321, peakKw:200 },
+          { id:'r1s-g2-largep', label:'Large+ Pack',          motor:'Dual Motor AWD', capacity:119,   range:345, peakKw:200 },
+          { id:'r1s-g2-max',    label:'Max Pack',             motor:'Dual Motor AWD', capacity:144.5, range:410, peakKw:220 },
+          { id:'r1s-g2-maxt',   label:'Max Pack',             motor:'Tri Motor AWD',  capacity:144.5, range:390, peakKw:220 },
+          { id:'r1s-g2-maxq',   label:'Max Pack',             motor:'Quad Motor AWD', capacity:144.5, range:375, peakKw:220 },
+        ],
+      },
+      r1t: {
+        gen1: [
+          { id:'r1t-g1-std',    label:'Standard Pack',        motor:'Dual Motor AWD', capacity:108,   range:252, peakKw:200 },
+          { id:'r1t-g1-stdp',   label:'Standard+ Pack',       motor:'Dual Motor AWD', capacity:119,   range:278, peakKw:200 },
+          { id:'r1t-g1-large',  label:'Large Pack',           motor:'Dual Motor AWD', capacity:130,   range:314, peakKw:200 },
+          { id:'r1t-g1-largep', label:'Large Pack Performance',motor:'Dual Motor AWD', capacity:130,  range:307, peakKw:200 },
+          { id:'r1t-g1-largq',  label:'Large Pack',           motor:'Quad Motor AWD', capacity:130,   range:295, peakKw:200 },
+          { id:'r1t-g1-max',    label:'Max Pack',             motor:'Dual Motor AWD', capacity:144.5, range:410, peakKw:220 },
+          { id:'r1t-g1-maxp',   label:'Max Pack Performance', motor:'Dual Motor AWD', capacity:144.5, range:400, peakKw:220 },
+        ],
+        gen2: [
+          { id:'r1t-g2-std',    label:'Standard Pack',        motor:'Dual Motor AWD', capacity:98.7,  range:261, peakKw:200 },
+          { id:'r1t-g2-large',  label:'Large Pack',           motor:'Dual Motor AWD', capacity:111,   range:314, peakKw:200 },
+          { id:'r1t-g2-largep', label:'Large+ Pack',          motor:'Dual Motor AWD', capacity:119,   range:337, peakKw:200 },
+          { id:'r1t-g2-max',    label:'Max Pack',             motor:'Dual Motor AWD', capacity:144.5, range:420, peakKw:220 },
+          { id:'r1t-g2-maxt',   label:'Max Pack',             motor:'Tri Motor AWD',  capacity:144.5, range:400, peakKw:220 },
+          { id:'r1t-g2-maxq',   label:'Max Pack',             motor:'Quad Motor AWD', capacity:144.5, range:380, peakKw:220 },
+        ],
+      },
+      r2: {
+        gen2: [
+          { id:'r2-prem',  label:'Premium',     motor:'Dual Motor AWD', capacity:75, range:270, peakKw:150 },
+          { id:'r2-perf',  label:'Performance', motor:'Dual Motor AWD', capacity:75, range:255, peakKw:150 },
+        ],
+      },
     };
 
-    /* ── Wheel/tire range factors (multiplier applied to base range) ── */
-    const WHEELS = {
-      '20at':    { label: '20" All-Terrain',  factor: 1.00 },
-      '20sport': { label: '20" Sport',        factor: 1.02 },
-      '21at':    { label: '21" All-Terrain',  factor: 0.98 },
-      '22sport': { label: '22" Sport Dark',   factor: 0.96 },
+    /* Wheel options keyed by model */
+    const WHEELS_BY_MODEL = {
+      r1s: [
+        { id:'20at',    label:'20"',  sub:'All-Terrain',   factor:1.00, impact:'Baseline' },
+        { id:'20sport', label:'20"',  sub:'Sport / HWY',   factor:1.02, impact:'+2% range' },
+        { id:'21at',    label:'21"',  sub:'All-Terrain',   factor:0.98, impact:'−2% range' },
+        { id:'22sport', label:'22"',  sub:'Sport Dark',    factor:0.96, impact:'−4% range' },
+      ],
+      r1t: [
+        { id:'20at',    label:'20"',  sub:'All-Terrain',   factor:1.00, impact:'Baseline' },
+        { id:'20sport', label:'20"',  sub:'Sport / HWY',   factor:1.02, impact:'+2% range' },
+        { id:'21at',    label:'21"',  sub:'All-Terrain',   factor:0.98, impact:'−2% range' },
+        { id:'22sport', label:'22"',  sub:'Sport Dark',    factor:0.96, impact:'−4% range' },
+      ],
+      r2: [
+        { id:'20',      label:'20"',  sub:'Standard',      factor:1.00, impact:'Baseline' },
+        { id:'21',      label:'21"',  sub:'Sport',         factor:0.97, impact:'−3% range' },
+      ],
     };
 
-    /* ── Charger data ── */
+    /* Plug notes */
+    const PLUG_NOTES = {
+      nacs: '2024+ R1S/R1T and all R2 models have a native NACS port — use Rivian Adventure Network and Tesla Superchargers natively. A CCS1 adapter may still be needed for some third-party DC chargers.',
+      ccs:  '2022–2023 R1S/R1T use CCS1 natively. You can access Tesla Superchargers with a Rivian-approved NACS DC adapter (sold separately, ~$200). A2Z also makes a compatible adapter for less.',
+    };
+
+    /* Charger data */
     const CHARGERS = {
-      'ran':          { name: 'Rivian RAN',         peakKw: 220,  type: 'dc' },
-      'supercharger': { name: 'Tesla Supercharger', peakKw: 250,  type: 'dc' },
-      'level2':       { name: 'Level 2 Home',       peakKw: 11.5, type: 'ac' },
+      ran:          { name:'Rivian RAN',         peakKw:220,  type:'dc' },
+      supercharger: { name:'Tesla Supercharger', peakKw:250,  type:'dc' },
+      level2:       { name:'Level 2 Home',       peakKw:11.5, type:'ac' },
     };
 
-    let currentVehicle = 'r1s-dual-max';
-    let currentCharger = 'ran';
+    /* State */
+    let currentModel   = 'r1s';
+    let currentVehicle = 'r1s-g2-max';
     let currentWheel   = '20at';
+    let currentPlug    = 'nacs';
+    let currentCharger = 'ran';
+    let wheelFactor    = 1.00;
+
+    /* ── Render trim groups for selected model ── */
+    function renderTrims(model) {
+      const container = document.getElementById('trimGroups');
+      const data = TRIMS[model];
+      let html = '';
+
+      const gens = model === 'r2'
+        ? [{ key:'gen2', label:'2026+' }]
+        : [{ key:'gen2', label:'2025+' }, { key:'gen1', label:'2021–2024' }];
+
+      gens.forEach(({ key, label }) => {
+        if (!data[key]) return;
+        html += `<div class="trim-gen-label">${label}</div><div class="vehicle-grid">`;
+        data[key].forEach(trim => {
+          const sel = trim.id === currentVehicle ? ' selected' : '';
+          html += `
+            <button class="vehicle-btn${sel}" data-vehicle="${trim.id}" onclick="selectVehicle(this)">
+              <div class="vehicle-btn-name" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;">${trim.label}</div>
+              <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">${trim.motor}</div>
+              <span class="vehicle-btn-pack">${trim.capacity} kWh · ${trim.range} mi est.</span>
+            </button>`;
+        });
+        html += '</div>';
+      });
+      container.innerHTML = html;
+    }
+
+    /* ── Render wheel options for selected model ── */
+    function renderWheels(model) {
+      const wheels = WHEELS_BY_MODEL[model];
+      const container = document.getElementById('wheelGrid');
+      container.innerHTML = wheels.map((w, i) => `
+        <button class="wheel-btn${i === 0 ? ' selected' : ''}" data-wheel="${w.id}" onclick="selectWheel(this)">
+          <div class="wheel-btn-size">${w.label}</div>
+          <div class="wheel-btn-label">${w.sub}</div>
+          <span class="wheel-btn-impact">${w.impact}</span>
+        </button>
+      `).join('');
+      currentWheel = wheels[0].id;
+      wheelFactor  = wheels[0].factor;
+    }
+
+    /* ── Auto-select first trim of newly selected model ── */
+    function selectModel(btn) {
+      document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentModel = btn.dataset.model;
+
+      /* default to first gen2 trim */
+      const firstTrim = TRIMS[currentModel].gen2[0];
+      currentVehicle = firstTrim.id;
+
+      /* R2 always NACS */
+      if (currentModel === 'r2') {
+        currentPlug = 'nacs';
+        document.querySelectorAll('#plugGrid .charger-btn').forEach(b => {
+          b.classList.toggle('selected', b.dataset.plug === 'nacs');
+          b.disabled = b.dataset.plug !== 'nacs';
+          b.style.opacity = b.dataset.plug !== 'nacs' ? '0.4' : '1';
+        });
+      } else {
+        document.querySelectorAll('#plugGrid .charger-btn').forEach(b => {
+          b.disabled = false;
+          b.style.opacity = '1';
+        });
+      }
+
+      renderTrims(currentModel);
+      renderWheels(currentModel);
+      updatePlugNote();
+      updateSidebar();
+      updateCalc();
+    }
+
+    function selectVehicle(btn) {
+      document.querySelectorAll('.vehicle-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentVehicle = btn.dataset.vehicle;
+      updateSidebar();
+      updateCalc();
+    }
+
+    function selectWheel(btn) {
+      document.querySelectorAll('.wheel-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentWheel = btn.dataset.wheel;
+      const wheels = WHEELS_BY_MODEL[currentModel];
+      wheelFactor = wheels.find(w => w.id === currentWheel)?.factor ?? 1.00;
+      document.getElementById('sidebarWheel').textContent = btn.querySelector('.wheel-btn-size').textContent + ' ' + btn.querySelector('.wheel-btn-label').textContent;
+      updateCalc();
+    }
+
+    function selectPlug(btn) {
+      document.querySelectorAll('#plugGrid .charger-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentPlug = btn.dataset.plug;
+      updatePlugNote();
+      updateCalc();
+    }
+
+    function updatePlugNote() {
+      document.getElementById('plugNote').textContent = PLUG_NOTES[currentPlug] || '';
+    }
+
+    function selectCharger(btn) {
+      document.querySelectorAll('#chargerGrid .charger-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentCharger = btn.dataset.charger;
+      const c = CHARGERS[currentCharger];
+      document.getElementById('sidebarCharger').textContent = c.name;
+      document.getElementById('sidebarSpeed').textContent   = c.peakKw + ' kW';
+      updateCalc();
+    }
+
+    function getVehicleData() {
+      for (const model of Object.values(TRIMS)) {
+        for (const trims of Object.values(model)) {
+          const found = trims.find(t => t.id === currentVehicle);
+          if (found) return found;
+        }
+      }
+      return null;
+    }
+
+    function updateSidebar() {
+      const v = getVehicleData();
+      if (!v) return;
+      document.getElementById('sidebarVehicle').textContent  = v.label;
+      document.getElementById('sidebarCapacity').textContent = v.capacity + ' kWh';
+      document.getElementById('sidebarRange').textContent    = Math.round(v.range * wheelFactor) + ' mi';
+    }
 
     /* ── DC fast charging curve model ──
        Rivian charges at near-peak from ~5% to 55%, then tapers to ~80%,
@@ -881,23 +1056,23 @@
     }
 
     function calcSession(vehicleKey, chargerKey, wheelKey, startPct, endPct) {
-      const v = VEHICLES[vehicleKey];
+      const v = getVehicleData();
       const c = CHARGERS[chargerKey];
-      const w = WHEELS[wheelKey];
+      if (!v || !c) return null;
       const pctAdded = endPct - startPct;
       const kwhDelivered = (pctAdded / 100) * v.capacity;
-      const adjustedRange = Math.round(v.range * w.factor);
+      const adjustedRange = Math.round(v.range * wheelFactor);
       const milesAdded = Math.round((pctAdded / 100) * adjustedRange);
+      const effectivePeakKw = Math.min(v.peakKw, c.peakKw);
 
       let minutes;
       if (c.type === 'dc') {
-        minutes = calcDcTime(startPct, endPct, v.capacity, c.peakKw);
+        minutes = calcDcTime(startPct, endPct, v.capacity, effectivePeakKw);
       } else {
         minutes = calcAcTime(startPct, endPct, v.capacity, c.peakKw);
       }
 
-      const avgKw = (kwhDelivered / (minutes / 60));
-
+      const avgKw = kwhDelivered / (minutes / 60);
       return {
         minutes: Math.round(minutes),
         milesAdded,
@@ -934,6 +1109,7 @@
       document.getElementById('endFill').style.width   = end   + '%';
 
       const result = calcSession(currentVehicle, currentCharger, currentWheel, start, end);
+      if (!result) return;
 
       document.getElementById('resultTime').textContent  = fmtTime(result.minutes);
       document.getElementById('resultMiles').textContent = result.milesAdded + ' mi';
@@ -967,13 +1143,18 @@
       };
 
       tbody.innerHTML = Object.entries(CHARGERS).map(([key, c]) => {
-        const result = calcSession(currentVehicle, key, currentWheel, start, end);
+        const v = getVehicleData();
+        if (!v) return '';
+        const effectivePeakKw = Math.min(v.peakKw, c.peakKw);
+        const mins = c.type === 'dc'
+          ? calcDcTime(start, end, v.capacity, effectivePeakKw)
+          : calcAcTime(start, end, v.capacity, c.peakKw);
         const isActive = key === currentCharger;
         return `
           <tr class="${isActive ? 'active-row' : ''}">
             <td>${c.name}</td>
             <td>${c.peakKw >= 100 ? Math.round(c.peakKw) + ' kW' : c.peakKw + ' kW'}</td>
-            <td class="highlight">${fmtTime(result.minutes)}</td>
+            <td class="highlight">${fmtTime(Math.round(mins))}</td>
             <td>${bestFor[key]}</td>
           </tr>
         `;
@@ -1033,7 +1214,13 @@
     }
 
     /* ── Init ── */
-    document.addEventListener('DOMContentLoaded', updateCalc);
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTrims(currentModel);
+      renderWheels(currentModel);
+      updatePlugNote();
+      updateSidebar();
+      updateCalc();
+    });
 
   </script>
 
