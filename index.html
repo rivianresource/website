@@ -823,8 +823,8 @@
     async function loadForumsFeed() {
       const container = document.getElementById('forumsFeed');
       try {
-        const rssFeed = encodeURIComponent('https://www.rivianforums.com/forum/forums/-/index.rss');
-        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}&count=6`);
+        const rssFeed = encodeURIComponent('https://www.rivianforums.com/feed/');
+const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}&count=6&_=${Date.now()}`);
         if (!response.ok) throw new Error('Feed failed');
         const data = await response.json();
         if (!data.items?.length) throw new Error('No items');
