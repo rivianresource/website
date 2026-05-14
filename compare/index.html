@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rivian R1S vs R2 Comparison | Which Rivian Is Right for You?</title>
-  <meta name="description" content="Side-by-side comparison of the Rivian R1S and R2. Range, price, size, towing, off-road capability, and real owner perspective to help you choose."/>
-  <link rel="canonical" href="https://www.rivianrewardshub.com/compare/"/>
-  <meta property="og:title" content="Rivian R1S vs R2 — Which Is Right for You?"/>
-  <meta property="og:type" content="website"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Rivian R1S vs R2 Comparison | Build & Compare Configurations</title>
+
+  <meta
+    name="description"
+    content="Build and compare Rivian R1S and R2 configurations. Compare range, horsepower, charging, towing, off-road capability, pricing, and real-world ownership considerations."
+  />
+
+  <link rel="canonical" href="https://www.rivianrewardshub.com/compare/" />
+  <meta property="og:title" content="Rivian R1S vs R2 Comparison Tool" />
+  <meta property="og:type" content="website" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
   <script>
@@ -17,80 +23,117 @@
     gtag('config', 'G-SB8DBC8NBQ');
   </script>
 
-  <link rel="icon" type="image/png" href="/images/logo.svg">
+  <link rel="icon" type="image/png" href="/images/logo.svg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="/shared.css">
 
   <style>
-    .compare-layout { padding: 32px 0 56px; }
 
-    .config-bar {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px 24px;
-      margin-bottom: 24px;
+    .compare-page {
+      padding: 32px 0 60px;
+    }
+
+    .disclaimer {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .builder-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
+      margin-bottom: 24px;
     }
 
-    @media (max-width: 600px) {
-      .config-bar { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      .builder-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
-    .config-col-label {
+    .builder-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .builder-header {
+      padding: 18px 20px;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .builder-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .builder-sub {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .builder-content {
+      padding: 20px;
+    }
+
+    .builder-group {
+      margin-bottom: 20px;
+    }
+
+    .builder-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .builder-label {
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-dim);
       text-transform: uppercase;
       letter-spacing: .08em;
       margin-bottom: 8px;
     }
 
-    .config-select {
+    .builder-select {
       width: 100%;
       background: var(--bg-secondary);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      padding-right: 32px;
+      padding: 12px 14px;
       font-family: 'Figtree', sans-serif;
       font-size: 14px;
       font-weight: 600;
       color: var(--text);
-      cursor: pointer;
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a94a8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
+      cursor: pointer;
     }
 
-    .config-select:focus {
+    .builder-select:focus {
       outline: none;
       border-color: var(--green);
     }
 
-    .compare-header,
-    .compare-row {
+    .compare-header {
       display: grid;
       grid-template-columns: 180px 1fr 1fr;
-    }
-
-    @media (max-width: 600px) {
-      .compare-header,
-      .compare-row {
-        grid-template-columns: 120px 1fr 1fr;
-      }
-    }
-
-    .compare-header {
       border: 1px solid var(--border);
+      border-bottom: none;
       border-radius: var(--radius) var(--radius) 0 0;
       overflow: hidden;
-      border-bottom: none;
     }
 
     .compare-header-empty {
@@ -98,57 +141,63 @@
       border-right: 1px solid var(--border);
     }
 
-    .compare-header-vehicle {
-      padding: 18px 16px;
+    .compare-header-col {
       background: var(--bg-card);
       border-right: 1px solid var(--border);
+      padding: 18px 18px;
     }
 
-    .compare-header-vehicle:last-child {
+    .compare-header-col:last-child {
       border-right: none;
     }
 
-    .chv-model {
+    .vehicle-name {
       font-family: 'DM Sans', sans-serif;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 800;
       line-height: 1;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
-    .chv-trim {
-      font-size: 12px;
+    .vehicle-config {
+      font-size: 13px;
       color: var(--text-dim);
+      line-height: 1.5;
     }
 
-    .chv-price {
+    .vehicle-price {
+      margin-top: 10px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--green);
-      margin-top: 6px;
     }
 
     .compare-section {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      margin-bottom: 18px;
       overflow: hidden;
-      margin-bottom: 16px;
+    }
+
+    .compare-section.rounded {
+      border-radius: 0 0 var(--radius) var(--radius);
     }
 
     .compare-section-header {
-      padding: 14px 20px;
+      padding: 14px 18px;
       background: var(--bg-secondary);
       border-bottom: 1px solid var(--border);
       font-family: 'DM Sans', sans-serif;
       font-size: 13px;
       font-weight: 700;
-      text-transform: uppercase;
       letter-spacing: .06em;
+      text-transform: uppercase;
     }
 
     .compare-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 1fr;
       border-bottom: 1px solid var(--border);
     }
 
@@ -156,23 +205,23 @@
       border-bottom: none;
     }
 
-    .compare-row-label {
+    .compare-label {
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
       padding: 14px 16px;
       font-size: 13px;
       font-weight: 600;
       color: var(--text-muted);
-      background: var(--bg-secondary);
-      border-right: 1px solid var(--border);
       display: flex;
       align-items: center;
     }
 
     .compare-cell {
       padding: 14px 16px;
-      font-size: 14px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
       border-right: 1px solid var(--border);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
       display: flex;
       align-items: center;
     }
@@ -191,11 +240,11 @@
     }
 
     .badge {
+      margin-left: 6px;
+      padding: 2px 6px;
+      border-radius: 4px;
       font-size: 10px;
       font-weight: 700;
-      padding: 1px 6px;
-      border-radius: 3px;
-      margin-left: 6px;
       text-transform: uppercase;
     }
 
@@ -209,440 +258,637 @@
       color: var(--gold);
     }
 
-    .disclaimer {
-      margin-top: -6px;
-      margin-bottom: 18px;
-      font-size: 12px;
-      color: var(--text-dim);
-      line-height: 1.6;
-    }
-
-    .verdict-card {
+    .note-card {
       background: var(--green-dark);
       border-radius: var(--radius);
-      padding: 26px 28px;
-      margin-bottom: 16px;
+      padding: 28px;
+      margin-top: 22px;
     }
 
-    .verdict-card p {
-      font-size: 15px;
-      line-height: 1.75;
+    .note-card p {
       color: rgba(255,255,255,.82);
-      margin-bottom: 12px;
+      line-height: 1.75;
+      margin-bottom: 14px;
+      font-size: 15px;
     }
 
-    .verdict-card p:last-child {
+    .note-card p:last-child {
       margin-bottom: 0;
     }
 
-    .verdict-card strong {
+    .note-card strong {
       color: #fff;
     }
+
+    @media (max-width: 700px) {
+
+      .compare-header,
+      .compare-row {
+        grid-template-columns: 120px 1fr 1fr;
+      }
+
+      .vehicle-name {
+        font-size: 20px;
+      }
+
+    }
+
   </style>
 </head>
+
 <body>
 
 <div id="site-nav"></div>
 
 <div class="page-header">
   <div class="container">
-    <div class="page-eyebrow">Comparison Tool</div>
+    <div class="page-eyebrow">Configuration Comparison</div>
+
     <h1 class="page-title">Rivian R1S vs R2</h1>
+
     <p class="page-sub">
-      Side-by-side specs, capability, and owner perspective to help you decide which Rivian fits your needs.
+      Build and compare specific Rivian configurations with dynamically calculated specs and pricing.
     </p>
   </div>
 </div>
 
 <div class="container">
-  <div class="compare-layout">
 
-    <div class="config-bar">
-      <div>
-        <div class="config-col-label">R1S configuration</div>
-        <select class="config-select" id="r1sSelect" onchange="updateComparison()">
-          <option value="r1s-dual-std">R1S Dual Standard — $77,900</option>
-          <option value="r1s-dual-large">R1S Dual Large — $83,900</option>
-          <option value="r1s-dual-max">R1S Dual Max — $91,900</option>
-          <option value="r1s-tri-max">R1S Tri Max — $107,900</option>
-          <option value="r1s-quad">R1S Quad — $123,900</option>
-        </select>
-      </div>
-
-      <div>
-        <div class="config-col-label">R2 configuration</div>
-        <select class="config-select" id="r2Select" onchange="updateComparison()">
-          <option value="r2-prem">R2 Premium — Est. $53,990</option>
-          <option value="r2-perf">R2 Performance — Est. $57,990</option>
-        </select>
-      </div>
-    </div>
+  <div class="compare-page">
 
     <div class="disclaimer">
-      All R1S specifications reflect current Gen 2 configurations. R2 specifications are based on Rivian public announcements and may change before production.
+      R1S specifications reflect publicly released Gen 2 information. R2 specifications are estimated based on Rivian announcements and pre-production disclosures and may change before launch.
     </div>
+
+    <!-- BUILDERS -->
+
+    <div class="builder-grid">
+
+      <!-- R1S -->
+
+      <div class="builder-card">
+
+        <div class="builder-header">
+          <div class="builder-title">R1S Builder</div>
+          <div class="builder-sub">Configure a specific R1S build</div>
+        </div>
+
+        <div class="builder-content">
+
+          <div class="builder-group">
+            <div class="builder-label">Battery Pack</div>
+
+            <select class="builder-select" id="r1sBattery" onchange="updateComparison()">
+              <option value="standard">Standard</option>
+              <option value="large">Large</option>
+              <option value="max" selected>Max</option>
+            </select>
+          </div>
+
+          <div class="builder-group">
+            <div class="builder-label">Drive System</div>
+
+            <select class="builder-select" id="r1sDrive" onchange="updateComparison()">
+              <option value="dual" selected>Dual Motor</option>
+              <option value="tri">Tri Motor</option>
+              <option value="quad">Quad Motor</option>
+            </select>
+          </div>
+
+          <div class="builder-group">
+            <div class="builder-label">Performance Upgrade</div>
+
+            <select class="builder-select" id="r1sPerformance" onchange="updateComparison()">
+              <option value="standard">Standard Output</option>
+              <option value="performance" selected>Performance</option>
+            </select>
+          </div>
+
+          <div class="builder-group">
+            <div class="builder-label">Wheel Setup</div>
+
+            <select class="builder-select" id="r1sWheels" onchange="updateComparison()">
+              <option value="20">20" All-Terrain</option>
+              <option value="22">22" Sport</option>
+              <option value="22range" selected>22" Range</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- R2 -->
+
+      <div class="builder-card">
+
+        <div class="builder-header">
+          <div class="builder-title">R2 Builder</div>
+          <div class="builder-sub">Estimated production configuration</div>
+        </div>
+
+        <div class="builder-content">
+
+          <div class="builder-group">
+            <div class="builder-label">Drive System</div>
+
+            <select class="builder-select" id="r2Drive" onchange="updateComparison()">
+              <option value="dual" selected>Dual Motor</option>
+              <option value="tri">Tri Motor</option>
+            </select>
+          </div>
+
+          <div class="builder-group">
+            <div class="builder-label">Wheel Setup</div>
+
+            <select class="builder-select" id="r2Wheels" onchange="updateComparison()">
+              <option value="20" selected>20"</option>
+              <option value="22">22"</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COMPARE HEADER -->
 
     <div class="compare-header">
+
       <div class="compare-header-empty"></div>
 
-      <div class="compare-header-vehicle">
-        <div class="chv-model">R1S</div>
-        <div class="chv-trim" id="hdr-r1s-trim">Dual Standard · 92.5 kWh</div>
-        <div class="chv-price" id="hdr-r1s-price">From $77,900</div>
+      <div class="compare-header-col">
+        <div class="vehicle-name">R1S</div>
+
+        <div class="vehicle-config" id="r1sConfigText"></div>
+
+        <div class="vehicle-price" id="r1sPriceHeader"></div>
       </div>
 
-      <div class="compare-header-vehicle">
-        <div class="chv-model">R2</div>
-        <div class="chv-trim" id="hdr-r2-trim">Premium · Est. 87.9 kWh</div>
-        <div class="chv-price" id="hdr-r2-price">From $53,990</div>
+      <div class="compare-header-col">
+        <div class="vehicle-name">R2</div>
+
+        <div class="vehicle-config" id="r2ConfigText"></div>
+
+        <div class="vehicle-price" id="r2PriceHeader"></div>
       </div>
+
     </div>
 
-    <!-- PRICE + RANGE -->
-    <div class="compare-section" style="border-radius:0 0 var(--radius) var(--radius);">
+    <!-- SECTION -->
+
+    <div class="compare-section rounded">
+
       <div class="compare-section-header">Price & Range</div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Starting price</div>
+        <div class="compare-label">Starting price</div>
         <div class="compare-cell" id="r1s-price"></div>
-        <div class="compare-cell winner" id="r2-price"></div>
+        <div class="compare-cell" id="r2-price"></div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">EPA range</div>
+        <div class="compare-label">EPA range</div>
         <div class="compare-cell" id="r1s-range"></div>
         <div class="compare-cell" id="r2-range"></div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Battery</div>
+        <div class="compare-label">Battery</div>
         <div class="compare-cell" id="r1s-battery"></div>
         <div class="compare-cell" id="r2-battery"></div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">DC fast charge</div>
-        <div class="compare-cell" id="r1s-dccharge"></div>
-        <div class="compare-cell" id="r2-dccharge"></div>
+        <div class="compare-label">DC fast charging</div>
+        <div class="compare-cell" id="r1s-charge"></div>
+        <div class="compare-cell" id="r2-charge"></div>
       </div>
 
-      <div class="compare-row">
-        <div class="compare-row-label">10–80% time</div>
-        <div class="compare-cell" id="r1s-chargetime"></div>
-        <div class="compare-cell" id="r2-chargetime"></div>
-      </div>
     </div>
 
     <!-- PERFORMANCE -->
+
     <div class="compare-section">
+
       <div class="compare-section-header">Performance</div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Horsepower</div>
+        <div class="compare-label">Horsepower</div>
         <div class="compare-cell" id="r1s-hp"></div>
         <div class="compare-cell" id="r2-hp"></div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">0–60 mph</div>
+        <div class="compare-label">0–60 mph</div>
         <div class="compare-cell" id="r1s-060"></div>
         <div class="compare-cell" id="r2-060"></div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Drivetrain</div>
-        <div class="compare-cell" id="r1s-drive"></div>
-        <div class="compare-cell" id="r2-drive"></div>
+        <div class="compare-label">Drivetrain</div>
+        <div class="compare-cell" id="r1s-drivetrain"></div>
+        <div class="compare-cell" id="r2-drivetrain"></div>
       </div>
+
     </div>
 
-    <!-- SIZE -->
+    <!-- CAPABILITY -->
+
     <div class="compare-section">
-      <div class="compare-section-header">Size & Practicality</div>
+
+      <div class="compare-section-header">Capability</div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Seating</div>
+        <div class="compare-label">Seating</div>
         <div class="compare-cell winner">7 passengers</div>
         <div class="compare-cell">5 passengers</div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Towing capacity</div>
+        <div class="compare-label">Towing</div>
         <div class="compare-cell winner">7,700 lb</div>
-        <div class="compare-cell">~4,400 lb (est.)</div>
+        <div class="compare-cell">~5,000 lb est.</div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Ground clearance</div>
+        <div class="compare-label">Ground clearance</div>
         <div class="compare-cell winner">14.9 in</div>
-        <div class="compare-cell">~9.6 in (est.)</div>
+        <div class="compare-cell">~9.8 in est.</div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Suspension</div>
-        <div class="compare-cell winner">Air suspension</div>
-        <div class="compare-cell">Coil + active dampers</div>
+        <div class="compare-label">Suspension</div>
+        <div class="compare-cell winner">Adaptive air suspension</div>
+        <div class="compare-cell">Coil + adaptive dampers</div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Frunk storage</div>
-        <div class="compare-cell winner">11.1 cu ft</div>
-        <div class="compare-cell">~5.2 cu ft (est.)</div>
-      </div>
-    </div>
-
-    <!-- OFF ROAD -->
-    <div class="compare-section">
-      <div class="compare-section-header">Off-Road & Capability</div>
-
-      <div class="compare-row">
-        <div class="compare-row-label">Water fording</div>
+        <div class="compare-label">Water fording</div>
         <div class="compare-cell winner">43 in</div>
-        <div class="compare-cell">~20 in (est.)</div>
+        <div class="compare-cell">~20 in est.</div>
       </div>
 
-      <div class="compare-row">
-        <div class="compare-row-label">Torque vectoring</div>
-        <div class="compare-cell winner">Advanced quad-motor control</div>
-        <div class="compare-cell">Standard AWD control</div>
-      </div>
-
-      <div class="compare-row">
-        <div class="compare-row-label">Approach angle</div>
-        <div class="compare-cell winner">34.1°</div>
-        <div class="compare-cell">~25° (est.)</div>
-      </div>
     </div>
 
     <!-- TECH -->
+
     <div class="compare-section">
+
       <div class="compare-section-header">Tech & Features</div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Charge port</div>
-        <div class="compare-cell same">NACS (Gen 2)</div>
-        <div class="compare-cell same">NACS</div>
+        <div class="compare-label">Charge port</div>
+        <div class="compare-cell same">Native NACS</div>
+        <div class="compare-cell same">Native NACS</div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Gear Guard</div>
+        <div class="compare-label">Gear Guard</div>
         <div class="compare-cell same">Yes</div>
         <div class="compare-cell same">Yes</div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Dynamic glass roof</div>
-        <div class="compare-cell same">Optional</div>
-        <div class="compare-cell same">Optional</div>
+        <div class="compare-label">Glass roof</div>
+        <div class="compare-cell same">Optional dynamic glass</div>
+        <div class="compare-cell same">Optional dynamic glass</div>
       </div>
 
       <div class="compare-row">
-        <div class="compare-row-label">Onboard air compressor</div>
+        <div class="compare-label">Air compressor</div>
         <div class="compare-cell winner">Standard</div>
         <div class="compare-cell">No</div>
       </div>
+
     </div>
 
-    <div class="verdict-card">
+    <!-- VERDICT -->
+
+    <div class="note-card">
+
       <p>
-        The R2 will likely be the smarter buy for most households. It delivers Rivian styling, software, and capability at a dramatically lower price point.
+        <strong>The R2 will likely be the smarter buy for most buyers.</strong>
+        It delivers Rivian design, software, charging access, and off-road capability at a significantly lower price point.
       </p>
 
       <p>
-        The R1S justifies its premium if you regularly use the third row, tow heavy trailers, travel long distances, or genuinely use the additional off-road capability.
+        The R1S earns its premium if you regularly use the third row, tow heavier loads, travel long distances, or fully utilize its off-road capability and air suspension system.
       </p>
 
       <p>
-        The biggest deciding factor is usually seating and space — not acceleration.
+        In real-world ownership, seating and cargo flexibility are usually more important than acceleration numbers.
       </p>
+
     </div>
 
   </div>
+
 </div>
 
 <script>
-const CONFIGS = {
 
-  'r1s-dual-std': {
-    trim: 'Dual Standard · 92.5 kWh',
-    price: '$77,900',
-    range: 270,
-    battery: '92.5 kWh',
-    dccharge: 200,
-    chargetime: '~42 min',
-    hp: 533,
-    zero60: 4.5,
-    drive: 'Dual Motor AWD'
-  },
+  // ----------------------------------------------------
+  // R1S SPEC ENGINE
+  // ----------------------------------------------------
 
-  'r1s-dual-large': {
-    trim: 'Dual Large · 109.4 kWh',
-    price: '$83,900',
-    range: 330,
-    battery: '109.4 kWh',
-    dccharge: 220,
-    chargetime: '~35 min',
-    hp: 665,
-    zero60: 3.4,
-    drive: 'Dual Motor AWD'
-  },
+  function buildR1S() {
 
-  'r1s-dual-max': {
-    trim: 'Dual Max · 141.5 kWh',
-    price: '$91,900',
-    range: 410,
-    battery: '141.5 kWh',
-    dccharge: 220,
-    chargetime: '~31 min',
-    hp: 665,
-    zero60: 3.4,
-    drive: 'Dual Motor AWD'
-  },
+    const battery = document.getElementById('r1sBattery').value;
+    const drive = document.getElementById('r1sDrive').value;
+    const performance = document.getElementById('r1sPerformance').value;
+    const wheels = document.getElementById('r1sWheels').value;
 
-  'r1s-tri-max': {
-    trim: 'Tri Max · 141.5 kWh',
-    price: '$107,900',
-    range: 371,
-    battery: '141.5 kWh',
-    dccharge: 220,
-    chargetime: '~31 min',
-    hp: 850,
-    zero60: 2.9,
-    drive: 'Tri Motor AWD'
-  },
+    let config = {
+      name: '',
+      price: 0,
+      range: 0,
+      battery: '',
+      hp: 0,
+      zero60: 0,
+      charge: 220,
+      drivetrain: '',
+    };
 
-  'r1s-quad': {
-    trim: 'Quad · 141 kWh',
-    price: '$123,900',
-    range: 338,
-    battery: '141 kWh',
-    dccharge: 220,
-    chargetime: '~30 min',
-    hp: 1025,
-    zero60: 2.5,
-    drive: 'Quad Motor AWD'
-  },
+    // INVALID COMBOS
 
-  'r2-prem': {
-    trim: 'Premium · Est. 87.9 kWh',
-    price: '$53,990',
-    range: 330,
-    battery: '~87.9 kWh',
-    dccharge: 210,
-    chargetime: '~29 min',
-    hp: 450,
-    zero60: 4.6,
-    drive: 'Dual Motor AWD'
-  },
+    if (drive === 'quad') {
+      document.getElementById('r1sBattery').value = 'max';
+      document.getElementById('r1sPerformance').value = 'performance';
+    }
 
-  'r2-perf': {
-    trim: 'Performance · Est. 87.9 kWh',
-    price: '$57,990',
-    range: 335,
-    battery: '~87.9 kWh',
-    dccharge: 210,
-    chargetime: '~29 min',
-    hp: 656,
-    zero60: 3.6,
-    drive: 'Dual Motor AWD'
+    if (drive === 'tri') {
+      document.getElementById('r1sBattery').value = 'max';
+    }
+
+    // DUAL
+
+    if (drive === 'dual') {
+
+      config.drivetrain = 'Dual Motor AWD';
+
+      if (battery === 'standard') {
+        config.price = performance === 'performance' ? 83900 : 77900;
+        config.range = wheels === '22range' ? 280 : 270;
+        config.battery = '92.5 kWh';
+      }
+
+      if (battery === 'large') {
+        config.price = performance === 'performance' ? 89900 : 83900;
+        config.range = wheels === '22range' ? 352 : 330;
+        config.battery = '109.4 kWh';
+      }
+
+      if (battery === 'max') {
+        config.price = performance === 'performance' ? 91900 : 87900;
+        config.range = wheels === '22range' ? 410 : 390;
+        config.battery = '141.5 kWh';
+      }
+
+      if (performance === 'performance') {
+        config.hp = 665;
+        config.zero60 = 3.4;
+      } else {
+        config.hp = 533;
+        config.zero60 = 4.5;
+      }
+
+      config.name =
+        `Dual ${capitalize(battery)} · ${performance === 'performance' ? 'Performance' : 'Standard Output'}`;
+
+    }
+
+    // TRI
+
+    if (drive === 'tri') {
+
+      config.name = 'Tri Max';
+      config.price = 107900;
+      config.range = 371;
+      config.battery = '141.5 kWh';
+      config.hp = 850;
+      config.zero60 = 2.9;
+      config.charge = 220;
+      config.drivetrain = 'Tri Motor AWD';
+
+    }
+
+    // QUAD
+
+    if (drive === 'quad') {
+
+      config.name = 'Quad';
+      config.price = 123900;
+      config.range = 338;
+      config.battery = '141.5 kWh';
+      config.hp = 1025;
+      config.zero60 = 2.5;
+      config.charge = 220;
+      config.drivetrain = 'Quad Motor AWD';
+
+    }
+
+    return config;
+
   }
-};
 
-function winnerClass(isWinner) {
-  return isWinner ? 'compare-cell winner' : 'compare-cell';
-}
+  // ----------------------------------------------------
+  // R2 SPEC ENGINE
+  // ----------------------------------------------------
 
-function updateComparison() {
+  function buildR2() {
 
-  const r1s = CONFIGS[document.getElementById('r1sSelect').value];
-  const r2  = CONFIGS[document.getElementById('r2Select').value];
+    const drive = document.getElementById('r2Drive').value;
 
-  document.getElementById('hdr-r1s-trim').textContent = r1s.trim;
-  document.getElementById('hdr-r1s-price').textContent = 'From ' + r1s.price;
+    let config = {
+      name: '',
+      price: 0,
+      range: 0,
+      battery: '~87.9 kWh',
+      hp: 0,
+      zero60: 0,
+      charge: '~210 kW',
+      drivetrain: '',
+    };
 
-  document.getElementById('hdr-r2-trim').textContent = r2.trim;
-  document.getElementById('hdr-r2-price').textContent = 'From ' + r2.price;
+    if (drive === 'dual') {
 
-  // PRICE
-  const r1Price = parseInt(r1s.price.replace(/[$,]/g,''));
-  const r2Price = parseInt(r2.price.replace(/[$,]/g,''));
-  const savings = r1Price - r2Price;
+      config.name = 'Dual Motor';
+      config.price = 55000;
+      config.range = 330;
+      config.hp = 450;
+      config.zero60 = 4.6;
+      config.drivetrain = 'Dual Motor AWD';
 
-  document.getElementById('r1s-price').className = winnerClass(false);
-  document.getElementById('r2-price').className = winnerClass(true);
+    }
 
-  document.getElementById('r1s-price').textContent = r1s.price;
-  document.getElementById('r2-price').innerHTML =
-    `${r2.price} <span class="badge badge-better">$${Math.round(savings/1000)}K less</span>`;
+    if (drive === 'tri') {
 
-  // RANGE
-  const r1RangeWinner = r1s.range > r2.range;
-  const r2RangeWinner = r2.range > r1s.range;
+      config.name = 'Tri Motor';
+      config.price = 65000;
+      config.range = 335;
+      config.hp = 650;
+      config.zero60 = 3.0;
+      config.drivetrain = 'Tri Motor AWD';
 
-  document.getElementById('r1s-range').className = winnerClass(r1RangeWinner);
-  document.getElementById('r2-range').className = winnerClass(r2RangeWinner);
+    }
 
-  document.getElementById('r1s-range').textContent = `${r1s.range} mi`;
+    return config;
 
-  const rangeDiff = r2.range - r1s.range;
-  const rangeBadgeClass = rangeDiff >= 0 ? 'badge-better' : 'badge-worse';
+  }
 
-  document.getElementById('r2-range').innerHTML =
-    `${r2.range} mi <span class="badge ${rangeBadgeClass}">
-      ${rangeDiff > 0 ? '+' : ''}${rangeDiff} mi
-    </span>`;
+  // ----------------------------------------------------
+  // UPDATE UI
+  // ----------------------------------------------------
 
-  // BATTERY
-  document.getElementById('r1s-battery').textContent = r1s.battery;
-  document.getElementById('r2-battery').textContent = r2.battery;
+  function updateComparison() {
 
-  // CHARGING
-  document.getElementById('r1s-dccharge').className =
-    winnerClass(r1s.dccharge > r2.dccharge);
+    const r1s = buildR1S();
+    const r2 = buildR2();
 
-  document.getElementById('r2-dccharge').className =
-    winnerClass(r2.dccharge > r1s.dccharge);
+    // HEADER
 
-  document.getElementById('r1s-dccharge').textContent = `${r1s.dccharge} kW`;
-  document.getElementById('r2-dccharge').textContent = `${r2.dccharge} kW`;
+    document.getElementById('r1sConfigText').textContent =
+      `${r1s.name} · ${r1s.battery}`;
 
-  // CHARGE TIME
-  document.getElementById('r1s-chargetime').textContent = r1s.chargetime;
-  document.getElementById('r2-chargetime').textContent = r2.chargetime;
+    document.getElementById('r2ConfigText').textContent =
+      `${r2.name} · ${r2.battery} (est.)`;
 
-  // HORSEPOWER
-  document.getElementById('r1s-hp').className =
-    winnerClass(r1s.hp > r2.hp);
+    document.getElementById('r1sPriceHeader').textContent =
+      `$${r1s.price.toLocaleString()}`;
 
-  document.getElementById('r2-hp').className =
-    winnerClass(r2.hp > r1s.hp);
+    document.getElementById('r2PriceHeader').textContent =
+      `Est. $${r2.price.toLocaleString()}`;
 
-  document.getElementById('r1s-hp').textContent = `${r1s.hp.toLocaleString()} hp`;
-  document.getElementById('r2-hp').textContent = `${r2.hp.toLocaleString()} hp`;
+    // PRICE
 
-  // 0-60
-  document.getElementById('r1s-060').className =
-    winnerClass(r1s.zero60 < r2.zero60);
+    const savings = r1s.price - r2.price;
 
-  document.getElementById('r2-060').className =
-    winnerClass(r2.zero60 < r1s.zero60);
+    document.getElementById('r1s-price').className = 'compare-cell';
 
-  document.getElementById('r1s-060').textContent = `${r1s.zero60} sec`;
-  document.getElementById('r2-060').textContent = `${r2.zero60} sec`;
+    document.getElementById('r2-price').className =
+      'compare-cell winner';
 
-  // DRIVE
-  document.getElementById('r1s-drive').textContent = r1s.drive;
-  document.getElementById('r2-drive').textContent = r2.drive;
-}
+    document.getElementById('r1s-price').textContent =
+      `$${r1s.price.toLocaleString()}`;
 
-updateComparison();
+    document.getElementById('r2-price').innerHTML =
+      `Est. $${r2.price.toLocaleString()}
+      <span class="badge badge-better">
+        $${Math.round(savings / 1000)}K less
+      </span>`;
 
-fetch('/nav.html')
-  .then(r => r.text())
-  .then(html => {
-    document.getElementById('site-nav').innerHTML = html;
-  })
-  .catch(() => {});
+    // RANGE
+
+    setCompare(
+      'range',
+      `${r1s.range} mi`,
+      `~${r2.range} mi`,
+      r1s.range,
+      r2.range,
+      true
+    );
+
+    // BATTERY
+
+    document.getElementById('r1s-battery').textContent = r1s.battery;
+    document.getElementById('r2-battery').textContent = r2.battery;
+
+    // CHARGE
+
+    document.getElementById('r1s-charge').className =
+      'compare-cell winner';
+
+    document.getElementById('r2-charge').className =
+      'compare-cell';
+
+    document.getElementById('r1s-charge').textContent =
+      `${r1s.charge} kW`;
+
+    document.getElementById('r2-charge').textContent =
+      r2.charge;
+
+    // HP
+
+    setCompare(
+      'hp',
+      `${r1s.hp.toLocaleString()} hp`,
+      `~${r2.hp.toLocaleString()} hp`,
+      r1s.hp,
+      r2.hp,
+      true
+    );
+
+    // 0-60
+
+    setCompare(
+      '060',
+      `${r1s.zero60} sec`,
+      `~${r2.zero60} sec`,
+      r1s.zero60,
+      r2.zero60,
+      false
+    );
+
+    // DRIVETRAIN
+
+    document.getElementById('r1s-drivetrain').textContent =
+      r1s.drivetrain;
+
+    document.getElementById('r2-drivetrain').textContent =
+      r2.drivetrain;
+
+  }
+
+  // ----------------------------------------------------
+  // HELPERS
+  // ----------------------------------------------------
+
+  function setCompare(id, leftText, rightText, leftValue, rightValue, higherWins = true) {
+
+    const left = document.getElementById(`r1s-${id}`);
+    const right = document.getElementById(`r2-${id}`);
+
+    const leftWins = higherWins
+      ? leftValue > rightValue
+      : leftValue < rightValue;
+
+    const rightWins = higherWins
+      ? rightValue > leftValue
+      : rightValue < leftValue;
+
+    left.className =
+      leftWins
+        ? 'compare-cell winner'
+        : 'compare-cell';
+
+    right.className =
+      rightWins
+        ? 'compare-cell winner'
+        : 'compare-cell';
+
+    left.textContent = leftText;
+    right.textContent = rightText;
+
+  }
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  // ----------------------------------------------------
+  // INIT
+  // ----------------------------------------------------
+
+  updateComparison();
+
+  fetch('/nav.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('site-nav').innerHTML = html;
+    })
+    .catch(() => {});
+
 </script>
 
 </body>
