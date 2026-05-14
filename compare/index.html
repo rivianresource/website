@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <title>Rivian R1S vs R2 Comparison | Build & Compare Configurations</title>
 
   <meta
     name="description"
-    content="Build and compare Rivian R1S and R2 configurations. Compare range, horsepower, charging, towing, off-road capability, pricing, and real-world ownership considerations."
+    content="Build and compare Rivian R1S and R2 configurations. Compare range, charging, pricing, horsepower, towing, and capability."
   />
 
   <link rel="canonical" href="https://www.rivianrewardshub.com/compare/" />
-  <meta property="og:title" content="Rivian R1S vs R2 Comparison Tool" />
-  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rivian R1S vs R2 Comparison Tool"/>
+  <meta property="og:type" content="website"/>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -23,7 +24,7 @@
     gtag('config', 'G-SB8DBC8NBQ');
   </script>
 
-  <link rel="icon" type="image/png" href="/images/logo.svg" />
+  <link rel="icon" type="image/png" href="/images/logo.svg"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +39,7 @@
   <style>
 
     .compare-page {
-      padding: 32px 0 60px;
+      padding: 32px 0 64px;
     }
 
     .disclaimer {
@@ -78,7 +79,6 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 22px;
       font-weight: 800;
-      line-height: 1;
       margin-bottom: 6px;
     }
 
@@ -122,9 +122,9 @@
       cursor: pointer;
     }
 
-    .builder-select:focus {
-      outline: none;
-      border-color: var(--green);
+    .builder-select:disabled {
+      opacity: .45;
+      cursor: not-allowed;
     }
 
     .compare-header {
@@ -144,7 +144,7 @@
     .compare-header-col {
       background: var(--bg-card);
       border-right: 1px solid var(--border);
-      padding: 18px 18px;
+      padding: 18px;
     }
 
     .compare-header-col:last-child {
@@ -155,7 +155,6 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 24px;
       font-weight: 800;
-      line-height: 1;
       margin-bottom: 6px;
     }
 
@@ -176,8 +175,8 @@
     .compare-section {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      margin-bottom: 18px;
       overflow: hidden;
+      margin-bottom: 18px;
     }
 
     .compare-section.rounded {
@@ -191,8 +190,8 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 13px;
       font-weight: 700;
-      letter-spacing: .06em;
       text-transform: uppercase;
+      letter-spacing: .06em;
     }
 
     .compare-row {
@@ -219,11 +218,11 @@
     .compare-cell {
       padding: 14px 16px;
       border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
       font-family: 'DM Sans', sans-serif;
       font-size: 14px;
       font-weight: 700;
-      display: flex;
-      align-items: center;
     }
 
     .compare-cell:last-child {
@@ -251,11 +250,6 @@
     .badge-better {
       background: var(--green-pale);
       color: var(--green);
-    }
-
-    .badge-worse {
-      background: #fef3e2;
-      color: var(--gold);
     }
 
     .note-card {
@@ -302,6 +296,7 @@
 
 <div class="page-header">
   <div class="container">
+
     <div class="page-eyebrow">Configuration Comparison</div>
 
     <h1 class="page-title">Rivian R1S vs R2</h1>
@@ -309,6 +304,7 @@
     <p class="page-sub">
       Build and compare specific Rivian configurations with dynamically calculated specs and pricing.
     </p>
+
   </div>
 </div>
 
@@ -317,7 +313,7 @@
   <div class="compare-page">
 
     <div class="disclaimer">
-      R1S specifications reflect publicly released Gen 2 information. R2 specifications are estimated based on Rivian announcements and pre-production disclosures and may change before launch.
+      Specifications, pricing, charging speeds, and estimated ranges may change over time and can vary based on wheels, tires, options, software updates, and production revisions. R2 specifications are based on Rivian public announcements and pre-production information and remain subject to change. Always verify final configuration details directly at Rivian.com before ordering.
     </div>
 
     <!-- BUILDERS -->
@@ -330,7 +326,7 @@
 
         <div class="builder-header">
           <div class="builder-title">R1S Builder</div>
-          <div class="builder-sub">Configure a specific R1S build</div>
+          <div class="builder-sub">Current Gen 2 configuration system</div>
         </div>
 
         <div class="builder-content">
@@ -365,7 +361,7 @@
           </div>
 
           <div class="builder-group">
-            <div class="builder-label">Wheel Setup</div>
+            <div class="builder-label">Wheels</div>
 
             <select class="builder-select" id="r1sWheels" onchange="updateComparison()">
               <option value="20">20" All-Terrain</option>
@@ -383,26 +379,26 @@
 
         <div class="builder-header">
           <div class="builder-title">R2 Builder</div>
-          <div class="builder-sub">Estimated production configuration</div>
+          <div class="builder-sub">Estimated production configurations</div>
         </div>
 
         <div class="builder-content">
 
           <div class="builder-group">
-            <div class="builder-label">Drive System</div>
+            <div class="builder-label">Trim</div>
 
-            <select class="builder-select" id="r2Drive" onchange="updateComparison()">
-              <option value="dual" selected>Dual Motor</option>
-              <option value="tri">Tri Motor</option>
+            <select class="builder-select" id="r2Trim" onchange="updateComparison()">
+              <option value="premium">Premium</option>
+              <option value="performance" selected>Performance</option>
             </select>
           </div>
 
           <div class="builder-group">
-            <div class="builder-label">Wheel Setup</div>
+            <div class="builder-label">Wheels</div>
 
             <select class="builder-select" id="r2Wheels" onchange="updateComparison()">
-              <option value="20" selected>20"</option>
-              <option value="22">22"</option>
+              <option value="20">20" All-Terrain</option>
+              <option value="21" selected>21" Road</option>
             </select>
           </div>
 
@@ -411,31 +407,35 @@
 
     </div>
 
-    <!-- COMPARE HEADER -->
+    <!-- HEADER -->
 
     <div class="compare-header">
 
       <div class="compare-header-empty"></div>
 
       <div class="compare-header-col">
+
         <div class="vehicle-name">R1S</div>
 
         <div class="vehicle-config" id="r1sConfigText"></div>
 
         <div class="vehicle-price" id="r1sPriceHeader"></div>
+
       </div>
 
       <div class="compare-header-col">
+
         <div class="vehicle-name">R2</div>
 
         <div class="vehicle-config" id="r2ConfigText"></div>
 
         <div class="vehicle-price" id="r2PriceHeader"></div>
+
       </div>
 
     </div>
 
-    <!-- SECTION -->
+    <!-- PRICE -->
 
     <div class="compare-section rounded">
 
@@ -563,21 +563,25 @@
 
     </div>
 
+    <div class="disclaimer" style="margin-top:18px;">
+      Estimated specifications are based on publicly available information as of May 2026.
+    </div>
+
     <!-- VERDICT -->
 
     <div class="note-card">
 
       <p>
-        <strong>The R2 will likely be the smarter buy for most buyers.</strong>
-        It delivers Rivian design, software, charging access, and off-road capability at a significantly lower price point.
+        <strong>The R2 will likely be the smarter buy for most households.</strong>
+        It delivers Rivian design, software, charging access, and off-road capability at a dramatically lower price point.
       </p>
 
       <p>
-        The R1S earns its premium if you regularly use the third row, tow heavier loads, travel long distances, or fully utilize its off-road capability and air suspension system.
+        The R1S earns its premium if you regularly use the third row, tow heavier loads, travel long distances, or fully utilize its air suspension and off-road capability.
       </p>
 
       <p>
-        In real-world ownership, seating and cargo flexibility are usually more important than acceleration numbers.
+        In real-world ownership, seating and cargo flexibility are usually more important than acceleration numbers alone.
       </p>
 
     </div>
@@ -588,64 +592,116 @@
 
 <script>
 
-  // ----------------------------------------------------
-  // R1S SPEC ENGINE
-  // ----------------------------------------------------
+  // ----------------------------------------
+  // HELPERS
+  // ----------------------------------------
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  function setCompare(id, leftText, rightText, leftValue, rightValue, higherWins = true) {
+
+    const left = document.getElementById(`r1s-${id}`);
+    const right = document.getElementById(`r2-${id}`);
+
+    const leftWins = higherWins
+      ? leftValue > rightValue
+      : leftValue < rightValue;
+
+    const rightWins = higherWins
+      ? rightValue > leftValue
+      : rightValue < leftValue;
+
+    left.className = leftWins
+      ? 'compare-cell winner'
+      : 'compare-cell';
+
+    right.className = rightWins
+      ? 'compare-cell winner'
+      : 'compare-cell';
+
+    left.textContent = leftText;
+    right.textContent = rightText;
+
+  }
+
+  // ----------------------------------------
+  // R1S CONFIG
+  // ----------------------------------------
 
   function buildR1S() {
 
-    const battery = document.getElementById('r1sBattery').value;
-    const drive = document.getElementById('r1sDrive').value;
-    const performance = document.getElementById('r1sPerformance').value;
-    const wheels = document.getElementById('r1sWheels').value;
+    const battery = document.getElementById('r1sBattery');
+    const drive = document.getElementById('r1sDrive');
+    const performance = document.getElementById('r1sPerformance');
+    const wheels = document.getElementById('r1sWheels');
 
-    let config = {
-      name: '',
+    // RESET DISABLED
+
+    battery.disabled = false;
+    performance.disabled = false;
+
+    // TRI / QUAD LOGIC
+
+    if (drive.value === 'tri') {
+      battery.value = 'max';
+      battery.disabled = true;
+      performance.value = 'performance';
+      performance.disabled = true;
+    }
+
+    if (drive.value === 'quad') {
+      battery.value = 'max';
+      battery.disabled = true;
+      performance.value = 'performance';
+      performance.disabled = true;
+    }
+
+    const config = {
       price: 0,
       range: 0,
-      battery: '',
       hp: 0,
       zero60: 0,
+      battery: '',
       charge: 220,
       drivetrain: '',
+      name: ''
     };
 
-    // INVALID COMBOS
-
-    if (drive === 'quad') {
-      document.getElementById('r1sBattery').value = 'max';
-      document.getElementById('r1sPerformance').value = 'performance';
-    }
-
-    if (drive === 'tri') {
-      document.getElementById('r1sBattery').value = 'max';
-    }
+    const wheelAdjustments = {
+      '20': -18,
+      '22': -8,
+      '22range': 0
+    };
 
     // DUAL
 
-    if (drive === 'dual') {
+    if (drive.value === 'dual') {
 
       config.drivetrain = 'Dual Motor AWD';
 
-      if (battery === 'standard') {
-        config.price = performance === 'performance' ? 83900 : 77900;
-        config.range = wheels === '22range' ? 280 : 270;
+      if (battery.value === 'standard') {
+        config.price = performance.value === 'performance' ? 83900 : 77900;
+        config.range = 280;
         config.battery = '92.5 kWh';
       }
 
-      if (battery === 'large') {
-        config.price = performance === 'performance' ? 89900 : 83900;
-        config.range = wheels === '22range' ? 352 : 330;
+      if (battery.value === 'large') {
+        config.price = performance.value === 'performance' ? 89900 : 83900;
+        config.range = 352;
         config.battery = '109.4 kWh';
       }
 
-      if (battery === 'max') {
-        config.price = performance === 'performance' ? 91900 : 87900;
-        config.range = wheels === '22range' ? 410 : 390;
+      if (battery.value === 'max') {
+        config.price = performance.value === 'performance' ? 91900 : 87900;
+        config.range = 410;
         config.battery = '141.5 kWh';
       }
 
-      if (performance === 'performance') {
+      config.range += wheelAdjustments[wheels.value];
+
+      if (performance.value === 'performance') {
         config.hp = 665;
         config.zero60 = 3.4;
       } else {
@@ -654,36 +710,34 @@
       }
 
       config.name =
-        `Dual ${capitalize(battery)} · ${performance === 'performance' ? 'Performance' : 'Standard Output'}`;
+        `Dual ${capitalize(battery.value)} · ${performance.value === 'performance' ? 'Performance' : 'Standard Output'}`;
 
     }
 
     // TRI
 
-    if (drive === 'tri') {
+    if (drive.value === 'tri') {
 
       config.name = 'Tri Max';
       config.price = 107900;
-      config.range = 371;
-      config.battery = '141.5 kWh';
+      config.range = wheels.value === '20' ? 353 : 371;
       config.hp = 850;
       config.zero60 = 2.9;
-      config.charge = 220;
+      config.battery = '141.5 kWh';
       config.drivetrain = 'Tri Motor AWD';
 
     }
 
     // QUAD
 
-    if (drive === 'quad') {
+    if (drive.value === 'quad') {
 
       config.name = 'Quad';
       config.price = 123900;
-      config.range = 338;
-      config.battery = '141.5 kWh';
+      config.range = wheels.value === '20' ? 320 : 338;
       config.hp = 1025;
       config.zero60 = 2.5;
-      config.charge = 220;
+      config.battery = '141.5 kWh';
       config.drivetrain = 'Quad Motor AWD';
 
     }
@@ -692,44 +746,47 @@
 
   }
 
-  // ----------------------------------------------------
-  // R2 SPEC ENGINE
-  // ----------------------------------------------------
+  // ----------------------------------------
+  // R2 CONFIG
+  // ----------------------------------------
 
   function buildR2() {
 
-    const drive = document.getElementById('r2Drive').value;
+    const trim = document.getElementById('r2Trim').value;
+    const wheels = document.getElementById('r2Wheels').value;
 
-    let config = {
+    const config = {
       name: '',
       price: 0,
       range: 0,
-      battery: '~87.9 kWh',
       hp: 0,
       zero60: 0,
+      battery: '87.9 kWh',
       charge: '~210 kW',
-      drivetrain: '',
+      drivetrain: 'Dual Motor AWD'
     };
 
-    if (drive === 'dual') {
+    // PREMIUM
 
-      config.name = 'Dual Motor';
-      config.price = 55000;
-      config.range = 330;
+    if (trim === 'premium') {
+
+      config.name = 'Premium';
+      config.price = 53990;
+      config.range = wheels === '20' ? 315 : 330;
       config.hp = 450;
-      config.zero60 = 4.6;
-      config.drivetrain = 'Dual Motor AWD';
+      config.zero60 = wheels === '20' ? 4.7 : 4.6;
 
     }
 
-    if (drive === 'tri') {
+    // PERFORMANCE
 
-      config.name = 'Tri Motor';
-      config.price = 65000;
-      config.range = 335;
-      config.hp = 650;
-      config.zero60 = 3.0;
-      config.drivetrain = 'Tri Motor AWD';
+    if (trim === 'performance') {
+
+      config.name = 'Performance';
+      config.price = 57990;
+      config.range = wheels === '20' ? 320 : 335;
+      config.hp = 656;
+      config.zero60 = wheels === '20' ? 3.7 : 3.6;
 
     }
 
@@ -737,9 +794,9 @@
 
   }
 
-  // ----------------------------------------------------
-  // UPDATE UI
-  // ----------------------------------------------------
+  // ----------------------------------------
+  // UPDATE
+  // ----------------------------------------
 
   function updateComparison() {
 
@@ -766,8 +823,7 @@
 
     document.getElementById('r1s-price').className = 'compare-cell';
 
-    document.getElementById('r2-price').className =
-      'compare-cell winner';
+    document.getElementById('r2-price').className = 'compare-cell winner';
 
     document.getElementById('r1s-price').textContent =
       `$${r1s.price.toLocaleString()}`;
@@ -791,8 +847,11 @@
 
     // BATTERY
 
-    document.getElementById('r1s-battery').textContent = r1s.battery;
-    document.getElementById('r2-battery').textContent = r2.battery;
+    document.getElementById('r1s-battery').textContent =
+      r1s.battery;
+
+    document.getElementById('r2-battery').textContent =
+      `~${r2.battery}`;
 
     // CHARGE
 
@@ -840,45 +899,7 @@
 
   }
 
-  // ----------------------------------------------------
-  // HELPERS
-  // ----------------------------------------------------
-
-  function setCompare(id, leftText, rightText, leftValue, rightValue, higherWins = true) {
-
-    const left = document.getElementById(`r1s-${id}`);
-    const right = document.getElementById(`r2-${id}`);
-
-    const leftWins = higherWins
-      ? leftValue > rightValue
-      : leftValue < rightValue;
-
-    const rightWins = higherWins
-      ? rightValue > leftValue
-      : rightValue < leftValue;
-
-    left.className =
-      leftWins
-        ? 'compare-cell winner'
-        : 'compare-cell';
-
-    right.className =
-      rightWins
-        ? 'compare-cell winner'
-        : 'compare-cell';
-
-    left.textContent = leftText;
-    right.textContent = rightText;
-
-  }
-
-  function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
-  // ----------------------------------------------------
   // INIT
-  // ----------------------------------------------------
 
   updateComparison();
 
