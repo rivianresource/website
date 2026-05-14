@@ -841,7 +841,7 @@
     async function loadForumsFeed() {
       const container = document.getElementById('forumsFeed');
       try {
-        const rssFeed = encodeURIComponent(https://www.rivianforums.com/feed/');
+        const rssFeed = encodeURIComponent('https://www.rivianforums.com/feed/');
         const response = await fetch(
   `https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}&count=6&_=${Date.now()}`
 );
@@ -899,7 +899,7 @@ async function loadSoftwareUpdates() {
   try {
 
     const rssFeed = encodeURIComponent(
-      'https://www.rivianforums.com/forum/forums/-/index.rss'
+      'https://www.rivianforums.com/feed/'
     );
 
     const response = await fetch(
