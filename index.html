@@ -12,7 +12,7 @@
     content="Use Rivian referral code SCOTT4395475 for Rivian Rewards points and complimentary Adventure Network charging. Real Rivian R1S owner reviews, accessories, charging impressions, and ownership resources."
   />
   <link rel="canonical" href="https://www.rivianrewardshub.com/" />
-  <meta property="og:title" content="Rivian R1S Owner Reviews, News & Resources | Rivian Rewards Hub"/>
+  <meta property="og:title" content="Rivian Referral Code — Rewards Points + Free Charging"/>
   <meta property="og:description" content="Use Rivian referral code SCOTT4395475 for Rivian Rewards points and complimentary Adventure Network charging. Independent Rivian owner reviews and ownership resources."/>
   <meta property="og:image" content="https://www.rivianrewardshub.com/r1s.jpg" />
   <meta property="og:url" content="https://www.rivianrewardshub.com/" />
@@ -27,7 +27,7 @@
     gtag('config', 'G-SB8DBC8NBQ');
   </script>
 
-  <link rel="icon" type="image/png" href="/images/logo.png">
+  <link rel="icon" type="image/png" href="/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -146,7 +146,73 @@
 
     .news-card-date { font-size: 11px; color: var(--text-dim); }
 
-    /* ─── REVIEW CARD ─── */
+    /* ─── REDDIT FEED ─── */
+    .reddit-feed { display: flex; flex-direction: column; gap: 2px; }
+
+    .reddit-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+
+    .reddit-row:hover { background: var(--bg-secondary); }
+
+    .reddit-votes {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+      min-width: 36px;
+      flex-shrink: 0;
+    }
+
+    .reddit-votes-num {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+    }
+
+    .reddit-votes-label { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .reddit-divider { width: 1px; height: 32px; background: var(--border); flex-shrink: 0; }
+
+    .reddit-content { flex: 1; min-width: 0; }
+
+    .reddit-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .reddit-meta { font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 8px; }
+
+    .reddit-flair {
+      background: var(--green-pale);
+      color: var(--green);
+      border-radius: 3px;
+      padding: 1px 6px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .reddit-comments { display: flex; align-items: center; gap: 3px; }
+
+    @keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+    .skeleton { background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border) 50%, var(--bg-secondary) 75%); background-size: 400px 100%; animation: shimmer 1.4s infinite; }
+    .skeleton-row { padding: 10px 12px; }
+
+    /* ─── REDDIT FEED ─── */
     .review-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -373,7 +439,23 @@
             </div>
           </div>
 
-          <!-- FEATURED REVIEW -->
+          <!-- REDDIT FEED -->
+          <div class="card">
+            <div class="news-header">
+              <div class="section-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="var(--green)" xmlns="http://www.w3.org/2000/svg"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                r/Rivian
+              </div>
+              <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" class="link-btn" style="font-size:12px;">Open Reddit</a>
+            </div>
+            <div class="reddit-feed" id="redditFeed">
+              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:70%; border-radius:4px;"></div></div>
+              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:55%; border-radius:4px;"></div></div>
+              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:65%; border-radius:4px;"></div></div>
+              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:60%; border-radius:4px;"></div></div>
+              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:75%; border-radius:4px;"></div></div>
+            </div>
+          </div>
           <div class="review-card">
             <div class="section-label">Featured review</div>
             <h2 class="review-title">90 Days With My 2026 Rivian R1S</h2>
@@ -497,7 +579,7 @@
   <!-- ─── FOOTER ─── -->
   <footer>
     <div class="container">
-      <img src="/images/logo.png" alt="Rivian Rewards Hub">
+      <img src="/logo.png" alt="Rivian Rewards Hub">
       Independent Rivian owner resource featuring reviews, referral rewards, charging impressions, and ownership content.<br>
       Not affiliated with or endorsed by Rivian Automotive, Inc.
     </div>
@@ -562,8 +644,53 @@
       }
     }
 
+    /* ── r/Rivian Reddit Feed ── */
+    async function loadRedditFeed() {
+      const container = document.getElementById('redditFeed');
+      try {
+        const res = await fetch('https://www.reddit.com/r/Rivian/hot.json?limit=8', {
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!res.ok) throw new Error('Reddit fetch failed');
+        const data = await res.json();
+        const posts = data.data.children
+          .map(c => c.data)
+          .filter(p => !p.stickied)
+          .slice(0, 7);
+
+        function fmtVotes(n) {
+          if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
+          return n.toString();
+        }
+
+        container.innerHTML = posts.map(p => `
+          <a href="https://www.reddit.com${p.permalink}" target="_blank" rel="noopener noreferrer" class="reddit-row">
+            <div class="reddit-votes">
+              <div class="reddit-votes-num">${fmtVotes(p.ups)}</div>
+              <div class="reddit-votes-label">pts</div>
+            </div>
+            <div class="reddit-divider"></div>
+            <div class="reddit-content">
+              <div class="reddit-title">${p.title}</div>
+              <div class="reddit-meta">
+                ${p.link_flair_text ? `<span class="reddit-flair">${p.link_flair_text}</span>` : ''}
+                <span class="reddit-comments">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  ${p.num_comments} comments
+                </span>
+                <span>u/${p.author}</span>
+              </div>
+            </div>
+          </a>
+        `).join('');
+      } catch(e) {
+        container.innerHTML = `<p style="padding:8px 12px; font-size:13px; color:var(--text-muted);">Visit <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" style="color:var(--green);">r/Rivian on Reddit →</a></p>`;
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       loadNewsTeaser();
+      loadRedditFeed();
     });
 
   </script>
