@@ -455,17 +455,7 @@
     .contact-link:hover { text-decoration: underline; }
 
     .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
-
-  </style>
-
-</head>
-<body>
-
-  <!-- ─── NAV ─── -->
-  <div id="site-nav"></div>
-
-  <!-- ─── REFERRAL STRIP ─── -->
- .referral-strip {
+.referral-strip {
   border-bottom: 1px solid var(--border);
   background:
     linear-gradient(
@@ -550,6 +540,58 @@
   background: rgba(255,255,255,0.08);
   border-color: rgba(255,255,255,0.14);
 }
+  </style>
+
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <div id="site-nav"></div>
+
+  <!-- ─── Referral Strip ─── -->
+  <div class="referral-strip">
+  <div class="container strip-inner">
+
+    <div class="strip-content">
+
+      <div class="strip-label">
+        Rivian Rewards
+      </div>
+
+      <div class="strip-details">
+
+        <span class="strip-code">
+          SCOTT4395475
+        </span>
+
+        <span class="strip-divider"></span>
+
+        <span class="strip-perks">
+          500 points + 3 months Adventure Network charging
+        </span>
+
+      </div>
+
+    </div>
+
+    <button
+      class="strip-btn"
+      onclick="stripCopyCode()">
+
+      Copy Code
+
+    </button>
+
+    <span
+      class="strip-copied"
+      id="stripCopied"
+      style="display:none;font-size:12px;color:#9FE1CB;">
+      ✓ Copied
+    </span>
+
+  </div>
+</div>
+
 
   <!-- ─── HERO ─── -->
   <div class="hero-section">
