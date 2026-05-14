@@ -31,168 +31,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
 
   <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "aabd2c264abb41589ccfd2223c79ae42"}'></script>
 
   <style>
-
-    :root {
-      --green: #1D9E75;
-      --green-dark: #1b4d3e;
-      --green-light: #5DCAA5;
-      --green-pale: #EAF3DE;
-      --gold: #BA7517;
-      --bg: #f5f6f8;
-      --bg-card: #ffffff;
-      --bg-secondary: #f0f2f5;
-      --border: rgba(0,0,0,0.08);
-      --border-hover: rgba(0,0,0,0.15);
-      --text: #1a1f2e;
-      --text-muted: #5a6478;
-      --text-dim: #8a94a8;
-      --radius: 14px;
-      --radius-sm: 8px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Figtree', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      font-size: 16px;
-      overflow-x: hidden;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
-    /* ─── NAVIGATION ─── */
-    .top-nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(14px);
-      background: rgba(255,255,255,0.92);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 0;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      font-size: 17px;
-    }
-
-    .nav-brand img { width: 34px; height: 34px; border-radius: 8px; }
-
-    .nav-links { display: flex; gap: 24px; }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 15px;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    /* nav active state — JS adds .active based on current path */
-    .nav-links a.active { color: var(--green); font-weight: 600; }
-
-    @media (max-width: 700px) {
-      .nav-inner { flex-direction: column; gap: 14px; }
-    }
-
-    /* ─── REFERRAL STRIP ─── */
-    .referral-strip {
-      background: var(--green-dark);
-      padding: 10px 0;
-    }
-
-    .strip-inner {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .strip-label {
-      font-size: 12px;
-      color: #9FE1CB;
-      font-weight: 600;
-      white-space: nowrap;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .strip-code {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: 0.06em;
-      background: rgba(255,255,255,0.1);
-      padding: 3px 12px;
-      border-radius: 6px;
-    }
-
-    .strip-divider {
-      width: 1px;
-      height: 18px;
-      background: rgba(255,255,255,0.15);
-    }
-
-    .strip-perks {
-      font-size: 13px;
-      color: #9FE1CB;
-      flex: 1;
-    }
-
-    .strip-perks strong { color: #fff; }
-
-    .strip-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--green-light);
-      color: #0a2e22;
-      border: none;
-      padding: 7px 16px;
-      border-radius: 6px;
-      font-family: 'Figtree', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .strip-btn:hover { background: #7de0bb; }
-
-    .strip-copied {
-      font-size: 13px;
-      color: var(--green-light);
-      font-weight: 600;
-      display: none;
-    }
 
     /* ─── HERO ─── */
     .hero-section {
@@ -243,9 +87,7 @@
     }
 
     /* ─── MAIN LAYOUT ─── */
-    .main-layout {
-      padding: 24px 0 48px;
-    }
+    .main-layout { padding: 24px 0 48px; }
 
     .main-grid {
       display: grid;
@@ -258,31 +100,10 @@
       .main-grid { grid-template-columns: 1fr; }
     }
 
-    /* ─── LEFT COLUMN ─── */
     .left-col { display: flex; flex-direction: column; gap: 20px; }
+    .right-col { display: flex; flex-direction: column; gap: 16px; }
 
-    /* ─── SECTION LABELS ─── */
-    .section-label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 14px;
-    }
-
-    /* ─── CARD BASE ─── */
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-    }
-
-    /* ─── NEWS SECTION ─── */
+    /* ─── NEWS ─── */
     .news-header {
       display: flex;
       align-items: center;
@@ -294,13 +115,12 @@
 
     .news-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
 
-    @media (max-width: 560px) {
-      .news-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 700px) { .news-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .news-grid { grid-template-columns: 1fr; } }
 
     .news-card {
       background: var(--bg-secondary);
@@ -313,12 +133,7 @@
     }
 
     .news-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
-
-    .news-card-source {
-      font-size: 11px;
-      color: var(--text-dim);
-      margin-bottom: 5px;
-    }
+    .news-card-source { font-size: 11px; color: var(--text-dim); margin-bottom: 5px; }
 
     .news-card-title {
       font-family: 'DM Sans', sans-serif;
@@ -358,16 +173,6 @@
       margin-bottom: 12px;
     }
 
-    .tag {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2px 8px;
-      font-size: 11px;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
     .review-excerpt {
       font-size: 15px;
       color: var(--text-muted);
@@ -376,128 +181,70 @@
       max-width: 680px;
     }
 
-    .link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--green);
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      border: none;
-      background: none;
-      cursor: pointer;
-      padding: 0;
-      transition: gap 0.2s ease;
+    /* ─── ACCESSORIES STRIP ─── */
+    .acc-strip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
     }
 
-    .link-btn:hover { gap: 10px; }
-    .link-btn::after { content: '→'; }
+    .acc-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
 
-    /* ─── RIGHT COLUMN ─── */
-    .right-col { display: flex; flex-direction: column; gap: 16px; }
+    @media (max-width: 560px) { .acc-strip-grid { grid-template-columns: 1fr; } }
+
+    .acc-strip-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-decoration: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .acc-strip-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+
+    .acc-strip-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .acc-strip-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--green);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .acc-strip-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .acc-strip-desc { font-size: 12px; color: var(--text-dim); line-height: 1.45; }
 
     /* ─── STOCK CARD ─── */
     .stock-card { padding: 20px; }
-
-    .stock-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .stock-ticker {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .stock-exchange {
-      font-size: 12px;
-      color: var(--text-dim);
-      font-weight: 400;
-    }
-
-    .stock-company {
-      font-size: 12px;
-      color: var(--text-dim);
-      margin-top: 1px;
-    }
-
-    .stock-price {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 4px;
-      text-align: right;
-    }
-
-    .stock-change {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-
-    .stock-change.up { background: var(--green-pale); color: #3B6D11; }
-    .stock-change.down { background: #FCEBEB; color: #A32D2D; }
-
-    .stock-sparkline {
-      width: 100%;
-      height: 60px;
-      margin: 10px 0;
-      display: block;
-    }
-
-    .stock-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .stock-stat {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-sm);
-      padding: 8px 10px;
-    }
-
-    .stock-stat-label {
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 2px;
-    }
-
-    .stock-stat-val {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .stock-footer {
-      font-size: 10px;
-      color: var(--text-dim);
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .stock-loading {
-      text-align: center;
-      padding: 24px 0;
-      font-size: 14px;
-      color: var(--text-dim);
-    }
 
     /* ─── REWARDS SIDEBAR ─── */
     .rewards-card { padding: 20px; }
@@ -511,7 +258,6 @@
     }
 
     .rewards-row:last-of-type { border-bottom: none; }
-
     .rewards-row-label { font-size: 14px; color: var(--text-muted); }
 
     .rewards-row-val {
@@ -545,69 +291,8 @@
 
     .cta-btn:hover { background: #18b882; transform: translateY(-1px); }
 
-    /* ─── ACCESSORIES CARD ─── */
-    .acc-card { padding: 20px; }
-
-    .acc-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.55;
-      margin-bottom: 10px;
-    }
-
-    .acc-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-bottom: 14px;
-    }
-
-    .acc-tag {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 3px 9px;
-      font-size: 11px;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
     /* ─── RESOURCES CARD ─── */
     .resources-card { padding: 20px; }
-
-    .resource-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 9px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .resource-row:last-child { border-bottom: none; }
-
-    .resource-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 1px;
-    }
-
-    .resource-desc { font-size: 12px; color: var(--text-dim); }
-
-    .resource-link {
-      font-size: 12px;
-      color: var(--green);
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      flex-shrink: 0;
-      transition: gap 0.2s ease;
-    }
-
-    .resource-link:hover { gap: 6px; }
-    .resource-link::after { content: '→'; }
 
     /* ─── CONTACT ─── */
     .contact-section { padding: 0 0 16px; }
@@ -631,28 +316,14 @@
 
     .contact-link:hover { text-decoration: underline; }
 
-    /* ─── DIVIDER ─── */
     .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
-
-    /* ─── FOOTER ─── */
-    footer {
-      padding: 32px 0 40px;
-      text-align: center;
-      color: var(--text-dim);
-      font-size: 13px;
-      line-height: 1.65;
-      border-top: 1px solid var(--border);
-      background: var(--bg-card);
-    }
-
-    footer img { width: 80px; opacity: 0.3; display: block; margin: 0 auto 12px; }
 
   </style>
 
 </head>
 <body>
 
-  <!-- ─── NAV (loaded from shared nav.html) ─── -->
+  <!-- ─── NAV ─── -->
   <div id="site-nav"></div>
 
   <!-- ─── REFERRAL STRIP ─── -->
@@ -687,13 +358,14 @@
         <!-- LEFT COLUMN -->
         <div class="left-col">
 
-          <!-- NEWS -->
+          <!-- NEWS — 6 cards, 3 columns -->
           <div class="card">
             <div class="news-header">
               <div class="section-label">Latest Rivian &amp; EV news</div>
-              <a href="/news/" class="link-btn" style="font-size:13px;">All news</a>
             </div>
             <div class="news-grid" id="newsTeaserFeed">
+              <div class="news-card"><div class="news-card-source">Loading…</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
+              <div class="news-card"><div class="news-card-source">Loading…</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
               <div class="news-card"><div class="news-card-source">Loading…</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
               <div class="news-card"><div class="news-card-source">Loading…</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
               <div class="news-card"><div class="news-card-source">Loading…</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
@@ -715,38 +387,61 @@
             <a href="/reviews/2026-rivian-r1s-90-day-review/" class="link-btn">Read full review</a>
           </div>
 
+          <!-- ACCESSORIES STRIP -->
+          <div class="acc-strip">
+            <div class="section-label">Accessories</div>
+            <div class="acc-strip-grid">
+              <a href="/accessories/" class="acc-strip-card">
+                <div class="acc-strip-icon">
+                  <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+                </div>
+                <div>
+                  <div class="acc-strip-name">Floor &amp; Cargo</div>
+                  <div class="acc-strip-desc">Mats, liners, organizers, and cargo management</div>
+                </div>
+              </a>
+              <a href="/accessories/" class="acc-strip-card">
+                <div class="acc-strip-icon">
+                  <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <div>
+                  <div class="acc-strip-name">Charging</div>
+                  <div class="acc-strip-desc">Adapters, cables, and home charging accessories</div>
+                </div>
+              </a>
+              <a href="/accessories/" class="acc-strip-card">
+                <div class="acc-strip-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                  <div class="acc-strip-name">Protection</div>
+                  <div class="acc-strip-desc">Screen protectors, spare tire kits, tow accessories</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
         </div>
 
         <!-- RIGHT COLUMN -->
         <div class="right-col">
 
-         <!-- RIVN STOCK -->
-<div class="card stock-card">
-
-  <div class="section-label">
-    RIVN stock
-  </div>
-
-  <div class="tradingview-widget-container">
-
-    <div class="tradingview-widget-container__widget"></div>
-
-    <script
-      type="text/javascript"
-      src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
-      async>
-      {
-        "symbol": "NASDAQ:RIVN",
-        "width": "100%",
-        "locale": "en",
-        "colorTheme": "light",
-        "isTransparent": true
-      }
-    </script>
-
-  </div>
-
-</div>
+          <!-- RIVN STOCK — TradingView widget -->
+          <div class="card stock-card">
+            <div class="section-label">RIVN stock</div>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+              {
+                "symbol": "NASDAQ:RIVN",
+                "width": "100%",
+                "locale": "en",
+                "colorTheme": "light",
+                "isTransparent": true
+              }
+              </script>
+            </div>
+          </div>
 
           <!-- REFERRAL REWARDS -->
           <div class="card rewards-card">
@@ -759,20 +454,6 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Configure Your Rivian
             </a>
-          </div>
-
-          <!-- ACCESSORIES -->
-          <div class="card acc-card">
-            <div class="section-label">Accessories</div>
-            <p class="acc-desc">Tested gear for R1S and R1T with real-world photos and install notes.</p>
-            <div class="acc-tags">
-              <span class="acc-tag">Floor mats</span>
-              <span class="acc-tag">Adapters</span>
-              <span class="acc-tag">Spare tire kit</span>
-              <span class="acc-tag">Screen protectors</span>
-              <span class="acc-tag">Organizers</span>
-            </div>
-            <a href="/accessories/" class="link-btn">Browse reviews</a>
           </div>
 
           <!-- OWNER RESOURCES -->
@@ -830,7 +511,6 @@
       .then(r => r.text())
       .then(html => {
         document.getElementById('site-nav').innerHTML = html;
-        /* Highlight active nav link */
         const path = window.location.pathname;
         document.querySelectorAll('.nav-links a').forEach(a => {
           const href = a.getAttribute('href');
@@ -839,7 +519,7 @@
           }
         });
       })
-      .catch(() => { /* nav fetch failed silently — page still works */ });
+      .catch(() => {});
 
     /* ── Referral strip copy ── */
     function stripCopyCode() {
@@ -854,14 +534,7 @@
       });
     }
 
-  
-
-document.addEventListener('DOMContentLoaded', () => {
-  loadNewsTeaser();
-});
-
-
-    /* ── News Teaser ── */
+    /* ── News Teaser — 6 articles, 3-col grid ── */
     async function loadNewsTeaser() {
       const container = document.getElementById('newsTeaserFeed');
       try {
@@ -871,7 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
         if (!data.items?.length) throw new Error('No items');
 
-        const articles = data.items.slice(0, 4);
+        const articles = data.items.slice(0, 6);
 
         function cleanTitle(title) { return title.replace(/\s-\s[^-]+$/, ''); }
         function getSource(title) { const p = title.split(' - '); return p.length > 1 ? p[p.length - 1] : ''; }
@@ -885,9 +558,13 @@ document.addEventListener('DOMContentLoaded', () => {
           </a>
         `).join('');
       } catch(e) {
-        container.innerHTML = `<p style="color:var(--text-muted); grid-column:1/-1;">Latest news on the <a href="/news/" style="color:var(--green);">News page</a>.</p>`;
+        container.innerHTML = `<p style="color:var(--text-muted); grid-column:1/-1;">Unable to load headlines right now.</p>`;
       }
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadNewsTeaser();
+    });
 
   </script>
 
