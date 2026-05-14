@@ -15,6 +15,18 @@
   <link rel="stylesheet" href="/shared.css">
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"aabd2c264abb41589ccfd2223c79ae42"}'></script>
   <style>
+
+    /* Hide mobile-only elements on desktop */
+.mobile-tips-btn,
+.mobile-sidebar-wrap {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .mobile-tips-btn { display: flex; }
+  .mobile-sidebar-wrap.open { display: flex; flex-direction: column; gap: 14px; }
+  .desktop-sidebar { display: none; }
+}
     *{box-sizing:border-box}
     :root{
       --green:#1D9E75;--green-dark:#155e4a;--green-light:#6ee7b7;--green-pale:#EAF3DE;
