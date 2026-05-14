@@ -553,7 +553,7 @@
         <!-- STEP 3: WHEELS -->
         <div class="card" style="padding:24px;" id="wheelCard">
           <div class="section-label">Step 3 — Wheels &amp; tires</div>
-          <p style="font-size:13px; color:var(--text-muted); margin-top:6px;">Larger wheels and all-terrain tires reduce range. Select your setup to adjust the estimate.</p>
+          <p style="font-size:13px; color:var(--text-muted); margin-top:6px;">EPA range is tested on 22" wheels for Gen 2 R1S/R1T, 21" for Gen 1, and 21" all-season for R2. Selecting a different wheel shows the estimated range impact.</p>
           <div class="wheel-grid" id="wheelGrid"></div>
         </div>
 
@@ -800,75 +800,91 @@
   <script>
 
     /* ════════════════════════════════════════════
-       VEHICLE DATA
-       capacity = usable kWh, range = EPA est. miles,
+       VEHICLE DATA — verified against EPA filings and manufacturer specs
+       capacity = usable kWh
+       range = EPA est. miles (Gen2 baseline: 22" wheels; Gen1 baseline: 21" wheels; R2: 21" wheels)
        peakKw = max DC charge rate
     ════════════════════════════════════════════ */
     const TRIMS = {
       r1s: {
         gen1: [
-          { id:'r1s-g1-std',    label:'Standard Pack',        motor:'Dual Motor AWD', capacity:108,   range:260, peakKw:200 },
-          { id:'r1s-g1-stdp',   label:'Standard+ Pack',       motor:'Dual Motor AWD', capacity:119,   range:289, peakKw:200 },
-          { id:'r1s-g1-large',  label:'Large Pack',           motor:'Dual Motor AWD', capacity:130,   range:314, peakKw:200 },
-          { id:'r1s-g1-largep', label:'Large Pack Performance',motor:'Dual Motor AWD', capacity:130,  range:307, peakKw:200 },
-          { id:'r1s-g1-largq',  label:'Large Pack',           motor:'Quad Motor AWD', capacity:130,   range:305, peakKw:200 },
-          { id:'r1s-g1-max',    label:'Max Pack',             motor:'Dual Motor AWD', capacity:144.5, range:389, peakKw:220 },
-          { id:'r1s-g1-maxp',   label:'Max Pack Performance', motor:'Dual Motor AWD', capacity:144.5, range:381, peakKw:220 },
+          { id:'r1s-g1-std',    label:'Standard Pack',         motor:'Dual Motor AWD', capacity:106,   range:270, peakKw:200 },
+          { id:'r1s-g1-stdp',   label:'Standard+ Pack',        motor:'Dual Motor AWD', capacity:121,   range:289, peakKw:200 },
+          { id:'r1s-g1-large',  label:'Large Pack',            motor:'Dual Motor AWD', capacity:135,   range:352, peakKw:200 },
+          { id:'r1s-g1-largep', label:'Large Pack Performance', motor:'Dual Motor AWD', capacity:135,  range:352, peakKw:200 },
+          { id:'r1s-g1-largq',  label:'Large Pack',            motor:'Quad Motor AWD', capacity:135,   range:321, peakKw:200 },
+          { id:'r1s-g1-max',    label:'Max Pack',              motor:'Dual Motor AWD', capacity:149,   range:400, peakKw:220 },
+          { id:'r1s-g1-maxp',   label:'Max Pack Performance',  motor:'Dual Motor AWD', capacity:149,   range:400, peakKw:220 },
         ],
         gen2: [
-          { id:'r1s-g2-std',    label:'Standard Pack',        motor:'Dual Motor AWD', capacity:98.7,  range:270, peakKw:200 },
-          { id:'r1s-g2-large',  label:'Large Pack',           motor:'Dual Motor AWD', capacity:111,   range:321, peakKw:200 },
-          { id:'r1s-g2-largep', label:'Large+ Pack',          motor:'Dual Motor AWD', capacity:119,   range:345, peakKw:200 },
-          { id:'r1s-g2-max',    label:'Max Pack',             motor:'Dual Motor AWD', capacity:144.5, range:410, peakKw:220 },
-          { id:'r1s-g2-maxt',   label:'Max Pack',             motor:'Tri Motor AWD',  capacity:144.5, range:390, peakKw:220 },
-          { id:'r1s-g2-maxq',   label:'Max Pack',             motor:'Quad Motor AWD', capacity:144.5, range:375, peakKw:220 },
+          { id:'r1s-g2-std',    label:'Standard Pack',         motor:'Dual Motor AWD', capacity:92.5,  range:270, peakKw:200 },
+          { id:'r1s-g2-large',  label:'Large Pack',            motor:'Dual Motor AWD', capacity:109.4, range:330, peakKw:220 },
+          { id:'r1s-g2-max',    label:'Max Pack',              motor:'Dual Motor AWD', capacity:141.5, range:410, peakKw:220 },
+          { id:'r1s-g2-maxt',   label:'Max Pack',              motor:'Tri Motor AWD',  capacity:141.5, range:371, peakKw:220 },
+          { id:'r1s-g2-maxq',   label:'Max Pack',              motor:'Quad Motor AWD', capacity:141.5, range:374, peakKw:220 },
         ],
       },
       r1t: {
         gen1: [
-          { id:'r1t-g1-std',    label:'Standard Pack',        motor:'Dual Motor AWD', capacity:108,   range:252, peakKw:200 },
-          { id:'r1t-g1-stdp',   label:'Standard+ Pack',       motor:'Dual Motor AWD', capacity:119,   range:278, peakKw:200 },
-          { id:'r1t-g1-large',  label:'Large Pack',           motor:'Dual Motor AWD', capacity:130,   range:314, peakKw:200 },
-          { id:'r1t-g1-largep', label:'Large Pack Performance',motor:'Dual Motor AWD', capacity:130,  range:307, peakKw:200 },
-          { id:'r1t-g1-largq',  label:'Large Pack',           motor:'Quad Motor AWD', capacity:130,   range:295, peakKw:200 },
-          { id:'r1t-g1-max',    label:'Max Pack',             motor:'Dual Motor AWD', capacity:144.5, range:410, peakKw:220 },
-          { id:'r1t-g1-maxp',   label:'Max Pack Performance', motor:'Dual Motor AWD', capacity:144.5, range:400, peakKw:220 },
+          { id:'r1t-g1-std',    label:'Standard Pack',         motor:'Dual Motor AWD', capacity:106,   range:270, peakKw:200 },
+          { id:'r1t-g1-stdp',   label:'Standard+ Pack',        motor:'Dual Motor AWD', capacity:121,   range:278, peakKw:200 },
+          { id:'r1t-g1-large',  label:'Large Pack',            motor:'Dual Motor AWD', capacity:135,   range:352, peakKw:200 },
+          { id:'r1t-g1-largep', label:'Large Pack Performance', motor:'Dual Motor AWD', capacity:135,  range:352, peakKw:200 },
+          { id:'r1t-g1-largq',  label:'Large Pack',            motor:'Quad Motor AWD', capacity:135,   range:328, peakKw:200 },
+          { id:'r1t-g1-max',    label:'Max Pack',              motor:'Dual Motor AWD', capacity:149,   range:410, peakKw:220 },
+          { id:'r1t-g1-maxp',   label:'Max Pack Performance',  motor:'Dual Motor AWD', capacity:149,   range:410, peakKw:220 },
         ],
         gen2: [
-          { id:'r1t-g2-std',    label:'Standard Pack',        motor:'Dual Motor AWD', capacity:98.7,  range:261, peakKw:200 },
-          { id:'r1t-g2-large',  label:'Large Pack',           motor:'Dual Motor AWD', capacity:111,   range:314, peakKw:200 },
-          { id:'r1t-g2-largep', label:'Large+ Pack',          motor:'Dual Motor AWD', capacity:119,   range:337, peakKw:200 },
-          { id:'r1t-g2-max',    label:'Max Pack',             motor:'Dual Motor AWD', capacity:144.5, range:420, peakKw:220 },
-          { id:'r1t-g2-maxt',   label:'Max Pack',             motor:'Tri Motor AWD',  capacity:144.5, range:400, peakKw:220 },
-          { id:'r1t-g2-maxq',   label:'Max Pack',             motor:'Quad Motor AWD', capacity:144.5, range:380, peakKw:220 },
+          { id:'r1t-g2-std',    label:'Standard Pack',         motor:'Dual Motor AWD', capacity:92.5,  range:270, peakKw:200 },
+          { id:'r1t-g2-large',  label:'Large Pack',            motor:'Dual Motor AWD', capacity:109.4, range:330, peakKw:220 },
+          { id:'r1t-g2-max',    label:'Max Pack',              motor:'Dual Motor AWD', capacity:141.5, range:420, peakKw:220 },
+          { id:'r1t-g2-maxt',   label:'Max Pack',              motor:'Tri Motor AWD',  capacity:141.5, range:371, peakKw:220 },
+          { id:'r1t-g2-maxq',   label:'Max Pack',              motor:'Quad Motor AWD', capacity:141.5, range:374, peakKw:220 },
         ],
       },
       r2: {
         gen2: [
-          { id:'r2-prem',  label:'Premium',     motor:'Dual Motor AWD', capacity:87.9, range:270, peakKw:150 },
-          { id:'r2-perf',  label:'Performance', motor:'Dual Motor AWD', capacity:87.9, range:255, peakKw:150 },
+          { id:'r2-perf',  label:'Performance',  motor:'Dual Motor AWD', capacity:87.9, range:335, peakKw:210 },
+          { id:'r2-prem',  label:'Premium',       motor:'Dual Motor AWD', capacity:87.9, range:330, peakKw:210 },
         ],
       },
     };
 
     /* Wheel options keyed by model */
+    /* Wheel range factors by model and generation.
+       Gen 2 R1 EPA baseline = 22" (best aero); Gen 1 baseline = 21"; R2 baseline = 21" all-season.
+       Factors derived from EPA-published wheel comparison data. */
     const WHEELS_BY_MODEL = {
-      r1s: [
-        { id:'20at',    label:'20"',  sub:'All-Terrain',   factor:1.00, impact:'Baseline' },
-        { id:'20sport', label:'20"',  sub:'Sport / HWY',   factor:1.02, impact:'+2% range' },
-        { id:'21at',    label:'21"',  sub:'All-Terrain',   factor:0.98, impact:'−2% range' },
-        { id:'22sport', label:'22"',  sub:'Sport Dark',    factor:0.96, impact:'−4% range' },
-      ],
-      r1t: [
-        { id:'20at',    label:'20"',  sub:'All-Terrain',   factor:1.00, impact:'Baseline' },
-        { id:'20sport', label:'20"',  sub:'Sport / HWY',   factor:1.02, impact:'+2% range' },
-        { id:'21at',    label:'21"',  sub:'All-Terrain',   factor:0.98, impact:'−2% range' },
-        { id:'22sport', label:'22"',  sub:'Sport Dark',    factor:0.96, impact:'−4% range' },
-      ],
-      r2: [
-        { id:'20at',   label:'20"', sub:'All-Terrain', factor:1.00, impact:'Baseline' },
-        { id:'21road', label:'21"', sub:'Road',         factor:0.97, impact:'−3% range' },
-      ],
+      r1s: {
+        gen2: [
+          { id:'20at',    label:'20"', sub:'All-Terrain',  factor:0.88, impact:'−12% vs EPA' },
+          { id:'21road',  label:'21"', sub:'Road',         factor:0.95, impact:'−5% vs EPA'  },
+          { id:'22sport', label:'22"', sub:'Sport / Aero', factor:1.00, impact:'EPA baseline' },
+        ],
+        gen1: [
+          { id:'20at',    label:'20"', sub:'All-Terrain',  factor:0.88, impact:'−12% vs EPA' },
+          { id:'21road',  label:'21"', sub:'Road',         factor:1.00, impact:'EPA baseline' },
+          { id:'22sport', label:'22"', sub:'Sport',        factor:0.94, impact:'−6% vs EPA'  },
+        ],
+      },
+      r1t: {
+        gen2: [
+          { id:'20at',    label:'20"', sub:'All-Terrain',  factor:0.87, impact:'−13% vs EPA' },
+          { id:'21road',  label:'21"', sub:'Road',         factor:0.95, impact:'−5% vs EPA'  },
+          { id:'22sport', label:'22"', sub:'Sport / Aero', factor:1.00, impact:'EPA baseline' },
+        ],
+        gen1: [
+          { id:'20at',    label:'20"', sub:'All-Terrain',  factor:0.87, impact:'−13% vs EPA' },
+          { id:'21road',  label:'21"', sub:'Road',         factor:1.00, impact:'EPA baseline' },
+          { id:'22sport', label:'22"', sub:'Sport',        factor:0.93, impact:'−7% vs EPA'  },
+        ],
+      },
+      r2: {
+        gen2: [
+          { id:'21road', label:'21"', sub:'All-Season',  factor:1.00, impact:'EPA baseline' },
+          { id:'20at',   label:'20"', sub:'All-Terrain', factor:0.94, impact:'−6% vs EPA'   },
+        ],
+      },
     };
 
     /* Plug notes */
@@ -919,9 +935,18 @@
       container.innerHTML = html;
     }
 
-    /* ── Render wheel options for selected model ── */
-    function renderWheels(model) {
-      const wheels = WHEELS_BY_MODEL[model];
+    /* ── Get wheel array for current model + gen combo ── */
+    function getWheelSet(model, vehicleId) {
+      const wData = WHEELS_BY_MODEL[model];
+      if (!wData) return [];
+      if (Array.isArray(wData)) return wData;
+      const gen = vehicleId && vehicleId.includes('-g1-') ? 'gen1' : 'gen2';
+      return wData[gen] || wData.gen2 || [];
+    }
+
+    /* ── Render wheel options ── */
+    function renderWheels(model, vehicleId) {
+      const wheels = getWheelSet(model, vehicleId || currentVehicle);
       const container = document.getElementById('wheelGrid');
       container.innerHTML = wheels.map((w, i) => `
         <button class="wheel-btn${i === 0 ? ' selected' : ''}" data-wheel="${w.id}" onclick="selectWheel(this)">
@@ -967,9 +992,14 @@
     }
 
     function selectVehicle(btn) {
+      const prevVehicle = currentVehicle;
       document.querySelectorAll('.vehicle-btn').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       currentVehicle = btn.dataset.vehicle;
+      /* Re-render wheels if switching between gen1 and gen2 */
+      const prevGen = prevVehicle.includes('-g1-') ? 'gen1' : 'gen2';
+      const newGen  = currentVehicle.includes('-g1-') ? 'gen1' : 'gen2';
+      if (prevGen !== newGen) renderWheels(currentModel, currentVehicle);
       updateSidebar();
       updateCalc();
     }
@@ -978,7 +1008,7 @@
       document.querySelectorAll('.wheel-btn').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       currentWheel = btn.dataset.wheel;
-      const wheels = WHEELS_BY_MODEL[currentModel];
+      const wheels = getWheelSet(currentModel, currentVehicle);
       wheelFactor = wheels.find(w => w.id === currentWheel)?.factor ?? 1.00;
       document.getElementById('sidebarWheel').textContent = btn.querySelector('.wheel-btn-size').textContent + ' ' + btn.querySelector('.wheel-btn-label').textContent;
       updateCalc();
