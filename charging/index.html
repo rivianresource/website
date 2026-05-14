@@ -1251,34 +1251,6 @@
       }).join('');
     }
 
-    function selectVehicle(btn) {
-      document.querySelectorAll('.vehicle-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      currentVehicle = btn.dataset.vehicle;
-      const v = VEHICLES[currentVehicle];
-      document.getElementById('sidebarVehicle').textContent  = v.label;
-      document.getElementById('sidebarCapacity').textContent = v.capacity + ' kWh';
-      updateCalc();
-    }
-
-    function selectCharger(btn) {
-      document.querySelectorAll('.charger-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      currentCharger = btn.dataset.charger;
-      const c = CHARGERS[currentCharger];
-      document.getElementById('sidebarCharger').textContent = c.name;
-      document.getElementById('sidebarSpeed').textContent   = c.peakKw + ' kW';
-      updateCalc();
-    }
-
-    function selectWheel(btn) {
-      document.querySelectorAll('.wheel-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      currentWheel = btn.dataset.wheel;
-      document.getElementById('sidebarWheel').textContent = WHEELS[currentWheel].label;
-      updateCalc();
-    }
-
     /* ── Nav ── */
     fetch('/nav.html')
       .then(r => r.text())
