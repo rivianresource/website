@@ -793,50 +793,6 @@
       }
     }
 
-    /* ── r/Rivian Reddit Feed ── */
-    async function loadRedditFeed() {
-      const container = document.getElementById('redditFeed');
-      try {
-        const res = await fetch('https://www.reddit.com/r/Rivian/hot.json?limit=8', {
-          headers: { 'Accept': 'application/json' }
-        });
-        if (!res.ok) throw new Error('Reddit fetch failed');
-        const data = await res.json();
-        const posts = data.data.children
-          .map(c => c.data)
-          .filter(p => !p.stickied)
-          .slice(0, 7);
-
-        function fmtVotes(n) {
-          if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
-          return n.toString();
-        }
-
-        container.innerHTML = posts.map(p => `
-          <a href="https://www.reddit.com${p.permalink}" target="_blank" rel="noopener noreferrer" class="reddit-row">
-            <div class="reddit-votes">
-              <div class="reddit-votes-num">${fmtVotes(p.ups)}</div>
-              <div class="reddit-votes-label">pts</div>
-            </div>
-            <div class="reddit-divider"></div>
-            <div class="reddit-content">
-              <div class="reddit-title">${p.title}</div>
-              <div class="reddit-meta">
-                ${p.link_flair_text ? `<span class="reddit-flair">${p.link_flair_text}</span>` : ''}
-                <span class="reddit-comments">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                  ${p.num_comments} comments
-                </span>
-                <span>u/${p.author}</span>
-              </div>
-            </div>
-          </a>
-        `).join('');
-      } catch(e) {
-        container.innerHTML = `<p style="padding:8px 12px; font-size:13px; color:var(--text-muted);">Visit <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" style="color:var(--green);">r/Rivian on Reddit →</a></p>`;
-      }
-    }
-
     /* ── Rivian Forums Feed ── */
 async function loadForumsFeed() {
 
@@ -845,47 +801,54 @@ async function loadForumsFeed() {
 
   try {
 
-    const response = await fetch(
-      'https://www.rivianforums.com/forum/whats-new/posts/'
+    const targetUrl = encodeURIComponent(
+      'https://www.rivianforums.com/feed/'
     );
 
-    const html = await response.text();
+    const response = await fetch(
+      `https://api.allorigins.win/raw?url=${targetUrl}`
+    );
+
+    if (!response.ok) {
+      throw new Error('Feed request failed');
+    }
+
+    const xmlText = await response.text();
 
     const parser = new DOMParser();
 
-    const doc = parser.parseFromString(
-      html,
-      'text/html'
+    const xml = parser.parseFromString(
+      xmlText,
+      'text/xml'
     );
 
-    const rows = [
-      ...doc.querySelectorAll(
-        '.structItem--thread'
-      )
+    const items = [
+      ...xml.querySelectorAll('item')
     ].slice(0, 6);
 
-    if (!rows.length) {
-      throw new Error('No forum rows found');
+    if (!items.length) {
+      throw new Error('No forum items');
     }
 
-    container.innerHTML = rows.map(row => {
-
-      const titleEl =
-        row.querySelector('.structItem-title a');
-
-      const metaEl =
-        row.querySelector('.structItem-minor');
+    container.innerHTML = items.map(item => {
 
       const title =
-        titleEl?.textContent?.trim()
+        item.querySelector('title')
+          ?.textContent
+          ?.trim()
         || 'Forum thread';
 
-      const href =
-        titleEl?.href || '#';
+      const link =
+        item.querySelector('link')
+          ?.textContent
+          ?.trim()
+        || '#';
 
-      const meta =
-        metaEl?.textContent?.trim()
-        || 'Rivian Forums';
+      const pubDate =
+        item.querySelector('pubDate')
+          ?.textContent
+          ?.trim()
+        || '';
 
       let category = 'General';
 
@@ -902,7 +865,7 @@ async function loadForumsFeed() {
       return `
 
         <a
-          href="${href}"
+          href="${link}"
           target="_blank"
           rel="noopener noreferrer"
           class="forums-row">
@@ -918,7 +881,11 @@ async function loadForumsFeed() {
             </div>
 
             <div class="forums-meta">
-              ${meta}
+              ${new Date(pubDate)
+                .toLocaleDateString('en-US', {
+                  month:'short',
+                  day:'numeric'
+                })}
             </div>
 
           </div>
