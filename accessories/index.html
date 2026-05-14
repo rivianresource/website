@@ -1,1363 +1,501 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <title>Rivian Accessory Reviews | Rivian Rewards Hub</title>
+  <meta name="description" content="Hands-on Rivian accessory reviews including charging adapters, floor mats, organizers, screen protectors, spare tire kits, and real-world R1S/R1T upgrades."/>
+  <link rel="canonical" href="https://www.rivianrewardshub.com/accessories/"/>
 
-  <meta
-    name="description"
-    content="Hands-on Rivian accessory reviews including charging adapters, floor mats, organizers, screen protectors, spare tire kits, and real-world R1S/R1T upgrades."
-  />
-
-  <link rel="canonical" href="https://www.rivianrewardshub.com/accessories/" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SB8DBC8NBQ');
+  </script>
 
   <link rel="icon" type="image/png" href="/logo.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "aabd2c264abb41589ccfd2223c79ae42"}'></script>
 
   <style>
-
-    :root {
-      --green: #12b87a;
-      --green-dim: rgba(18, 184, 122, 0.12);
-      --bg: #07101f;
-      --bg-alt: #0a1422;
-      --bg-card: #0d1a2d;
-      --border: rgba(255,255,255,0.07);
-      --border-hover: rgba(255,255,255,0.13);
-      --text: #e8edf4;
-      --text-muted: #8a9ab5;
-      --text-dim: #667892;
-      --radius: 20px;
-      --radius-sm: 14px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Figtree', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-
-    /* NAV */
-
-    .top-nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(14px);
-      background: rgba(7,16,31,0.88);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 0;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: #fff;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    .nav-brand img {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: 0.2s ease;
-      position: relative;
-    }
-
-.nav-links a:hover { color: white; }
-
-.nav-links a.active {
-  color: #ffffff;
-  border-bottom: 2px solid #12b87a;
-  padding-bottom: 2px;
-}
-
-    /* HERO */
-
-    .hero {
-      padding: 90px 0 70px;
-    }
-
-    .section-label {
-      color: var(--green);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .hero-title {
-      font-family: 'DM Sans', sans-serif;
-      font-size: clamp(40px, 6vw, 68px);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin-bottom: 22px;
-      max-width: 760px;
-    }
-
-    .hero-sub {
-      color: var(--text-muted);
-      font-size: 18px;
-      max-width: 700px;
-    }
-
-    /* ACCESSORY GRID */
-
-    .accessories-grid {
+    .acc-layout {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 22px;
-      padding-bottom: 90px;
+      grid-template-columns: 1fr 272px;
+      gap: 28px;
+      align-items: start;
+      padding: 32px 0 56px;
     }
 
-    .accessory-card {
+    @media (max-width: 860px) {
+      .acc-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FILTER TABS ─── */
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 16px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .filter-btn:hover { border-color: var(--border-hover); color: var(--text); }
+    .filter-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
+
+    /* ─── ACCESSORY CARD ─── */
+    .acc-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-      transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+      margin-bottom: 16px;
+      transition: border-color 0.2s ease;
     }
 
-    .accessory-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-hover);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+    .acc-card:hover { border-color: var(--border-hover); }
+
+    .acc-card-inner { display: flex; gap: 0; }
+
+    .acc-card-img {
+      width: 200px;
+      min-height: 200px;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: var(--bg-secondary);
     }
 
-    .accessory-card img {
+    .acc-card-img img {
       width: 100%;
-      height: 240px;
+      height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .accessory-content {
-      padding: 24px;
+    .acc-card-body { padding: 24px 28px; flex: 1; }
+
+    .acc-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
     }
 
-    .accessory-category {
-      display: inline-block;
-      background: var(--green-dim);
+    .acc-card-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .acc-card-excerpt {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .acc-card-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+    /* ─── FULL REVIEW (expanded) ─── */
+    .acc-review {
+      border-top: 1px solid var(--border);
+      padding: 24px 28px;
+      background: var(--bg-secondary);
+    }
+
+    .acc-review p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .acc-review p:last-child { margin-bottom: 0; }
+
+    .acc-review strong { color: var(--text); font-weight: 600; }
+
+    .acc-review ol {
+      list-style: none;
+      counter-reset: steps;
+      margin: 12px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .acc-review ol li {
+      counter-increment: steps;
+      font-size: 15px;
+      color: var(--text-muted);
+      padding-left: 30px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .acc-review ol li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--green-pale);
       color: var(--green);
+      border-radius: 50%;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-    }
-
-    .accessory-title {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 14px;
-      color: #fff;
-    }
-
-    .accessory-desc {
-      color: var(--text-muted);
-      font-size: 15px;
-      margin-bottom: 22px;
-    }
-
-    .coming-soon {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 8px 14px;
-      border-radius: 999px;
-      margin-bottom: 20px;
+      justify-content: center;
+      top: 2px;
     }
 
-    .review-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .verdict-inline {
+      background: var(--green-dark);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      margin-top: 16px;
+    }
+
+    .verdict-inline-label { font-size: 10px; font-weight: 600; color: #9FE1CB; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .verdict-inline p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.6; margin: 0 !important; }
+
+    .pro-tip {
+      background: var(--green-pale);
+      border: 1px solid rgba(29,158,117,0.2);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      margin: 14px 0;
+    }
+
+    .pro-tip-label { font-size: 10px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .pro-tip p { font-size: 14px; color: #1b4d3e; line-height: 1.6; margin: 0 !important; }
+    .pro-tip a { color: var(--green); font-weight: 600; }
+
+    .inline-link {
       color: var(--green);
       text-decoration: none;
       font-weight: 600;
-      transition: gap 0.2s ease;
+      border-bottom: 1px solid rgba(29,158,117,0.3);
     }
 
-    .review-link:hover {
-      gap: 12px;
+    .inline-link:hover { border-color: var(--green); }
+
+    /* ─── COMING SOON ─── */
+    .acc-card.coming-soon { opacity: 0.7; }
+    .acc-card.coming-soon:hover { border-color: var(--border); }
+
+    /* ─── SIDEBAR ─── */
+    .acc-sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 80px; }
+
+    @media (max-width: 640px) {
+      .acc-card-inner { flex-direction: column; }
+      .acc-card-img { width: 100%; min-height: 180px; }
+      .acc-card-body { padding: 18px; }
+      .acc-review { padding: 18px; }
     }
-
-    /* REVIEW SECTIONS */
-
-    .review-section {
-      padding: 90px 0;
-      border-top: 1px solid var(--border);
-    }
-
-.review-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 54px;
-  align-items: start;
-}
-
-.review-image img {
-  width: 100%;
-  border-radius: var(--radius);
-  display: block;
-  border: 1px solid var(--border);
-  transition: transform 0.35s ease;
-  cursor: pointer; 
-
-}
-
-.review-image {
-  position: sticky;
-  top: 88px;
-}
-
-.review-image img {
-  width: 100%;
-  border-radius: var(--radius);
-  display: block;
-  border: 1px solid var(--border);
-  transition: transform 0.35s ease;
-  cursor: pointer;
-}
-
-.review-image a:hover img {
-  transform: scale(1.02);
-}
-
-    .section-title {
-      font-family: 'DM Sans', sans-serif;
-      font-size: clamp(32px, 5vw, 46px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
-    }
-
-    .review-text {
-      color: var(--text-muted);
-      font-size: 16px;
-      line-height: 1.85;
-      margin-bottom: 26px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--green);
-      color: #fff;
-      text-decoration: none;
-      padding: 15px 28px;
-      border-radius: 14px;
-      font-weight: 600;
-      transition: 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 44px 0 60px;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
-    .affiliate-note {
-      margin-top: 18px;
-      color: var(--text-dim);
-      font-size: 13px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 900px) {
-
-      .review-layout {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-    @media (max-width: 820px) {
-
-      .nav-inner {
-        flex-direction: column;
-        gap: 18px;
-      }
-
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 14px 20px;
-      }
-
-    }
-
   </style>
-
 </head>
-
 <body>
 
-    <!-- ─── NAVIGATION ─── -->
-  <div class="top-nav">
-    <div class="container nav-inner">
-      <a href="/" class="nav-brand">
-        <img src="/logo.png" alt="Rivian Rewards Hub">
-        <span>Rivian Rewards Hub</span>
-      </a>
-      <div class="nav-links">
-<a href="/">Home</a>
-<a href="/reviews/2026-rivian-r1s-90-day-review/">R1S Review</a>
-<a href="/accessories/" class="active">Accessories</a>
-<a href="/news/">Rivian News</a>
-<a href="/about/">About</a>
-      </div>
-    </div>
-  </div>
-  
-  <!-- HERO -->
-
-  <div class="container">
-
-    <section class="hero">
-
-      <div class="section-label">
-        Gear & Accessories
-      </div>
-
-      <h1 class="hero-title">
-        Rivian Accessory Reviews
-      </h1>
-
-      <p class="hero-sub">
-        Real-world reviews, install impressions, charging gear, storage upgrades, emergency equipment, and tested accessories for the Rivian R1S and R1T.
-      </p>
-
-    </section>
-
-  </div>
-
-  <!-- ACCESSORY GRID -->
-
-  <div class="container">
-
-    <div class="accessories-grid">
-
-    
-   <!-- CARD -->
-
-<article class="accessory-card">
-
-  <a
-    href="#t7shield-review"
-  >
-
-    <img
-      src="/images/shield.jpg"
-      alt="Samsung T7 Shield 1TB"
-      loading="lazy"
-    >
-
-  </a>
-
-  <div class="accessory-content">
-
-    <div class="accessory-category">
-      Gear Guard
-    </div>
-
-    <h2 class="accessory-title">
-      Samsung T7 Shield 1TB
-    </h2>
-
-    <p class="accessory-desc">
-      Reliable storage for Gear Guard footage with strong heat resistance and fast setup for Rivian owners.
-    </p>
-
-    <div style="
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background:rgba(18,184,122,0.12);
-      border:1px solid rgba(18,184,122,0.2);
-      color:var(--green);
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
-      padding:8px 14px;
-      border-radius:999px;
-      margin-bottom:20px;
-    ">
-      Review Live
-    </div>
-
-    <a
-      href="#t7shield-review"
-      class="review-link"
-    >
-      Jump to Review →
-    </a>
-
-  </div>
-
-</article>   
-      
-      <!-- CARD -->
-
-<article class="accessory-card">
-
-  <a href="#a2z-adapter">
-
-  <img
-    src="/images/a2z.jpg"
-    alt="A2Z CCS1 to NACS Adapter"
-    loading="lazy"
-  />
-
-</a>
-
-  <div class="accessory-content">
-
-    <div class="accessory-category">
-      Charging
-    </div>
-
-    <h2 class="accessory-title">
-      A2Z CCS1 to NACS Adapter
-    </h2>
-
-    <p class="accessory-desc">
-      Real-world charging impressions, compatibility notes, and everyday usage experience.
-    </p>
-
-    <div style="
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background:rgba(18,184,122,0.12);
-      border:1px solid rgba(18,184,122,0.2);
-      color:var(--green);
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
-      padding:8px 14px;
-      border-radius:999px;
-      margin-bottom:20px;
-    ">
-      Review Live
-    </div>
-
-    <a
-      href="#a2z-adapter"
-      class="review-link"
-    >
-      Jump to Review →
-    </a>
-
-  </div>
-
-</article>
-
-      <!-- CARD -->
-
-<article class="accessory-card">
-
-<a href="#twcharger-review">
-
-  <img
-    src="/images/twcharger.jpg"
-    alt="TWRAPS Dual Wireless Phone Charger"
-    loading="lazy"
-  />
-
-</a>
-  
-  <div class="accessory-content">
-
-    <div class="accessory-category">
-      Charging
-    </div>
-
-    <h2 class="accessory-title">
-      TWRAPS Dual Wireless Phone Charger
-    </h2>
-
-    <p class="accessory-desc">
-      MagSafe charging solution for the Rivian with improved phone retention, hidden cable routing, and much more reliable charging performance.
-    </p>
-
-    <div style="
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background:rgba(18,184,122,0.12);
-      border:1px solid rgba(18,184,122,0.2);
-      color:var(--green);
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
-      padding:8px 14px;
-      border-radius:999px;
-      margin-bottom:20px;
-    ">
-      Review Live
-    </div>
-
-    <a
-      href="#twcharger-review"
-      class="review-link"
-    >
-      Jump to Review →
-    </a>
-
-  </div>
-
-</article>
-
-     <!-- CARD -->
-
-<article class="accessory-card">
-
-  <img
-    src="/images/twscreen.jpg"
-    alt="TWRAPS Screen Protectors"
-    loading="lazy"
-  >
-
-  <div class="accessory-content">
-
-    <div class="accessory-category">
-      Protection
-    </div>
-
-    <h2 class="accessory-title">
-      TWRAPS Screen Protectors
-    </h2>
-
-    <p class="accessory-desc">
-      Installation experience, screen clarity, glare reduction, and long-term impressions.
-    </p>
-
-   <a
-  href="https://amzn.to/3Ph71Pw"
-  target="_blank"
-  rel="nofollow sponsored"
-  class="btn"
-  style="
-    padding:12px 22px;
-    font-size:14px;
-  "
->
-  View Product
-</a>
-
-<div class="coming-soon" style="margin-top:16px; margin-bottom:0;">
-  Review Coming Soon
-</div>
-
-  </div>
-
-</article>
-
-<!-- CARD -->
-
-<article class="accessory-card">
-
-  <img
-    src="/images/spare-kit.jpg"
-    alt="Compact Spare Tire Kit"
-    loading="lazy"
-  >
-
-  <div class="accessory-content">
-
-    <div class="accessory-category">
-      Emergency Gear
-    </div>
-
-    <h2 class="accessory-title">
-      Compact Spare Tire Kit
-    </h2>
-
-    <p class="accessory-desc">
-      Storage fitment, road trip practicality, cargo impact, and emergency preparedness for the R1S.
-    </p>
-
-  <a
-  href="https://gearshop.rivian.com/products/compact-spare-tire"
-  target="_blank"
-  rel="nofollow sponsored"
-  class="btn"
-  style="
-    padding:12px 22px;
-    font-size:14px;
-  "
->
-  View Product
-</a>
-
-<div class="coming-soon" style="margin-top:16px; margin-bottom:0;">
-  Review Coming Soon
-</div>
-
-  </div>
-
-</article>
-      
-          </div>
-
-  </div>
-
- <!-- REVIEW SECTION -->
-
-<div id="t7shield-review" class="review-section">
-
-  <div class="container">
-
-    <div class="review-layout">
-
-      <div class="review-image">
-
-        <a
-          href="https://amzn.to/4ttCWun"
-          target="_blank"
-          rel="nofollow sponsored"
-        >
-
-          <img
-            src="/images/shield.jpg"
-            alt="Samsung T7 Shield 1TB"
-          >
-
-        </a>
-
-      </div>
-
-      <div>
-
-        <div class="section-label">
-          Gear Guard Accessory
-        </div>
-
-        <h2 class="section-title">
-          Samsung T7 Shield 1TB
-        </h2>
-
-        <p class="review-text">
-
-          Every Rivian owner eventually needs a drive for Gear Guard footage storage, and this is the one I landed on for a couple reasons.
-
-          <br><br>
-
-          First, it’s overwhelmingly the favorite recommendation across Rivian forums and Reddit discussions. After seeing it mentioned repeatedly by owners, it seemed like the safest choice.
-
-          <br><br>
-
-          Second, I specifically chose the Shield version because of its heat resistance. Las Vegas summers are brutal, and it made sense to use a drive that would handle extremely hot cabin temperatures better when parked outside in direct sun.
-
-          <br><br>
-
-          I went with the 1TB version mainly so the system overwrites footage less frequently. Maybe that’s overly cautious, but I feel like constant rewriting probably contributes to drives failing sooner over time.
-
-          <br><br>
-
-          I also like how compact and lightweight it is. I do wish Rivian had positioned the elastic retaining band directly below the USB-C ports, but with the 90-degree USB-C adapters, the cable routes pretty cleanly around the edge of the console to the rear storage area where the drive sits.
-
-<br><br>
-
-I used these:
-
-<a
-  href="https://amzn.to/4d9F2t1"
-  target="_blank"
-  rel="nofollow sponsored"
-  style="color:var(--green); text-decoration:none; font-weight:600;"
->
-  90 Degree USB-C Adapters
-</a>
-          <br><br>
-
-          Setup was easy. Rivian recognized the drive almost immediately after plugging it in and accepted the storage without any issues.
-
-          <br><br>
-
-          <strong>How to Setup Gear Guard Storage:</strong>
-
-          <br><br>
-
-          1. Plug the SSD into one of the Rivian USB-C data ports inside the center console.
-          <br><br>
-
-          2. Open:
-          <br>
-          Controls → Gear Guard → Gear Guard Storage
-          <br><br>
-
-          3. Format the drive through the Rivian interface.
-          <br><br>
-
-          4. Once formatting completes, Gear Guard footage and Drive Cam recordings will automatically begin saving to the SSD.
-
-          <br><br>
-
-          After setup, everything has worked flawlessly so far.
-
-          <br><br>
-
-          <strong>Verdict:</strong><br><br>
-
-          Easy recommendation for Rivian owners, especially those who live in areas with extreme temperatures.
-
-        </p>
-
-        <a
-          href="https://amzn.to/4ttCWun"
-          target="_blank"
-          rel="nofollow sponsored"
-          class="btn"
-        >
-          View on Amazon
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-  
-  <!-- REVIEW SECTION -->
-
- <div id="a2z-adapter" class="review-section">
-
-  <div class="container">
-
-    <div class="review-layout">
-
-      <div class="review-image">
-
-    <a
-  href="https://amzn.to/4d8uxGs"
-  target="_blank"
-  rel="nofollow sponsored"
->
-
-  <img
-    src="/images/a2z.jpg"
-    alt="A2Z CCS1 to NACS Adapter"
-  >
-
-</a>
-
-      </div>
-
-      <div>
-
-        <div class="section-label">
-          Charging Accessory
-        </div>
-
-        <h2 class="section-title">
-          A2Z CCS1 to NACS Adapter
-        </h2>
-
-        <p class="review-text">
-
-          <strong>First impressions:</strong><br><br>
-
-          The adapter arrived nicely packaged and includes a solid storage case. The adapter itself feels heavy, durable, and well made — definitely not cheap feeling.
-
-          <br><br>
-
-          <strong>Real-world usage:</strong><br><br>
-
-          For Rivian owners with a NACS port, a CCS1 to NACS adapter is pretty much essential right now. I’ve already used this several times at my local Rivian Adventure Network stations since all of them are currently set up as CCS1.
-
-          <br><br>
-
-          I keep it stored in the frunk so it’s always easy to grab when needed. Usage is straightforward. From what I understand, the adapter should be connected to the charging cable first before plugging it into the vehicle.
-
-          <br><br>
-
-          Every time I’ve used it so far, the Rivian recognized the charger immediately and charging started right away without any issues.
-
-          <br><br>
-
-          I decided to go with the A2Z version because of the strong feedback from other Rivian owners, and it’s also a bit less expensive than the Rivian-branded adapter, which currently retails around $200.
-
-          <br><br>
-
-          One thing worth mentioning: if an adapter causes damage to the vehicle, Rivian states that damage would not be covered under warranty. Personally, I view that as a pretty unlikely scenario, but it’s still important information to share.
-
-          <br><br>
-
-          <strong>Verdict:</strong><br><br>
-
-          Highly recommend.
-
-        </p>
-
-        <a
-          href="https://amzn.to/4eBEaQw"
-          target="_blank"
-          rel="nofollow sponsored"
-          class="btn"
-        >
-          View on Amazon
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-  
-<!-- REVIEW SECTION -->
-
-<div id="twcharger-review" class="review-section">
-
-  <div class="container">
-
-    <div class="review-layout">
-
-      <div class="review-image">
-
-        <a
-          href="https://amzn.to/3P967oo"
-          target="_blank"
-          rel="nofollow sponsored"
-        >
-
-          <img
-            src="/images/twcharger.jpg"
-            alt="TWRAPS Dual Wireless Phone Charger"
-          >
-
-        </a>
-
-        <a
-          href="https://amzn.to/3P967oo"
-          target="_blank"
-          rel="nofollow sponsored"
-        >
-
-          <img
-            src="/images/twcharger2.jpg"
-            alt="TWRAPS Dual Wireless Phone Charger Installed"
-            style="margin-top:18px;"
-          >
-
-        </a>
-
-      </div>
-
-      <div>
-
-        <div class="section-label">
-          Charging Accessory
-        </div>
-
-        <h2 class="section-title">
-          TWRAPS Dual Wireless Phone Charger
-        </h2>
-
-        <p class="review-text">
-
-          I personally think this is one of the better additions I’ve made to the car so far.
-
-          <br><br>
-
-          I went with the Dark Ash Wood skin variant since it’s a pretty close match to the factory wood trim inside the Rivian. Once installed, it honestly looks like something Rivian should have included from the factory.
-
-          <br><br>
-
-          Before this, I constantly had issues with my phone sliding forward and moving off the stock charging area. I’d notice charging repeatedly disconnecting and reconnecting whenever I pushed the phone back into place. Even though Rivian added a divider in the middle of the charging pad, I found it pretty useless.
-
-          <br><br>
-
-          Charging on the factory pad is also slow enough that I understand why a lot of Rivian owners eventually just switch to using charging cables instead. Fortunately Rivian at least added the cable pass-through slot into the center console.
-
-          <br><br>
-
-          Enter the TWRAPS charger.
-
-          <br><br>
-
-          The biggest improvement is MagSafe compatibility. The phone actually stays in place and consistently charges during drives. I do still see a “Slow Charging” notification on the phone occasionally, but the important thing is the battery percentage is actually higher after driving instead of lower.
-
-          <br><br>
-
-          It genuinely works well.
-
-          <br><br>
-
-          The only issue I ran into was the charger itself occasionally lifting slightly when removing the phone. I fixed this pretty easily using a very small amount of thin 3M adhesive along the front and side edges. It holds securely now without needing anything permanent or aggressive.
-
-          <br><br>
-
-          Overall, I love it. The cables stay hidden inside the console, it looks factory installed, and it functions dramatically better than the stock charging pad.
-
-          <br><br>
-
-          <strong>Pro Tip:</strong><br><br>
-
-          I’d highly recommend picking up some 90-degree USB-C adapters for the center console so the cables don’t stick out awkwardly into the storage area.
-
-          <br><br>
-
-          I bought these:
-
-          <br><br>
-
-          <a
-            href="https://amzn.to/4u3v43M"
-            target="_blank"
-            rel="nofollow sponsored"
-            style="color:var(--green); text-decoration:none; font-weight:600;"
-          >
-            90 Degree USB-C Adapters
-          </a>
-
-          <br><br>
-
-          <strong>Verdict:</strong><br><br>
-
-          5 Stars. Huge improvement over the factory setup.
-
-        </p>
-
-        <a
-          href="https://amzn.to/3P3wwE5"
-          target="_blank"
-          rel="nofollow sponsored"
-          class="btn"
-        >
-          View on Amazon
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-  <!-- REVIEW SECTION -->
-
-  <div id="screen-protectors" class="review-section">
-
-    <div class="container">
-
-      <div class="review-layout">
-
-        <div class="review-image">
-
-          <img
-            src="/images/twscreen.jpg"
-            alt="TWRAPS Screen Protectors"
-          >
-
-        </div>
-
-        <div>
-
-          <div class="section-label">
-            Interior Accessory
-          </div>
-
-          <h2 class="section-title">
-            TWRAPS Screen Protectors
-          </h2>
-
-          <p class="review-text">
-            Full review coming soon. This review will cover installation difficulty, glare reduction, fingerprint resistance, screen clarity, and overall fitment quality.
-          </p>
-
-                  <a
-          href="https://amzn.to/4d0EwyM"
-          target="_blank"
-          rel="nofollow sponsored"
-          class="btn"
-        >
-          View on Amazon
-        </a>
-
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- REVIEW SECTION -->
-
-  <div id="spare-kit" class="review-section">
-
-    <div class="container">
-
-      <div class="review-layout">
-
-        <div class="review-image">
-
-          <img
-            src="/images/spare-kit.jpg"
-            alt="Compact Spare Tire Kit"
-          >
-
-        </div>
-
-        <div>
-
-          <div class="section-label">
-            Emergency Equipment
-          </div>
-
-          <h2 class="section-title">
-            Compact Spare Tire Kit
-          </h2>
-
-          <p class="review-text">
-            Full review coming soon. This section will cover cargo storage impact, installation, road trip practicality, and whether carrying a spare tire is worthwhile for the R1S.
-          </p>
-
-          <a
-          href="https://gearshop.rivian.com/products/compact-spare-tire"
-          target="_blank"
-          rel="nofollow sponsored"
-          class="btn"
-        >
-          Rivian Gear Shop
-        </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- FOOTER -->
-<!-- ============================================================
-     REFERRAL CTA BANNER
-     Use on BOTH pages:
-       - /accessories/index.html
-       - /reviews/2026-rivian-r1s-90-day-review/index.html
-
-     INSERT before the <footer> tag on each page.
-     ============================================================ -->
-
-<style>
-  .rrh-referral-cta {
-    max-width: 960px;
-    margin: 64px auto 0;
-    padding: 0 24px 64px;
-  }
-
-  .rrh-referral-cta-inner {
-    background: linear-gradient(135deg, #0d1f1c 0%, #0f2230 100%);
-    border: 1px solid #2ec4a5;
-    border-radius: 16px;
-    padding: 40px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-  }
-
-  @media (max-width: 680px) {
-    .rrh-referral-cta-inner {
-      flex-direction: column;
-      padding: 32px 28px;
-      text-align: center;
-    }
-  }
-
-  .rrh-referral-cta-text .cta-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #2ec4a5;
-    margin-bottom: 8px;
-  }
-
-  .rrh-referral-cta-text h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 8px 0;
-    line-height: 1.3;
-  }
-
-  .rrh-referral-cta-text p {
-    font-size: 0.875rem;
-    color: #9ca3af;
-    margin: 0;
-    line-height: 1.6;
-    max-width: 420px;
-  }
-
-  .rrh-referral-cta-actions {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .rrh-code-pill {
-    background: rgba(46, 196, 165, 0.12);
-    border: 1px solid rgba(46, 196, 165, 0.4);
-    border-radius: 8px;
-    padding: 10px 24px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: #2ec4a5;
-    white-space: nowrap;
-  }
-
-  .rrh-cta-copy-btn {
-    background: #2ec4a5;
-    color: #000000;
-    border: none;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 11px 24px;
-    border-radius: 6px;
-    width: 100%;
-    transition: background 0.2s ease;
-  }
-
-  .rrh-cta-copy-btn:hover {
-    background: #25a98e;
-  }
-
-  .rrh-cta-copy-btn.copied {
-    background: #1a7a67;
-    color: #ffffff;
-  }
-
-  .rrh-cta-open-link {
-    display: block;
-    font-size: 0.78rem;
-    color: #6b7280;
-    text-decoration: none;
-    text-align: center;
-    transition: color 0.2s ease;
-  }
-
-  .rrh-cta-open-link:hover {
-    color: #2ec4a5;
-  }
-
-  .rrh-perks-row {
-    display: flex;
-    gap: 20px;
-    margin-top: 14px;
-    flex-wrap: wrap;
-  }
-
-  @media (max-width: 680px) {
-    .rrh-perks-row {
-      justify-content: center;
-    }
-  }
-
-  .rrh-perk {
-    font-size: 0.78rem;
-    color: #6b7280;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .rrh-perk span.dot {
-    color: #2ec4a5;
-    font-size: 1rem;
-    line-height: 1;
-  }
-</style>
-
-<section class="rrh-referral-cta">
-  <div class="rrh-referral-cta-inner">
-
-    <div class="rrh-referral-cta-text">
-      <div class="cta-label">Rivian Referral Program</div>
-      <h3>Ordering a Rivian? Use my referral code.</h3>
-      <p>Get up to 500 Rewards Points and 3 months of free Adventure Network charging when you use a referral code on a qualifying order. Enter it during configuration or ask your Rivian Guide to add it before delivery.</p>
-      <div class="rrh-perks-row">
-        <div class="rrh-perk"><span class="dot">⚡</span> 3 months free charging</div>
-        <div class="rrh-perk"><span class="dot">🎁</span> Up to 500 Rewards Points</div>
-        <div class="rrh-perk"><span class="dot">✓</span> Works on R1S, R1T &amp; R2</div>
-      </div>
-    </div>
-
-    <div class="rrh-referral-cta-actions">
-      <div class="rrh-code-pill" id="rrh-cta-code">SCOTT4395475</div>
-      <button class="rrh-cta-copy-btn" id="rrh-cta-copy-btn" onclick="rrhCtaCopy()">
-        Copy Code &amp; Configure
+  <div id="site-nav"></div>
+
+  <div class="referral-strip">
+    <div class="container strip-inner">
+      <span class="strip-label">Referral code</span>
+      <span class="strip-code">SCOTT4395475</span>
+      <span class="strip-divider"></span>
+      <span class="strip-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
+      <button class="strip-btn" onclick="stripCopyCode()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy &amp; Configure
       </button>
-      <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475"
-         target="_blank"
-         rel="nofollow"
-         class="rrh-cta-open-link">
-        Or open Rivian configurator directly →
-      </a>
+      <span class="strip-copied" id="stripCopied">✓ Copied!</span>
     </div>
-
   </div>
-</section>
 
-<script>
-  function rrhCtaCopy() {
-    navigator.clipboard.writeText('SCOTT4395475').then(function() {
-      var btn = document.getElementById('rrh-cta-copy-btn');
-      btn.textContent = '✓ Code Copied!';
-      btn.classList.add('copied');
-      setTimeout(function() {
-        btn.textContent = 'Copy Code & Configure';
-        btn.classList.remove('copied');
-      }, 3000);
-    }).catch(function() {
-      // Fallback for older browsers
-      var el = document.getElementById('rrh-cta-code');
-      var range = document.createRange();
-      range.selectNode(el);
-      window.getSelection().removeAllRanges();
-      window.getSelection().addRange(range);
-    });
-  }
-</script>
-
-<!-- ============================================================
-     END REFERRAL CTA BANNER
-     ============================================================ -->
-
-  
-  <footer>
-
+  <div class="page-header">
     <div class="container">
+      <div class="page-eyebrow">Gear &amp; Accessories</div>
+      <h1 class="page-title">Rivian Accessory Reviews</h1>
+      <p class="page-sub">Real-world reviews, install impressions, and tested accessories for the R1S and R1T — with photos and direct product links.</p>
+    </div>
+  </div>
 
-      <img
-        src="/logo.png"
-        alt="Rivian Rewards Hub"
-        style="
-          width:90px;
-          opacity:0.35;
-          margin-bottom:18px;
-        "
-      >
+  <div class="container">
+    <div class="acc-layout">
 
       <div>
-        Independent Rivian owner accessory reviews and recommendations.
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="filterAcc('all', this)">All</button>
+          <button class="filter-btn" onclick="filterAcc('charging', this)">Charging</button>
+          <button class="filter-btn" onclick="filterAcc('gear-guard', this)">Gear Guard</button>
+          <button class="filter-btn" onclick="filterAcc('protection', this)">Protection</button>
+          <button class="filter-btn" onclick="filterAcc('emergency', this)">Emergency</button>
+        </div>
+
+        <!-- SAMSUNG T7 SHIELD -->
+        <div class="acc-card" data-category="gear-guard" id="t7shield-review">
+          <div class="acc-card-inner">
+            <div class="acc-card-img">
+              <img src="/images/shield.jpg" alt="Samsung T7 Shield 1TB">
+            </div>
+            <div class="acc-card-body">
+              <div class="acc-card-meta">
+                <span class="tag green">Review Live</span>
+                <span class="tag">Gear Guard</span>
+              </div>
+              <div class="acc-card-title">Samsung T7 Shield 1TB</div>
+              <p class="acc-card-excerpt">The go-to recommendation across Rivian forums for Gear Guard storage. Heat-resistant, compact, and recognized by Rivian immediately on first plug-in.</p>
+              <div class="acc-card-actions">
+                <a href="https://amzn.to/4ttCWun" target="_blank" rel="noopener noreferrer" class="cta-btn">View on Amazon</a>
+                <a href="https://amzn.to/4d9F2t1" target="_blank" rel="noopener noreferrer" class="link-btn">90° USB-C Adapters</a>
+              </div>
+            </div>
+          </div>
+          <div class="acc-review">
+            <p>Every Rivian owner eventually needs a drive for Gear Guard footage. This is the one I landed on for a couple of reasons. First, it's overwhelmingly the favorite recommendation across Rivian forums and Reddit. Second, I chose the Shield version specifically for its heat resistance — Las Vegas summers are brutal, and it made sense to use a drive designed to handle extreme cabin temperatures when parked in direct sun.</p>
+            <p>I went with 1TB so the system overwrites footage less frequently. I also like how compact and lightweight it is. I do wish Rivian had positioned the elastic retaining band directly below the USB-C ports, but with 90-degree USB-C adapters, the cable routes cleanly around the edge of the console to the rear storage area where the drive sits.</p>
+            <p><strong>Setup:</strong></p>
+            <ol>
+              <li>Plug the SSD into one of the Rivian USB-C data ports inside the center console.</li>
+              <li>Open: Controls → Gear Guard → Gear Guard Storage</li>
+              <li>Format the drive through the Rivian interface.</li>
+              <li>Once formatting completes, Gear Guard and Drive Cam recordings begin saving automatically.</li>
+            </ol>
+            <p>Setup was immediate — Rivian recognized the drive right away without any issues. Everything has worked flawlessly since.</p>
+            <div class="verdict-inline">
+              <div class="verdict-inline-label">Verdict</div>
+              <p>Easy recommendation, especially for owners in hot climates. The Shield variant is worth the small premium.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- A2Z CCS1 ADAPTER -->
+        <div class="acc-card" data-category="charging" id="a2z-adapter">
+          <div class="acc-card-inner">
+            <div class="acc-card-img">
+              <img src="/images/a2z.jpg" alt="A2Z CCS1 to NACS Adapter">
+            </div>
+            <div class="acc-card-body">
+              <div class="acc-card-meta">
+                <span class="tag green">Review Live</span>
+                <span class="tag">Charging</span>
+              </div>
+              <div class="acc-card-title">A2Z CCS1 to NACS Adapter</div>
+              <p class="acc-card-excerpt">For Rivian owners with a NACS port, a CCS1 adapter is essentially required right now. Every local Adventure Network station I've visited has been CCS1 — this gets you charging without issues.</p>
+              <div class="acc-card-actions">
+                <a href="https://amzn.to/4eBEaQw" target="_blank" rel="noopener noreferrer" class="cta-btn">View on Amazon</a>
+              </div>
+            </div>
+          </div>
+          <div class="acc-review">
+            <p>The adapter arrived well-packaged with a solid storage case. It feels heavy, durable, and well made — not cheap at all. For Rivian owners with a NACS port, a CCS1 to NACS adapter is pretty much essential right now. I keep it stored in the frunk so it's always easy to grab.</p>
+            <p>Usage is straightforward. Connect the adapter to the charging cable first before plugging into the vehicle. Every session so far has been recognized immediately with charging starting right away.</p>
+            <p>I chose the A2Z version based on strong feedback from other Rivian owners, and it's less expensive than the Rivian-branded adapter (currently ~$200). One important note: if an adapter causes damage to the vehicle, Rivian states that damage would not be covered under warranty. I view that as an unlikely scenario, but worth knowing.</p>
+            <div class="verdict-inline">
+              <div class="verdict-inline-label">Verdict</div>
+              <p>Highly recommend. Keep it in the frunk and forget about it until you need it.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TWRAPS CHARGER -->
+        <div class="acc-card" data-category="charging" id="twcharger-review">
+          <div class="acc-card-inner">
+            <div class="acc-card-img">
+              <img src="/images/twcharger.jpg" alt="TWRAPS Dual Wireless Phone Charger">
+            </div>
+            <div class="acc-card-body">
+              <div class="acc-card-meta">
+                <span class="tag green">Review Live</span>
+                <span class="tag">Charging</span>
+              </div>
+              <div class="acc-card-title">TWRAPS Dual Wireless Charger</div>
+              <p class="acc-card-excerpt">One of the best additions I've made to the R1S. MagSafe compatibility solves the sliding phone problem entirely. Looks factory installed in the Dark Ash Wood variant.</p>
+              <div class="acc-card-actions">
+                <a href="https://amzn.to/3P3wwE5" target="_blank" rel="noopener noreferrer" class="cta-btn">View on Amazon</a>
+                <a href="https://amzn.to/4u3v43M" target="_blank" rel="noopener noreferrer" class="link-btn">90° USB-C Adapters</a>
+              </div>
+            </div>
+          </div>
+          <div class="acc-review">
+            <p>I went with the Dark Ash Wood skin variant since it closely matches the factory wood trim inside the Rivian. Once installed, it looks like something Rivian should have included from the factory.</p>
+            <p>Before this, I constantly had issues with my phone sliding forward and disconnecting from the stock charging area. Even Rivian's center divider didn't help. Charging on the factory pad is slow enough that many owners just switch to cables — I understand why.</p>
+            <p>The TWRAPS charger solves this with MagSafe compatibility. The phone stays in place and consistently charges during drives. I occasionally still see a "Slow Charging" notification, but the battery percentage is actually higher after driving instead of lower.</p>
+            <p>The only issue I ran into was the charger occasionally lifting slightly when removing the phone. I fixed this easily with a small amount of thin 3M adhesive along the front and side edges. Holds securely now without anything permanent.</p>
+            <div class="pro-tip">
+              <div class="pro-tip-label">Pro tip</div>
+              <p>Pick up <a href="https://amzn.to/4u3v43M" target="_blank" rel="noopener noreferrer">90-degree USB-C adapters</a> for the center console so cables don't stick up awkwardly into the storage area.</p>
+            </div>
+            <div class="verdict-inline">
+              <div class="verdict-inline-label">Verdict</div>
+              <p>5 stars. Huge improvement over the factory setup. Looks great, works reliably, and the cable routing is clean.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TWRAPS SCREEN PROTECTORS — coming soon -->
+        <div class="acc-card coming-soon" data-category="protection">
+          <div class="acc-card-inner">
+            <div class="acc-card-img">
+              <img src="/images/twscreen.jpg" alt="TWRAPS Screen Protectors">
+            </div>
+            <div class="acc-card-body">
+              <div class="acc-card-meta">
+                <span class="tag gold">Review Coming Soon</span>
+                <span class="tag">Protection</span>
+              </div>
+              <div class="acc-card-title">TWRAPS Screen Protectors</div>
+              <p class="acc-card-excerpt">Full review coming soon — covering installation difficulty, glare reduction, fingerprint resistance, screen clarity, and overall fitment quality.</p>
+              <div class="acc-card-actions">
+                <a href="https://amzn.to/4d0EwyM" target="_blank" rel="noopener noreferrer" class="cta-btn">View on Amazon</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPARE TIRE — coming soon -->
+        <div class="acc-card coming-soon" data-category="emergency">
+          <div class="acc-card-inner">
+            <div class="acc-card-img">
+              <img src="/images/spare-kit.jpg" alt="Compact Spare Tire Kit">
+            </div>
+            <div class="acc-card-body">
+              <div class="acc-card-meta">
+                <span class="tag gold">Review Coming Soon</span>
+                <span class="tag">Emergency Gear</span>
+              </div>
+              <div class="acc-card-title">Compact Spare Tire Kit</div>
+              <p class="acc-card-excerpt">Full review coming soon — covering cargo storage impact, installation process, road trip practicality, and whether carrying a spare is worthwhile for the R1S.</p>
+              <div class="acc-card-actions">
+                <a href="https://gearshop.rivian.com/products/compact-spare-tire" target="_blank" rel="noopener noreferrer" class="cta-btn">Rivian Gear Shop</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size:13px; color:var(--text-dim); margin-top:8px;">This page may contain affiliate links. As an Amazon Associate, I may earn from qualifying purchases at no additional cost to you.</p>
       </div>
 
-      <div class="affiliate-note">
-        This page may contain affiliate links. As an Amazon Associate, I may earn from qualifying purchases.
+      <!-- SIDEBAR -->
+      <div class="acc-sidebar">
+        <div class="sidebar-referral">
+          <div class="sidebar-referral-label">Ordering a Rivian?</div>
+          <div class="sidebar-referral-code">SCOTT4395475</div>
+          <div class="sidebar-referral-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging on qualifying orders.</div>
+          <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn" onclick="gtag('event','open_rivian_configurator')">
+            Configure Your Rivian →
+          </a>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <div class="section-label">Quick links</div>
+          <div class="resource-row">
+            <div><div class="resource-name">Samsung T7 Shield</div><div class="resource-desc">Gear Guard storage</div></div>
+            <a href="#t7shield-review" class="resource-link">Jump</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">A2Z CCS1 Adapter</div><div class="resource-desc">Charging adapter</div></div>
+            <a href="#a2z-adapter" class="resource-link">Jump</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">TWRAPS Charger</div><div class="resource-desc">Wireless charging</div></div>
+            <a href="#twcharger-review" class="resource-link">Jump</a>
+          </div>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <div class="section-label">Owner resources</div>
+          <div class="resource-row">
+            <div><div class="resource-name">Rivian Gear Shop</div><div class="resource-desc">Official accessories</div></div>
+            <a href="https://gearshop.rivian.com" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">Rivian Forums</div><div class="resource-desc">Community recommendations</div></div>
+            <a href="https://www.rivianforums.com/forum/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">r/Rivian</div><div class="resource-desc">Reddit community</div></div>
+            <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+          </div>
+        </div>
       </div>
 
     </div>
+  </div>
 
+  <footer>
+    <div class="container">
+      <img src="/logo.png" alt="Rivian Rewards Hub">
+      Independent Rivian owner resource · Not affiliated with or endorsed by Rivian Automotive, Inc.
+    </div>
   </footer>
-<script>
-document.addEventListener('contextmenu', e => e.preventDefault());
 
-document.addEventListener('dragstart', e => {
-  if (e.target.tagName === 'IMG') {
-    e.preventDefault();
-  }
-});
+  <script>
+    fetch('/nav.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('site-nav').innerHTML = html;
+        const path = window.location.pathname;
+        document.querySelectorAll('.nav-links a').forEach(a => {
+          const href = a.getAttribute('href');
+          if (href !== '/' && path.startsWith(href)) a.classList.add('active');
+        });
+      }).catch(() => {});
 
-document.addEventListener('keydown', e => {
-  if (
-    (e.ctrlKey || e.metaKey) &&
-    ['u','s','c','x'].includes(e.key.toLowerCase())
-  ) {
-    e.preventDefault();
-  }
-});
-</script>
+    function stripCopyCode() {
+      gtag('event', 'copy_referral_code');
+      navigator.clipboard.writeText('SCOTT4395475').then(() => {
+        const el = document.getElementById('stripCopied');
+        el.style.display = 'inline';
+        setTimeout(() => {
+          window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
+          setTimeout(() => { el.style.display = 'none'; }, 3000);
+        }, 600);
+      });
+    }
+
+    function filterAcc(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.acc-card').forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+    document.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && ['u','s','c','x'].includes(e.key.toLowerCase())) e.preventDefault();
+    });
+  </script>
+
 </body>
 </html>
