@@ -877,11 +877,20 @@
     /* ── Live Software Tracker ── */
 async function loadSoftwareUpdates() {
 
-  const versionEl = document.getElementById('swVersion');
-  const dateEl = document.getElementById('swDate');
-  const highlightsEl = document.getElementById('swHighlights');
-  const progressEl = document.getElementById('swProgress');
-  const rolloutEl = document.getElementById('swRollout');
+  const versionEl =
+    document.getElementById('swVersion');
+
+  const dateEl =
+    document.getElementById('swDate');
+
+  const highlightsEl =
+    document.getElementById('swHighlights');
+
+  const progressEl =
+    document.getElementById('swProgress');
+
+  const rolloutEl =
+    document.getElementById('swRollout');
 
   try {
 
@@ -890,7 +899,7 @@ async function loadSoftwareUpdates() {
     );
 
     const response = await fetch(
-      `https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}&count=20`
+      `https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}&count=20&_=${Date.now()}`
     );
 
     if (!response.ok) {
@@ -909,11 +918,13 @@ async function loadSoftwareUpdates() {
       throw new Error('No software post found');
     }
 
-    const versionMatch = softwarePost.title.match(/202\d\.\d+/);
+    const versionMatch =
+      softwarePost.title.match(/202\d\.\d+/);
 
-    const version = versionMatch
-      ? versionMatch[0]
-      : 'Latest OTA';
+    const version =
+      versionMatch
+        ? versionMatch[0]
+        : 'Latest OTA';
 
     versionEl.textContent = version;
 
@@ -937,13 +948,12 @@ async function loadSoftwareUpdates() {
       </a>
     `;
 
-    const simulatedRollout =
-      Math.floor(Math.random() * 40) + 55;
+    const rollout = 'Broad';
 
-    progressEl.style.width = `${simulatedRollout}%`;
+    progressEl.style.width = '82%';
 
     rolloutEl.textContent =
-      `${simulatedRollout}% rollout detected`;
+      `${rollout} rollout`;
 
     highlightsEl.innerHTML = `
 
@@ -952,9 +962,36 @@ async function loadSoftwareUpdates() {
       </div>
 
       <div class="sw-highlight">
-        Rivian Forums software thread detected
+        Rivian Forums OTA thread detected
       </div>
 
+      <div class="sw-highlight">
+        Live update monitoring enabled
+      </div>
+
+    `;
+
+  } catch(e) {
+
+    console.error(e);
+
+    versionEl.textContent =
+      'Unavailable';
+
+    dateEl.textContent =
+      'Unable to retrieve latest OTA data';
+
+    rolloutEl.textContent =
+      'Rollout unavailable';
+
+    progressEl.style.width = '0%';
+
+    highlightsEl.innerHTML = `
+      <div class="sw-highlight">
+        Check back shortly for updated software data
+      </div>
+    `;
+  }
 }
 
     document.addEventListener('DOMContentLoaded', () => {
