@@ -357,6 +357,78 @@
 
     .cta-btn:hover { background: #18b882; transform: translateY(-1px); }
 
+    /* ─── FORUMS FEED ─── */
+    .forums-feed { display: flex; flex-direction: column; gap: 2px; }
+
+    .forums-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+
+    .forums-row:hover { background: var(--bg-secondary); }
+
+    .forums-category {
+      flex-shrink: 0;
+      background: var(--green-pale);
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    .forums-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .forums-meta { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
+
+    /* ─── SOFTWARE TRACKER (sidebar) ─── */
+    .sw-version {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .sw-date { font-size: 12px; color: var(--text-dim); margin-bottom: 14px; }
+
+    .sw-highlights { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+
+    .sw-highlight {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .sw-highlight::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
     /* ─── RESOURCES CARD ─── */
     .resources-card { padding: 20px; }
 
@@ -456,6 +528,24 @@
               <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:75%; border-radius:4px;"></div></div>
             </div>
           </div>
+          <!-- FORUMS FEED -->
+          <div class="card">
+            <div class="news-header">
+              <div class="section-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Rivian Forums
+              </div>
+              <a href="https://www.rivianforums.com/forum/" target="_blank" rel="noopener noreferrer" class="link-btn" style="font-size:12px;">Open Forums</a>
+            </div>
+            <div class="forums-feed" id="forumsFeed">
+              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:68%; border-radius:4px;"></div></div>
+              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:52%; border-radius:4px;"></div></div>
+              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:75%; border-radius:4px;"></div></div>
+              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:60%; border-radius:4px;"></div></div>
+              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:70%; border-radius:4px;"></div></div>
+            </div>
+          </div>
+
           <div class="review-card">
             <div class="section-label">Featured review</div>
             <h2 class="review-title">90 Days With My 2026 Rivian R1S</h2>
@@ -523,6 +613,20 @@
               }
               </script>
             </div>
+          </div>
+
+          <!-- SOFTWARE TRACKER -->
+          <div class="card" style="padding:20px;">
+            <div class="section-label">Software update</div>
+            <div class="sw-version">2025.42</div>
+            <div class="sw-date">Released April 2026 · <a href="/software/" style="color:var(--green); font-weight:600; text-decoration:none;">Full history →</a></div>
+            <div class="sw-highlights">
+              <div class="sw-highlight">Manual battery preconditioning added</div>
+              <div class="sw-highlight">Improved DC fast charge algorithm</div>
+              <div class="sw-highlight">Lane Change on Command updates</div>
+              <div class="sw-highlight">UI refresh for energy graph</div>
+            </div>
+            <a href="/software/" class="link-btn">All software updates</a>
           </div>
 
           <!-- REFERRAL REWARDS -->
@@ -692,9 +796,49 @@
       }
     }
 
+    /* ── Rivian Forums RSS Feed ── */
+    async function loadForumsFeed() {
+      const container = document.getElementById('forumsFeed');
+      try {
+        const rssFeed = encodeURIComponent('https://www.rivianforums.com/forum/forums/-/index.rss');
+        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}&count=6`);
+        if (!response.ok) throw new Error('Feed failed');
+        const data = await response.json();
+        if (!data.items?.length) throw new Error('No items');
+
+        function cleanTitle(t) { return t.replace(/\s*\|\s*Rivian Forums.*$/i, '').trim(); }
+        function getCategory(item) {
+          if (item.categories?.length) return item.categories[0];
+          const t = item.title.toLowerCase();
+          if (t.includes('r1s')) return 'R1S';
+          if (t.includes('r1t')) return 'R1T';
+          if (t.includes('r2'))  return 'R2';
+          if (t.includes('software') || t.includes('update')) return 'Software';
+          if (t.includes('charg')) return 'Charging';
+          return 'General';
+        }
+        function formatDate(d) {
+          return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        container.innerHTML = data.items.slice(0, 6).map(item => `
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="forums-row">
+            <span class="forums-category">${getCategory(item)}</span>
+            <div>
+              <div class="forums-title">${cleanTitle(item.title)}</div>
+              <div class="forums-meta">${formatDate(item.pubDate)}</div>
+            </div>
+          </a>
+        `).join('');
+      } catch(e) {
+        container.innerHTML = `<p style="padding:8px 12px; font-size:13px; color:var(--text-muted);">Visit <a href="https://www.rivianforums.com/forum/" target="_blank" rel="noopener noreferrer" style="color:var(--green);">Rivian Forums →</a></p>`;
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       loadNewsTeaser();
       loadRedditFeed();
+      loadForumsFeed();
     });
 
   </script>
