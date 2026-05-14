@@ -835,77 +835,193 @@
     }
 
     /* ── RIVN Stock Ticker ── */
-    async function loadStock() {
-      const el = document.getElementById('stockBody');
-      try {
-        const res = await fetch('https://query1.finance.yahoo.com/v8/finance/chart/RIVN?interval=1d&range=1mo');
-        const json = await res.json();
-        const meta = json.chart.result[0].meta;
-        const closes = json.chart.result[0].indicators.quote[0].close.filter(Boolean);
-        const price = meta.regularMarketPrice;
-        const prev = meta.chartPreviousClose || closes[closes.length - 2];
-        const change = price - prev;
-        const changePct = (change / prev) * 100;
-        const up = change >= 0;
-        const high = meta.regularMarketDayHigh;
-        const low = meta.regularMarketDayLow;
-        const vol = meta.regularMarketVolume;
-        const cap = meta.marketCap;
+async function loadStock() {
 
-        const minC = Math.min(...closes);
-        const maxC = Math.max(...closes);
-        const pts = closes.map((v, i) => {
-          const x = (i / (closes.length - 1)) * 232;
-          const y = 54 - ((v - minC) / (maxC - minC)) * 50;
-          return x.toFixed(1) + ',' + y.toFixed(1);
-        }).join(' ');
+  const el = document.getElementById('stockBody');
 
-        const lastX = 232;
-        const lastY = (54 - ((closes[closes.length-1] - minC) / (maxC - minC)) * 50).toFixed(1);
-        const lineColor = up ? '#1D9E75' : '#E24B4A';
+  try {
 
-        function fmtCap(n) {
-          if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
-          if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
-          return '$' + n.toLocaleString();
-        }
+    const quoteRes = await fetch(
+      'https://financialmodelingprep.com/api/v3/quote/RIVN?apikey=demo'
+    );
 
-        el.innerHTML = `
-          <div class="stock-header">
-            <div>
-              <div class="stock-ticker">RIVN <span class="stock-exchange">· NASDAQ</span></div>
-              <div class="stock-company">Rivian Automotive</div>
-            </div>
-            <div style="text-align:right">
-              <div class="stock-price">$${price.toFixed(2)}</div>
-              <span class="stock-change ${up ? 'up' : 'down'}">
-                ${up ? '▲' : '▼'} ${up ? '+' : ''}${change.toFixed(2)} (${up ? '+' : ''}${changePct.toFixed(2)}%)
-              </span>
-            </div>
-          </div>
-          <svg class="stock-sparkline" viewBox="0 0 232 58" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="sfill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="${lineColor}" stop-opacity="0.15"/>
-                <stop offset="100%" stop-color="${lineColor}" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <polygon points="${pts} 232,58 0,58" fill="url(#sfill)"/>
-            <polyline points="${pts}" fill="none" stroke="${lineColor}" stroke-width="1.5" stroke-linejoin="round"/>
-            <circle cx="${lastX}" cy="${lastY}" r="3" fill="${lineColor}"/>
-          </svg>
-          <div class="stock-stats">
-            <div class="stock-stat"><div class="stock-stat-label">Day high</div><div class="stock-stat-val">$${high.toFixed(2)}</div></div>
-            <div class="stock-stat"><div class="stock-stat-label">Day low</div><div class="stock-stat-val">$${low.toFixed(2)}</div></div>
-            <div class="stock-stat"><div class="stock-stat-label">Volume</div><div class="stock-stat-val">${(vol / 1e6).toFixed(1)}M</div></div>
-            <div class="stock-stat"><div class="stock-stat-label">Mkt cap</div><div class="stock-stat-val">${fmtCap(cap)}</div></div>
-          </div>
-          <div class="stock-footer">30-day chart · delayed data · not financial advice</div>
-        `;
-      } catch(e) {
-        el.innerHTML = '<div class="stock-loading" style="padding:12px 0;">Unable to load. <a href="https://finance.yahoo.com/quote/RIVN" target="_blank" rel="noopener noreferrer" style="color:var(--green);">View on Yahoo Finance →</a></div>';
-      }
+    const histRes = await fetch(
+      'https://financialmodelingprep.com/api/v3/historical-price-full/RIVN?timeseries=30&apikey=demo'
+    );
+
+    const quoteJson = await quoteRes.json();
+    const histJson = await histRes.json();
+
+    if (!quoteJson?.length || !histJson?.historical?.length) {
+      throw new Error('Invalid stock data');
     }
+
+    const q = quoteJson[0];
+
+    const closes = histJson.historical
+      .map(d => d.close)
+      .filter(v => typeof v === 'number')
+      .reverse();
+
+    const price = q.price;
+    const prev = q.previousClose;
+    const change = q.change;
+    const changePct = q.changesPercentage;
+    const up = change >= 0;
+
+    const high = q.dayHigh;
+    const low = q.dayLow;
+    const vol = q.volume;
+    const cap = q.marketCap;
+
+    const minC = Math.min(...closes);
+    const maxC = Math.max(...closes);
+
+    const range = Math.max(maxC - minC, 0.01);
+
+    const pts = closes.map((v, i) => {
+
+      const x = (i / (closes.length - 1)) * 232;
+      const y = 54 - ((v - minC) / range) * 50;
+
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+
+    }).join(' ');
+
+    const lastX = 232;
+
+    const lastY =
+      54 - ((closes[closes.length - 1] - minC) / range) * 50;
+
+    const lineColor = up ? '#1D9E75' : '#E24B4A';
+
+    function fmtCap(n) {
+
+      if (!n || isNaN(n)) return '—';
+
+      if (n >= 1e12) return '$' + (n / 1e12).toFixed(2) + 'T';
+      if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+      if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+
+      return '$' + n.toLocaleString();
+
+    }
+
+    el.innerHTML = `
+      <div class="stock-header">
+        <div>
+          <div class="stock-ticker">
+            RIVN <span class="stock-exchange">· NASDAQ</span>
+          </div>
+          <div class="stock-company">Rivian Automotive</div>
+        </div>
+
+        <div style="text-align:right">
+          <div class="stock-price">$${price.toFixed(2)}</div>
+
+          <span class="stock-change ${up ? 'up' : 'down'}">
+            ${up ? '▲' : '▼'}
+            ${up ? '+' : ''}${change.toFixed(2)}
+            (${up ? '+' : ''}${changePct.toFixed(2)}%)
+          </span>
+        </div>
+      </div>
+
+      <svg
+        class="stock-sparkline"
+        viewBox="0 0 232 58"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+
+        <defs>
+          <linearGradient id="sfill" x1="0" y1="0" x2="0" y2="1">
+            <stop
+              offset="0%"
+              stop-color="${lineColor}"
+              stop-opacity="0.15"
+            />
+            <stop
+              offset="100%"
+              stop-color="${lineColor}"
+              stop-opacity="0"
+            />
+          </linearGradient>
+        </defs>
+
+        <polygon
+          points="${pts} 232,58 0,58"
+          fill="url(#sfill)"
+        />
+
+        <polyline
+          points="${pts}"
+          fill="none"
+          stroke="${lineColor}"
+          stroke-width="1.5"
+          stroke-linejoin="round"
+        />
+
+        <circle
+          cx="${lastX}"
+          cy="${lastY.toFixed(1)}"
+          r="3"
+          fill="${lineColor}"
+        />
+
+      </svg>
+
+      <div class="stock-stats">
+
+        <div class="stock-stat">
+          <div class="stock-stat-label">Day high</div>
+          <div class="stock-stat-val">$${high.toFixed(2)}</div>
+        </div>
+
+        <div class="stock-stat">
+          <div class="stock-stat-label">Day low</div>
+          <div class="stock-stat-val">$${low.toFixed(2)}</div>
+        </div>
+
+        <div class="stock-stat">
+          <div class="stock-stat-label">Volume</div>
+          <div class="stock-stat-val">
+            ${(vol / 1e6).toFixed(1)}M
+          </div>
+        </div>
+
+        <div class="stock-stat">
+          <div class="stock-stat-label">Mkt cap</div>
+          <div class="stock-stat-val">${fmtCap(cap)}</div>
+        </div>
+
+      </div>
+
+      <div class="stock-footer">
+        30-day chart · delayed data · not financial advice
+      </div>
+    `;
+
+  } catch (e) {
+
+    console.error(e);
+
+    el.innerHTML = `
+      <div class="stock-loading" style="padding:12px 0;">
+        Unable to load stock data.
+        <br><br>
+        <a
+          href="https://finance.yahoo.com/quote/RIVN"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color:var(--green);"
+        >
+          View on Yahoo Finance →
+        </a>
+      </div>
+    `;
+  }
+}
 
     /* ── News Teaser ── */
     async function loadNewsTeaser() {
