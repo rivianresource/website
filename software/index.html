@@ -510,7 +510,65 @@ async function renderSoftwareTimeline() {
 }
 
 renderSoftwareTimeline();
+async function renderQuickJump() {
 
+  const quickJump =
+    document.getElementById('softwareQuickJump');
+
+  if (!quickJump) return;
+
+  try {
+
+    const response = await fetch(
+      '/software/updates.json?v=' + Date.now()
+    );
+
+    if (!response.ok) {
+      throw new Error('Unable to load updates');
+    }
+
+    const updates = await response.json();
+
+    quickJump.innerHTML =
+      updates.map((update, index) => `
+
+        <a
+          href="#v${update.version.replace('.', '-')}"
+          class="vq-row">
+
+          <div>
+
+            <div class="vq-version">
+              ${update.version}
+            </div>
+
+            <div class="vq-date">
+              ${update.date}
+            </div>
+
+          </div>
+
+          ${
+            index === 0
+              ? '<span class="vq-current">Current</span>'
+              : ''
+          }
+
+        </a>
+
+      `).join('');
+
+  } catch(e) {
+
+    console.error(e);
+
+  }
+
+}
+
+renderQuickJump();
+
+loadLiveSoftwareVersion();
 
 </script>
 </body>
