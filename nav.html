@@ -93,4 +93,19 @@
       border-bottom: none;
     }
   }
+  <script>
+  const navHamburger = document.getElementById('navHamburger');
+  const navLinks = document.getElementById('navLinks');
+  const navIconMenu = document.getElementById('navIconMenu');
+  const navIconClose = document.getElementById('navIconClose');
+
+  navHamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+
+    navHamburger.setAttribute('aria-expanded', isOpen);
+
+    navIconMenu.style.display = isOpen ? 'none' : 'block';
+    navIconClose.style.display = isOpen ? 'block' : 'none';
+  });
+</script>
 </style>
