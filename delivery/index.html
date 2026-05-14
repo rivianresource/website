@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rivian Delivery Checklist | What to Inspect Before You Drive Away</title>
+  <meta name="description" content="Complete Rivian delivery inspection checklist. What to check before accepting your R1S, R1T, or R2 — exterior, interior, tech, charging, and documentation."/>
+  <link rel="canonical" href="https://www.rivianrewardshub.com/delivery/"/>
+  <meta property="og:title" content="Rivian Delivery Checklist"/>
+  <meta property="og:image" content="https://www.rivianrewardshub.com/r1s.jpg"/>
+  <meta property="og:type" content="website"/>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SB8DBC8NBQ');</script>
+
+  <link rel="icon" type="image/png" href="/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "aabd2c264abb41589ccfd2223c79ae42"}'></script>
+
+  <style>
+    .delivery-layout {
+      display: grid;
+      grid-template-columns: 1fr 272px;
+      gap: 28px;
+      align-items: start;
+      padding: 32px 0 56px;
+    }
+
+    @media (max-width: 860px) {
+      .delivery-layout { grid-template-columns: 1fr; }
+      .delivery-sidebar { order: -1; }
+    }
+
+    .delivery-main { display: flex; flex-direction: column; gap: 20px; }
+    .delivery-sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 80px; }
+
+    /* ─── INTRO CARD ─── */
+    .intro-card {
+      background: var(--green-dark);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      color: #fff;
+    }
+
+    .intro-card p { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.75; margin-bottom: 10px; }
+    .intro-card p:last-child { margin-bottom: 0; }
+    .intro-card strong { color: #fff; }
+
+    .intro-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .intro-stat {
+      background: rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .intro-stat-val { font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 800; color: var(--green-light); line-height: 1; margin-bottom: 3px; }
+    .intro-stat-label { font-size: 11px; color: rgba(255,255,255,0.6); }
+
+    /* ─── CHECKLIST SECTION ─── */
+    .checklist-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .checklist-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .checklist-header-left { display: flex; align-items: center; gap: 10px; }
+
+    .checklist-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .checklist-icon svg { width: 16px; height: 16px; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .checklist-title { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); }
+    .checklist-count { font-size: 12px; color: var(--text-dim); }
+    .checklist-progress { font-size: 12px; font-weight: 600; color: var(--green); }
+
+    .checklist-items { padding: 8px 0; }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s ease;
+      user-select: none;
+    }
+
+    .checklist-item:last-child { border-bottom: none; }
+    .checklist-item:hover { background: var(--bg-secondary); }
+    .checklist-item.checked { background: var(--green-pale); }
+
+    .check-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: 2px solid var(--border-hover);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      transition: all 0.15s ease;
+      background: var(--bg-card);
+    }
+
+    .checklist-item.checked .check-box {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .check-box svg { display: none; width: 12px; height: 12px; stroke: #fff; fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .checklist-item.checked .check-box svg { display: block; }
+
+    .check-content { flex: 1; }
+
+    .check-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 3px;
+    }
+
+    .checklist-item.checked .check-label {
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .check-note { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+    .check-severity {
+      flex-shrink: 0;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+
+    .sev-critical { background: #FCEBEB; color: #A32D2D; }
+    .sev-important { background: #fef3e2; color: var(--gold); }
+    .sev-note { background: var(--bg-secondary); color: var(--text-dim); }
+
+    /* ─── PROGRESS BAR ─── */
+    .progress-bar-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 24px;
+    }
+
+    .progress-track {
+      height: 8px;
+      background: var(--bg-secondary);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 10px 0 6px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--green);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* ─── OWNER NOTE ─── */
+    .owner-note {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 14px 18px;
+    }
+
+    .owner-note p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 8px; }
+    .owner-note p:last-child { margin-bottom: 0; }
+    .owner-note strong { color: var(--text); }
+
+    /* ─── SIDEBAR ─── */
+    .tip-card { padding: 20px; }
+
+    .tip-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tip-item:last-child { border-bottom: none; }
+
+    .tip-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .tip-text { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+    .tip-text strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 13px; }
+
+    @media (max-width: 560px) {
+      .intro-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav"></div>
+
+  <div class="referral-strip">
+    <div class="container strip-inner">
+      <span class="strip-label">Referral code</span>
+      <span class="strip-code">SCOTT4395475</span>
+      <span class="strip-divider"></span>
+      <span class="strip-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
+      <button class="strip-btn" onclick="stripCopyCode()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy &amp; Configure
+      </button>
+      <span class="strip-copied" id="stripCopied">✓ Copied!</span>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="page-eyebrow">Owner Tool · Delivery Day</div>
+      <h1 class="page-title">Rivian Delivery Checklist</h1>
+      <p class="page-sub">What to inspect before you sign and drive away. Based on real owner delivery experience — the issues most commonly missed at pickup.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="delivery-layout">
+
+      <div class="delivery-main">
+
+        <!-- INTRO -->
+        <div class="intro-card">
+          <p>Most Rivian delivery issues are minor and easy to miss in the excitement of pickup. A systematic walk-around takes about <strong>20–30 minutes</strong> and is worth every second — getting issues documented before you leave the service center is significantly easier than reporting them after delivery.</p>
+          <p>Use this checklist on your phone during delivery. Tap each item to mark it checked. If you find something, note it in the Rivian app immediately and photograph everything.</p>
+          <div class="intro-stats">
+            <div class="intro-stat"><div class="intro-stat-val">3</div><div class="intro-stat-label">Issues found at my delivery</div></div>
+            <div class="intro-stat"><div class="intro-stat-val">20min</div><div class="intro-stat-label">Typical inspection time</div></div>
+            <div class="intro-stat"><div class="intro-stat-val">Free</div><div class="intro-stat-label">Rivian fixes pre-delivery issues</div></div>
+          </div>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="progress-bar-wrap">
+          <div class="section-label" style="margin-bottom:6px;">Progress</div>
+          <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+          <div class="progress-label">
+            <span id="progressText">0 of 42 items checked</span>
+            <span id="progressPct">0%</span>
+          </div>
+        </div>
+
+        <!-- EXTERIOR -->
+        <div class="checklist-section" id="section-exterior">
+          <div class="checklist-header">
+            <div class="checklist-header-left">
+              <div class="checklist-icon" style="background:#EAF3DE;">
+                <svg viewBox="0 0 24 24" stroke="#1D9E75"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <div>
+                <div class="checklist-title">Exterior</div>
+                <div class="checklist-count">Walk the entire vehicle in good light</div>
+              </div>
+            </div>
+            <div class="checklist-progress" id="prog-exterior">0/11</div>
+          </div>
+          <div class="checklist-items">
+            <div class="checklist-item" onclick="toggleCheck(this,'exterior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Panel gaps consistent all around</div><div class="check-note">Check door-to-door, door-to-fender, and hood-to-fender gaps. Should be uniform — uneven gaps are common.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'exterior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Paint — no chips, scratches, or swirl marks</div><div class="check-note">Inspect in daylight or under bright service center lights. Check all four corners and the hood leading edge.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'exterior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">All doors open, close, and latch smoothly</div><div class="check-note">Test every door including the frunk, tailgate (R1T), and liftgate (R1S). Door alignment was an issue at my delivery.</div></div>
+              <span class="check-severity sev-critical">Critical</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'exterior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Headlights and taillights — no condensation or damage</div><div class="check-note">Check for moisture inside the housing. Turn them on to verify function.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'exterior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Lightbar functions and RGB works</div><div class="check-note">Gen 2 horizontal lightbar should illuminate evenly. Check both front and rear.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'exterior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Wheels — no curb rash, correct spec</div><div class="check-note">Verify wheel size and color match your order. Check for transport damage.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'exterior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Tires — correct spec, no damage, adequate pressure</div><div class="check-note">Check the sidewalls for any bulging or cuts. Verify pressure is at recommended PSI.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'exterior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Frunk — opens, closes, latches correctly</div><div class="check-note">Check the seal around the perimeter. Water intrusion into the frunk is a reported issue on some units.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'exterior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Charge port opens and closes smoothly</div><div class="check-note">Test the charge port door manually and via the app. Try plugging in a cable if one is available.</div></div>
+              <span class="check-severity sev-critical">Critical</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'exterior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Cameras — clean lenses, no obstructions</div><div class="check-note">Check all Gear Guard cameras for protective film left on. Verify they appear in the app.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'exterior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Air suspension — raises and lowers on all four corners</div><div class="check-note">Cycle through suspension heights in the vehicle settings. Watch for any corner that's slow to respond.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- INTERIOR -->
+        <div class="checklist-section" id="section-interior">
+          <div class="checklist-header">
+            <div class="checklist-header-left">
+              <div class="checklist-icon" style="background:#fef3e2;">
+                <svg viewBox="0 0 24 24" stroke="#BA7517"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div>
+                <div class="checklist-title">Interior</div>
+                <div class="checklist-count">Trim, seats, and materials</div>
+              </div>
+            </div>
+            <div class="checklist-progress" id="prog-interior">0/9</div>
+          </div>
+          <div class="checklist-items">
+            <div class="checklist-item" onclick="toggleCheck(this,'interior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Wood / trim panels — no defects, gaps, or misalignment</div><div class="check-note">A defect in my Dark Ash Wood trim was caught at delivery using the inspection checklist. Run your hand along all trim edges.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'interior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Seats — no tears, stains, or stitching issues</div><div class="check-note">Check all rows. Look at the seat bolsters closely — these are a common spot for cosmetic defects.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'interior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Seat adjustments work (all powered seats)</div><div class="check-note">Test every direction on all adjustable seats. Check memory seat positions if equipped.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'interior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Seat belts — retract and latch properly on all rows</div><div class="check-note">Note: there is an active recall on some 2022–2025/2026 R1S and R1T for improperly tightened seat belt retractor bolts. Verify this has been addressed.</div></div>
+              <span class="check-severity sev-critical">Critical</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'interior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Dynamic glass roof — tints and clears correctly</div><div class="check-note">Test full tint, partial tint, and clear mode. Verify the transition is even across the entire panel.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'interior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">All windows operate correctly</div><div class="check-note">Test every window. Check for any grinding, rattling, or slow operation.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'interior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Center console — no gaps, storage closes properly</div><div class="check-note">Check the wireless charging area for damage. Test the pass-through slot and USB ports.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'interior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">No unusual odors</div><div class="check-note">Mold, chemical, or musty smells can indicate water intrusion during transport. Trust your nose.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'interior')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Spare tire / kit present (if ordered)</div><div class="check-note">If you ordered the compact spare tire kit, verify it's installed in the correct location.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TECH & SOFTWARE -->
+        <div class="checklist-section" id="section-tech">
+          <div class="checklist-header">
+            <div class="checklist-header-left">
+              <div class="checklist-icon" style="background:#E6F1FB;">
+                <svg viewBox="0 0 24 24" stroke="#185FA5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div>
+                <div class="checklist-title">Tech &amp; Software</div>
+                <div class="checklist-count">Screens, connectivity, and app pairing</div>
+              </div>
+            </div>
+            <div class="checklist-progress" id="prog-tech">0/8</div>
+          </div>
+          <div class="checklist-items">
+            <div class="checklist-item" onclick="toggleCheck(this,'tech')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Main touchscreen — no dead zones or artifacts</div><div class="check-note">Tap all corners and edges of the screen. Look for backlight bleed or unresponsive areas.</div></div>
+              <span class="check-severity sev-critical">Critical</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'tech')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Driver display — functioning and accurate</div><div class="check-note">Verify speed, range, and navigation displays correctly. Check for pixel issues.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'tech')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Rivian app paired and connected</div><div class="check-note">Verify the vehicle appears in your Rivian app. Test remote lock/unlock and horn honk.</div></div>
+              <span class="check-severity sev-critical">Critical</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'tech')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Software is on current version</div><div class="check-note">Check Settings → About. If it's significantly behind, ask the service center to update it before you leave.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'tech')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Bluetooth and phone key working</div><div class="check-note">Test phone key unlock and start. Pair a second phone if you have a co-driver.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'tech')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">All speakers working — no distortion</div><div class="check-note">Play music at moderate volume and check each speaker zone (front, rear, sub). For Sound + Vision: test Dolby Atmos content.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'tech')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Navigate-on-autopilot / driver assist active</div><div class="check-note">On a short drive, verify Rivian Autonomy Platform engages and disengages cleanly.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'tech')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Gear Guard enabled and storage configured</div><div class="check-note">If you brought a USB-C SSD, set up Gear Guard storage during delivery. See the accessories page for recommended drives.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HVAC & CLIMATE -->
+        <div class="checklist-section" id="section-hvac">
+          <div class="checklist-header">
+            <div class="checklist-header-left">
+              <div class="checklist-icon" style="background:#FCEBEB;">
+                <svg viewBox="0 0 24 24" stroke="#A32D2D"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+              </div>
+              <div>
+                <div class="checklist-title">HVAC &amp; Climate</div>
+                <div class="checklist-count">Heating, cooling, and airflow</div>
+              </div>
+            </div>
+            <div class="checklist-progress" id="prog-hvac">0/5</div>
+          </div>
+          <div class="checklist-items">
+            <div class="checklist-item" onclick="toggleCheck(this,'hvac')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Heat produces warm air within a few minutes</div><div class="check-note">This was an issue at my delivery — the heater took 20+ minutes to produce warm air. Set to max heat and time how long it takes.</div></div>
+              <span class="check-severity sev-critical">Critical</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'hvac')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">A/C cools properly</div><div class="check-note">Run A/C on max for a few minutes. Verify cold air from all vents.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'hvac')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">All vents direct airflow correctly</div><div class="check-note">Test each vent zone including the rear rows. Check that middle-row vents respond to climate controls.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'hvac')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Heated seats work on all rows</div><div class="check-note">Test all levels on front seats. Check rear heated seats if equipped.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'hvac')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">No unusual HVAC noises</div><div class="check-note">Some owners report loud compressor sounds. Run the system at various fan speeds and listen for rattling or grinding.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHARGING & RANGE -->
+        <div class="checklist-section" id="section-charging">
+          <div class="checklist-header">
+            <div class="checklist-header-left">
+              <div class="checklist-icon" style="background:var(--green-pale);">
+                <svg viewBox="0 0 24 24" stroke="#1D9E75"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div>
+                <div class="checklist-title">Charging &amp; Range</div>
+                <div class="checklist-count">Battery, range, and charging setup</div>
+              </div>
+            </div>
+            <div class="checklist-progress" id="prog-charging">0/5</div>
+          </div>
+          <div class="checklist-items">
+            <div class="checklist-item" onclick="toggleCheck(this,'charging')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Battery state of charge matches expected delivery level</div><div class="check-note">Most deliveries are at 50–80%. Verify the displayed range is reasonable for your battery configuration.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'charging')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">3 months free Adventure Network charging active in app</div><div class="check-note">If you used a referral code, verify the free charging period appears in your Rivian account under Benefits.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'charging')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Mobile charging cable included in vehicle</div><div class="check-note">Rivian includes a mobile charging cable. Verify it's present and inspect for any damage.</div></div>
+              <span class="check-severity sev-important">Important</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'charging')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Referral code rewards points credited</div><div class="check-note">Points may not appear immediately — check within 2 weeks of delivery. Contact Rivian support if missing after that.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'charging')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Charging schedule configured in app</div><div class="check-note">Set up your home charging schedule before leaving — configure off-peak hours if your utility offers TOU rates.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DOCUMENTATION -->
+        <div class="checklist-section" id="section-docs">
+          <div class="checklist-header">
+            <div class="checklist-header-left">
+              <div class="checklist-icon" style="background:#f0f2f5;">
+                <svg viewBox="0 0 24 24" stroke="#5a6478"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <div>
+                <div class="checklist-title">Documentation</div>
+                <div class="checklist-count">Paperwork and records</div>
+              </div>
+            </div>
+            <div class="checklist-progress" id="prog-docs">0/4</div>
+          </div>
+          <div class="checklist-items">
+            <div class="checklist-item" onclick="toggleCheck(this,'docs')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Window sticker / Monroney label saved</div><div class="check-note">Photograph the window sticker or save it via Rivian Roamer VIN lookup. Useful for warranty and insurance purposes.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'docs')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Any pre-existing issues photographed and documented in app</div><div class="check-note">Do this before leaving. Service center documentation at delivery carries significantly more weight than claims filed later.</div></div>
+              <span class="check-severity sev-critical">Critical</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'docs')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">Service request filed for any noted issues</div><div class="check-note">Open a service request in the Rivian app before leaving the service center so issues are on record.</div></div>
+              <span class="check-severity sev-critical">Critical</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this,'docs')">
+              <div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="check-content"><div class="check-label">VIN recorded</div><div class="check-note">Note your VIN for insurance, recall lookups, and Rivian Roamer. It's on the driver door jamb and the dashboard.</div></div>
+              <span class="check-severity sev-note">Note</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- OWNER NOTE -->
+        <div class="owner-note">
+          <p><strong>From my delivery:</strong> Using a checklist caught three issues I would have missed — two misaligned doors, a defect in the Dark Ash Wood trim, and an HVAC problem where the heater took over 20 minutes to produce warm air. Rivian's app-based service request system made documenting everything fast and straightforward. The service experience was genuinely good.</p>
+          <p>If you find issues, don't panic — Rivian expects some and the process for getting them fixed is clear. The key is documenting everything before you drive away.</p>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="delivery-sidebar">
+
+        <div class="card tip-card">
+          <div class="section-label">Delivery day tips</div>
+          <div class="tip-item">
+            <div class="tip-num">1</div>
+            <div class="tip-text"><strong>Arrive early, take your time</strong>Allow 30–45 minutes for the inspection. Don't let excitement rush you.</div>
+          </div>
+          <div class="tip-item">
+            <div class="tip-num">2</div>
+            <div class="tip-text"><strong>Bring good lighting</strong>Inspect paint in direct sunlight or under bright shop lights. Phone flashlight works for panel gaps.</div>
+          </div>
+          <div class="tip-item">
+            <div class="tip-num">3</div>
+            <div class="tip-text"><strong>Photograph everything</strong>Even things that look fine. Timestamped photos are useful if issues appear later.</div>
+          </div>
+          <div class="tip-item">
+            <div class="tip-num">4</div>
+            <div class="tip-text"><strong>File in the app before leaving</strong>Service requests filed at delivery carry more weight. The tech who does your walk-around can often document issues on the spot.</div>
+          </div>
+          <div class="tip-item">
+            <div class="tip-num">5</div>
+            <div class="tip-text"><strong>Forgot the code at checkout?</strong>Referral codes can be added after ordering if the vehicle hasn't been delivered yet. Ask a Rivian Guide through the app.</div>
+          </div>
+        </div>
+
+        <div class="sidebar-referral">
+          <div class="sidebar-referral-label">Ordering a Rivian?</div>
+          <div class="sidebar-referral-code">SCOTT4395475</div>
+          <div class="sidebar-referral-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging on qualifying orders.</div>
+          <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn" onclick="gtag('event','open_rivian_configurator')">Configure Your Rivian →</a>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <div class="section-label">Useful links</div>
+          <div class="resource-row">
+            <div><div class="resource-name">Rivian Roamer</div><div class="resource-desc">VIN lookup + window sticker</div></div>
+            <a href="https://rivianroamer.com" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">NHTSA Recalls</div><div class="resource-desc">Check your VIN for open recalls</div></div>
+            <a href="https://www.nhtsa.gov/recalls" target="_blank" rel="noopener noreferrer" class="resource-link">Check</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">Rivian Forums</div><div class="resource-desc">Delivery experience threads</div></div>
+            <a href="https://www.rivianforums.com/forum/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">90-Day R1S Review</div><div class="resource-desc">Service + delivery experience</div></div>
+            <a href="/reviews/2026-rivian-r1s-90-day-review/#delivery" class="resource-link">Read</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <img src="/images/logo.svg" alt="Rivian Rewards Hub">
+      Independent Rivian owner resource · Not affiliated with or endorsed by Rivian Automotive, Inc.
+    </div>
+  </footer>
+
+  <script>
+    const sectionCounts = { exterior:11, interior:9, tech:8, hvac:5, charging:5, docs:4 };
+    const checked = { exterior:0, interior:0, tech:0, hvac:0, charging:0, docs:0 };
+    const total = Object.values(sectionCounts).reduce((a,b) => a+b, 0);
+
+    function toggleCheck(item, section) {
+      item.classList.toggle('checked');
+      checked[section] = document.querySelectorAll(`#section-${section} .checklist-item.checked`).length;
+      document.getElementById(`prog-${section}`).textContent = `${checked[section]}/${sectionCounts[section]}`;
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const done = Object.values(checked).reduce((a,b) => a+b, 0);
+      const pct  = Math.round((done / total) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressText').textContent = `${done} of ${total} items checked`;
+      document.getElementById('progressPct').textContent  = pct + '%';
+    }
+
+    fetch('/nav.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('site-nav').innerHTML = html;
+        const path = window.location.pathname;
+        document.querySelectorAll('.nav-links a').forEach(a => {
+          const href = a.getAttribute('href');
+          if (href !== '/' && path.startsWith(href)) a.classList.add('active');
+        });
+      }).catch(() => {});
+
+    function stripCopyCode() {
+      gtag('event', 'copy_referral_code');
+      navigator.clipboard.writeText('SCOTT4395475').then(() => {
+        const el = document.getElementById('stripCopied');
+        el.style.display = 'inline';
+        setTimeout(() => {
+          window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
+          setTimeout(() => { el.style.display = 'none'; }, 3000);
+        }, 600);
+      });
+    }
+  </script>
+
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+    document.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && ['u','s','c','x'].includes(e.key.toLowerCase())) e.preventDefault();
+    });
+  </script>
+
+</body>
+</html>
