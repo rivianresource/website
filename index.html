@@ -834,45 +834,49 @@
       });
     }
 
-    /* ── RIVN Stock Ticker ── */
+    The issue is the API endpoint itself. Financial Modeling Prep blocks many browser-origin requests unless you use a paid API key.
+
+Use this instead. It works client-side without auth and is more reliable. 
+
+Replace your entire `loadStock()` function again with this:
+
+```javascript
+/* ── RIVN Stock Ticker ── */
 async function loadStock() {
 
   const el = document.getElementById('stockBody');
 
   try {
 
-    const quoteRes = await fetch(
-      'https://financialmodelingprep.com/api/v3/quote/RIVN?apikey=demo'
+    const res = await fetch(
+      'https://api.allorigins.win/raw?url=' +
+      encodeURIComponent(
+        'https://query1.finance.yahoo.com/v8/finance/chart/RIVN?interval=1d&range=1mo'
+      )
     );
 
-    const histRes = await fetch(
-      'https://financialmodelingprep.com/api/v3/historical-price-full/RIVN?timeseries=30&apikey=demo'
+    const json = await res.json();
+
+    const result = json.chart.result[0];
+    const meta = result.meta;
+
+    const closes = result.indicators.quote[0].close.filter(
+      v => typeof v === 'number'
     );
 
-    const quoteJson = await quoteRes.json();
-    const histJson = await histRes.json();
+    const price = meta.regularMarketPrice;
+    const prev =
+      meta.chartPreviousClose || closes[closes.length - 2];
 
-    if (!quoteJson?.length || !histJson?.historical?.length) {
-      throw new Error('Invalid stock data');
-    }
+    const change = price - prev;
+    const changePct = (change / prev) * 100;
 
-    const q = quoteJson[0];
-
-    const closes = histJson.historical
-      .map(d => d.close)
-      .filter(v => typeof v === 'number')
-      .reverse();
-
-    const price = q.price;
-    const prev = q.previousClose;
-    const change = q.change;
-    const changePct = q.changesPercentage;
     const up = change >= 0;
 
-    const high = q.dayHigh;
-    const low = q.dayLow;
-    const vol = q.volume;
-    const cap = q.marketCap;
+    const high = meta.regularMarketDayHigh;
+    const low = meta.regularMarketDayLow;
+    const vol = meta.regularMarketVolume;
+    const cap = meta.marketCap;
 
     const minC = Math.min(...closes);
     const maxC = Math.max(...closes);
@@ -881,8 +885,11 @@ async function loadStock() {
 
     const pts = closes.map((v, i) => {
 
-      const x = (i / (closes.length - 1)) * 232;
-      const y = 54 - ((v - minC) / range) * 50;
+      const x =
+        (i / (closes.length - 1)) * 232;
+
+      const y =
+        54 - ((v - minC) / range) * 50;
 
       return `${x.toFixed(1)},${y.toFixed(1)}`;
 
@@ -891,40 +898,67 @@ async function loadStock() {
     const lastX = 232;
 
     const lastY =
-      54 - ((closes[closes.length - 1] - minC) / range) * 50;
+      54 - (
+        (closes[closes.length - 1] - minC) / range
+      ) * 50;
 
-    const lineColor = up ? '#1D9E75' : '#E24B4A';
+    const lineColor =
+      up ? '#1D9E75' : '#E24B4A';
 
     function fmtCap(n) {
 
       if (!n || isNaN(n)) return '—';
 
-      if (n >= 1e12) return '$' + (n / 1e12).toFixed(2) + 'T';
-      if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
-      if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+      if (n >= 1e12)
+        return '$' + (n / 1e12).toFixed(2) + 'T';
+
+      if (n >= 1e9)
+        return '$' + (n / 1e9).toFixed(2) + 'B';
+
+      if (n >= 1e6)
+        return '$' + (n / 1e6).toFixed(1) + 'M';
 
       return '$' + n.toLocaleString();
-
     }
 
     el.innerHTML = `
       <div class="stock-header">
+
         <div>
           <div class="stock-ticker">
-            RIVN <span class="stock-exchange">· NASDAQ</span>
+            RIVN
+            <span class="stock-exchange">
+              · NASDAQ
+            </span>
           </div>
-          <div class="stock-company">Rivian Automotive</div>
+
+          <div class="stock-company">
+            Rivian Automotive
+          </div>
         </div>
 
         <div style="text-align:right">
-          <div class="stock-price">$${price.toFixed(2)}</div>
+
+          <div class="stock-price">
+            $${price.toFixed(2)}
+          </div>
 
           <span class="stock-change ${up ? 'up' : 'down'}">
+
             ${up ? '▲' : '▼'}
-            ${up ? '+' : ''}${change.toFixed(2)}
-            (${up ? '+' : ''}${changePct.toFixed(2)}%)
+
+            ${up ? '+' : ''}
+            ${change.toFixed(2)}
+
+            (
+              ${up ? '+' : ''}
+              ${changePct.toFixed(2)}%
+            )
+
           </span>
+
         </div>
+
       </div>
 
       <svg
@@ -935,18 +969,29 @@ async function loadStock() {
       >
 
         <defs>
-          <linearGradient id="sfill" x1="0" y1="0" x2="0" y2="1">
+
+          <linearGradient
+            id="sfill"
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="1"
+          >
+
             <stop
               offset="0%"
               stop-color="${lineColor}"
               stop-opacity="0.15"
             />
+
             <stop
               offset="100%"
               stop-color="${lineColor}"
               stop-opacity="0"
             />
+
           </linearGradient>
+
         </defs>
 
         <polygon
@@ -974,25 +1019,43 @@ async function loadStock() {
       <div class="stock-stats">
 
         <div class="stock-stat">
-          <div class="stock-stat-label">Day high</div>
-          <div class="stock-stat-val">$${high.toFixed(2)}</div>
+          <div class="stock-stat-label">
+            Day high
+          </div>
+
+          <div class="stock-stat-val">
+            $${high.toFixed(2)}
+          </div>
         </div>
 
         <div class="stock-stat">
-          <div class="stock-stat-label">Day low</div>
-          <div class="stock-stat-val">$${low.toFixed(2)}</div>
+          <div class="stock-stat-label">
+            Day low
+          </div>
+
+          <div class="stock-stat-val">
+            $${low.toFixed(2)}
+          </div>
         </div>
 
         <div class="stock-stat">
-          <div class="stock-stat-label">Volume</div>
+          <div class="stock-stat-label">
+            Volume
+          </div>
+
           <div class="stock-stat-val">
             ${(vol / 1e6).toFixed(1)}M
           </div>
         </div>
 
         <div class="stock-stat">
-          <div class="stock-stat-label">Mkt cap</div>
-          <div class="stock-stat-val">${fmtCap(cap)}</div>
+          <div class="stock-stat-label">
+            Mkt cap
+          </div>
+
+          <div class="stock-stat-val">
+            ${fmtCap(cap)}
+          </div>
         </div>
 
       </div>
@@ -1008,8 +1071,11 @@ async function loadStock() {
 
     el.innerHTML = `
       <div class="stock-loading" style="padding:12px 0;">
+
         Unable to load stock data.
+
         <br><br>
+
         <a
           href="https://finance.yahoo.com/quote/RIVN"
           target="_blank"
@@ -1018,10 +1084,13 @@ async function loadStock() {
         >
           View on Yahoo Finance →
         </a>
+
       </div>
     `;
   }
 }
+```
+
 
     /* ── News Teaser ── */
     async function loadNewsTeaser() {
