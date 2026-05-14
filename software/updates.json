@@ -1,27 +1,58 @@
 [
   {
-    "version": "2025.14",
-    "date": "May 2025",
+    "version": "2026.15",
+    "date": "May 2026",
     "type": "major",
-    "rollout": "Broad deployment",
-    "categories": ["charging", "autonomy"],
+    "rollout": "Rolling deployment",
+    "categories": ["ai", "autonomy", "infotainment"],
     "highlights": [
-      "Improved Highway Assist behavior",
-      "Expanded battery preconditioning controls",
-      "Improved charging curve consistency",
-      "Infotainment responsiveness improvements"
+      "Introduces Rivian Assistant AI voice assistant",
+      "Improved Lane Change on Command smoothness",
+      "Improved Autonomy+ behavior and reliability",
+      "Enhanced remote command responsiveness",
+      "Camera defrost improvements for driver assistance systems"
     ]
   },
   {
-    "version": "2025.10",
-    "date": "April 2025",
+    "version": "2026.07",
+    "date": "April 2026",
     "type": "minor",
-    "rollout": "Completed",
-    "categories": ["fixes"],
+    "rollout": "Broad deployment",
+    "categories": ["fixes", "infotainment"],
     "highlights": [
-      "Bug fixes and UI improvements",
-      "Improved Bluetooth reliability",
-      "Reduced infotainment reboot occurrences"
+      "Improved infotainment responsiveness",
+      "Connectivity reliability improvements",
+      "Enhanced Apple Music Dolby support",
+      "12V battery diagnostics refinements",
+      "General system stability improvements"
+    ]
+  },
+  {
+    "version": "2025.26",
+    "date": "August 2025",
+    "type": "major",
+    "rollout": "Completed",
+    "categories": ["autonomy", "charging"],
+    "highlights": [
+      "Enhanced Gen 2 perception system",
+      "Improved traffic detection and lane handling",
+      "Expanded battery conditioning support",
+      "Improved navigation responsiveness",
+      "Steering improvements for Sport and Off-Road modes"
+    ]
+  },
+  {
+    "version": "2025.22",
+    "date": "July 2025",
+    "type": "major",
+    "rollout": "Completed",
+    "categories": ["navigation", "infotainment"],
+    "highlights": [
+      "Google Maps integration added to navigation",
+      "Satellite imagery support introduced",
+      "Improved live traffic routing",
+      "Expanded towing support with Driver Assistance",
+      "Gen 2 system stability improvements"
     ]
   },
   {
@@ -29,11 +60,13 @@
     "date": "March 2025",
     "type": "major",
     "rollout": "Completed",
-    "categories": ["charging", "infotainment"],
+    "categories": ["charging", "autonomy"],
     "highlights": [
-      "Expanded battery preconditioning",
-      "Apple Music Dolby Atmos improvements",
-      "Charging optimization refinements"
+      "Enhanced Highway Assist functionality",
+      "Wheel and tire swap configuration support",
+      "Performance Upgrade support for Dual Motor vehicles",
+      "Improved charging efficiency",
+      "Expanded Gen 2 audio tuning improvements"
     ]
   }
 ]
