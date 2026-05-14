@@ -1,13 +1,39 @@
 [
   {
-    "version": "2026.07",
-    "date": "2026-04-18",
-    "type": "minor",
+    "version": "2025.14",
+    "date": "May 2025",
+    "type": "major",
     "rollout": "Broad deployment",
+    "categories": ["charging", "autonomy"],
     "highlights": [
-      "Improved infotainment responsiveness",
-      "Enhanced Apple Music Dolby support",
-      "12V diagnostics improvements"
+      "Improved Highway Assist behavior",
+      "Expanded battery preconditioning controls",
+      "Improved charging curve consistency",
+      "Infotainment responsiveness improvements"
+    ]
+  },
+  {
+    "version": "2025.10",
+    "date": "April 2025",
+    "type": "minor",
+    "rollout": "Completed",
+    "categories": ["fixes"],
+    "highlights": [
+      "Bug fixes and UI improvements",
+      "Improved Bluetooth reliability",
+      "Reduced infotainment reboot occurrences"
+    ]
+  },
+  {
+    "version": "2025.06",
+    "date": "March 2025",
+    "type": "major",
+    "rollout": "Completed",
+    "categories": ["charging", "infotainment"],
+    "highlights": [
+      "Expanded battery preconditioning",
+      "Apple Music Dolby Atmos improvements",
+      "Charging optimization refinements"
     ]
   }
 ]
