@@ -111,6 +111,43 @@
 
     @media (max-width: 500px) { .vehicle-grid { grid-template-columns: 1fr; } }
 
+    .vehicle-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s ease, border-color 0.15s ease;
+      font-family: 'Figtree', sans-serif;
+      width: 100%;
+    }
+
+    .vehicle-btn:hover { border-color: var(--border-hover); background: var(--bg-card); }
+
+    .vehicle-btn.selected {
+      background: var(--green-pale);
+      border: 2px solid var(--green);
+    }
+
+    .vehicle-btn-pack {
+      display: inline-block;
+      background: var(--border);
+      border-radius: 3px;
+      padding: 1px 6px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .vehicle-btn.selected .vehicle-btn-pack {
+      background: rgba(29,158,117,0.15);
+      color: var(--green);
+    }
+
     /* ─── WHEEL SELECTOR ─── */
     .charger-grid {
       display: grid;
@@ -696,6 +733,21 @@
           </table>
         </div>
 
+        <!-- ABRP CALLOUT -->
+        <div class="card" style="padding:24px; border-left: 3px solid var(--green); border-radius: 0 var(--radius) var(--radius) 0;">
+          <div class="section-label">Plan a specific trip</div>
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-top:8px;">
+            <div style="flex:1; min-width:200px;">
+              <div style="font-family:'DM Sans',sans-serif; font-size:16px; font-weight:700; color:var(--text); margin-bottom:6px;">A Better Route Planner (ABRP)</div>
+              <p style="font-size:14px; color:var(--text-muted); line-height:1.7; margin-bottom:0;">The calculator above estimates a single charging session. For full route planning with stop-by-stop charging guidance, real-time charger availability, elevation data, weather, and Rivian-specific consumption profiles, ABRP is the tool owners actually use on road trips.</p>
+            </div>
+            <a href="https://abetterrouteplanner.com/?plan_uuid=&vehicle=rivian_r1s_2026" target="_blank" rel="noopener noreferrer" class="cta-btn" style="white-space:nowrap; margin-top:0; width:auto; flex-shrink:0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Open ABRP
+            </a>
+          </div>
+        </div>
+
         <!-- TIPS -->
         <div class="card tips-card">
           <div class="section-label">Charging tips from a real owner</div>
@@ -924,8 +976,8 @@
         data[key].forEach(trim => {
           const sel = trim.id === currentVehicle ? ' selected' : '';
           html += `
-            <button class="vehicle-btn${sel}" data-vehicle="${trim.id}" onclick="selectVehicle(this)">
-              <div class="vehicle-btn-name" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;">${trim.label}</div>
+            <button class="vehicle-btn${sel}" data-vehicle="${trim.id}">
+              <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;">${trim.label}</div>
               <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">${trim.motor}</div>
               <span class="vehicle-btn-pack">${trim.capacity} kWh · ${trim.range} mi est.</span>
             </button>`;
@@ -933,6 +985,11 @@
         html += '</div>';
       });
       container.innerHTML = html;
+
+      /* Event delegation — attach once after innerHTML is set */
+      container.querySelectorAll('.vehicle-btn').forEach(btn => {
+        btn.addEventListener('click', () => selectVehicle(btn));
+      });
     }
 
     /* ── Get wheel array for current model + gen combo ── */
@@ -949,12 +1006,15 @@
       const wheels = getWheelSet(model, vehicleId || currentVehicle);
       const container = document.getElementById('wheelGrid');
       container.innerHTML = wheels.map((w, i) => `
-        <button class="wheel-btn${i === 0 ? ' selected' : ''}" data-wheel="${w.id}" onclick="selectWheel(this)">
+        <button class="wheel-btn${i === 0 ? ' selected' : ''}" data-wheel="${w.id}">
           <div class="wheel-btn-size">${w.label}</div>
           <div class="wheel-btn-label">${w.sub}</div>
           <span class="wheel-btn-impact">${w.impact}</span>
         </button>
       `).join('');
+      container.querySelectorAll('.wheel-btn').forEach(btn => {
+        btn.addEventListener('click', () => selectWheel(btn));
+      });
       currentWheel = wheels[0].id;
       wheelFactor  = wheels[0].factor;
     }
