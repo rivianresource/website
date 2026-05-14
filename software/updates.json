@@ -1,0 +1,13 @@
+[
+  {
+    "version": "2026.07",
+    "date": "2026-04-18",
+    "type": "minor",
+    "rollout": "Broad deployment",
+    "highlights": [
+      "Improved infotainment responsiveness",
+      "Enhanced Apple Music Dolby support",
+      "12V diagnostics improvements"
+    ]
+  }
+]
