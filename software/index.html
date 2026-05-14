@@ -482,6 +482,88 @@
       });
     }
   </script>
+<script>
 
+async function loadLiveSoftwareVersion() {
+
+  const currentVersion =
+    document.querySelector('.cv-version');
+
+  const currentDate =
+    document.querySelector('.cv-date');
+
+  const currentHighlights =
+    document.querySelector('.cv-highlights');
+
+  const quickJumpCurrent =
+    document.querySelector('.vq-current');
+
+  try {
+
+    const response = await fetch(
+      '/software/updates.json?v=' + Date.now()
+    );
+
+    if (!response.ok) {
+      throw new Error('Unable to load OTA data');
+    }
+
+    const updates = await response.json();
+
+    if (!updates.length) {
+      throw new Error('No OTA data found');
+    }
+
+    const latest = updates[0];
+
+    currentVersion.textContent =
+      latest.version;
+
+    currentDate.innerHTML = `
+      ${latest.date}
+      ·
+      Powered by
+      <a
+        href="https://rivianroamer.com/software-updates/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="color:#9FE1CB;font-weight:600;text-decoration:none;">
+        Rivian Roamer
+      </a>
+    `;
+
+    currentHighlights.innerHTML =
+      latest.highlights
+        .map(item => `
+          <div class="cv-highlight">
+            ${item}
+          </div>
+        `)
+        .join('');
+
+    if (quickJumpCurrent) {
+      quickJumpCurrent.textContent =
+        latest.rollout || 'Current';
+    }
+
+  } catch(e) {
+
+    console.error(e);
+
+    currentVersion.textContent =
+      'Unavailable';
+
+    currentDate.textContent =
+      'Unable to retrieve OTA data';
+
+    currentHighlights.innerHTML = '';
+
+  }
+
+}
+
+loadLiveSoftwareVersion();
+
+</script>
 </body>
 </html>
