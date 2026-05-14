@@ -7,24 +7,52 @@
     "categories": ["ai", "autonomy", "infotainment"],
     "highlights": [
       "Introduces Rivian Assistant AI voice assistant",
-      "Improved Lane Change on Command smoothness",
-      "Improved Autonomy+ behavior and reliability",
-      "Enhanced remote command responsiveness",
-      "Camera defrost improvements for driver assistance systems"
+      "Improved smoothness for Lane Change on Command and Universal Hands-Free",
+      "Improved remote command reliability from the Rivian mobile app",
+      "Improved driver assistance camera defrost performance",
+      "Fixed rare passive locking issue with multiple digital keys present"
     ]
   },
   {
     "version": "2026.07",
     "date": "April 2026",
     "type": "minor",
-    "rollout": "Broad deployment",
-    "categories": ["fixes", "infotainment"],
+    "rollout": "99% rolled out",
+    "categories": ["infotainment", "connectivity", "fixes"],
     "highlights": [
-      "Improved infotainment responsiveness",
-      "Connectivity reliability improvements",
-      "Enhanced Apple Music Dolby support",
-      "12V battery diagnostics refinements",
-      "General system stability improvements"
+      "Improved infotainment app launch speed and responsiveness",
+      "Improved Wi-Fi, cellular, and app connectivity reliability",
+      "Added Apple Music streaming quality settings",
+      "Improved in-vehicle connectivity status indicators",
+      "General system stability and performance improvements"
+    ]
+  },
+  {
+    "version": "2026.03",
+    "date": "February 2026",
+    "type": "major",
+    "rollout": "Completed",
+    "categories": ["cold-weather", "charging", "mobile-app"],
+    "highlights": [
+      "Cold weather range visibility improvements",
+      "Battery energy availability indicators added",
+      "Expanded cold weather range notifications",
+      "Apple Watch Rivian app support introduced",
+      "Improved charging preparation visibility"
+    ]
+  },
+  {
+    "version": "2025.46",
+    "date": "December 2025",
+    "type": "major",
+    "rollout": "Completed",
+    "categories": ["autonomy", "digital-key", "off-road"],
+    "highlights": [
+      "Universal Hands-Free expanded to more supported roads",
+      "New Autonomy Drive Styles settings added",
+      "Rivian Digital Key support added with Apple Wallet and Android support",
+      "RAD Tuner custom off-road drive mode introduced",
+      "Kick Turn introduced for Quad-Motor vehicles"
     ]
   },
   {
@@ -34,39 +62,11 @@
     "rollout": "Completed",
     "categories": ["autonomy", "charging"],
     "highlights": [
-      "Enhanced Gen 2 perception system",
+      "Enhanced Gen 2 perception system improvements",
       "Improved traffic detection and lane handling",
       "Expanded battery conditioning support",
       "Improved navigation responsiveness",
       "Steering improvements for Sport and Off-Road modes"
-    ]
-  },
-  {
-    "version": "2025.22",
-    "date": "July 2025",
-    "type": "major",
-    "rollout": "Completed",
-    "categories": ["navigation", "infotainment"],
-    "highlights": [
-      "Google Maps integration added to navigation",
-      "Satellite imagery support introduced",
-      "Improved live traffic routing",
-      "Expanded towing support with Driver Assistance",
-      "Gen 2 system stability improvements"
-    ]
-  },
-  {
-    "version": "2025.06",
-    "date": "March 2025",
-    "type": "major",
-    "rollout": "Completed",
-    "categories": ["charging", "autonomy"],
-    "highlights": [
-      "Enhanced Highway Assist functionality",
-      "Wheel and tire swap configuration support",
-      "Performance Upgrade support for Dual Motor vehicles",
-      "Improved charging efficiency",
-      "Expanded Gen 2 audio tuning improvements"
     ]
   }
 ]
