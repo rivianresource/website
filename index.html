@@ -1075,162 +1075,99 @@
   }
 
   /* ── Software Tracker ── */
-  async function loadSoftwareUpdates() {
+async function loadSoftwareUpdates() {
 
-    const versionEl =
-      document.getElementById('swVersion');
+  const versionEl =
+    document.getElementById('swVersion');
 
-    const dateEl =
-      document.getElementById('swDate');
+  const dateEl =
+    document.getElementById('swDate');
 
-    const highlightsEl =
-      document.getElementById('swHighlights');
+  const highlightsEl =
+    document.getElementById('swHighlights');
 
-    const progressEl =
-      document.getElementById('swProgress');
+  const progressEl =
+    document.getElementById('swProgress');
 
-    const rolloutEl =
-      document.getElementById('swRollout');
+  const rolloutEl =
+    document.getElementById('swRollout');
 
-    try {
+  try {
 
-      const targetUrl = encodeURIComponent(
-        'https://www.rivianforums.com/feed/'
-      );
+    const response = await fetch(
+      `/software/latest.json?_=${Date.now()}`
+    );
 
-      const response = await fetch(
-        `https://api.allorigins.win/raw?url=${targetUrl}`
-      );
-
-      if (!response.ok) {
-        throw new Error('Software feed failed');
-      }
-
-      const xmlText = await response.text();
-
-      const parser = new DOMParser();
-
-      const xml = parser.parseFromString(
-        xmlText,
-        'text/xml'
-      );
-
-      const items = [
-        ...xml.querySelectorAll('item')
-      ];
-
-      const softwarePost = items.find(item => {
-
-        const title =
-          item.querySelector('title')
-            ?.textContent
-            ?.trim()
-          || '';
-
-        return /software|update|202\d\.\d+/i.test(title);
-
-      });
-
-      if (!softwarePost) {
-        throw new Error('No OTA post found');
-      }
-
-      const title =
-        softwarePost.querySelector('title')
-          ?.textContent
-          ?.trim()
-        || 'Latest OTA';
-
-      const link =
-        softwarePost.querySelector('link')
-          ?.textContent
-          ?.trim()
-        || '#';
-
-      const pubDate =
-        softwarePost.querySelector('pubDate')
-          ?.textContent
-          ?.trim()
-        || '';
-
-      const versionMatch =
-        title.match(/202\d\.\d+/);
-
-      const version =
-        versionMatch
-          ? versionMatch[0]
-          : 'Latest OTA';
-
-      versionEl.textContent = version;
-
-      dateEl.innerHTML = `
-
-        Released
-        ${new Date(pubDate)
-          .toLocaleDateString('en-US', {
-            month:'long',
-            day:'numeric',
-            year:'numeric'
-          })}
-
-        ·
-
-        <a
-          href="${link}"
-          target="_blank"
-          rel="noopener noreferrer"
-          style="color:var(--green);font-weight:600;text-decoration:none;">
-
-          Source →
-
-        </a>
-
-      `;
-
-      progressEl.style.width = '82%';
-
-      rolloutEl.textContent =
-        'Broad rollout';
-
-      highlightsEl.innerHTML = `
-
-        <div class="sw-highlight">
-          Community rollout tracking active
-        </div>
-
-        <div class="sw-highlight">
-          Rivian Forums OTA thread detected
-        </div>
-
-        <div class="sw-highlight">
-          Live OTA monitoring enabled
-        </div>
-
-      `;
-
-    } catch(e) {
-
-      console.error('Software tracker failed:', e);
-
-      versionEl.textContent = 'Unavailable';
-
-      dateEl.textContent =
-        'Unable to retrieve OTA data';
-
-      progressEl.style.width = '0%';
-
-      rolloutEl.textContent =
-        'Rollout unavailable';
-
-      highlightsEl.innerHTML = `
-
-        <div class="sw-highlight">
-          Check back shortly for software updates
-        </div>
-
-      `;
+    if (!response.ok) {
+      throw new Error('JSON unavailable');
     }
+
+    const data = await response.json();
+
+    versionEl.textContent =
+      data.version || 'Latest OTA';
+
+    dateEl.innerHTML = `
+
+      Released ${data.releaseDate}
+
+      ·
+
+      <a
+        href="${data.source}"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="color:var(--green);font-weight:600;text-decoration:none;">
+
+        Source →
+
+      </a>
+
+    `;
+
+    progressEl.style.width = '82%';
+
+    rolloutEl.textContent =
+      data.rollout || 'Broad rollout';
+
+    highlightsEl.innerHTML =
+      (data.highlights || [])
+        .map(item => `
+
+          <div class="sw-highlight">
+            ${item}
+          </div>
+
+        `)
+        .join('');
+
+  } catch(e) {
+
+    console.error(
+      'Software tracker failed:',
+      e
+    );
+
+    versionEl.textContent =
+      'Unavailable';
+
+    dateEl.textContent =
+      'Unable to retrieve OTA data';
+
+    progressEl.style.width = '0%';
+
+    rolloutEl.textContent =
+      'Rollout unavailable';
+
+    highlightsEl.innerHTML = `
+
+      <div class="sw-highlight">
+        Check back shortly for updated software data
+      </div>
+
+    `;
   }
+}
 
   /* ── Init ── */
   document.addEventListener('DOMContentLoaded', () => {
