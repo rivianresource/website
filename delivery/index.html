@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>2026 Rivian R1T &amp; R1S Delivery Checklist — What to Inspect Before You Sign</title>
-  <meta name="description" content="Complete 2026 Rivian R1T and R1S delivery inspection checklist. 70 items across 8 sections — exterior, interior, tech, HVAC, road test, and more. Know what to check before you drive away."/>
+  <meta name="description" content="Complete 2026+ Rivian R1T and R1S delivery inspection checklist. 81 items across 8 sections — exterior, interior, tech, HVAC, road test, charging, and more."/>
   <link rel="canonical" href="https://www.rivianrewardshub.com/delivery/"/>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SB8DBC8NBQ');</script>
@@ -44,8 +44,8 @@
       .desktop-sidebar{display:none}
     }
     .delivery-main{display:flex;flex-direction:column;gap:14px}
-    .desktop-sidebar{display:flex;flex-direction:column;gap:14px;align-self:start}
-    @media(min-width:801px){.mobile-only{display:none}}
+    .desktop-sidebar{display:flex;flex-direction:column;gap:14px;align-self:start;position:sticky;top:48px}
+    @media(max-width:800px){.desktop-only{display:none}}
 
     /* ── MOBILE TIPS ── */
     .mobile-tips-btn,.mobile-sidebar-wrap{display:none}
@@ -65,10 +65,10 @@
     .intro-stat-val{font-family:'DM Sans',sans-serif;font-size:19px;font-weight:800;color:var(--green-light);line-height:1;margin-bottom:3px}
     .intro-stat-label{font-size:10px;color:rgba(255,255,255,.6);line-height:1.3}
 
-    /* ── SEVERITY LEGEND ── */
-    .severity-legend mobile-only{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start}
-    .severity-legend-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-dim);width:100%;margin-bottom:2px}
-    .sev-legend-item{display:flex;align-items:flex-start;gap:7px;flex:1;min-width:180px}
+    /* ── SEVERITY LEGEND (sidebar only) ── */
+    .severity-legend{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+    .severity-legend-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-dim)}
+    .sev-legend-item{display:flex;align-items:flex-start;gap:7px}
     .sev-legend-badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;flex-shrink:0;margin-top:1px}
     .sev-legend-desc{font-size:11px;color:var(--text-muted);line-height:1.5}
 
@@ -109,7 +109,7 @@
     .sev-important{background:#fef3e2;color:var(--gold)}
     .sev-note{background:var(--bg-secondary);color:var(--text-dim)}
 
-    /* ── SIDEBAR ── */
+    /* ── SIDEBAR CARDS ── */
     .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)}
     .tip-card{padding:16px}
     .section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-dim);margin-bottom:10px}
@@ -177,14 +177,14 @@
 <!-- STICKY PROGRESS -->
 <div class="sticky-progress">
   <div class="sticky-progress-track"><div class="sticky-progress-fill" id="progressFill"></div></div>
-  <div class="sticky-progress-label" id="progressText">0 / 70</div>
+  <div class="sticky-progress-label" id="progressText">0 / 81</div>
   <div class="sticky-progress-pct" id="progressPct">0%</div>
 </div>
 
 <!-- PAGE HEADER -->
 <div class="page-header">
   <div style="max-width:920px;margin:0 auto;padding:0 14px">
-    <div class="page-eyebrow">Owner Tool &middot; Delivery Day &middot; Updated for 2026 R1T &amp; R1S</div>
+    <div class="page-eyebrow">Owner Tool &middot; Delivery Day &middot; Built for 2026+ R1T &amp; R1S</div>
     <h1 class="page-title">Rivian Delivery Checklist</h1>
     <p class="page-sub">Inspect before you sign and drive away. Tap each item to mark it done.</p>
   </div>
@@ -193,34 +193,19 @@
 <div class="page-body">
   <div class="delivery-layout">
 
-    <!-- MAIN -->
+    <!-- ═══════════════════════════════════════════════════════
+         MAIN COLUMN
+    ══════════════════════════════════════════════════════════ -->
     <div class="delivery-main">
 
       <div class="intro-card">
         <p>Most delivery issues are minor and easy to miss in the excitement of pickup. A systematic walk-around takes <strong>30&ndash;45 minutes</strong> &mdash; documenting issues before you leave is far easier than reporting them later.</p>
         <p>Tap each item to check it off. Photograph anything that looks off and file a service request in the Rivian app <strong>before you drive away.</strong></p>
-        <p style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.6;margin-top:10px;">This checklist reflects 2025&ndash;2026 R1T and R1S specifications to the best of our knowledge. Features and included items vary by trim and production date &mdash; always verify against your window sticker and order confirmation. Some features activate via OTA after delivery.</p>
+        <p style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.6;margin-top:10px;">Built for 2026+ R1T and R1S. Features and included items vary by trim &mdash; always verify against your window sticker and order confirmation. Some features activate via OTA after delivery.</p>
         <div class="intro-stats">
           <div class="intro-stat"><div class="intro-stat-val">4</div><div class="intro-stat-label">Issues found at my delivery</div></div>
           <div class="intro-stat"><div class="intro-stat-val">45min</div><div class="intro-stat-label">Allow for inspection</div></div>
           <div class="intro-stat"><div class="intro-stat-val">Free</div><div class="intro-stat-label">Pre-delivery fixes</div></div>
-        </div>
-      </div>
-
-      <!-- SEVERITY LEGEND (mobile only — desktop version is in sidebar) -->
-      <div class="severity-legend mobile-only">
-        <div class="severity-legend-title">Severity guide</div>
-        <div class="sev-legend-item">
-          <span class="sev-legend-badge sev-critical">Critical</span>
-          <span class="sev-legend-desc">Document before leaving. Serious issues may warrant refusing delivery or escalating to the delivery manager on the spot.</span>
-        </div>
-        <div class="sev-legend-item">
-          <span class="sev-legend-badge sev-important">Important</span>
-          <span class="sev-legend-desc">Photograph and file a service request before you drive away. Rivian will schedule a fix, but documentation at delivery carries more weight.</span>
-        </div>
-        <div class="sev-legend-item">
-          <span class="sev-legend-badge sev-note">Note</span>
-          <span class="sev-legend-desc">Worth checking and noting, but minor cosmetic or preference items that are easily addressed later.</span>
         </div>
       </div>
 
@@ -242,27 +227,37 @@
         <svg viewBox="0 0 24 24" id="tipsBtnChevron"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
 
-      <!-- MOBILE SIDEBAR CONTENT -->
+      <!-- MOBILE SIDEBAR CONTENT (shown inline on small screens) -->
       <div class="mobile-sidebar-wrap" id="mobileSidebarWrap">
         <div class="card tip-card">
           <div class="section-label">Delivery day tips</div>
-          <div class="tip-item"><div class="tip-num">1</div><div class="tip-text"><strong>Download the Rivian App</strong>This will be your primary key and a requirement to complete delivery.</div></div>
-          <div class="tip-item"><div class="tip-num">2</div><div class="tip-text"><strong>Bring your ID</strong>A valid driver's license is required.</div></div>
-          <div class="tip-item"><div class="tip-num">3</div><div class="tip-text"><strong>Utilize good lighting</strong>Inspect paint in direct sunlight. Phone flashlight can be helpful for panel gaps and undercarriage.</div></div>
-          <div class="tip-item"><div class="tip-num">4</div><div class="tip-text"><strong>Photograph everything of concern</strong>Timestamped photos are useful if issues surface later.</div></div>
-          <div class="tip-item"><div class="tip-num">5</div><div class="tip-text"><strong>Create a service ticket in the app</strong>Delivery-day service requests are meaningful and best to address any issues asap.</div></div>
-          <div class="tip-item"><div class="tip-num">6</div><div class="tip-text"><strong>Make sure a Referral Code is applied</strong>Referral codes can be added after ordering, prior to delivery. Take advantage of gear credits and free RAN charging.</div></div>
+          <div class="tip-item"><div class="tip-num">1</div><div class="tip-text"><strong>Run your NHTSA VIN check first</strong>Do this the night before at nhtsa.gov/recalls. Confirm all open campaigns are closed on your specific unit — multiple active recalls exist across the 2026 R1 platform.</div></div>
+          <div class="tip-item"><div class="tip-num">2</div><div class="tip-text"><strong>Download the Rivian App</strong>Your primary key and required to complete delivery.</div></div>
+          <div class="tip-item"><div class="tip-num">3</div><div class="tip-text"><strong>Bring your ID</strong>A valid driver's license is required.</div></div>
+          <div class="tip-item"><div class="tip-num">4</div><div class="tip-text"><strong>Utilize good lighting</strong>Inspect paint in direct sunlight. A phone flashlight helps with panel gaps and undercarriage.</div></div>
+          <div class="tip-item"><div class="tip-num">5</div><div class="tip-text"><strong>Photograph everything of concern</strong>Timestamped photos carry real weight if issues surface later.</div></div>
+          <div class="tip-item"><div class="tip-num">6</div><div class="tip-text"><strong>Open a service ticket in the app</strong>Delivery-day tickets get prioritized. Do it before you leave.</div></div>
+          <div class="tip-item"><div class="tip-num">7</div><div class="tip-text"><strong>Verify your referral code is applied</strong>Codes can be added after ordering, prior to delivery. Take advantage of gear credits and free RAN charging.</div></div>
+        </div>
+        <div class="severity-legend">
+          <div class="severity-legend-title">Severity guide</div>
+          <div class="sev-legend-item"><span class="sev-legend-badge sev-critical">Critical</span><span class="sev-legend-desc">May warrant refusing delivery. Escalate to the delivery manager before signing.</span></div>
+          <div class="sev-legend-item"><span class="sev-legend-badge sev-important">Important</span><span class="sev-legend-desc">Document and file a service request before leaving. Easier to fix with delivery-day documentation.</span></div>
+          <div class="sev-legend-item"><span class="sev-legend-badge sev-note">Note</span><span class="sev-legend-desc">Minor items — worth checking but easily addressed at a future service visit.</span></div>
         </div>
         <div class="card" style="padding:16px">
           <div class="section-label">Useful links</div>
+          <div class="resource-row"><div><div class="resource-name">NHTSA VIN Recall Check</div><div class="resource-desc">Run before your delivery appointment</div></div><a href="https://www.nhtsa.gov/recalls" target="_blank" rel="noopener noreferrer" class="resource-link">Check VIN</a></div>
+          <div class="resource-row"><div><div class="resource-name">Rivian Recall Info</div><div class="resource-desc">Official active recall campaigns</div></div><a href="https://rivian.com/support/article/recall-information" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a></div>
           <div class="resource-row"><div><div class="resource-name">Rivian Roamer</div><div class="resource-desc">VIN lookup + window sticker</div></div><a href="https://rivianroamer.com" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a></div>
-          <div class="resource-row"><div><div class="resource-name">NHTSA Recalls</div><div class="resource-desc">Check your VIN for open recalls</div></div><a href="https://www.nhtsa.gov/recalls" target="_blank" rel="noopener noreferrer" class="resource-link">Check</a></div>
           <div class="resource-row"><div><div class="resource-name">Rivian Forums</div><div class="resource-desc">Delivery experience threads</div></div><a href="https://www.rivianforums.com/forum/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a></div>
           <div class="resource-row"><div><div class="resource-name">90-Day R1S Review</div><div class="resource-desc">Service + delivery experience</div></div><a href="/reviews/2026-rivian-r1s-90-day-review/#delivery" class="resource-link">Read</a></div>
         </div>
       </div>
 
-      <!-- SECTION: EXTERIOR (17 items) -->
+      <!-- ═══════════════════════════════════════════
+           EXTERIOR — 18 items
+      ════════════════════════════════════════════════ -->
       <div class="checklist-section" id="section-exterior">
         <div class="checklist-header" onclick="toggleSection('exterior')">
           <div class="checklist-header-left">
@@ -270,32 +265,37 @@
             <div><div class="checklist-title">Exterior</div><div class="checklist-count">Full walk-around in good light</div></div>
           </div>
           <div style="display:flex;align-items:center;gap:7px">
-            <div class="checklist-progress" id="prog-exterior">0/17</div>
+            <div class="checklist-progress" id="prog-exterior">0/19</div>
             <svg class="collapse-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
         </div>
         <div class="checklist-items">
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Verify vehicle matches your order confirmation</div><div class="check-note">Cross-reference the window sticker against your order: exterior color, interior color/material, wheel spec, battery pack, and all packages. On high-trim Quads especially, confirm every ordered option is listed before proceeding.</div></div><span class="check-severity sev-critical">Critical</span></div>
           <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Panel gaps consistent all around</div><div class="check-note">Door-to-door, door-to-fender, hood-to-fender. Uneven gaps are common at delivery and usually fixable at a service visit.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Paint &mdash; no chips, scratches, or swirl marks</div><div class="check-note">Inspect in daylight or under bright service center lights. Check all four corners and hood leading edge.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Paint &mdash; no chips, scratches, or swirl marks</div><div class="check-note">Inspect in daylight or under bright service center lights. Check all four corners and the hood leading edge.</div></div><span class="check-severity sev-important">Important</span></div>
           <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Exterior trim and badging &mdash; no peeling or misalignment</div><div class="check-note">Run your finger along all trim pieces. Check that Rivian lettering is straight and fully adhered.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">All doors open, close, and latch smoothly</div><div class="check-note">Every door: frunk, tailgate (R1T), liftgate (R1S). Door alignment was an issue at my delivery. A door that won't latch at all is a Critical issue worth escalating before signing.</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Powered tonneau cover operates smoothly (R1T &mdash; if equipped)</div><div class="check-note">Standard on Tri and Quad. A $2,000 option on Dual-motor models. Note: early Gen 2 Dual builds may still have manual slats &mdash; verify your window sticker matches what's on the vehicle. If equipped with the powered version, test open, close, and stop. Check the seal along all four edges.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Headlights and taillights &mdash; no condensation or damage</div><div class="check-note">Check for moisture inside the housing. Test DRL, low beam, and high beam function.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Lightbar illuminates evenly &mdash; front and rear</div><div class="check-note">Gen 2 horizontal lightbar should light end to end with no dim zones or flickering.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">All doors open, close, and latch smoothly</div><div class="check-note">Every door: frunk, tailgate (R1T), liftgate (R1S). Door alignment was an issue at my delivery. A door that won&apos;t latch at all is worth escalating before signing.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Powered tonneau cover operates smoothly (R1T &mdash; if equipped)</div><div class="check-note">Standard on Tri and Quad; a $2,000 option on Dual models. Confirm your window sticker matches what&apos;s installed. Test open, close, and stop. Check the seal along all four edges.</div></div><span class="check-severity sev-important">Important</span></div>
+
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Headlights &mdash; no condensation, test all beam modes</div><div class="check-note">Check for moisture inside the housing. Test DRL, low beam, and high beam. A cold-weather low-beam failure recall (25V537000) has affected some builds &mdash; confirm your unit is clear.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Front turn signals &mdash; both sides illuminate and flash</div><div class="check-note">A recall (25V085000) found some R1S/R1T front turn signals failed to illuminate. Test left and right through a full blink cycle. Do not skip &mdash; this is a safety issue and a documented recall.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Lightbar illuminates evenly &mdash; front and rear</div><div class="check-note">The horizontal lightbar should light end to end with no dim zones or flickering.</div></div><span class="check-severity sev-note">Note</span></div>
           <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Horn works</div><div class="check-note">Quick test in the lot. Also confirms steering wheel controls are functional.</div></div><span class="check-severity sev-note">Note</span></div>
           <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Wheels &mdash; no curb rash, correct spec</div><div class="check-note">Verify wheel size and color match your order. Check all four for transport damage.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Tires &mdash; correct spec, no sidewall damage, proper pressure</div><div class="check-note">Check sidewalls for bulging or cuts. Verify PSI. Check for uneven wear.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Undercarriage &mdash; no shipping straps or transport blocks left on</div><div class="check-note">Crouch and look under all four corners. Transport hardware occasionally gets left on during delivery.</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Reinforced Underbody Shield present (if ordered)</div><div class="check-note">If your window sticker includes the Reinforced Underbody Shield (part of the All-Terrain Package), crouch down and confirm the large metal plating is actually installed. Some owners have received vehicles where it was listed on the sticker but not physically present.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Trailer hitch cover present and properly seated</div><div class="check-note">The integrated 2" hitch receiver is standard on all R1T and R1S models. Verify the cover panel is installed &mdash; it's aerodynamic and easy to lose during transport.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Tires &mdash; correct spec, no sidewall damage, proper pressure</div><div class="check-note">Check sidewalls for bulging or cuts. Verify PSI at all four corners. Check for uneven wear.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Undercarriage &mdash; no shipping straps or transport blocks left on</div><div class="check-note">Crouch and look under all four corners. Transport hardware occasionally gets left on at delivery.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Reinforced Underbody Shield physically installed (if on sticker)</div><div class="check-note">Standard on Quad; included with the All-Terrain Package. Some owners have received vehicles where it appeared on the window sticker but was not physically present. Crouch and verify the large metal plating is there.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Trailer hitch cover present and properly seated</div><div class="check-note">The integrated 2&quot; hitch receiver is standard on all R1T and R1S models. Verify the cover panel is installed &mdash; easy to lose during transport.</div></div><span class="check-severity sev-note">Note</span></div>
           <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Gear Tunnel doors align flush and latch easily (R1T)</div><div class="check-note">A known delivery issue: R1T Gear Tunnel doors occasionally require significant force to latch or sit proud of the body. Open and close both sides and check for flush fit.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Frunk &mdash; opens, closes, latches, seal intact</div><div class="check-note">Check the rubber seal around the perimeter. Water intrusion into the frunk has been reported on some units.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Charge port opens, closes, and accepts a cable</div><div class="check-note">Test manually and via the Rivian app. Try plugging in a cable if available. NACS port is standard on all 2026 models.</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Cameras &mdash; clean lenses, no protective film left on</div><div class="check-note">Check all Gear Guard cameras. Verify they show a clean image in the app.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Frunk &mdash; opens, closes, latches, seal intact, sub-tray present</div><div class="check-note">Check the rubber seal around the perimeter. Water intrusion into the frunk has been reported. Also confirm the under-tray is present &mdash; 2026 owners have discovered theirs missing on delivery.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Charge port opens, closes, and accepts a cable</div><div class="check-note">Test manually and via the Rivian app. All 2026 R1 models use a native NACS port &mdash; no adapter needed for Tesla Superchargers. Try plugging in a cable if one is available at the service center.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'exterior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Cameras &mdash; clean lenses, no protective film left on</div><div class="check-note">Check all Gear Guard cameras. Verify they show a clean image in the Rivian app.</div></div><span class="check-severity sev-note">Note</span></div>
         </div>
       </div>
 
-      <!-- SECTION: GLASS & WIPERS (5 items) -->
+      <!-- ═══════════════════════════════════════════
+           GLASS & WIPERS — 5 items
+      ════════════════════════════════════════════════ -->
       <div class="checklist-section" id="section-glass">
         <div class="checklist-header" onclick="toggleSection('glass')">
           <div class="checklist-header-left">
@@ -309,14 +309,16 @@
         </div>
         <div class="checklist-items">
           <div class="checklist-item" onclick="toggleCheck(this,'glass')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Windshield &mdash; no chips, cracks, or delamination</div><div class="check-note">Inspect at an angle to catch chips and star cracks. Check edges for delamination (white haze or bubbling at the perimeter).</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'glass')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Side and rear glass &mdash; no chips, cracks, or scratches</div><div class="check-note">Run your eye along each pane. Check the liftgate glass on R1S carefully.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'glass')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Roof glass &mdash; no chips, cracks, or scratches</div><div class="check-note">Ensure there are no chips or hairline cracks in the panoramic roof glass.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'glass')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Wiper blades &mdash; no streaking, correct fitment</div><div class="check-note">Run wipers at all speeds with washer fluid spray. Check for streaking or skipping. Rain-sensing wipers are standard &mdash; verify auto mode activates.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'glass')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Side and rear glass &mdash; no chips, cracks, or scratches</div><div class="check-note">Run your eye along each pane. Check the liftgate glass on R1S carefully &mdash; it&apos;s a large target for transport damage.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'glass')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Panoramic roof glass &mdash; no chips, cracks, or scratches</div><div class="check-note">Hairline cracks in the roof glass have been flagged by community members. Look from outside at an angle under daylight.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'glass')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Wiper blades &mdash; no streaking, correct fitment, auto mode activates</div><div class="check-note">Run wipers at all speeds with washer fluid spray. Rain-sensing wipers are standard on all 2026 trims &mdash; verify auto mode activates when water hits the windshield.</div></div><span class="check-severity sev-note">Note</span></div>
           <div class="checklist-item" onclick="toggleCheck(this,'glass')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Washer fluid reservoir has fluid</div><div class="check-note">Spray front and rear washers. Low or empty fluid on a new vehicle is not uncommon.</div></div><span class="check-severity sev-note">Note</span></div>
         </div>
       </div>
 
-      <!-- SECTION: INTERIOR (18 items) -->
+      <!-- ═══════════════════════════════════════════
+           INTERIOR — 20 items
+      ════════════════════════════════════════════════ -->
       <div class="checklist-section" id="section-interior">
         <div class="checklist-header" onclick="toggleSection('interior')">
           <div class="checklist-header-left">
@@ -324,33 +326,39 @@
             <div><div class="checklist-title">Interior</div><div class="checklist-count">Trim, seats, materials, and storage</div></div>
           </div>
           <div style="display:flex;align-items:center;gap:7px">
-            <div class="checklist-progress" id="prog-interior">0/18</div>
+            <div class="checklist-progress" id="prog-interior">0/20</div>
             <svg class="collapse-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
         </div>
         <div class="checklist-items">
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Wood / trim panels &mdash; no defects, gaps, or misalignment</div><div class="check-note">A defect in my Dark Ash Wood trim was caught at delivery. Run your hand along all trim edges.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Seats &mdash; no tears, stains, or stitching defects</div><div class="check-note">Check all rows, especially seat bolsters &mdash; a common spot for cosmetic defects.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Seat adjustments &mdash; all powered seats move in every direction</div><div class="check-note">Test every direction on all adjustable seats. Check memory seat positions if equipped. Eight-way power-adjustable front seats are standard.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Seat belts &mdash; retract and latch on all rows</div><div class="check-note">Active recall on some 2022&ndash;2026 R1S/R1T for improperly tightened seat belt retractor bolts. Confirm with the service advisor that this has been addressed on your unit before delivery.</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Glass roof &mdash; operates correctly</div><div class="check-note">All trims include a panoramic fixed glass roof. If you have the Sound + Vision package (Dual trim) or Tri/Quad trim, you'll have the dynamic electronically reconfigurable glass &mdash; the transition is binary (opaque vs. transparent), not graduated. Verify it switches fully between both states with no stuck zones or uneven patches.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">All windows &mdash; operate smoothly without grinding or rattling</div><div class="check-note">Test every window. Check for slow operation or noise in the door channels.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">USB-C ports &mdash; test all with your device</div><div class="check-note">Bring a cable. Eight USB-C ports are standard &mdash; verify front console, rear seat, and any other ports charge. Dead ports are easy to miss.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Wood / trim panels &mdash; no defects, gaps, or misalignment</div><div class="check-note">A defect in my Dark Ash Wood trim was caught at delivery. Run your hand along all trim edges looking for sharp seams or raised sections.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Seats &mdash; no tears, stains, or stitching defects</div><div class="check-note">Check all rows, especially seat bolsters &mdash; a common spot for cosmetic defects on new vehicles.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Seat adjustments &mdash; all powered seats move in every direction</div><div class="check-note">Eight-way power-adjustable front seats are standard. Test every axis on both front seats. Check memory positions. Also test second-row fold and slide (R1S) and third-row fold (R1S).</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">All seat belts &mdash; retract, latch, and lock under load on all rows</div><div class="check-note">Two active seat belt recalls affect R1 vehicles: front D-ring anchor bolts (FSAM-1681, 2022&ndash;2025) and second-row retractor bolts (FSAM-1795, 2022&ndash;2026 R1S / 2022&ndash;2025 R1T). Confirm both campaigns are closed on your VIN via NHTSA before delivery. Physically test every belt: buckle, tug hard, and verify it locks.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Glass roof &mdash; electrochromic glass transitions fully (if equipped)</div><div class="check-note">All trims include a panoramic fixed glass roof. Dual + Sound &amp; Vision Package, Tri, and Quad trims include the electronically switchable glass. It switches fully between opaque and clear &mdash; verify no stuck zones or partial patches. The transition is binary, not graduated.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">All windows &mdash; operate smoothly without grinding or rattling</div><div class="check-note">Test every window including auto-up and auto-down. Check for slow operation or noise in the door channels.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">USB-C ports &mdash; test all zones with your device</div><div class="check-note">Bring a cable. The 2026 R1T has 6 USB-C ports; the 2026 R1S has 8. Test front console, rear seat, and any remaining ports. Dead ports are easy to miss and common enough to check.</div></div><span class="check-severity sev-important">Important</span></div>
           <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Wireless charging pad working</div><div class="check-note">Place your phone on the pad and confirm it charges. Check surface for scratches.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Center console &mdash; no gaps, pass-through slot functional</div><div class="check-note">Test the pass-through slot and all storage areas. Confirm the console lid doesn't bind.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">No unusual odors</div><div class="check-note">Mold, chemical, or musty smells can indicate water intrusion during transport. Trust your nose.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Rivian Torch present in driver's side door &mdash; powers on</div><div class="check-note">A 1,000-lumen rechargeable flashlight is standard on all R1T and R1S models, stowed in the driver's side door frame where it charges automatically. Press to eject and test all three brightness settings. It's a frequently missing or stolen item &mdash; verify it's there before leaving.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Second and third row seats &mdash; no rattles or clicking</div><div class="check-note">Physically shake each rear seat while stationary. A known issue on some R1S units is a clicking or tapping sound from the B-pillar area or second-row seat latches. Easier to document and flag at delivery than after.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Headliner &mdash; no sagging, smudges, or witness marks</div><div class="check-note">Check the headliner near the A, B, and C pillars for fingerprints or grease marks left during assembly or detailing. Also check for any sagging along the edges.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Spare tire kit present (if ordered)</div><div class="check-note">The All-Terrain Package includes a compact spare. If you ordered it, verify it's installed in the correct location with all hardware.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">First Aid Kit present</div><div class="check-note">A basic first aid kit is standard on R1T (stowed in the right gear tunnel door) and R1S (under the cargo subfloor). Verify it's there &mdash; it's a commonly missing item on used vehicles and occasionally absent at new delivery.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Air Compressor Accessory Kit present</div><div class="check-note">Standard on all 2026 R1T and R1S models. Verify the hose and adapters are present &mdash; stowed in the gear tunnel door on R1T, cargo subfloor on R1S. A 20-foot hose extends to all four wheels and includes adapters for tires, bicycle tubes, and inflatable gear.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Any ordered accessories present and accounted for</div><div class="check-note">If you ordered optional accessories (camp speaker, crossbars, roof tent, bike rack, spare tire, etc.), verify each is physically in the vehicle before leaving. Missing accessories are far harder to chase down after you drive away.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Center console &mdash; no gaps, pass-through slot functional</div><div class="check-note">Test the pass-through slot and all storage areas. Confirm the console lid doesn&apos;t bind.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">No unusual odors</div><div class="check-note">Mold, chemical, or musty smells can indicate water intrusion during transport. Trust your nose &mdash; this is easier to flag at delivery than to diagnose later.</div></div><span class="check-severity sev-important">Important</span></div>
+
+
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Rivian Torch present in driver&apos;s door &mdash; powers on</div><div class="check-note">A 1,000-lumen rechargeable flashlight stows in the driver&apos;s door frame and charges automatically. Press to eject and test all three brightness settings. Frequently missing or stolen &mdash; verify before leaving.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Second and third row seats &mdash; no rattles or clicking</div><div class="check-note">Physically shake each rear seat while stationary. A known issue on some R1S units is a clicking or tapping sound from the B-pillar area or second-row seat latches. Easier to document at delivery.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Headliner &mdash; no sagging, smudges, or witness marks</div><div class="check-note">Check near the A, B, and C pillars for fingerprints or grease marks left during assembly. Also check for any sagging along the edges.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Floor mats, storage drawer, and gear tunnel mat present</div><div class="check-note">2026 R1 deliveries include floor mats, a storage drawer, gear tunnel mat (R1T), and storage bin mat as standard items. Easy to leave at the service center in the delivery rush &mdash; confirm everything is in the vehicle before leaving.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Spare tire kit present (All-Terrain Package)</div><div class="check-note">The All-Terrain Package includes a compact spare. If ordered, verify it&apos;s installed in the correct location with all hardware.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">First Aid Kit present</div><div class="check-note">Standard on R1T (right gear tunnel door) and R1S (under cargo subfloor). Commonly missing on delivery &mdash; verify before leaving.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Air Compressor Accessory Kit present</div><div class="check-note">Standard on all 2026 R1T and R1S. Stowed in the gear tunnel door (R1T) or cargo subfloor (R1S). Includes a 20-foot hose and adapters for tires, bicycle tubes, and inflatables. Confirm hose and all adapters are present.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Any ordered accessories present and accounted for</div><div class="check-note">If you ordered optional accessories (camp speaker, crossbars, roof tent, bike rack, etc.), verify each is physically in the vehicle before leaving. Missing accessories are far harder to chase down after you drive away.</div></div><span class="check-severity sev-important">Important</span></div>
           <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Front license plate bracket present (2-plate states)</div><div class="check-note">If you live in a state requiring a front plate, verify the bracket is in the vehicle &mdash; typically in the frunk or gear tunnel. Easier to get one before you leave than to chase it down later.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'interior')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">J1772 AC adapter present &mdash; CCS1 DC adapter present (Quad only)</div><div class="check-note">All 2026 R1 vehicles include a J1772 AC adapter for use at Level 2 stations. Quad configurations include a CCS1 DC adapter for non-Tesla DC fast chargers. Confirm both are in the vehicle before leaving.</div></div><span class="check-severity sev-important">Important</span></div>
         </div>
       </div>
 
-      <!-- SECTION: TECH (9 items) -->
+      <!-- ═══════════════════════════════════════════
+           TECH & SOFTWARE — 10 items
+      ════════════════════════════════════════════════ -->
       <div class="checklist-section" id="section-tech">
         <div class="checklist-header" onclick="toggleSection('tech')">
           <div class="checklist-header-left">
@@ -358,24 +366,31 @@
             <div><div class="checklist-title">Tech &amp; Software</div><div class="checklist-count">Screens, connectivity, keys, and app pairing</div></div>
           </div>
           <div style="display:flex;align-items:center;gap:7px">
-            <div class="checklist-progress" id="prog-tech">0/9</div>
+            <div class="checklist-progress" id="prog-tech">0/12</div>
             <svg class="collapse-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
         </div>
         <div class="checklist-items">
-          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Main touchscreen &mdash; no dead zones, artifacts, or backlight bleed</div><div class="check-note">Tap all corners and edges of the 15.6" screen. Look for unresponsive areas or display issues.</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Driver display &mdash; functioning and accurate</div><div class="check-note">Verify speed, range, and navigation display correctly on the 12.3" digital cluster. Check for pixel issues or dead spots.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Rear touchscreen working (R1S)</div><div class="check-note">The R1S includes a 6.8" rear console touchscreen for rear passengers. Verify it responds and functions correctly.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Main 15.6&quot; touchscreen &mdash; no dead zones, artifacts, or backlight bleed</div><div class="check-note">Tap all corners and edges of the screen. Look for unresponsive areas or display issues. All 2026 trims include this screen.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">12.3&quot; driver display &mdash; functioning and accurate</div><div class="check-note">Verify speed, range, and navigation display correctly on the digital cluster. Check for pixel issues or dead spots.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Rear 6.8&quot; console touchscreen working</div><div class="check-note">Standard on all 2026 R1T and R1S models (not R1S-exclusive as in prior years). Verify it responds and displays correctly for rear passengers.</div></div><span class="check-severity sev-note">Note</span></div>
           <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Rivian app paired and connected</div><div class="check-note">Verify the vehicle appears in your app. Test remote lock/unlock and horn honk from the app before leaving.</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Software version &mdash; check for pending updates</div><div class="check-note">Check Settings &rarr; About. If significantly behind current release, ask the service center to update before you leave. Note that some features activate via OTA after delivery &mdash; a pending update at pickup is common and not a defect.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Software version current &mdash; Highway Assist recall resolved</div><div class="check-note">Check Settings Check Settings &rarr; About. A Highway Assist software recall (25V585000) was issued for software prior to version 2025.18.30. Confirm your unit is running a version at or above that, or ask the service center to update before you leave. Pending OTA updates at delivery are normal and not a defect.rarr; About and confirm no active safety-related software campaigns remain open on your unit. A Highway Assist recall (25V585000) required an OTA fix Check Settings &rarr; About. A Highway Assist software recall (25V585000) was issued for software prior to version 2025.18.30. Confirm your unit is running a version at or above that, or ask the service center to update before you leave. Pending OTA updates at delivery are normal and not a defect.mdash; confirm via your NHTSA VIN check that all software campaigns are closed. Ask the service center to update before you leave if any are open. Pending non-safety OTA updates at delivery are normal.</div></div><span class="check-severity sev-important">Important</span></div>
           <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Bluetooth and phone key working</div><div class="check-note">Test phone key unlock and start. Pair a second phone if you have a co-driver. Confirm Bluetooth audio connects.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">KeyCards present (2) &mdash; test NFC unlock on both readers</div><div class="check-note">Gen 2 vehicles (2025+) do not include a key fob &mdash; you receive two KeyCards and mobile app access. Test each card on BOTH the B-pillar exterior reader and the internal center console reader. Some units have arrived with faulty internal readers. Key fobs are a separate Gear Shop purchase.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">All speakers working &mdash; no distortion</div><div class="check-note">Play music at moderate volume and check each zone. If you have the Sound + Vision package or Tri/Quad trim: test the Rivian Premium Audio at higher volume for any distortion.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Gear Guard enabled and cameras visible in live view</div><div class="check-note">If you brought a USB-C SSD, set up Gear Guard storage during delivery. Verify all camera feeds are clear.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Proximity unlock and walk-away lock working</div><div class="check-note">With phone key active, walk away from the vehicle and confirm it auto-locks after a few seconds. Then approach and confirm it unlocks before you reach the door handle. Passive entry failures are a commonly reported Rivian issue &mdash; easier to flag at delivery than diagnose remotely later.</div></div><span class="check-severity sev-important">Important</span></div>
+
+          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">No active warning lights, fault codes, or alerts on delivery</div><div class="check-note">Before leaving the service center, confirm the driver display and main screen show no active warnings, suspension faults, drivetrain alerts, or battery errors. Rivian owners have taken delivery with active fault codes present. If any warning is showing, do not sign until you have a written explanation and a service ticket open for it.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">KeyCards present (2) &mdash; test NFC unlock on both readers</div><div class="check-note">2026 vehicles do not include a key fob &mdash; you receive two KeyCards. Test each card on BOTH the B-pillar exterior reader and the center console interior reader. Key fobs are a separate $250 Gear Shop purchase.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">All speakers working &mdash; no distortion</div><div class="check-note">Play music at moderate volume and check each zone. If you have Rivian Premium Audio (Sound + Vision Package on Dual, or Tri/Quad standard), test at higher volume for distortion.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Wi-Fi hotspot and cellular connectivity active</div><div class="check-note">Confirm cellular connectivity is active in Settings. The 2026 R1S and R1T both include a Wi-Fi hotspot as standard. If it&apos;s not showing, ask the delivery advisor to activate it before you leave.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'tech')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Gear Guard camera feeds visible in app &mdash; Gear Guard cable note</div><div class="check-note">Verify all camera feeds show a clean image in live view. Note: the Gear Guard USB-C SSD cable is NOT included with 2026 vehicles &mdash; it&apos;s a separate Gear Shop purchase. If you brought your own SSD, you&apos;ll need the cable to set up local Gear Guard recording.</div></div><span class="check-severity sev-note">Note</span></div>
         </div>
       </div>
 
-      <!-- SECTION: HVAC (7 items) -->
+      <!-- ═══════════════════════════════════════════
+           HVAC & CLIMATE — 6 items
+           NOTE: Steering wheel centering moved to Road Test
+      ════════════════════════════════════════════════ -->
       <div class="checklist-section" id="section-hvac">
         <div class="checklist-header" onclick="toggleSection('hvac')">
           <div class="checklist-header-left">
@@ -383,22 +398,25 @@
             <div><div class="checklist-title">HVAC &amp; Climate</div><div class="checklist-count">Heating, cooling, and airflow</div></div>
           </div>
           <div style="display:flex;align-items:center;gap:7px">
-            <div class="checklist-progress" id="prog-hvac">0/7</div>
+            <div class="checklist-progress" id="prog-hvac">0/6</div>
             <svg class="collapse-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
         </div>
         <div class="checklist-items">
-          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Heat produces warm air within a few minutes</div><div class="check-note">An issue at my delivery &mdash; heater took 20+ minutes. Set to max heat and time it. Should produce warm air within 3&ndash;5 minutes.</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">A/C cools properly and runs quietly at high fan speed</div><div class="check-note">Run A/C on max and verify cold air from front and rear vents. Then crank the fan to High and listen carefully &mdash; some units produce a loud clicking or "jet engine" sound beyond normal compressor noise, indicating a loose fan blade or shroud. Flag it before you leave.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Steering wheel centered when wheels are straight</div><div class="check-note">Many owners report the steering wheel arriving 2&ndash;5 degrees off-center. With wheels pointed straight ahead, the wheel spokes should be perfectly level. Flag it now &mdash; correction requires a wheel alignment adjustment at the service center.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">All vents direct airflow correctly</div><div class="check-note">Test each zone including rear rows. Dual-zone automatic climate control is standard. Check that rear vents respond to climate controls.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Front seat heating works on all levels</div><div class="check-note">Heated front seats are standard on all trims. Test all heat levels on both driver and passenger seats.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Front seat ventilation (cooling) works on all levels</div><div class="check-note">Ventilated/cooled front seats are standard on all trims. Test all cooling levels on both seats &mdash; a separate function from heating, usually found in the climate menu.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Rear seat heating works (all equipped rows)</div><div class="check-note">Heated rear seats are standard on all trims. R1S has heated seats in rows 2 and 3. R1T has heated rear seats. Test all levels.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Heat produces warm air within a few minutes</div><div class="check-note">An issue at my delivery &mdash; the heater took 20+ minutes. Set to max heat and time it. Should produce warm air within 3&ndash;5 minutes.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">A/C cools properly and runs quietly at high fan speed</div><div class="check-note">Run A/C on max and verify cold air from front and rear vents. Crank the fan to High and listen carefully &mdash; a loud clicking or &ldquo;jet engine&rdquo; sound beyond normal compressor noise may indicate a loose fan blade or shroud. Flag before leaving.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">All vents direct airflow correctly in every zone</div><div class="check-note">Test each zone including rear rows. Dual-zone automatic climate control is standard. Check that rear vents respond to the climate controls.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Front seat heating works on all levels</div><div class="check-note">Heated front seats are standard on all 2026 trim levels as of the current model year. Test all heat levels on both driver and passenger seats.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Front seat ventilation (cooling) works on all levels</div><div class="check-note">Ventilated/cooled front seats are standard on all 2026 trim levels as of the current model year. Test all cooling levels on both seats &mdash; found in the climate menu, separate from heating.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'hvac')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Rear seat heating works on all equipped rows</div><div class="check-note">Heated rear seats are standard on all 2026 trim levels as of the current model year. R1S has heated seats in rows 2 and 3; R1T has heated rear seats. Test all levels.</div></div><span class="check-severity sev-note">Note</span></div>
         </div>
       </div>
 
-      <!-- SECTION: ROAD TEST (5 items) -->
+      <!-- ═══════════════════════════════════════════
+           ROAD TEST — 8 items
+           Steering wheel centering added here (moved from HVAC)
+           Air suspension cycling and Highway Assist added
+      ════════════════════════════════════════════════ -->
       <div class="checklist-section" id="section-roadtest">
         <div class="checklist-header" onclick="toggleSection('roadtest')">
           <div class="checklist-header-left">
@@ -406,69 +424,79 @@
             <div><div class="checklist-title">Road Test</div><div class="checklist-count">Short drive before you sign &mdash; 10 minutes minimum</div></div>
           </div>
           <div style="display:flex;align-items:center;gap:7px">
-            <div class="checklist-progress" id="prog-roadtest">0/5</div>
+            <div class="checklist-progress" id="prog-roadtest">0/9</div>
             <svg class="collapse-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
         </div>
         <div class="checklist-items">
-          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Steering pull &mdash; vehicle tracks straight hands-free</div><div class="check-note">On a flat, straight road, briefly release the wheel and observe. A consistent pull to one side indicates an alignment issue. One of the most common delivery complaints in owner forums &mdash; easier to document and escalate before signing than scheduling a return alignment visit.</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Drivetrain whine or vibration at highway speed</div><div class="check-note">Accelerate to 55&ndash;70 mph and listen for a high-pitched whine or hum from the motors or drivetrain. Some noise is normal under heavy acceleration; a persistent whine at steady cruise is not. Report before leaving &mdash; this can be difficult to reproduce on a shop drive later.</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Suspension clunks or rattles over bumps</div><div class="check-note">Drive over a speed bump or rough patch at low speed and listen for clunks from the front or rear suspension. A single loud clunk from a corner is worth flagging. The air suspension on Quad-motor and Adventure Package trims adds another variable &mdash; cycle through all height settings and listen.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Wind noise &mdash; no excessive whistling at highway speed</div><div class="check-note">Some wind noise is expected at speed, but a sharp whistle or rush from a specific area (A-pillar, door seal, mirror) at 60+ mph often points to a weather strip or door alignment issue. Turn off the audio and listen during the highway portion of your test drive.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Steering feel &mdash; no vibration or shudder through the wheel</div><div class="check-note">At highway speed, a persistent vibration through the steering wheel typically indicates a wheel balance issue or a flat spot in a tire from transport. It should feel smooth and planted. If present, don't dismiss it as a road surface issue &mdash; test on multiple surfaces.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Steering wheel centered when wheels are pointed straight</div><div class="check-note">Before you move the vehicle, sit in the driver&apos;s seat with wheels straight and check that the steering wheel spokes are level. Many owners report the wheel arriving 2&ndash;5 degrees off-center. Correction requires a wheel alignment at the service center &mdash; flag it now rather than scheduling a return visit.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Air suspension cycles through all height modes (equipped trims)</div><div class="check-note">Air suspension is standard on Tri and Quad; included with the All-Terrain Package on Dual models. Cycle through all modes: Low/Entry, All-Purpose, Off-Road, and Max. Confirm the vehicle fully rises and lowers to each stop. &ldquo;Service Suspension&rdquo; warnings within weeks of delivery are a documented community issue &mdash; much easier to flag before you sign.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Steering pull &mdash; vehicle tracks straight hands-free</div><div class="check-note">On a flat, straight road, briefly release the wheel and observe. A consistent pull to one side indicates an alignment issue. One of the most common delivery complaints in owner forums &mdash; easier to document before signing than scheduling a return alignment visit.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Highway Assist &mdash; engages and holds lane correctly</div><div class="check-note">All 2026 R1 vehicles include Rivian Autonomy Platform+ with Enhanced Highway Assist. On a freeway stretch, engage Highway Assist and verify it activates, holds the lane, and responds to speed changes. Confirm the feature appears as enabled in vehicle settings &mdash; some 2025 builds needed an OTA to close the ADAS recall (25V585000).</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Brakes &mdash; no grinding, pulsation, or shudder; regen transitions smoothly</div><div class="check-note">At low speed, apply firm progressive braking and check for grinding, pulsation, or vibration through the pedal or vehicle. Then test regenerative braking &mdash; release the accelerator at moderate speed and confirm regen engages smoothly without lurching. Also verify one-pedal / Hold mode engages and holds the vehicle stationary. Unusual brake feel on a new EV is worth flagging; first-time EV owners should note that strong regen is normal but shouldn&apos;t feel abrupt or uneven.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Drivetrain whine or vibration at highway speed</div><div class="check-note">Accelerate to 55&ndash;70 mph and listen for a high-pitched whine or hum from the motors or drivetrain. Some noise is normal under hard acceleration; a persistent whine at steady cruise is not. Report before leaving &mdash; this is difficult to reproduce on a shop drive later.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Suspension clunks or rattles over bumps</div><div class="check-note">Drive over a speed bump at low speed and listen for clunks from any corner. A single loud clunk is worth flagging. If equipped with air suspension, cycle through all height settings while listening.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Wind noise &mdash; no excessive whistling at highway speed</div><div class="check-note">Some wind noise is expected at speed, but a sharp whistle from a specific area (A-pillar, door seal, mirror) at 60+ mph often indicates a weather strip or door alignment issue. Turn off audio and listen during the highway portion of your test drive.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'roadtest')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Steering feel &mdash; no vibration or shudder through the wheel at speed</div><div class="check-note">At highway speed, persistent vibration through the steering wheel typically indicates a wheel balance issue or flat spot from transport. Test on multiple surfaces before dismissing it as a road condition.</div></div><span class="check-severity sev-important">Important</span></div>
         </div>
       </div>
 
-      <!-- SECTION: CHARGING (4 items) -->
+      <!-- ═══════════════════════════════════════════
+           CHARGING & RANGE — 5 items
+      ════════════════════════════════════════════════ -->
       <div class="checklist-section" id="section-charging">
         <div class="checklist-header" onclick="toggleSection('charging')">
           <div class="checklist-header-left">
             <div class="checklist-icon" style="background:#EAF3DE"><svg viewBox="0 0 24 24" stroke="#1D9E75"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-            <div><div class="checklist-title">Charging &amp; Range</div><div class="checklist-count">Battery, range, and charging setup</div></div>
+            <div><div class="checklist-title">Charging &amp; Range</div><div class="checklist-count">Battery, included charging equipment, and setup</div></div>
           </div>
           <div style="display:flex;align-items:center;gap:7px">
-            <div class="checklist-progress" id="prog-charging">0/4</div>
+            <div class="checklist-progress" id="prog-charging">0/5</div>
             <svg class="collapse-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
         </div>
         <div class="checklist-items">
-          <div class="checklist-item" onclick="toggleCheck(this,'charging')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Battery state of charge matches expected delivery level</div><div class="check-note">Most deliveries are at 50&ndash;80%. Verify the displayed range is reasonable for your battery configuration.</div></div><span class="check-severity sev-important">Important</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'charging')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Portable Charger present (only if ordered separately)</div><div class="check-note">As of 2026, the Portable Charger is no longer included &mdash; it's a $400 add-on. If you ordered one, verify it's in the vehicle and undamaged. If you didn't, plan your home charging setup before taking delivery.</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'charging')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Battery state of charge matches expected delivery level</div><div class="check-note">Most deliveries arrive at 50&ndash;80%. Verify the displayed range is reasonable for your battery configuration (Standard: ~270 mi, Large: ~329 mi, Max: ~410 mi at optimal conditions).</div></div><span class="check-severity sev-important">Important</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'charging')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Portable Charger present (only if ordered as add-on)</div><div class="check-note">The Portable Charger is NOT included with 2026 R1 vehicles &mdash; it&apos;s a $400 add-on. If you ordered one, verify it&apos;s in the vehicle. Also note: older Tesla mobile chargers (pre-Gen 3) have been reported as incompatible with the 2026 NACS port &mdash; verify compatibility before relying on one you already own.</div></div><span class="check-severity sev-important">Important</span></div>
           <div class="checklist-item" onclick="toggleCheck(this,'charging')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Charging schedule configured in app</div><div class="check-note">Set up your home charging schedule before leaving. Configure off-peak hours if your utility offers TOU rates.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'charging')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Referral rewards &mdash; points and free charging (check within 2 weeks)</div><div class="check-note">If you used a referral code, neither the Gear Shop points nor the 3 months of free Adventure Network charging will appear at delivery. Both are credited to your account within 2 weeks of delivery. Check under Rewards in your Rivian account &mdash; contact support if missing after that.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'charging')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">HVDB recall status confirmed (2025 builds)</div><div class="check-note">A recall (FSAM-1723) found that certain 2025 R1S and R1T vehicles had an improperly grounded connection inside the High Voltage Distribution Box (HVDB), which can cause sudden loss of drive power without warning. Confirm this campaign is closed on your VIN via NHTSA before delivery if you&apos;re taking a 2025-built unit.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'charging')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Referral rewards &mdash; points and free charging (check within 2 weeks)</div><div class="check-note">If you used a referral code, the Gear Shop points and 3 months of free Adventure Network charging will not appear at delivery. Both are credited to your account within 2 weeks. Check under Rewards in your Rivian account and contact support if missing after that window.</div></div><span class="check-severity sev-note">Note</span></div>
         </div>
       </div>
 
-      <!-- SECTION: DOCS (4 items) -->
+      <!-- ═══════════════════════════════════════════
+           DOCUMENTATION — 5 items
+      ════════════════════════════════════════════════ -->
       <div class="checklist-section" id="section-docs">
         <div class="checklist-header" onclick="toggleSection('docs')">
           <div class="checklist-header-left">
             <div class="checklist-icon" style="background:#f0f2f5"><svg viewBox="0 0 24 24" stroke="#5a6478"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-            <div><div class="checklist-title">Documentation</div><div class="checklist-count">Paperwork and records</div></div>
+            <div><div class="checklist-title">Documentation</div><div class="checklist-count">Pre-delivery VIN check, paperwork, and records</div></div>
           </div>
           <div style="display:flex;align-items:center;gap:7px">
-            <div class="checklist-progress" id="prog-docs">0/4</div>
+            <div class="checklist-progress" id="prog-docs">0/5</div>
             <svg class="collapse-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
         </div>
         <div class="checklist-items">
-          <div class="checklist-item" onclick="toggleCheck(this,'docs')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Window sticker / Monroney label saved</div><div class="check-note">Photograph it or save via Rivian Roamer VIN lookup. Useful for warranty and insurance purposes.</div></div><span class="check-severity sev-note">Note</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'docs')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Any pre-existing issues photographed and logged in app</div><div class="check-note">Do this before leaving. Documentation at delivery carries far more weight than claims filed after the fact.</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'docs')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Service request filed for any noted issues</div><div class="check-note">Open a service request in the Rivian app before leaving. The delivery tech can often add notes on the spot.</div></div><span class="check-severity sev-critical">Critical</span></div>
-          <div class="checklist-item" onclick="toggleCheck(this,'docs')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">VIN recorded</div><div class="check-note">Note your VIN for insurance and recall lookups. Found on the driver door jamb and the dashboard (visible through the windshield).</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'docs')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">NHTSA VIN check completed before delivery appointment</div><div class="check-note">Do this the night before at nhtsa.gov/recalls. Multiple active recall campaigns exist across the 2026 R1 platform (seat belts, HVDB ground strap, turn signals, headlights, ADAS software). Confirm every campaign is closed on your specific VIN and bring a screenshot. This is the single highest-value pre-delivery action you can take.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'docs')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Window sticker / Monroney label photographed or saved</div><div class="check-note">Photograph it or save via Rivian Roamer VIN lookup. Useful for warranty, insurance, and verifying ordered options were included.</div></div><span class="check-severity sev-note">Note</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'docs')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Any pre-existing issues photographed and logged in the app</div><div class="check-note">Do this before leaving. Documentation at delivery carries far more weight than claims filed after the fact.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'docs')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">Service request filed in app for any noted issues</div><div class="check-note">Open a service request in the Rivian app before leaving. The delivery tech can often add notes on the spot. Delivery-day tickets get prioritized over after-the-fact submissions.</div></div><span class="check-severity sev-critical">Critical</span></div>
+          <div class="checklist-item" onclick="toggleCheck(this,'docs')"><div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="check-content"><div class="check-label">VIN recorded</div><div class="check-note">Note your VIN for insurance and recall lookups. Found on the driver door jamb and the dashboard (visible through the windshield from outside).</div></div><span class="check-severity sev-note">Note</span></div>
         </div>
       </div>
 
       <!-- DONE BANNER -->
       <div class="done-banner" id="doneBanner">
         <div class="done-banner-title">&#10003; Inspection Complete</div>
-        <div class="done-banner-sub">All 70 items checked. File any open service requests before you drive away &mdash; and enjoy the truck.</div>
+        <div class="done-banner-sub">All 81 items checked. File any open service requests before you drive away &mdash; and enjoy the truck.</div>
       </div>
 
       <!-- OWNER NOTE -->
       <div class="owner-note">
-        <p><strong>From my delivery:</strong> Using a checklist caught four issues I would have missed &mdash; two misaligned doors, a defect in the Dark Ash Wood trim, and an HVAC problem where the heater never produced warm air. Rivian's app-based service request system made documenting everything fast and straightforward.</p>
-        <p>If you find issues, don't panic. Rivian expects some and the process for getting them fixed is clear. The key is documenting everything <em>before</em> you drive away.</p>
+        <p><strong>From my delivery:</strong> Using a checklist caught four issues I would have missed &mdash; two misaligned doors, a defect in the Dark Ash Wood trim, and an HVAC problem where the heater never produced warm air. Rivian&apos;s app-based service request system made documenting everything fast and straightforward.</p>
+        <p>If you find issues, don&apos;t panic. Rivian expects some and the process for getting them fixed is clear. The key is documenting everything <em>before</em> you drive away.</p>
       </div>
 
       <button class="reset-btn" onclick="resetAll()">
@@ -476,128 +504,138 @@
         Reset checklist
       </button>
 
-    </div>
-    <!-- /main -->
+    </div><!-- /delivery-main -->
 
-    <!-- DESKTOP SIDEBAR -->
+    <!-- ═══════════════════════════════════════════
+         DESKTOP SIDEBAR
+    ════════════════════════════════════════════════ -->
     <div class="desktop-sidebar">
+
       <div class="card tip-card">
         <div class="section-label">Delivery day tips</div>
-        <div class="tip-item"><div class="tip-num">1</div><div class="tip-text"><strong>Download the Rivian App</strong>This will be your primary key and a requirement to complete delivery.</div></div>
-        <div class="tip-item"><div class="tip-num">2</div><div class="tip-text"><strong>Bring your ID</strong>A valid driver's license is required.</div></div>
-        <div class="tip-item"><div class="tip-num">3</div><div class="tip-text"><strong>Utilize good lighting</strong>Inspect paint in direct sunlight. Phone flashlight can be helpful for panel gaps and undercarriage.</div></div>
-        <div class="tip-item"><div class="tip-num">4</div><div class="tip-text"><strong>Photograph everything of concern</strong>Timestamped photos help if issues surface later.</div></div>
-        <div class="tip-item"><div class="tip-num">5</div><div class="tip-text"><strong>Create a service ticket in the app</strong>Delivery-day service requests are meaningful and best to address any issues asap.</div></div>
-        <div class="tip-item"><div class="tip-num">6</div><div class="tip-text"><strong>Verify Referral Code is applied</strong>Referral codes can be added after ordering, prior to delivery. Take advantage of gear credits and free RAN charging.</div></div>
+        <div class="tip-item"><div class="tip-num">1</div><div class="tip-text"><strong>Run your NHTSA VIN check first</strong>Do this the night before at nhtsa.gov/recalls. Multiple active recalls exist on the 2026 R1 platform &mdash; confirm all campaigns are closed on your specific VIN.</div></div>
+        <div class="tip-item"><div class="tip-num">2</div><div class="tip-text"><strong>Download the Rivian App</strong>Your primary key and required to complete delivery.</div></div>
+        <div class="tip-item"><div class="tip-num">3</div><div class="tip-text"><strong>Bring your ID</strong>A valid driver's license is required.</div></div>
+        <div class="tip-item"><div class="tip-num">4</div><div class="tip-text"><strong>Utilize good lighting</strong>Inspect paint in direct sunlight. A phone flashlight helps with panel gaps and undercarriage.</div></div>
+        <div class="tip-item"><div class="tip-num">5</div><div class="tip-text"><strong>Photograph everything of concern</strong>Timestamped photos carry real weight if issues surface later.</div></div>
+        <div class="tip-item"><div class="tip-num">6</div><div class="tip-text"><strong>Open a service ticket in the app</strong>Delivery-day tickets get prioritized. Do it before you leave.</div></div>
+        <div class="tip-item"><div class="tip-num">7</div><div class="tip-text"><strong>Verify your referral code is applied</strong>Codes can be added after ordering, prior to delivery.</div></div>
       </div>
-      <div class="severity-legend mobile-only" style="flex-direction:column;flex-wrap:nowrap;gap:10px;">
+
+      <!-- SEVERITY LEGEND — desktop sidebar only -->
+      <div class="severity-legend">
         <div class="severity-legend-title">Severity guide</div>
-        <div class="sev-legend-item" style="min-width:unset;flex:none">
-          <span class="sev-legend-badge sev-critical">Critical</span>
-          <span class="sev-legend-desc">May warrant refusing delivery. Escalate to the delivery manager before signing.</span>
-        </div>
-        <div class="sev-legend-item" style="min-width:unset;flex:none">
-          <span class="sev-legend-badge sev-important">Important</span>
-          <span class="sev-legend-desc">Document and file a service request before leaving. Easier to fix with delivery-day documentation.</span>
-        </div>
-        <div class="sev-legend-item" style="min-width:unset;flex:none">
-          <span class="sev-legend-badge sev-note">Note</span>
-          <span class="sev-legend-desc">Minor items — easily addressed at a future service visit.</span>
-        </div>
+        <div class="sev-legend-item"><span class="sev-legend-badge sev-critical">Critical</span><span class="sev-legend-desc">May warrant refusing delivery. Escalate to the delivery manager before signing.</span></div>
+        <div class="sev-legend-item"><span class="sev-legend-badge sev-important">Important</span><span class="sev-legend-desc">Document and file a service request before leaving. Easier to fix with delivery-day documentation.</span></div>
+        <div class="sev-legend-item"><span class="sev-legend-badge sev-note">Note</span><span class="sev-legend-desc">Minor items — worth checking but easily addressed at a future service visit.</span></div>
       </div>
+
       <div class="card" style="padding:16px">
         <div class="section-label">Useful links</div>
+        <div class="resource-row"><div><div class="resource-name">NHTSA VIN Recall Check</div><div class="resource-desc">Run before your delivery appointment</div></div><a href="https://www.nhtsa.gov/recalls" target="_blank" rel="noopener noreferrer" class="resource-link">Check VIN</a></div>
+        <div class="resource-row"><div><div class="resource-name">Rivian Recall Info</div><div class="resource-desc">Official active recall campaigns</div></div><a href="https://rivian.com/support/article/recall-information" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a></div>
         <div class="resource-row"><div><div class="resource-name">Rivian Roamer</div><div class="resource-desc">VIN lookup + window sticker</div></div><a href="https://rivianroamer.com" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a></div>
-        <div class="resource-row"><div><div class="resource-name">NHTSA Recalls</div><div class="resource-desc">Check your VIN for open recalls</div></div><a href="https://www.nhtsa.gov/recalls" target="_blank" rel="noopener noreferrer" class="resource-link">Check</a></div>
         <div class="resource-row"><div><div class="resource-name">Rivian Forums</div><div class="resource-desc">Delivery experience threads</div></div><a href="https://www.rivianforums.com/forum/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a></div>
         <div class="resource-row"><div><div class="resource-name">90-Day R1S Review</div><div class="resource-desc">Service + delivery experience</div></div><a href="/reviews/2026-rivian-r1s-90-day-review/#delivery" class="resource-link">Read</a></div>
       </div>
+
       <div class="sidebar-referral">
         <div class="sidebar-referral-label">Ordering a Rivian?</div>
         <div class="sidebar-referral-code">SCOTT4395475</div>
         <div class="sidebar-referral-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging on qualifying orders.</div>
         <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn" onclick="gtag('event','open_rivian_configurator')">Configure Your Rivian &rarr;</a>
       </div>
-    </div>
 
-  </div>
-</div>
+    </div><!-- /desktop-sidebar -->
+
+  </div><!-- /delivery-layout -->
+</div><!-- /page-body -->
 
 <footer>
   <div>
     <img src="/images/logo.svg" alt="Rivian Rewards Hub">
     Independent Rivian owner resource &middot; Not affiliated with or endorsed by Rivian Automotive, Inc.<br>
-    <span style="font-size:10px;color:var(--text-dim);opacity:0.7;">Information is provided for reference only and may not reflect the latest changes to Rivian's lineup or included equipment. Always verify specs against your window sticker and order confirmation.</span>
+    <span style="font-size:10px;color:var(--text-dim);opacity:0.7;">Information is provided for reference only. Always verify specs, included equipment, and recall status against your window sticker, order confirmation, and the NHTSA recall database.</span>
   </div>
 </footer>
 
 <script>
-  const sectionCounts={exterior:17,glass:5,interior:18,tech:9,hvac:7,roadtest:5,charging:4,docs:4};
-  const checked={exterior:0,glass:0,interior:0,tech:0,hvac:0,roadtest:0,charging:0,docs:0};
-  const total=Object.values(sectionCounts).reduce((a,b)=>a+b,0);
+  // ── Item counts — must match actual items in each section ──
+  const sectionCounts = {
+    exterior: 19,
+    glass:     5,
+    interior: 20,
+    tech:     12,
+    hvac:      6,
+    roadtest:  9,
+    charging:  5,
+    docs:      5
+  };
+  const checked = { exterior:0, glass:0, interior:0, tech:0, hvac:0, roadtest:0, charging:0, docs:0 };
+  const total = Object.values(sectionCounts).reduce((a,b) => a+b, 0); // 81
 
-  function toggleCheck(item,section){
+  function toggleCheck(item, section) {
     item.classList.toggle('checked');
-    checked[section]=document.querySelectorAll('#section-'+section+' .checklist-item.checked').length;
-    document.getElementById('prog-'+section).textContent=checked[section]+'/'+sectionCounts[section];
+    checked[section] = document.querySelectorAll('#section-' + section + ' .checklist-item.checked').length;
+    document.getElementById('prog-' + section).textContent = checked[section] + '/' + sectionCounts[section];
     updateProgress();
   }
 
-  function updateProgress(){
-    const done=Object.values(checked).reduce((a,b)=>a+b,0);
-    const pct=Math.round((done/total)*100);
-    document.getElementById('progressFill').style.width=pct+'%';
-    document.getElementById('progressText').textContent=done+' / '+total;
-    document.getElementById('progressPct').textContent=pct+'%';
-    const banner=document.getElementById('doneBanner');
-    if(done===total)banner.classList.add('visible');
+  function updateProgress() {
+    const done = Object.values(checked).reduce((a,b) => a+b, 0);
+    const pct  = Math.round((done / total) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent  = done + ' / ' + total;
+    document.getElementById('progressPct').textContent   = pct + '%';
+    const banner = document.getElementById('doneBanner');
+    if (done === total) banner.classList.add('visible');
     else banner.classList.remove('visible');
   }
 
-  function toggleSection(id){
-    document.getElementById('section-'+id).classList.toggle('collapsed');
+  function toggleSection(id) {
+    document.getElementById('section-' + id).classList.toggle('collapsed');
   }
 
-  function resetAll(){
-    if(!confirm('Reset all checked items?'))return;
-    document.querySelectorAll('.checklist-item.checked').forEach(el=>el.classList.remove('checked'));
-    Object.keys(checked).forEach(k=>checked[k]=0);
-    Object.keys(sectionCounts).forEach(s=>{
-      const el=document.getElementById('prog-'+s);
-      if(el)el.textContent='0/'+sectionCounts[s];
+  function resetAll() {
+    if (!confirm('Reset all checked items?')) return;
+    document.querySelectorAll('.checklist-item.checked').forEach(el => el.classList.remove('checked'));
+    Object.keys(checked).forEach(k => checked[k] = 0);
+    Object.keys(sectionCounts).forEach(s => {
+      const el = document.getElementById('prog-' + s);
+      if (el) el.textContent = '0/' + sectionCounts[s];
     });
     updateProgress();
   }
 
-  function toggleMobileTips(){
-    const wrap=document.getElementById('mobileSidebarWrap');
-    const chevron=document.getElementById('tipsBtnChevron');
+  function toggleMobileTips() {
+    const wrap    = document.getElementById('mobileSidebarWrap');
+    const chevron = document.getElementById('tipsBtnChevron');
     wrap.classList.toggle('open');
-    chevron.style.transform=wrap.classList.contains('open')?'rotate(180deg)':'';
+    chevron.style.transform = wrap.classList.contains('open') ? 'rotate(180deg)' : '';
   }
 </script>
 
 <script src="/nav-init.js"></script>
 
 <script>
-  function stripCopyCode(){
-    gtag('event','copy_referral_code');
-    navigator.clipboard.writeText('SCOTT4395475').then(()=>{
-      const el=document.getElementById('stripCopied');
-      el.style.display='inline';
-      setTimeout(()=>{
-        window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475','_blank');
-        setTimeout(()=>{el.style.display='none';},3000);
-      },600);
+  function stripCopyCode() {
+    gtag('event', 'copy_referral_code');
+    navigator.clipboard.writeText('SCOTT4395475').then(() => {
+      const el = document.getElementById('stripCopied');
+      el.style.display = 'inline';
+      setTimeout(() => {
+        window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
+        setTimeout(() => { el.style.display = 'none'; }, 3000);
+      }, 600);
     });
   }
 </script>
 
 <script>
-  document.addEventListener('contextmenu',e=>e.preventDefault());
-  document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG')e.preventDefault();});
-  document.addEventListener('keydown',e=>{
-    if((e.ctrlKey||e.metaKey)&&['u','s','c','x'].includes(e.key.toLowerCase()))e.preventDefault();
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('dragstart',   e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+  document.addEventListener('keydown',     e => {
+    if ((e.ctrlKey || e.metaKey) && ['u','s','c','x'].includes(e.key.toLowerCase())) e.preventDefault();
   });
 </script>
 
