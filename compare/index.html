@@ -550,10 +550,10 @@
   </div>
 
   <div class="compare-row">
-    <div class="compare-label">Curb weight</div>
-    <div class="compare-cell winner">~6,900 lb</div>
-    <div class="compare-cell">~5,200 lb est.</div>
-  </div>
+  <div class="compare-label">Curb weight</div>
+  <div class="compare-cell winner" id="r1s-weight"></div>
+  <div class="compare-cell">~5,200 lb est.</div>
+</div>
 
   <div class="compare-row">
     <div class="compare-label">Wheelbase</div>
@@ -794,7 +794,27 @@
     const r1sRange = (drive === 'dual'
       ? R1S_RANGE.dual[battery]
       : R1S_RANGE[drive].max) + R1S_WHEEL_ADJ[wheels];
+    
+// ── WEIGHT ──
 
+let r1sWeight;
+
+if (drive === 'dual') {
+  if (battery === 'standard') {
+    r1sWeight = '~6,450 lb';
+  } else if (battery === 'large') {
+    r1sWeight = '~6,700 lb';
+  } else {
+    r1sWeight = '~7,050 lb';
+  }
+} else if (drive === 'tri') {
+  r1sWeight = '~6,900 lb';
+} else {
+  r1sWeight = '~6,850 lb';
+}
+
+document.getElementById('r1s-weight').textContent = r1sWeight;
+    
     // ── R2 ──
 
     const r2 = R2_SPECS[r2trim];
