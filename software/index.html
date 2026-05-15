@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rivian Software Updates | Version History &amp; Owner Impressions</title>
-  <meta name="description" content="Rivian software update history for R1S, R1T, and R2. Version numbers, release dates, key features, and real owner impressions for each OTA update."/>
+  <title>Rivian Software Updates | R1S &amp; R1T OTA Version History</title>
+  <meta name="description" content="Rivian OTA software update history for R1S and R1T — version numbers, release dates, Gen 1 vs Gen 2 applicability, known bugs, and key features for every update."/>
   <link rel="canonical" href="https://www.rivianrewardshub.com/software/"/>
   <meta property="og:title" content="Rivian Software Update Tracker"/>
   <meta property="og:type" content="website"/>
@@ -29,9 +29,9 @@
     }
 
     @media (max-width: 860px) {
-  .sw-layout { grid-template-columns: 1fr; }
-  .sw-sidebar { display: none; }
-}
+      .sw-layout { grid-template-columns: 1fr; }
+      .sw-sidebar { display: none; }
+    }
 
     .sw-main { display: flex; flex-direction: column; gap: 0; }
     .sw-sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 80px; }
@@ -124,9 +124,16 @@
       margin-bottom: 2px;
     }
 
+    .update-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-dim);
+      margin-bottom: 2px;
+    }
+
     .update-date { font-size: 12px; color: var(--text-dim); }
 
-    .update-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .update-tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: flex-start; }
 
     .update-tag {
       font-size: 10px;
@@ -135,11 +142,15 @@
       border-radius: 3px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      white-space: nowrap;
     }
 
-    .tag-major { background: var(--green-pale); color: var(--green); }
-    .tag-minor { background: var(--bg-secondary); color: var(--text-dim); }
-    .tag-fix   { background: #fef3e2; color: var(--gold); }
+    .tag-major  { background: var(--green-pale); color: var(--green); }
+    .tag-minor  { background: var(--bg-secondary); color: var(--text-dim); }
+    .tag-fix    { background: #fef3e2; color: var(--gold); }
+    .tag-gen1   { background: #E6F1FB; color: #185FA5; }
+    .tag-gen2   { background: #EAF3DE; color: var(--green-dark); }
+    .tag-both   { background: var(--bg-secondary); color: var(--text-dim); }
 
     .update-changes { display: flex; flex-direction: column; gap: 8px; }
 
@@ -161,35 +172,52 @@
     }
 
     .dot-feature { background: var(--green); }
-    .dot-fix     { background: var(--gold); }
-    .dot-perf    { background: #378ADD; }
+    .dot-bug     { background: #A32D2D; }
 
-    .update-owner-note {
+    /* ─── BUGS SECTION ─── */
+    .update-bugs {
       margin-top: 14px;
       padding-top: 14px;
       border-top: 1px solid var(--border);
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
     }
 
-    .owner-avatar {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--green-pale);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 12px;
+    .bugs-label {
+      font-size: 10px;
       font-weight: 700;
-      color: var(--green);
-      font-family: 'DM Sans', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #A32D2D;
+      margin-bottom: 8px;
     }
 
-    .owner-note-text { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-style: italic; }
-    .owner-note-byline { font-size: 11px; color: var(--text-dim); margin-top: 3px; font-style: normal; }
+    .bug-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 5px;
+    }
+
+    .bug-item:last-child { margin-bottom: 0; }
+
+    .bug-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #A32D2D;
+      flex-shrink: 0;
+      margin-top: 7px;
+      opacity: 0.6;
+    }
+
+    /* ─── FIRST SPOTTED ─── */
+    .first-spotted {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 3px;
+    }
 
     /* ─── SIDEBAR ─── */
     .version-quick { padding: 20px; }
@@ -217,29 +245,23 @@
 
   <div class="referral-strip">
     <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
-      <span class="strip-label">Referral code</span>
-      <span
-  class="strip-code"
-  onclick="stripCopyCode()"
-  style="cursor:pointer;"
->
-  SCOTT4395475
-</span>
+      <span class="strip-label">Referral Code</span>
+      <span class="strip-code">SCOTT4395475</span>
       <span class="strip-divider"></span>
       <span class="strip-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
       <button class="strip-btn" onclick="stripCopyCode()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        Copy &amp; Configure
+        Copy
       </button>
-      <span class="strip-copied" id="stripCopied">✓ Copied!</span>
+      <span class="strip-copied" id="stripCopied">&#10003; Copied!</span>
     </div>
   </div>
 
   <div class="page-header">
     <div class="container">
-      <div class="page-eyebrow">Owner Resource</div>
+      <div class="page-eyebrow">Owner Resource &middot; Updated for 2026</div>
       <h1 class="page-title">Rivian Software Updates</h1>
-      <p class="page-sub">OTA update history for R1S, R1T, and R2 — version numbers, release dates, key changes, and real owner impressions. Updated as new versions roll out.</p>
+      <p class="page-sub">OTA update history for R1S and R1T — version numbers, release dates, Gen 1 vs Gen 2 applicability, known issues, and key changes. Updated as new versions roll out.</p>
     </div>
   </div>
 
@@ -248,12 +270,12 @@
 
       <div class="sw-main">
 
-        <!-- CURRENT VERSION -->
+        <!-- CURRENT VERSION HERO -->
         <div class="current-version">
           <div>
             <div class="cv-label">Current version</div>
             <div class="cv-version">Loading...</div>
-<div class="cv-date">Retrieving latest OTA data...</div>
+            <div class="cv-date">Retrieving latest OTA data...</div>
             <div class="cv-highlights"></div>
           </div>
           <div>
@@ -262,33 +284,43 @@
         </div>
 
         <!-- UPDATE TIMELINE -->
+        <div id="softwareTimeline"></div>
 
-<div id="softwareTimeline"></div></div>
+      </div>
 
       <!-- SIDEBAR -->
       <div class="sw-sidebar">
 
         <div class="card version-quick">
-
-  <div class="section-label">
-    Quick jump
-  </div>
-
-  <div id="softwareQuickJump"></div>
-
-</div>
+          <div class="section-label">Quick jump</div>
+          <div id="softwareQuickJump"></div>
+        </div>
 
         <div class="card" style="padding:20px;">
           <div class="section-label">Check your version</div>
-          <p style="font-size:13px; color:var(--text-muted); line-height:1.65; margin-bottom:10px;">Settings → About → Software Version</p>
-          <p style="font-size:13px; color:var(--text-muted); line-height:1.65;">If you're behind the current version, updates install automatically when plugged in or can be triggered manually from the app.</p>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.65; margin-bottom:10px;">Settings &rarr; About &rarr; Software Version</p>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.65;">Updates install automatically when plugged in, or can be triggered manually from the Rivian app. Some features activate via OTA after delivery.</p>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <div class="section-label">Gen applicability</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:flex-start;gap:8px;">
+              <span class="update-tag tag-gen2" style="flex-shrink:0;margin-top:1px;">Gen 2</span>
+              <span style="font-size:12px;color:var(--text-muted);line-height:1.5;">2024+ R1T and R1S with new electrical architecture and Highway Assist hardware</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:8px;">
+              <span class="update-tag tag-gen1" style="flex-shrink:0;margin-top:1px;">Gen 1</span>
+              <span style="font-size:12px;color:var(--text-muted);line-height:1.5;">2022–2023 R1T and R1S — receives most updates but lacks Gen 2-exclusive hardware features</span>
+            </div>
+          </div>
         </div>
 
         <div class="sidebar-referral">
           <div class="sidebar-referral-label">Ordering a Rivian?</div>
           <div class="sidebar-referral-code">SCOTT4395475</div>
           <div class="sidebar-referral-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging.</div>
-          <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn">Configure Your Rivian →</a>
+          <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn">Configure Your Rivian &rarr;</a>
         </div>
 
         <div class="card" style="padding:20px;">
@@ -314,246 +346,143 @@
   <footer>
     <div class="container">
       <img src="/images/logo.svg" alt="Rivian Rewards Hub">
-      Independent Rivian owner resource · Not affiliated with or endorsed by Rivian Automotive, Inc.
+      Independent Rivian owner resource &middot; Not affiliated with or endorsed by Rivian Automotive, Inc.
     </div>
   </footer>
 
 <script src="/nav-init.js"></script>
 
 <script>
-
-    function stripCopyCode() {
-      gtag('event', 'copy_referral_code');
-      navigator.clipboard.writeText('SCOTT4395475').then(() => {
-        const el = document.getElementById('stripCopied');
-        el.style.display = 'inline';
-        setTimeout(() => {
-          window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
-          setTimeout(() => { el.style.display = 'none'; }, 3000);
-        }, 600);
-      });
-    }
-  </script>
-<script>
-
-async function loadLiveSoftwareVersion() {
-
-  const currentVersion =
-    document.querySelector('.cv-version');
-
-  const currentDate =
-    document.querySelector('.cv-date');
-
-  const currentHighlights =
-    document.querySelector('.cv-highlights');
-
-  const quickJumpCurrent =
-    document.querySelector('.vq-current');
-
-  try {
-
-    const response = await fetch(
-      '/software/updates.json?v=' + Date.now()
-    );
-
-    if (!response.ok) {
-      throw new Error('Unable to load OTA data');
-    }
-
-    const updates = await response.json();
-
-    if (!updates.length) {
-      throw new Error('No OTA data found');
-    }
-
-    const latest = updates[0];
-
-    currentVersion.textContent =
-      latest.version;
-
-    currentDate.textContent = latest.rollout
-  ? `${latest.date} · ${latest.rollout}`
-  : latest.date;
-
-    currentHighlights.innerHTML =
-      latest.highlights
-        .map(item => `
-          <div class="cv-highlight">
-            ${item}
-          </div>
-        `)
-        .join('');
-
-    if (quickJumpCurrent) {
-      quickJumpCurrent.textContent =
-        latest.rollout || 'Current';
-    }
-
-  } catch(e) {
-
-    console.error(e);
-
-    currentVersion.textContent =
-      'Unavailable';
-
-    currentDate.textContent =
-      'Unable to retrieve OTA data';
-
-    currentHighlights.innerHTML = '';
-
+  function stripCopyCode() {
+    gtag('event', 'copy_referral_code');
+    navigator.clipboard.writeText('SCOTT4395475').then(() => {
+      const el = document.getElementById('stripCopied');
+      el.style.display = 'inline';
+      setTimeout(() => {
+        window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
+        setTimeout(() => { el.style.display = 'none'; }, 3000);
+      }, 600);
+    });
   }
 
-}
-async function renderSoftwareTimeline() {
+  function genTag(gen) {
+    if (gen === 'gen2') return '<span class="update-tag tag-gen2">Gen 2 Only</span>';
+    if (gen === 'gen1') return '<span class="update-tag tag-gen1">Gen 1 Only</span>';
+    return '<span class="update-tag tag-both">Gen 1 &amp; 2</span>';
+  }
 
-  const timeline =
-    document.getElementById('softwareTimeline');
+  function bugsHtml(bugs) {
+    if (!bugs || !bugs.length) return '';
+    return `
+      <div class="update-bugs">
+        <div class="bugs-label">Known issues</div>
+        ${bugs.map(b => `
+          <div class="bug-item">
+            <span class="bug-dot"></span>
+            ${b}
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
 
-  if (!timeline) return;
+  function firstSpottedHtml(update) {
+    if (!update.firstSpotted || update.firstSpotted === update.date) return '';
+    return `<div class="first-spotted">First spotted: ${update.firstSpotted}</div>`;
+  }
 
-  try {
+  async function loadLiveSoftwareVersion() {
+    const currentVersion   = document.querySelector('.cv-version');
+    const currentDate      = document.querySelector('.cv-date');
+    const currentHighlights = document.querySelector('.cv-highlights');
 
-    const response = await fetch(
-      '/software/updates.json?v=' + Date.now()
-    );
-
-    if (!response.ok) {
-      throw new Error('Unable to load updates');
+    try {
+      const response = await fetch('/software/updates.json?v=' + Date.now());
+      if (!response.ok) throw new Error('Unable to load OTA data');
+      const updates = await response.json();
+      if (!updates.length) throw new Error('No OTA data found');
+      const latest = updates[0];
+      currentVersion.textContent = latest.version;
+      currentDate.textContent = latest.rollout
+        ? `${latest.date} · ${latest.rollout}`
+        : latest.date;
+      currentHighlights.innerHTML = latest.highlights
+        .map(item => `<div class="cv-highlight">${item}</div>`)
+        .join('');
+    } catch(e) {
+      console.error(e);
+      currentVersion.textContent = 'Unavailable';
+      currentDate.textContent = 'Unable to retrieve OTA data';
+      currentHighlights.innerHTML = '';
     }
+  }
 
-    const updates = await response.json();
+  async function renderSoftwareTimeline() {
+    const timeline = document.getElementById('softwareTimeline');
+    if (!timeline) return;
+    try {
+      const response = await fetch('/software/updates.json?v=' + Date.now());
+      if (!response.ok) throw new Error('Unable to load updates');
+      const updates = await response.json();
 
-    timeline.innerHTML =
-  updates.slice(1).map((update, index) => `
-
-        <div
-          class="update-entry ${index === 0 ? 'featured' : ''}"
-          id="v${update.version.replace('.', '-')}">
-
+      timeline.innerHTML = updates.slice(1).map((update, index) => `
+        <div class="update-entry ${index === 0 ? 'featured' : ''}" id="v${update.version.replace('.', '-')}">
           <div class="update-card">
-
             <div class="update-header">
-
               <div>
-                <div class="update-version">
-                  ${update.version}
-                </div>
-
-                <div class="update-date">
-                  ${update.date}
-                </div>
+                <div class="update-version">${update.version}</div>
+                <div class="update-name">${update.name || ''}</div>
+                <div class="update-date">${update.date}</div>
+                ${firstSpottedHtml(update)}
               </div>
-
               <div class="update-tags">
-
-                <span class="update-tag ${
-                  update.type === 'major'
-                    ? 'tag-major'
-                    : 'tag-minor'
-                }">
-
-                  ${update.type}
-
-                </span>
-
+                <span class="update-tag ${update.type === 'major' ? 'tag-major' : 'tag-minor'}">${update.type}</span>
+                ${genTag(update.gen || 'both')}
               </div>
-
             </div>
-
             <div class="update-changes">
-
               ${update.highlights.map(item => `
-
                 <div class="update-change">
                   <span class="change-dot dot-feature"></span>
                   ${item}
                 </div>
-
               `).join('')}
-
             </div>
-
+            ${bugsHtml(update.bugs)}
           </div>
-
         </div>
-
       `).join('');
 
-  } catch(e) {
-
-    console.error(e);
-
-    timeline.innerHTML = `
-      <div class="card" style="padding:20px;">
-        Unable to load OTA history.
-      </div>
-    `;
-
-  }
-
-}
-
-renderSoftwareTimeline();
-async function renderQuickJump() {
-
-  const quickJump =
-    document.getElementById('softwareQuickJump');
-
-  if (!quickJump) return;
-
-  try {
-
-    const response = await fetch(
-      '/software/updates.json?v=' + Date.now()
-    );
-
-    if (!response.ok) {
-      throw new Error('Unable to load updates');
+    } catch(e) {
+      console.error(e);
+      timeline.innerHTML = `<div class="card" style="padding:20px;">Unable to load OTA history.</div>`;
     }
-
-    const updates = await response.json();
-
-    quickJump.innerHTML =
-      updates.map((update, index) => `
-
-        <a
-          href="#v${update.version.replace('.', '-')}"
-          class="vq-row">
-
-          <div>
-
-            <div class="vq-version">
-              ${update.version}
-            </div>
-
-            <div class="vq-date">
-              ${update.date}
-            </div>
-
-          </div>
-
-          ${
-            index === 0
-              ? '<span class="vq-current">Current</span>'
-              : ''
-          }
-
-        </a>
-
-      `).join('');
-
-  } catch(e) {
-
-    console.error(e);
-
   }
 
-}
+  async function renderQuickJump() {
+    const quickJump = document.getElementById('softwareQuickJump');
+    if (!quickJump) return;
+    try {
+      const response = await fetch('/software/updates.json?v=' + Date.now());
+      if (!response.ok) throw new Error('Unable to load updates');
+      const updates = await response.json();
+      quickJump.innerHTML = updates.map((update, index) => `
+        <a href="#v${update.version.replace('.', '-')}" class="vq-row">
+          <div>
+            <div class="vq-version">${update.version}</div>
+            <div class="vq-date">${update.date}</div>
+          </div>
+          ${index === 0 ? '<span class="vq-current">Current</span>' : ''}
+        </a>
+      `).join('');
+    } catch(e) {
+      console.error(e);
+    }
+  }
 
-renderQuickJump();
-
-loadLiveSoftwareVersion();
-
+  renderSoftwareTimeline();
+  renderQuickJump();
+  loadLiveSoftwareVersion();
 </script>
 </body>
 </html>
