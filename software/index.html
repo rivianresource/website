@@ -312,16 +312,11 @@
   </footer>
 
   <script>
-    fetch('/nav.html')
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById('site-nav').innerHTML = html;
-        const path = window.location.pathname;
-        document.querySelectorAll('.nav-links a').forEach(a => {
-          const href = a.getAttribute('href');
-          if (href !== '/' && path.startsWith(href)) a.classList.add('active');
-        });
-      }).catch(() => {});
+    </script>
+
+<script src="/nav-init.js"></script>
+
+<script>
 
     function stripCopyCode() {
       gtag('event', 'copy_referral_code');
