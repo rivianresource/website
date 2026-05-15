@@ -38,14 +38,14 @@
 
     /* ── LAYOUT ── */
     .page-body{max-width:920px;margin:0 auto;padding:14px 14px 40px}
-    .delivery-layout{display:grid;grid-template-columns:1fr 258px;gap:18px;align-items:start}
+    .delivery-layout{display:grid;grid-template-columns:1fr 258px;gap:18px}
     @media(max-width:800px){
       .delivery-layout{grid-template-columns:1fr}
       .desktop-sidebar{display:none}
     }
     .delivery-main{display:flex;flex-direction:column;gap:14px}
-    .desktop-sidebar{position:sticky;top:52px;display:flex;flex-direction:column;gap:14px;max-height:calc(100vh - 64px);overflow-y:auto;scrollbar-width:none}
-    .desktop-sidebar::-webkit-scrollbar{display:none}
+    .desktop-sidebar{position:sticky;top:52px;display:flex;flex-direction:column;gap:14px;align-self:start}
+    @media(min-width:801px){.mobile-only{display:none}}
 
     /* ── MOBILE TIPS ── */
     .mobile-tips-btn,.mobile-sidebar-wrap{display:none}
@@ -207,8 +207,8 @@
         </div>
       </div>
 
-      <!-- SEVERITY LEGEND -->
-      <div class="severity-legend">
+      <!-- SEVERITY LEGEND (mobile only — desktop version is in sidebar) -->
+      <div class="severity-legend mobile-only">
         <div class="severity-legend-title">Severity guide</div>
         <div class="sev-legend-item">
           <span class="sev-legend-badge sev-critical">Critical</span>
@@ -467,7 +467,7 @@
 
       <!-- OWNER NOTE -->
       <div class="owner-note">
-        <p><strong>From my delivery:</strong> Using a checklist caught four issues I would have missed &mdash; two misaligned doors, a defect in the Dark Ash Wood trim, and an HVAC problem where the heater never produced warm air. Rivian's app-based service request system made documenting everything fast and straightforward.</p>
+        <p><strong>From my delivery:</strong> Using a checklist caught three issues I would have missed &mdash; two misaligned doors, a defect in the Dark Ash Wood trim, and an HVAC problem where the heater took over 20 minutes to produce warm air. Rivian's app-based service request system made documenting everything fast and straightforward.</p>
         <p>If you find issues, don't panic. Rivian expects some and the process for getting them fixed is clear. The key is documenting everything <em>before</em> you drive away.</p>
       </div>
 
@@ -489,6 +489,21 @@
         <div class="tip-item"><div class="tip-num">4</div><div class="tip-text"><strong>Photograph everything of concern</strong>Timestamped photos help if issues surface later.</div></div>
         <div class="tip-item"><div class="tip-num">5</div><div class="tip-text"><strong>Create a service ticket in the app</strong>Delivery-day service requests are meaningful and best to address any issues asap.</div></div>
         <div class="tip-item"><div class="tip-num">6</div><div class="tip-text"><strong>Verify Referral Code is applied</strong>Referral codes can be added after ordering, prior to delivery. Take advantage of gear credits and free RAN charging.</div></div>
+      </div>
+      <div class="severity-legend" style="flex-direction:column;flex-wrap:nowrap;gap:10px;">
+        <div class="severity-legend-title">Severity guide</div>
+        <div class="sev-legend-item" style="min-width:unset;flex:none">
+          <span class="sev-legend-badge sev-critical">Critical</span>
+          <span class="sev-legend-desc">May warrant refusing delivery. Escalate to the delivery manager before signing.</span>
+        </div>
+        <div class="sev-legend-item" style="min-width:unset;flex:none">
+          <span class="sev-legend-badge sev-important">Important</span>
+          <span class="sev-legend-desc">Document and file a service request before leaving. Easier to fix with delivery-day documentation.</span>
+        </div>
+        <div class="sev-legend-item" style="min-width:unset;flex:none">
+          <span class="sev-legend-badge sev-note">Note</span>
+          <span class="sev-legend-desc">Minor items — easily addressed at a future service visit.</span>
+        </div>
       </div>
       <div class="card" style="padding:16px">
         <div class="section-label">Useful links</div>
