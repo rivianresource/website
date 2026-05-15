@@ -615,18 +615,14 @@
             </div>
           </div>
 
-          <!-- SOFTWARE TRACKER -->
-          <div class="card" style="padding:20px;">
-            <div class="section-label">Software update</div>
-            <div class="sw-version">2026.15</div>
-            <div class="sw-date">Released May 11, 2026 · Rolling out now</div>
-            <div class="sw-highlights">
-              <div class="sw-highlight">Rivian Assistant — AI voice assistant ("Hey Rivian")</div>
-              <div class="sw-highlight">Profile PIN security for driver profiles</div>
-              <div class="sw-highlight">Current road name added to navigation map</div>
-              <div class="sw-highlight">UHF and Lane Change smoothness improvements (Gen 2)</div>
-            </div>
-          </div>
+         <!-- SOFTWARE TRACKER -->
+<div class="card" style="padding:20px;">
+  <div class="section-label">Software update</div>
+  <div class="sw-version" id="swVersion">—</div>
+  <div class="sw-date" id="swDate">Loading...</div>
+  <div class="sw-highlights" id="swHighlights"></div>
+  <a href="/software/" class="link-btn" style="margin-top:12px;font-size:13px;">Full update history</a>
+</div>
 
           <!-- REFERRAL REWARDS -->
           <div class="card rewards-card">
@@ -824,10 +820,30 @@
       }
     }
 
+ async function loadSoftwareWidget() {
+      try {
+        const res = await fetch('/software/updates.json?v=' + Date.now());
+        if (!res.ok) throw new Error();
+        const updates = await res.json();
+        const latest = updates[0];
+        document.getElementById('swVersion').textContent = latest.version;
+        document.getElementById('swDate').textContent = latest.name
+          ? `${latest.name} · ${latest.date}`
+          : latest.date;
+        document.getElementById('swHighlights').innerHTML = latest.highlights
+          .slice(0, 4)
+          .map(h => `<div class="sw-highlight">${h}</div>`)
+          .join('');
+      } catch(e) {
+        document.getElementById('swDate').textContent = 'Unable to load update data';
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       loadNewsTeaser();
       loadRedditFeed();
       loadForumsFeed();
+      loadSoftwareWidget();
     });
 
   </script>
