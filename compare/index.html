@@ -352,7 +352,7 @@
   <div class="compare-page">
 
     <div class="disclaimer">
-      Specifications, pricing, charging speeds, and estimated ranges may change over time and can vary based on wheels, tires, options, software updates, and production revisions. Displayed pricing does not include destination fees (R1S: $1,895 · R2: $1,495), taxes, registration, premium paint colors, interior upgrades, accessories, or optional equipment. R2 specifications reflect the Performance and Premium trims available in 2026; Standard RWD arrives in 2027. Ranges shown are EPA estimates based on standard wheel configurations; actual range varies. Always verify final configuration details directly at Rivian.com before ordering.
+      Specifications, pricing, charging speeds, and estimated ranges may change over time and can vary based on wheels, tires, options, software updates, and production revisions. Displayed pricing does not include destination fees (R1S: $1,895 · R2: $1,495), taxes, registration, premium paint colors, interior upgrades, accessories, or optional equipment. R2 Standard (RWD) arrives in 2027; R2 Premium arrives Late 2026; R2 Performance available Spring 2026. R2 Standard range is Rivian's estimated figure, not EPA-rated. Ranges shown for AWD trims are EPA estimates based on standard wheel configurations; actual range varies. Always verify final configuration details directly at Rivian.com before ordering.
     </div>
 
     <!-- BUILDERS -->
@@ -415,28 +415,29 @@
       <div class="builder-card">
         <div class="builder-header">
           <div class="builder-title">R2 Builder</div>
-          <div class="builder-sub">2026 · Dual Motor AWD · 87.9 kWh</div>
+          <div class="builder-sub" id="r2BuilderSub">2026 · Dual Motor AWD · 87.9 kWh</div>
         </div>
         <div class="builder-content">
 
           <div class="builder-group">
             <div class="builder-label">Trim</div>
             <select class="builder-select" id="r2Trim" onchange="onTrimChange()">
-              <option value="premium">Premium — 450 hp · $53,990</option>
-              <option value="performance" selected>Performance — 656 hp · $57,990</option>
+              <option value="performance" selected>Performance — 656 hp · $57,990 · Spring 2026</option>
+              <option value="premium">Premium — 450 hp · $53,990 · Late 2026</option>
+              <option value="standard">Standard — 350 hp · $48,490 · 2027 (RWD)</option>
             </select>
           </div>
 
           <div class="builder-group">
             <div class="builder-label">Wheels</div>
             <select class="builder-select" id="r2Wheels" onchange="updateComparison()">
-              <option value="std" selected>21" Liquid Tungsten All-Season (included · 335 mi EPA)</option>
+              <option value="std" selected>21" Liquid Tungsten All-Season (included · 330 mi EPA)</option>
               <option value="alt">20" Black Sand All-Terrain +$1,000 · 314 mi EPA</option>
             </select>
           </div>
 
           <div class="builder-note" id="r2WheelNote">
-            Tow hooks are standard on both trims. Towing up to 4,400 lb requires the optional tow package (~$1,500). EPA range on the Premium 21" upgrade not yet published by Rivian.
+            Tow hooks are standard on Performance and Premium trims. Towing requires the optional tow package (~$1,500). R2 Standard includes a tow package option; towing capacity not yet published.
           </div>
 
         </div>
@@ -467,7 +468,7 @@
 
     <!-- PRICE & RANGE -->
     <div class="compare-section rounded">
-      <div class="compare-section-header">Price & Range</div>
+      <div class="compare-section-header">Price &amp; Range</div>
 
       <div class="compare-row">
         <div class="compare-label">Starting price</div>
@@ -538,7 +539,7 @@
       <div class="compare-row">
         <div class="compare-label">Towing</div>
         <div class="compare-cell winner">7,700 lb</div>
-        <div class="compare-cell">4,400 lb (tow pkg req.)</div>
+        <div class="compare-cell" id="r2-towing">4,400 lb (tow pkg req.)</div>
       </div>
 
       <div class="compare-row">
@@ -550,7 +551,7 @@
       <div class="compare-row">
         <div class="compare-label">Suspension</div>
         <div class="compare-cell winner">Adaptive air suspension</div>
-        <div class="compare-cell" id="r2-susp">Semi-active (Perf.) / Fixed (Prem.)</div>
+        <div class="compare-cell" id="r2-susp">Semi-active (Performance)</div>
       </div>
 
       <div class="compare-row">
@@ -578,9 +579,9 @@
       </div>
 
       <div class="compare-row">
-        <div class="compare-label">Width (body)</div>
+        <div class="compare-label">Width (mirrors folded)</div>
         <div class="compare-cell winner">82.0 in</div>
-        <div class="compare-cell">75.0 in</div>
+        <div class="compare-cell">78.1 in</div>
       </div>
 
       <div class="compare-row">
@@ -598,14 +599,14 @@
       <div class="compare-row">
         <div class="compare-label">Curb weight</div>
         <div class="compare-cell" id="r1s-weight"></div>
-        <div class="compare-cell">~4,850 lb est.</div>
+        <div class="compare-cell" id="r2-weight">~4,850 lb est.</div>
       </div>
 
     </div>
 
     <!-- TECH -->
     <div class="compare-section">
-      <div class="compare-section-header">Tech & Features</div>
+      <div class="compare-section-header">Tech &amp; Features</div>
 
       <div class="compare-row">
         <div class="compare-label">Charge port</div>
@@ -622,7 +623,7 @@
       <div class="compare-row">
         <div class="compare-label">Glass roof</div>
         <div class="compare-cell same">Optional dynamic glass</div>
-        <div class="compare-cell same">Optional dynamic glass</div>
+        <div class="compare-cell" id="r2-glass">Optional dynamic glass</div>
       </div>
 
       <div class="compare-row">
@@ -641,7 +642,7 @@
 
 
     <div class="disclaimer" style="margin-top:18px;">
-      Specifications sourced from Rivian, U.S. News, Car and Driver, and Rivian Roamer as of May 2026. R2 range on 20" wheels is estimated — Rivian has not published official EPA figures for that configuration.
+      Specifications sourced from Rivian.com and official Rivian release materials as of May 2026. R2 Standard range (345 mi) is Rivian's estimated figure; EPA rating not yet published. R2 Standard torque not yet officially published by Rivian. R2 width reflects mirrors-folded measurement per Rivian's published comparison spec. Always verify at Rivian.com before ordering.
     </div>
 
   </div>
@@ -685,9 +686,6 @@
   };
 
   // EPA range per drivetrain per wheel — source: Rivian configurator May 2026
-  // Dual: Sport Bright is EPA baseline per pack; AT wheels lock to 289 mi regardless of pack
-  // Tri: Sport Bright baseline 371 mi; AT wheels 329 mi
-  // Quad: all wheels included; Sport Burnished Bronze=374, Super Sport=338, AT variants=325
   const WHEEL_RANGE = {
     dual: {
       std:       { max: 410, large: 329, standard: 270 },
@@ -720,27 +718,60 @@
     quad: { max: { performance: { hp: 1025, torque: 1198, zero60: 2.6, charge: '220 kW' } } },
   };
 
-  const R1S_RANGE = {
-    dual: { standard: 270, large: 329, max: 410 },
-    tri:  { max: 371 },
-    quad: { max: 374 },
-  };
-
   const R1S_BATTERY = {
     standard: '92.5 kWh',
     large:    '108.5 kWh',
     max:      '141.5 kWh',
   };
 
+  // ── R2 SPECS ─────────────────────────────
+  // Sources: Rivian.com May 2026 release
+  // Standard: Single-motor RWD, 350 hp, 5.9s, 345 mi est. (not EPA), $48,490, avail 2027
+  // Premium:  Dual-motor AWD,   450 hp, 4.6s, 330 mi EPA,            $53,990, avail Late 2026
+  // Performance: Dual-motor AWD, 656 hp, 3.6s, 330 mi EPA,           $57,990, avail Spring 2026
 
   const R2_SPECS = {
     performance: {
       hp: 656, torque: 609, zero60: 3.6, price: 57990,
-      stdWheel: '21', stdRange: 335, altRange: 314,
+      drivetrain: 'Dual Motor AWD',
+      battery: '~87.9 kWh',
+      charge: '210–217 kW',
+      isRWD: false,
+      // Wheels: std=21" Liquid Tungsten (incl, 330 mi EPA), alt=20" Black Sand AT (+$1k, 314 mi EPA)
+      stdRange: 330, altRange: 314,
+      stdRangeLabel: '330 mi EPA',
+      altRangeLabel: '314 mi EPA',
+      suspension: 'Semi-active suspension',
+      towing: '4,400 lb (tow pkg req.)',
+      availability: 'Spring 2026',
     },
     premium: {
       hp: 450, torque: 537, zero60: 4.6, price: 53990,
-      stdWheel: '20', stdRange: 330, altRange: null,
+      drivetrain: 'Dual Motor AWD',
+      battery: '~87.9 kWh',
+      charge: '210–217 kW',
+      isRWD: false,
+      // Wheels: std=20" Bicolor Carbon (incl, 330 mi EPA), alt=21" Liquid Tungsten (+$2k, EPA TBD)
+      stdRange: 330, altRange: null,
+      stdRangeLabel: '330 mi EPA',
+      altRangeLabel: 'EPA range not yet published',
+      suspension: 'Fixed suspension',
+      towing: '4,400 lb (tow pkg req.)',
+      availability: 'Late 2026',
+    },
+    standard: {
+      hp: 350, torque: null, zero60: 5.9, price: 48490,
+      drivetrain: 'Single Motor RWD',
+      battery: '~87.9 kWh est.',
+      charge: '~150 kW est.',
+      isRWD: true,
+      // Wheels: std=19" Machined Graphite AS (incl, 345 mi est.), alt=20" Bicolor Carbon (+$1k)
+      stdRange: 345, altRange: null,
+      stdRangeLabel: '345 mi est. (not EPA-rated)',
+      altRangeLabel: 'Range not yet published',
+      suspension: 'Fixed suspension',
+      towing: 'Not yet published',
+      availability: '2027',
     },
   };
 
@@ -832,14 +863,28 @@
   function onTrimChange() {
     const trim = document.getElementById('r2Trim').value;
     const wheelSel = document.getElementById('r2Wheels');
+    const subEl = document.getElementById('r2BuilderSub');
+    const noteEl = document.getElementById('r2WheelNote');
+
     if (trim === 'performance') {
+      subEl.textContent = 'Spring 2026 · Dual Motor AWD · ~87.9 kWh';
       wheelSel.innerHTML = `
-        <option value="std" selected>21" Liquid Tungsten All-Season (included · 335 mi EPA)</option>
+        <option value="std" selected>21" Liquid Tungsten All-Season (included · 330 mi EPA)</option>
         <option value="alt">20" Black Sand All-Terrain +$1,000 · 314 mi EPA</option>`;
-    } else {
+      noteEl.textContent = 'Tow hooks standard. Towing 4,400 lb requires optional tow package (~$1,500). Launch Package (limited time) includes tow package, Autonomy+, and Launch Green paint option.';
+    } else if (trim === 'premium') {
+      subEl.textContent = 'Late 2026 · Dual Motor AWD · ~87.9 kWh';
       wheelSel.innerHTML = `
         <option value="std" selected>20" Bicolor Carbon All-Season (included · 330 mi EPA)</option>
         <option value="alt">21" Liquid Tungsten All-Season +$2,000 · EPA range not yet published</option>`;
+      noteEl.textContent = 'Tow hooks standard. Towing 4,400 lb requires optional tow package (~$1,500). EPA range on 21" wheel upgrade not yet published by Rivian.';
+    } else {
+      // standard RWD
+      subEl.textContent = '2027 · Single Motor RWD · ~87.9 kWh est.';
+      wheelSel.innerHTML = `
+        <option value="std" selected>19" Machined Graphite All-Season (included · 345 mi est.)</option>
+        <option value="alt">20" Bicolor Carbon All-Season +$1,000 · Range not yet published</option>`;
+      noteEl.textContent = 'R2 Standard arrives 2027. Range of 345 mi is Rivian\'s estimate — not yet EPA-rated. An additional long-range Standard variant (~$45,000, 275+ mi est.) arrives in late 2027. Towing capacity not yet published.';
     }
     updateComparison();
   }
@@ -853,6 +898,7 @@
     const perf = document.getElementById('r1sPerformance').value;
     const wheels = document.getElementById('r1sWheels').value;
     const r2trim = document.getElementById('r2Trim').value;
+    const useAlt = document.getElementById('r2Wheels').value === 'alt';
 
     let r1sSpecs, r1sDrivetrain, r1sBatteryLabel, r1sBasePrice, r1sPerfLabel, r1sConfigLabel;
 
@@ -879,7 +925,7 @@
       r1sConfigLabel = `Quad Max · ${r1sBatteryLabel}`;
     }
 
-    // Range — pull directly from WHEEL_RANGE table (no adjustment math)
+    // R1S Range
     let r1sRange;
     if (drive === 'dual') {
       const wr = WHEEL_RANGE.dual[wheels] || WHEEL_RANGE.dual.std;
@@ -887,12 +933,11 @@
     } else if (drive === 'tri') {
       r1sRange = WHEEL_RANGE.tri[wheels] || WHEEL_RANGE.tri.std;
     } else {
-      // Quad: all wheels included, different ranges per selection
       const quadRanges = { std: 374, '22dark': 338, '20at': 325, '20atdark': 325 };
       r1sRange = quadRanges[wheels] || 374;
     }
 
-    // ── WEIGHT ──
+    // R1S Weight
     let r1sWeight;
     if (drive === 'dual') {
       r1sWeight = battery === 'standard' ? '~6,450 lb' : battery === 'large' ? '~6,700 lb' : '~6,900 lb';
@@ -904,23 +949,30 @@
     const weightEl = document.getElementById('r1s-weight');
     if (weightEl) weightEl.textContent = r1sWeight;
 
+    // ── R2 DATA ──
     const r2 = R2_SPECS[r2trim];
-    const useAlt = document.getElementById('r2Wheels').value === 'alt';
-    const r2Range = useAlt ? r2.altRange : r2.stdRange;
-    const r2WheelLabel = r2trim === 'performance'
-      ? (useAlt ? '20" Black Sand All-Terrain' : '21" Liquid Tungsten All-Season')
-      : (useAlt ? '21" Liquid Tungsten All-Season' : '20" Bicolor Carbon All-Season');
-    const r2RangeLabel = useAlt
-      ? (r2.altRange ? `${r2.altRange} mi EPA` : 'Range not yet EPA-rated')
-      : `${r2Range} mi EPA`;
-    const r2BatteryLabel = '87.9 kWh';
+    const r2RangeVal = useAlt ? r2.altRange : r2.stdRange;
+    const r2RangeLabel = useAlt ? r2.altRangeLabel : r2.stdRangeLabel;
+
+    // Wheel label for config text
+    let r2WheelLabel;
+    if (r2trim === 'performance') {
+      r2WheelLabel = useAlt ? '20" Black Sand All-Terrain' : '21" Liquid Tungsten All-Season';
+    } else if (r2trim === 'premium') {
+      r2WheelLabel = useAlt ? '21" Liquid Tungsten All-Season' : '20" Bicolor Carbon All-Season';
+    } else {
+      r2WheelLabel = useAlt ? '20" Bicolor Carbon All-Season' : '19" Machined Graphite All-Season';
+    }
+
     const r2ConfigLabel = `${r2trim.charAt(0).toUpperCase() + r2trim.slice(1)} · ${r2WheelLabel}`;
 
+    // ── HEADER ──
     document.getElementById('r1sConfigText').textContent = r1sConfigLabel;
     document.getElementById('r2ConfigText').textContent = r2ConfigLabel;
     document.getElementById('r1sPriceHeader').textContent = `$${fmt(r1sBasePrice)}`;
     document.getElementById('r2PriceHeader').textContent = `Est. $${fmt(r2.price)}`;
 
+    // ── PRICE ──
     const savings = r1sBasePrice - r2.price;
     document.getElementById('r1s-price').className = 'compare-cell';
     document.getElementById('r1s-price').textContent = `$${fmt(r1sBasePrice)}`;
@@ -928,44 +980,62 @@
     document.getElementById('r2-price').innerHTML =
       `Est. $${fmt(r2.price)} <span class="badge badge-better">$${Math.round(savings/1000)}K less</span>`;
 
-    const r1sWins = r2Range !== null ? r1sRange >= r2Range : true;
-    setCell('r1s-range', `${r1sRange} mi`, r1sWins);
-    document.getElementById('r2-range').className = r1sWins ? 'compare-cell' : 'compare-cell winner';
+    // ── RANGE ──
+    const r1sWinsRange = r2RangeVal !== null ? r1sRange >= r2RangeVal : true;
+    setCell('r1s-range', `${r1sRange} mi`, r1sWinsRange);
+    document.getElementById('r2-range').className = r1sWinsRange ? 'compare-cell' : 'compare-cell winner';
     document.getElementById('r2-range').textContent = r2RangeLabel;
 
+    // ── BATTERY ──
     document.getElementById('r1s-battery').className = 'compare-cell winner';
     document.getElementById('r1s-battery').textContent = r1sBatteryLabel;
     document.getElementById('r2-battery').className = 'compare-cell';
-    document.getElementById('r2-battery').textContent = `~${r2BatteryLabel}`;
+    document.getElementById('r2-battery').textContent = r2.battery;
 
+    // ── CHARGING ──
     document.getElementById('r1s-charge').className = 'compare-cell winner';
     document.getElementById('r1s-charge').textContent = r1sSpecs.charge;
     document.getElementById('r2-charge').className = 'compare-cell';
-    document.getElementById('r2-charge').textContent = '210–217 kW';
+    document.getElementById('r2-charge').textContent = r2.charge;
 
+    // ── PERFORMANCE ──
     const r1sHpWins = r1sSpecs.hp >= r2.hp;
     setCell('r1s-hp', `${fmt(r1sSpecs.hp)} hp`, r1sHpWins);
     document.getElementById('r2-hp').className = r1sHpWins ? 'compare-cell' : 'compare-cell winner';
     document.getElementById('r2-hp').textContent = `${fmt(r2.hp)} hp`;
 
-    const r1sTqWins = r1sSpecs.torque >= r2.torque;
+    const r1sTqWins = r2.torque !== null ? r1sSpecs.torque >= r2.torque : true;
     setCell('r1s-torque', `${fmt(r1sSpecs.torque)} lb-ft`, r1sTqWins);
     document.getElementById('r2-torque').className = r1sTqWins ? 'compare-cell' : 'compare-cell winner';
-    document.getElementById('r2-torque').textContent = `${fmt(r2.torque)} lb-ft`;
+    document.getElementById('r2-torque').textContent = r2.torque !== null ? `${fmt(r2.torque)} lb-ft` : 'Not yet published';
 
     const r1s060Wins = r1sSpecs.zero60 <= r2.zero60;
     setCell('r1s-060', `${r1sSpecs.zero60} sec`, r1s060Wins);
     document.getElementById('r2-060').className = r1s060Wins ? 'compare-cell' : 'compare-cell winner';
     document.getElementById('r2-060').textContent = `${r2.zero60} sec`;
 
-    setEqual('r1s-drivetrain', r1sDrivetrain);
-    setEqual('r2-drivetrain', 'Dual Motor AWD');
+    // Drivetrain — R1S always AWD; R2 Standard is RWD so not "same"
+    const r2DriveEl = document.getElementById('r2-drivetrain');
+    if (r2.isRWD) {
+      setEqual('r1s-drivetrain', r1sDrivetrain);
+      r2DriveEl.textContent = r2.drivetrain;
+      r2DriveEl.className = 'compare-cell';
+    } else {
+      setEqual('r1s-drivetrain', r1sDrivetrain);
+      setEqual('r2-drivetrain', r2.drivetrain);
+    }
 
-    const suspCell = document.querySelector('#r2-susp');
-    if (suspCell) {
-      suspCell.textContent = r2trim === 'performance'
-        ? 'Semi-active (Performance)'
-        : 'Fixed suspension (Premium)';
+    // ── CAPABILITY ──
+    const suspCell = document.getElementById('r2-susp');
+    if (suspCell) suspCell.textContent = r2.suspension;
+
+    const towCell = document.getElementById('r2-towing');
+    if (towCell) towCell.textContent = r2.towing;
+
+    // R2 weight — RWD Standard will be lighter
+    const r2WeightEl = document.getElementById('r2-weight');
+    if (r2WeightEl) {
+      r2WeightEl.textContent = r2.isRWD ? '~4,200 lb est.' : '~4,850 lb est.';
     }
   }
 
