@@ -11,513 +11,347 @@
   <meta property="og:image" content="https://www.rivianrewardshub.com/r1s.jpg"/>
   <meta property="og:url" content="https://www.rivianrewardshub.com/reviews/2026-rivian-r1s-90-day-review/"/>
   <meta property="og:type" content="article"/>
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-SB8DBC8NBQ');
-  </script>
-
-  <link rel="icon" type="image/png" href="/logo.png">
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SB8DBC8NBQ');</script>
+  <link rel="icon" type="image/png" href="/images/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/shared.css">
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "aabd2c264abb41589ccfd2223c79ae42"}'></script>
-
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"aabd2c264abb41589ccfd2223c79ae42"}'></script>
   <style>
-    .review-layout {
-      display: grid;
-      grid-template-columns: 1fr 272px;
-      gap: 28px;
-      align-items: start;
-      padding: 32px 0 56px;
-    }
+    .review-layout{display:grid;grid-template-columns:1fr 272px;gap:28px;align-items:start;padding:32px 0 56px}
+    @media(max-width:860px){.review-layout{grid-template-columns:1fr}.review-sidebar{order:-1}}
 
-    @media (max-width: 860px) {
-      .review-layout { grid-template-columns: 1fr; }
-      .review-sidebar { order: -1; }
-    }
+    /* SPEC CARD */
+    .spec-card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;margin-bottom:28px}
+    .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-top:14px}
+    .spec-row{background:var(--bg-card);padding:10px 14px;display:flex;flex-direction:column;gap:2px}
+    .spec-label{font-size:11px;color:var(--text-dim);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+    .spec-value{font-size:14px;color:var(--text);font-weight:600}
 
-    /* ─── SPEC CARD ─── */
-    .spec-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 24px;
-      margin-bottom: 28px;
-    }
+    /* ARTICLE */
+    .article-body{display:flex;flex-direction:column;gap:0}
+    .article-section{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin-bottom:16px;scroll-margin-top:80px}
+    .article-section h2{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:800;color:var(--text);letter-spacing:-.02em;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .article-section p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:14px}
+    .article-section p:last-child{margin-bottom:0}
+    .article-section strong{color:var(--text);font-weight:600}
+    .article-section em{font-style:italic;color:var(--text)}
+    .inline-link{color:var(--green);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(29,158,117,.3);transition:border-color .2s}
+    .inline-link:hover{border-color:var(--green)}
 
-    .spec-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      margin-top: 14px;
-    }
+    /* CALLOUTS */
+    .callout{background:var(--green-pale);border:1px solid rgba(29,158,117,.2);border-radius:var(--radius-sm);padding:14px 18px;margin:16px 0;display:flex;align-items:flex-start;gap:10px}
+    .callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+    .callout p{font-size:14px;color:#1b4d3e;line-height:1.6;margin:0!important}
+    .callout a{color:var(--green);font-weight:600}
 
-    .spec-row {
-      background: var(--bg-card);
-      padding: 10px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+    .update-callout{background:var(--bg-secondary);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:14px 18px;margin:16px 0}
+    .update-callout-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gold);margin-bottom:6px}
+    .update-callout p{font-size:13px!important;color:var(--text-muted);line-height:1.65;margin:0!important}
 
-    .spec-label { font-size: 11px; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
-    .spec-value { font-size: 14px; color: var(--text); font-weight: 600; }
+    /* VERDICT */
+    .verdict{background:var(--green-dark);border-radius:var(--radius);padding:24px 28px;margin-top:4px}
+    .verdict-label{font-size:11px;font-weight:600;color:#9FE1CB;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+    .verdict p{font-size:15px;color:rgba(255,255,255,.85);line-height:1.75;margin-bottom:0!important}
 
-    /* ─── ARTICLE BODY ─── */
-    .article-body { display: flex; flex-direction: column; gap: 0; }
+    /* WHAT'S NEXT */
+    .whats-next{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:16px}
+    .whats-next h2{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:800;color:var(--text);margin-bottom:14px}
+    .next-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .next-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:8px}
+    .next-item::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
 
-    .article-section {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 32px;
-      margin-bottom: 16px;
-      scroll-margin-top: 80px;
-    }
+    /* SIDEBAR */
+    .review-sidebar{display:flex;flex-direction:column;gap:16px}
+    .toc-card{padding:20px}
+    .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:4px}
+    .toc-list a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;padding:7px 10px;border-radius:var(--radius-sm);transition:background .15s,color .15s;border-left:2px solid transparent}
+    .toc-list a:hover{background:var(--bg-secondary);color:var(--text)}
+    .toc-list a.toc-active{color:var(--green);border-left-color:var(--green);background:var(--green-pale);font-weight:600}
 
-    .article-section h2 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
-    }
+    /* ACCESSORIES SIDEBAR */
+    .acc-sidebar-item{display:flex;align-items:flex-start;gap:11px;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;transition:opacity .15s}
+    .acc-sidebar-item:last-child{border-bottom:none}
+    .acc-sidebar-item:hover{opacity:.75}
+    .acc-sidebar-icon{width:32px;height:32px;border-radius:7px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .acc-sidebar-icon svg{width:15px;height:15px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .acc-sidebar-name{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+    .acc-sidebar-desc{font-size:11px;color:var(--text-dim);line-height:1.4}
 
-    .article-section p {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 14px;
-    }
+    /* TAGS */
+    .tag{display:inline-block;background:var(--bg-secondary);border:1px solid var(--border);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600;color:var(--text-muted)}
 
-    .article-section p:last-child { margin-bottom: 0; }
+    /* HERO IMG */
+    .review-hero-img{width:100%;border-radius:var(--radius);display:block;margin-bottom:28px;border:1px solid var(--border);object-fit:cover;max-height:420px}
 
-    .article-section ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin: 12px 0;
-    }
-
-    .article-section ul li {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      padding-left: 18px;
-      position: relative;
-    }
-
-    .article-section ul li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--green);
-      font-weight: 600;
-    }
-
-    .article-section ol {
-      list-style: none;
-      counter-reset: steps;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin: 12px 0;
-    }
-
-    .article-section ol li {
-      counter-increment: steps;
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      padding-left: 28px;
-      position: relative;
-    }
-
-    .article-section ol li::before {
-      content: counter(steps);
-      position: absolute;
-      left: 0;
-      width: 20px;
-      height: 20px;
-      background: var(--green-pale);
-      color: var(--green);
-      border-radius: 50%;
-      font-size: 11px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      top: 2px;
-    }
-
-    .article-section strong { color: var(--text); font-weight: 600; }
-
-    .article-section em { font-style: italic; color: var(--text); }
-
-    .inline-link {
-      color: var(--green);
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px solid rgba(29,158,117,0.3);
-      transition: border-color 0.2s;
-    }
-
-    .inline-link:hover { border-color: var(--green); }
-
-    /* ─── CALLOUT ─── */
-    .callout {
-      background: var(--green-pale);
-      border: 1px solid rgba(29,158,117,0.2);
-      border-radius: var(--radius-sm);
-      padding: 14px 18px;
-      margin: 16px 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-    .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-
-    .callout p {
-      font-size: 14px;
-      color: #1b4d3e;
-      line-height: 1.6;
-      margin: 0 !important;
-    }
-
-    .callout a { color: var(--green); font-weight: 600; }
-
-    /* ─── VERDICT BOX ─── */
-    .verdict {
-      background: var(--green-dark);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      margin-top: 4px;
-    }
-
-    .verdict-label { font-size: 11px; font-weight: 600; color: #9FE1CB; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-    .verdict p { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.75; margin-bottom: 0 !important; }
-
-    /* ─── WHAT'S NEXT ─── */
-    .whats-next {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      margin-bottom: 16px;
-    }
-
-    .whats-next h2 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 14px;
-    }
-
-    .next-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .next-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      font-size: 13px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .next-item::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 560px) {
-      .next-grid { grid-template-columns: 1fr; }
-      .spec-grid { grid-template-columns: 1fr; }
-      .article-section { padding: 20px; }
-    }
-
-    /* ─── SIDEBAR ─── */
-    .review-sidebar { display: flex; flex-direction: column; gap: 16px; }
-
-    /* ─── TOC ─── */
-    .toc-card { padding: 20px; position: sticky; top: 80px; }
-    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
-
-    .toc-list a {
-      display: block;
-      font-size: 13px;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 7px 10px;
-      border-radius: var(--radius-sm);
-      transition: background 0.15s, color 0.15s;
-      border-left: 2px solid transparent;
-    }
-
-    .toc-list a:hover { background: var(--bg-secondary); color: var(--text); }
-    .toc-list a.toc-active { color: var(--green); border-left-color: var(--green); background: var(--green-pale); font-weight: 600; }
-
-    /* ─── HERO IMAGE ─── */
-    .review-hero-img {
-      width: 100%;
-      border-radius: var(--radius);
-      display: block;
-      margin-bottom: 28px;
-      border: 1px solid var(--border);
-      object-fit: cover;
-      max-height: 420px;
+    @media(max-width:560px){
+      .next-grid{grid-template-columns:1fr}
+      .spec-grid{grid-template-columns:1fr}
+      .article-section{padding:20px}
     }
   </style>
 </head>
 <body>
 
-  <div id="site-nav"></div>
+<div id="site-nav"></div>
 
-  <div class="referral-strip">
-    <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
-      <span class="strip-label">Referral code</span>
-      <span class="strip-code">SCOTT4395475</span>
-      <span class="strip-divider"></span>
-      <span class="strip-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
-      <button class="strip-btn" onclick="stripCopyCode()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        Copy
-      </button>
-      <span class="strip-copied" id="stripCopied">✓ Copied!</span>
-    </div>
+<div class="referral-strip">
+  <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
+    <span class="strip-label">Referral Code</span>
+    <span class="strip-code">SCOTT4395475</span>
+    <span class="strip-divider"></span>
+    <span class="strip-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
+    <button class="strip-btn" onclick="stripCopyCode()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      Copy
+    </button>
+    <span class="strip-copied" id="stripCopied">&#10003; Copied!</span>
   </div>
+</div>
 
-  <div class="page-header">
-    <div class="container">
-      <div class="page-eyebrow">Owner Review · 90 Days</div>
-      <h1 class="page-title">2026 Rivian R1S Dual Max</h1>
-      <p class="page-sub">Real-world impressions after daily driving in Las Vegas — charging, service, software quirks, Sound + Vision, and tire decisions.</p>
-      <div style="display:flex; align-items:center; gap:10px; margin-top:16px; flex-wrap:wrap;">
-        <span class="tag">Las Vegas</span>
-        <span class="tag">Dual Max</span>
-        <span class="tag">Sound + Vision</span>
-        <span class="tag">Darkout Package</span>
-        <span style="font-size:13px; color:var(--text-dim);">Published May 2026</span>
-      </div>
-    </div>
-  </div>
-
+<div class="page-header">
   <div class="container">
-    <div class="review-layout">
-
-      <!-- MAIN CONTENT -->
-      <div>
-        <img src="/r1s.jpg" alt="2026 Rivian R1S Dual Max" class="review-hero-img">
-
-        <!-- SPEC CARD -->
-        <div class="spec-card">
-          <div class="section-label">Vehicle configuration</div>
-          <div class="spec-grid">
-            <div class="spec-row"><span class="spec-label">Model</span><span class="spec-value">R1S Dual Max</span></div>
-            <div class="spec-row"><span class="spec-label">Battery</span><span class="spec-value">Max Pack</span></div>
-            <div class="spec-row"><span class="spec-label">Drive</span><span class="spec-value">Dual Motor AWD</span></div>
-            <div class="spec-row"><span class="spec-label">Upgrade</span><span class="spec-value">Performance Upgrade</span></div>
-            <div class="spec-row"><span class="spec-label">Exterior</span><span class="spec-value">El Cap Granite</span></div>
-            <div class="spec-row"><span class="spec-label">Interior</span><span class="spec-value">Black Mtn + Dark Ash Wood</span></div>
-            <div class="spec-row"><span class="spec-label">Wheels</span><span class="spec-value">22" Sport Dark</span></div>
-            <div class="spec-row"><span class="spec-label">Packages</span><span class="spec-value">Darkout + Sound & Vision</span></div>
-          </div>
-        </div>
-
-        <div class="article-body">
-
-          <div class="article-section" id="delivery">
-            <h2>Taking Delivery</h2>
-            <p>Delivery from the Las Vegas service center was smooth overall. Before pickup, I used a Rivian delivery inspection checklist that helped me go through the vehicle far more carefully than I probably would have on my own.</p>
-            <div class="callout">
-              <span class="callout-icon">📋</span>
-              <p>I highly recommend using a delivery checklist. <a href="https://www.rivianrewardshub.com/delivery/" target="_blank" rel="noopener noreferrer">Rivian Delivery Checklist →</a></p>
-            </div>
-            <p>With the help of the checklist, I noticed a few issues immediately — two doors needing alignment, a defect in part of the wood trim, and a heater issue where the cabin would not warm properly. Rivian made the service request process easy through the app. While I would have preferred a perfect delivery, having a clear process for documenting issues right away made a real difference.</p>
-          </div>
-
-          <div class="article-section" id="service">
-            <h2>Service Experience</h2>
-            <p>I visited the Rivian service center in Las Vegas for the initial repairs. The technician who came out at drop-off was genuinely helpful — pretty much the opposite of the stereotypical auto service experience.</p>
-            <p>The appointment was scheduled within about a week, and a Rivian rep confirmed the details a few days before. Door alignment and trim repairs were resolved quickly, but the HVAC issues kept the vehicle for six days total.</p>
-            <p>The heater situation has remained somewhat inconsistent. Sometimes it works perfectly. Other times it can take close to twenty minutes before warm air comes through. I'd estimate it behaves correctly about sixty percent of the time. Rivian sent a mobile technician to continue troubleshooting. I've also noticed a slight rattle from the front passenger door on rough roads or during bass-heavy music.</p>
-            <p>Even with those issues, the overall service experience has been straightforward.</p>
-          </div>
-
-          <div class="article-section" id="charging">
-            <h2>Charging</h2>
-            <p>There's a Rivian Adventure Network station about fifteen minutes from my house at Town Square Shopping Mall (6605 S Las Vegas Blvd). Every visit had open chargers available, even during late morning and afternoon hours.</p>
-            <p>Most of my charging happens at home. We're on NV Energy's EV Time of Use plan and charge exclusively between midnight and 8am. I use a Tesla Wall Charger on Level 2 and typically cap the battery around seventy percent for daily use.</p>
-            <p>I haven't taken the vehicle on a true road trip yet, so I can't fully speak to the long-distance experience. Having the native NACS port is a significant advantage — being able to use Tesla Superchargers without an adapter makes the ownership experience feel noticeably less stressful.</p>
-          </div>
-
-          <div class="article-section" id="driving">
-            <h2>Driving Experience</h2>
-            <p>The driving experience is easily the highlight. Incredibly smooth, quiet, and refined. I occasionally hear the air suspension compressor or the HVAC system working hard, but it hasn't been nearly as intrusive as some examples I've seen online.</p>
-            <p>I enjoy the auto-kneel function when parking. I did disable automatic ride height adjustments while driving — though oddly the setting occasionally re-enables itself after getting back in the vehicle. Soft and hard resets haven't produced consistent results.</p>
-            <p>Another software quirk: the middle-row climate vents are sometimes active when the car starts, sometimes not. With children in car seats, I find myself manually checking rear airflow more often than I'd like.</p>
-            <p>Software quirks aside, I absolutely love driving this vehicle. The acceleration with the Performance Upgrade is absurdly quick while remaining smooth and controlled. The turning radius is surprisingly tight for a vehicle this size.</p>
-          </div>
-
-          <div class="article-section" id="sound-vision">
-            <h2>Sound &amp; Vision Package</h2>
-            <p>This may be controversial, but I think the updated 2026 Sound &amp; Vision package sounds significantly better than many reviews suggest.</p>
-            <p>SiriusXM audio quality is average at best, but Apple Music with Dolby Atmos tracks sounds much better than expected. Albums like Pink Floyd's <em>Dark Side of the Moon</em>, Fleetwood Mac's <em>Rumours</em>, John Coltrane's <em>Blue Train</em>, and Illenium's <em>Odyssey</em> all sound fantastic in the cabin. Some albums sound flatter than others, but that comes down more to the mix itself than the system.</p>
-            <p>I do think Rivian could push more power to the subwoofer in future software updates. Certain songs feel like they're missing that final layer of low-end punch.</p>
-            <p>The dynamic glass roof is genuinely useful in Las Vegas heat. It borders on gimmicky, but I'll take anything that reduces cabin temperatures in summer. Everyone who rides in the vehicle seems impressed by it.</p>
-          </div>
-
-          <div class="article-section" id="tires">
-            <h2>Tires &amp; Wheel Choice</h2>
-            <p>Tire wear is still too early to judge, but I'm watching it closely and fully expect these tires to wear faster than traditional SUV tires.</p>
-            <p>When my vehicle was in for service, Rivian loaned me a Launch Edition R1T equipped with all-terrain tires and the Meridian audio system. Honestly, I thought the Sound &amp; Vision system in my R1S sounded noticeably better. The all-terrain tires were also much louder than expected — road noise was distracting enough that it reinforced my decision to stay with the Sport setup.</p>
-            <p>I still think the all-terrain setup looks better visually on the R1S, but with about eighty-five percent of my driving on pavement, ride comfort wins. The 22" Sport Dark wheels still look excellent.</p>
-         <p>UPDATE: I am currently driving a loaner (2025 R1S with 8500 miles) that is outfitted with the 20" all-terrains.  As much as I love the look, there is a noticable hum from the tread.  That sound coupled with the loss of range makes me very happy with the decision to go with the Sport Wheels.  The climate in Las Vegas and the type of camping I do just doesn't require the capability of the all-terrains.  Case closed.</p>
-          </div>
-
-          <div class="article-section" id="final-thoughts">
-            <h2>Final Thoughts</h2>
-            <p>My previous vehicles included a Jeep Grand Cherokee 4xe and a Land Rover Discovery. Both had their own issues, especially the Jeep. At this point I no longer expect any modern vehicle to be perfect — that includes EVs.</p>
-            <div class="verdict">
-              <div class="verdict-label">90-day verdict</div>
-              <p>Even with software quirks and early service visits, the R1S has been one of the most enjoyable vehicles I've owned. Every time I get behind the wheel it still feels special. The combination of acceleration, ride comfort, practicality, and driving character makes it hard to imagine going back to a traditional SUV. If the long-term experience remains this good, the R1S will very likely end up being the best vehicle I've ever owned.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="whats-next">
-          <h2>What's Next</h2>
-          <div class="next-grid">
-            <div class="next-item">6-month ownership update</div>
-            <div class="next-item">1-year ownership review</div>
-            <div class="next-item">Tire wear &amp; replacement costs</div>
-            <div class="next-item">Road trip charging experiences</div>
-            <div class="next-item">Software update impressions</div>
-            <div class="next-item">Service follow-up results</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SIDEBAR -->
-      <div class="review-sidebar">
-
-        <div class="card toc-card">
-          <div class="section-label">In this review</div>
-          <ul class="toc-list" id="tocList">
-            <li><a href="#delivery">Taking Delivery</a></li>
-            <li><a href="#service">Service Experience</a></li>
-            <li><a href="#charging">Charging</a></li>
-            <li><a href="#driving">Driving Experience</a></li>
-            <li><a href="#sound-vision">Sound &amp; Vision</a></li>
-            <li><a href="#tires">Tires &amp; Wheels</a></li>
-            <li><a href="#final-thoughts">Final Thoughts</a></li>
-          </ul>
-        </div>
-
-        <div class="sidebar-referral">
-          <div class="sidebar-referral-label">Ordering a Rivian?</div>
-          <div class="sidebar-referral-code">SCOTT4395475</div>
-          <div class="sidebar-referral-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging on qualifying orders.</div>
-          <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn" onclick="gtag('event','open_rivian_configurator')">
-            Configure Your Rivian →
-          </a>
-        </div>
-
-        <div class="card" style="padding:20px;">
-          <div class="section-label">Owner resources</div>
-          <div class="resource-row">
-            <div><div class="resource-name">Rivian Roamer</div><div class="resource-desc">VIN lookup, inventory</div></div>
-            <a href="https://rivianroamer.com" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
-          </div>
-          <div class="resource-row">
-            <div><div class="resource-name">Charging Map</div><div class="resource-desc">Adventure Network</div></div>
-            <a href="https://rivian.com/experience/charging#map" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
-          </div>
-          <div class="resource-row">
-            <div><div class="resource-name">Rivian Forums</div><div class="resource-desc">R1S, R1T, R2</div></div>
-            <a href="https://www.rivianforums.com/forum/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
-          </div>
-          <div class="resource-row">
-            <div><div class="resource-name">r/Rivian</div><div class="resource-desc">Reddit community</div></div>
-            <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
-          </div>
-        </div>
-
-      </div>
+    <div class="page-eyebrow">Owner Review &middot; 90 Days</div>
+    <h1 class="page-title">2026 Rivian R1S Dual Max</h1>
+    <p class="page-sub">Real-world impressions after daily driving in Las Vegas &mdash; charging, service, software quirks, Sound + Vision, and tire decisions.</p>
+    <div style="display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap;">
+      <span class="tag">Las Vegas</span>
+      <span class="tag">Dual Max</span>
+      <span class="tag">Sound + Vision</span>
+      <span class="tag">Darkout Package</span>
+      <span style="font-size:13px;color:var(--text-dim);">Published May 2026</span>
     </div>
   </div>
+</div>
 
-  <footer>
-    <div class="container">
-      <img src="/logo.png" alt="Rivian Rewards Hub">
-      Independent Rivian owner resource · Not affiliated with or endorsed by Rivian Automotive, Inc.
+<div class="container">
+  <div class="review-layout">
+
+    <!-- MAIN -->
+    <div>
+      <img src="/r1s.jpg" alt="2026 Rivian R1S Dual Max" class="review-hero-img">
+
+      <div class="spec-card">
+        <div class="section-label">Vehicle configuration</div>
+        <div class="spec-grid">
+          <div class="spec-row"><span class="spec-label">Model</span><span class="spec-value">R1S Dual Max</span></div>
+          <div class="spec-row"><span class="spec-label">Battery</span><span class="spec-value">Max Pack · 141.5 kWh</span></div>
+          <div class="spec-row"><span class="spec-label">Drive</span><span class="spec-value">Dual Motor AWD</span></div>
+          <div class="spec-row"><span class="spec-label">Upgrade</span><span class="spec-value">Performance · 665 hp</span></div>
+          <div class="spec-row"><span class="spec-label">Exterior</span><span class="spec-value">El Cap Granite</span></div>
+          <div class="spec-row"><span class="spec-label">Interior</span><span class="spec-value">Black Mtn + Dark Ash Wood</span></div>
+          <div class="spec-row"><span class="spec-label">Wheels</span><span class="spec-value">22" Sport Dark</span></div>
+          <div class="spec-row"><span class="spec-label">Packages</span><span class="spec-value">Darkout + Sound &amp; Vision</span></div>
+        </div>
+      </div>
+
+      <div class="article-body">
+
+        <div class="article-section" id="delivery">
+          <h2>Taking Delivery</h2>
+          <p>Delivery from the Las Vegas service center was smooth overall. Before pickup, I used a Rivian delivery inspection checklist that helped me go through the vehicle far more carefully than I probably would have on my own.</p>
+          <div class="callout">
+            <span class="callout-icon">📋</span>
+            <p>I highly recommend using a delivery checklist. <a href="https://www.rivianrewardshub.com/delivery/">Rivian Delivery Checklist &rarr;</a></p>
+          </div>
+          <p>With the help of the checklist, I noticed a few issues immediately &mdash; two doors needing alignment, a defect in part of the wood trim, and a heater issue where the cabin would not warm properly. Rivian made the service request process easy through the app. While I would have preferred a perfect delivery, having a clear process for documenting issues right away made a real difference.</p>
+        </div>
+
+        <div class="article-section" id="service">
+          <h2>Service Experience</h2>
+          <p>I visited the Rivian service center in Las Vegas for the initial repairs. The technician who came out at drop-off was genuinely helpful &mdash; pretty much the opposite of the stereotypical auto service experience.</p>
+          <p>The appointment was scheduled within about a week, and a Rivian rep confirmed the details a few days before. Door alignment and trim repairs were resolved quickly, but the HVAC issues kept the vehicle for six days total.</p>
+          <p>The heater situation has remained somewhat inconsistent. Sometimes it works perfectly. Other times it can take close to twenty minutes before warm air comes through. I&rsquo;d estimate it behaves correctly about sixty percent of the time. Rivian sent a mobile technician to continue troubleshooting. I&rsquo;ve also noticed a slight rattle from the front passenger door on rough roads or during bass-heavy music.</p>
+          <p>Even with those issues, the overall service experience has been straightforward.</p>
+        </div>
+
+        <div class="article-section" id="charging">
+          <h2>Charging</h2>
+          <p>There&rsquo;s a Rivian Adventure Network station about fifteen minutes from my house at Town Square Shopping Mall (6605 S Las Vegas Blvd). Every visit had open chargers available, even during late morning and afternoon hours.</p>
+          <p>Most of my charging happens at home. We&rsquo;re on NV Energy&rsquo;s EV Time of Use plan and charge exclusively between midnight and 8am. I use a Tesla Wall Charger on Level 2 and typically cap the battery around seventy percent for daily use.</p>
+          <p>I haven&rsquo;t taken the vehicle on a true road trip yet, so I can&rsquo;t fully speak to the long-distance experience. Having the native NACS port is a significant advantage &mdash; being able to use Tesla Superchargers without an adapter makes the ownership experience feel noticeably less stressful.</p>
+        </div>
+
+        <div class="article-section" id="driving">
+          <h2>Driving Experience</h2>
+          <p>The driving experience is easily the highlight. Incredibly smooth, quiet, and refined. I occasionally hear the air suspension compressor or the HVAC system working hard, but it hasn&rsquo;t been nearly as intrusive as some examples I&rsquo;ve seen online.</p>
+          <p>I enjoy the auto-kneel function when parking. I did disable automatic ride height adjustments while driving &mdash; though oddly the setting occasionally re-enables itself after getting back in the vehicle. Soft and hard resets haven&rsquo;t produced consistent results.</p>
+          <p>Another software quirk: the middle-row climate vents are sometimes active when the car starts, sometimes not. With children in car seats, I find myself manually checking rear airflow more often than I&rsquo;d like.</p>
+          <p>Software quirks aside, I absolutely love driving this vehicle. The acceleration with the Performance Upgrade is absurdly quick while remaining smooth and controlled. The turning radius is surprisingly tight for a vehicle this size.</p>
+        </div>
+
+        <div class="article-section" id="sound-vision">
+          <h2>Sound &amp; Vision Package</h2>
+          <p>This may be controversial, but I think the updated 2026 Sound &amp; Vision package sounds significantly better than many reviews suggest.</p>
+          <p>SiriusXM audio quality is average at best, but Apple Music with Dolby Atmos tracks sounds much better than expected. Albums like Pink Floyd&rsquo;s <em>Dark Side of the Moon</em>, Fleetwood Mac&rsquo;s <em>Rumours</em>, John Coltrane&rsquo;s <em>Blue Train</em>, and Illenium&rsquo;s <em>Odyssey</em> all sound fantastic in the cabin. Some albums sound flatter than others, but that comes down more to the mix itself than the system.</p>
+          <p>I do think Rivian could push more power to the subwoofer in future software updates. Certain songs feel like they&rsquo;re missing that final layer of low-end punch.</p>
+          <p>The dynamic glass roof is genuinely useful in Las Vegas heat. It borders on gimmicky, but I&rsquo;ll take anything that reduces cabin temperatures in summer. Everyone who rides in the vehicle seems impressed by it.</p>
+        </div>
+
+        <div class="article-section" id="tires">
+          <h2>Tires &amp; Wheel Choice</h2>
+          <p>Tire wear is still too early to judge, but I&rsquo;m watching it closely and fully expect these tires to wear faster than traditional SUV tires.</p>
+          <p>When my vehicle was in for service, Rivian loaned me a Launch Edition R1T equipped with all-terrain tires and the Meridian audio system. Honestly, I thought the Sound &amp; Vision system in my R1S sounded noticeably better. The all-terrain tires were also much louder than expected &mdash; road noise was distracting enough that it reinforced my decision to stay with the Sport setup.</p>
+          <p>I still think the all-terrain setup looks better visually on the R1S, but with about eighty-five percent of my driving on pavement, ride comfort wins. The 22" Sport Dark wheels still look excellent.</p>
+          <div class="update-callout">
+            <div class="update-callout-label">Update</div>
+            <p>I am currently driving a loaner (2025 R1S with 8,500 miles) outfitted with the 20" all-terrains. As much as I love the look, there is a noticeable hum from the tread. That sound coupled with the loss of range makes me very happy with my decision to go with the Sport wheels. The climate in Las Vegas and the type of camping I do just doesn&rsquo;t require the capability of the all-terrains. Case closed.</p>
+          </div>
+        </div>
+
+        <div class="article-section" id="final-thoughts">
+          <h2>Final Thoughts</h2>
+          <p>My previous vehicles included a Jeep Grand Cherokee 4xe and a Land Rover Discovery. Both had their own issues, especially the Jeep. At this point I no longer expect any modern vehicle to be perfect &mdash; that includes EVs.</p>
+          <div class="verdict">
+            <div class="verdict-label">90-day verdict</div>
+            <p>Even with software quirks and early service visits, the R1S has been one of the most enjoyable vehicles I&rsquo;ve owned. Every time I get behind the wheel it still feels special. The combination of acceleration, ride comfort, practicality, and driving character makes it hard to imagine going back to a traditional SUV. If the long-term experience remains this good, the R1S will very likely end up being the best vehicle I&rsquo;ve ever owned.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="whats-next">
+        <h2>What&rsquo;s Next</h2>
+        <div class="next-grid">
+          <div class="next-item">6-month ownership update</div>
+          <div class="next-item">1-year ownership review</div>
+          <div class="next-item">Tire wear &amp; replacement costs</div>
+          <div class="next-item">Road trip charging experiences</div>
+          <div class="next-item">Software update impressions</div>
+          <div class="next-item">Service follow-up results</div>
+        </div>
+      </div>
     </div>
-  </footer>
 
+    <!-- SIDEBAR -->
+    <div class="review-sidebar">
+
+      <!-- TOC -->
+      <div class="card toc-card">
+        <div class="section-label">In this review</div>
+        <ul class="toc-list" id="tocList">
+          <li><a href="#delivery">Taking Delivery</a></li>
+          <li><a href="#service">Service Experience</a></li>
+          <li><a href="#charging">Charging</a></li>
+          <li><a href="#driving">Driving Experience</a></li>
+          <li><a href="#sound-vision">Sound &amp; Vision</a></li>
+          <li><a href="#tires">Tires &amp; Wheels</a></li>
+          <li><a href="#final-thoughts">Final Thoughts</a></li>
+        </ul>
+      </div>
+
+      <!-- ACCESSORIES -->
+      <div class="card" style="padding:20px;">
+        <div class="section-label">Reviewed accessories</div>
+        <a href="/accessories/#t7shield-review" class="acc-sidebar-item">
+          <div class="acc-sidebar-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 12H3l9-9 9 9h-2M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
+          </div>
+          <div>
+            <div class="acc-sidebar-name">Gear Guard Storage</div>
+            <div class="acc-sidebar-desc">Samsung T7 Shield 1TB — heat resistance &amp; setup</div>
+          </div>
+        </a>
+        <a href="/accessories/#a2z-adapter" class="acc-sidebar-item">
+          <div class="acc-sidebar-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <div class="acc-sidebar-name">Charging Adapter</div>
+            <div class="acc-sidebar-desc">A2Z CCS1 adapter — real-world tested</div>
+          </div>
+        </a>
+        <a href="/accessories/#twcharger-review" class="acc-sidebar-item">
+          <div class="acc-sidebar-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="acc-sidebar-name">Interior Upgrade</div>
+            <div class="acc-sidebar-desc">TWRAPS wireless charger — MagSafe + Dark Ash Wood</div>
+          </div>
+        </a>
+        <a href="/accessories/" class="link-btn" style="margin-top:12px;font-size:13px;display:flex;justify-content:center;">All accessories &rarr;</a>
+      </div>
+
+      <!-- REFERRAL -->
+      <div class="sidebar-referral">
+        <div class="sidebar-referral-label">Ordering a Rivian?</div>
+        <div class="sidebar-referral-code">SCOTT4395475</div>
+        <div class="sidebar-referral-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging on qualifying orders.</div>
+        <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn" onclick="gtag('event','open_rivian_configurator')">Configure Your Rivian &rarr;</a>
+      </div>
+
+      <!-- RESOURCES -->
+      <div class="card" style="padding:20px;">
+        <div class="section-label">Owner resources</div>
+        <div class="resource-row">
+          <div><div class="resource-name">Rivian Roamer</div><div class="resource-desc">VIN lookup, inventory</div></div>
+          <a href="https://rivianroamer.com" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+        </div>
+        <div class="resource-row">
+          <div><div class="resource-name">Charging Map</div><div class="resource-desc">Adventure Network</div></div>
+          <a href="https://rivian.com/experience/charging#map" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+        </div>
+        <div class="resource-row">
+          <div><div class="resource-name">Rivian Forums</div><div class="resource-desc">R1S, R1T, R2</div></div>
+          <a href="https://www.rivianforums.com/forum/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+        </div>
+        <div class="resource-row">
+          <div><div class="resource-name">r/Rivian</div><div class="resource-desc">Reddit community</div></div>
+          <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <img src="/images/logo.svg" alt="Rivian Rewards Hub">
+    Independent Rivian owner resource &middot; Not affiliated with or endorsed by Rivian Automotive, Inc.
+  </div>
+</footer>
 
 <script src="/nav-init.js"></script>
 
 <script>
-
-    function stripCopyCode() {
-      gtag('event', 'copy_referral_code');
-      navigator.clipboard.writeText('SCOTT4395475').then(() => {
-        const el = document.getElementById('stripCopied');
-        el.style.display = 'inline';
-        setTimeout(() => {
-          window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
-          setTimeout(() => { el.style.display = 'none'; }, 3000);
-        }, 600);
-      });
-    }
-
-    /* Active TOC on scroll */
-    const sections = document.querySelectorAll('.article-section[id]');
-    const tocLinks = document.querySelectorAll('.toc-list a');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          tocLinks.forEach(a => a.classList.remove('toc-active'));
-          const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
-          if (active) active.classList.add('toc-active');
-        }
-      });
-    }, { rootMargin: '-20% 0px -70% 0px' });
-    sections.forEach(s => observer.observe(s));
-  </script>
-
-  <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-    document.addEventListener('keydown', e => {
-      if ((e.ctrlKey || e.metaKey) && ['u','s','c','x'].includes(e.key.toLowerCase())) e.preventDefault();
+  function stripCopyCode(){
+    gtag('event','copy_referral_code');
+    navigator.clipboard.writeText('SCOTT4395475').then(()=>{
+      const el=document.getElementById('stripCopied');
+      el.style.display='inline';
+      setTimeout(()=>{
+        window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475','_blank');
+        setTimeout(()=>{el.style.display='none';},3000);
+      },600);
     });
-  </script>
+  }
+
+  /* Active TOC on scroll */
+  const sections=document.querySelectorAll('.article-section[id]');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        tocLinks.forEach(a=>a.classList.remove('toc-active'));
+        const active=document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if(active)active.classList.add('toc-active');
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  sections.forEach(s=>observer.observe(s));
+</script>
+
+<script>
+  document.addEventListener('contextmenu',e=>e.preventDefault());
+  document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG')e.preventDefault();});
+  document.addEventListener('keydown',e=>{
+    if((e.ctrlKey||e.metaKey)&&['u','s','c','x'].includes(e.key.toLowerCase()))e.preventDefault();
+  });
+</script>
 
 </body>
 </html>
