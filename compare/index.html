@@ -17,6 +17,7 @@
   <meta property="og:type" content="website"/>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -176,30 +177,7 @@
       font-weight: 700;
       color: var(--green);
     }
-.vehicle-configure {
-  margin-top: 16px;
-}
 
-.vehicle-configure-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--green);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 999px;
-  padding: 11px 18px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  transition: opacity .15s ease, transform .15s ease;
-}
-
-.vehicle-configure-btn:hover {
-  opacity: .92;
-  transform: translateY(-1px);
-}
     .compare-section {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -315,12 +293,49 @@
 
     }
 
+    .vehicle-configure { margin-top: 16px; }
+
+    .vehicle-configure-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      transition: opacity .15s ease, transform .15s ease;
+    }
+
+    .vehicle-configure-btn:hover {
+      opacity: .92;
+      transform: translateY(-1px);
+    }
+
   </style>
 </head>
 
 <body>
 
 <div id="site-nav"></div>
+
+<!-- REFERRAL STRIP -->
+<div class="referral-strip">
+  <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
+    <span class="strip-label">Referral Code</span>
+    <span class="strip-code">SCOTT4395475</span>
+    <span class="strip-divider"></span>
+    <span class="strip-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
+    <button class="strip-btn" onclick="stripCopyCode()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      Copy
+    </button>
+    <span class="strip-copied" id="stripCopied">✓ Copied!</span>
+  </div>
+</div>
 
 <div class="page-header">
   <div class="container">
@@ -428,45 +443,25 @@
     </div>
 
     <!-- HEADER -->
-<div class="compare-header">
-
-  <div class="compare-header-empty"></div>
-
-  <div class="compare-header-col">
-    <div class="vehicle-name">R1S</div>
-    <div class="vehicle-config" id="r1sConfigText"></div>
-    <div class="vehicle-price" id="r1sPriceHeader"></div>
-
-    <div class="vehicle-configure">
-      <a
-        href="https://rivian.com/configurations/builder?MODEL=R1S&reprCode=SCOTT4395475"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="vehicle-configure-btn"
-      >
-        Configure R1S →
-      </a>
+    <div class="compare-header">
+      <div class="compare-header-empty"></div>
+      <div class="compare-header-col">
+        <div class="vehicle-name">R1S</div>
+        <div class="vehicle-config" id="r1sConfigText"></div>
+        <div class="vehicle-price" id="r1sPriceHeader"></div>
+        <div class="vehicle-configure">
+          <a href="https://rivian.com/configurations/builder?MODEL=R1S&reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="vehicle-configure-btn">Configure R1S &rarr;</a>
+        </div>
+      </div>
+      <div class="compare-header-col">
+        <div class="vehicle-name">R2</div>
+        <div class="vehicle-config" id="r2ConfigText"></div>
+        <div class="vehicle-price" id="r2PriceHeader"></div>
+        <div class="vehicle-configure">
+          <a href="https://rivian.com/configurations/builder/r2?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="vehicle-configure-btn">Configure R2 &rarr;</a>
+        </div>
+      </div>
     </div>
-  </div>
-
- <div class="compare-header-col">
-    <div class="vehicle-name">R2</div>
-    <div class="vehicle-config" id="r1sConfigText"></div>
-    <div class="vehicle-price" id="r1sPriceHeader"></div>
-
-    <div class="vehicle-configure">
-      <a
-        href="https://rivian.com/configurations/builder/r2?reprCode=SCOTT4395475"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="vehicle-configure-btn"
-      >
-        Configure R2 →
-      </a>
-    </div>
-  </div>
-
-</div>
 
     <!-- PRICE & RANGE -->
     <div class="compare-section rounded">
@@ -553,7 +548,7 @@
       <div class="compare-row">
         <div class="compare-label">Suspension</div>
         <div class="compare-cell winner">Adaptive air suspension</div>
-        <div class="compare-cell">Semi-active (Perf.) / Fixed (Prem.)</div>
+        <div class="compare-cell" id="r2-susp">Semi-active (Perf.) / Fixed (Prem.)</div>
       </div>
 
       <div class="compare-row">
@@ -561,12 +556,7 @@
         <div class="compare-cell winner">43 in</div>
         <div class="compare-cell">~20 in</div>
       </div>
-      
-<div class="compare-row">
-  <div class="compare-label">Total storage</div>
-  <div class="compare-cell winner">104.7 cu ft</div>
-  <div class="compare-cell">90.1 cu ft</div>
-</div>
+
       <div class="compare-row">
         <div class="compare-label">Frunk storage</div>
         <div class="compare-cell winner">11.1 cu ft</div>
@@ -574,42 +564,7 @@
       </div>
 
     </div>
-    
-<!-- SIZE -->
-<div class="compare-section">
-  <div class="compare-section-header">Size</div>
 
-  <div class="compare-row">
-    <div class="compare-label">Length</div>
-    <div class="compare-cell winner">200.8 in</div>
-    <div class="compare-cell">185.9 in</div>
-  </div>
-
-  <div class="compare-row">
-    <div class="compare-label">Width</div>
-    <div class="compare-cell winner">82.0 in</div>
-    <div class="compare-cell">78.1 in</div>
-  </div>
-
-    <div class="compare-row">
-    <div class="compare-label">Height</div>
-    <div class="compare-cell winner">77.3 in</div>
-    <div class="compare-cell">66.9 in</div>
-  </div>
-
-  <div class="compare-row">
-  <div class="compare-label">Curb weight</div>
-  <div class="compare-cell winner" id="r1s-weight"></div>
-  <div class="compare-cell">~5,200 lb est.</div>
-</div>
-
-  <div class="compare-row">
-    <div class="compare-label">Wheelbase</div>
-    <div class="compare-cell winner">121.1 in</div>
-    <div class="compare-cell">115.6 in</div>
-  </div>
-
-</div>
     <!-- TECH -->
     <div class="compare-section">
       <div class="compare-section-header">Tech & Features</div>
@@ -657,30 +612,39 @@
 
 <script>
 
+  // ── REFERRAL STRIP ────────────────────────
+  function stripCopyCode() {
+    gtag('event', 'copy_referral_code');
+    navigator.clipboard.writeText('SCOTT4395475').then(() => {
+      const el = document.getElementById('stripCopied');
+      el.style.display = 'inline';
+      setTimeout(() => {
+        window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
+        setTimeout(() => { el.style.display = 'none'; }, 3000);
+      }, 600);
+    });
+  }
+
   // ── PRICING ──────────────────────────────
 
-  // Base prices (excl. destination, options)
-  // Source: Rivian.com / confirmed press pricing May 2026
   const BASE_PRICE = {
     dual: {
-      standard: 76990,   // Dual Standard — no Performance option
-      large:    83990,   // Dual Large base
-      max:      90990,   // Dual Max base
+      standard: 76990,
+      large:    83990,
+      max:      90990,
     },
     tri:  { max: 106990 },
     quad: { max: 121990 },
   };
 
-  const PERF_UPGRADE = 5000; // Available on Large and Max only
+  const PERF_UPGRADE = 5000;
 
   const WHEEL_ADDER = {
-    '20':      3500,  // 20" AT upgrade cost
-    '22sport': 1800,  // 22" Sport upgrade cost
-    '22range': 0,     // 22" Range is standard/included
+    '20':      3500,
+    '22sport': 1800,
+    '22range': 0,
   };
 
-  // Confirmed specs per powertrain
-  // Sources: EPA, Rivian, U.S. News, Car and Driver
   const R1S_SPECS = {
     dual: {
       standard: {
@@ -699,8 +663,6 @@
     quad: { max: { performance: { hp: 1025, torque: 1198, zero60: 2.6, charge: '220 kW' } } },
   };
 
-  // EPA range per battery (22" Range/Aero baseline — EPA test configuration)
-  // Sources: EPA / U.S. News / Rivian
   const R1S_RANGE = {
     dual: { standard: 270, large: 329, max: 410 },
     tri:  { max: 371 },
@@ -709,30 +671,24 @@
 
   const R1S_BATTERY = {
     standard: '92.5 kWh',
-    large:    '108.5 kWh',   // CORRECTED from 109.4
+    large:    '108.5 kWh',
     max:      '141.5 kWh',
   };
 
-  // Wheel range adjustments vs EPA baseline (22" Range/Aero)
   const R1S_WHEEL_ADJ = {
     '22range': 0,
     '22sport': -8,
     '20':     -18,
   };
 
-  // R2 specs — source: rivian.com live spec page, May 2026
-  // Performance standard wheel: 21" Liquid Tungsten All-Season (330 mi EPA)
-  // Performance optional wheel: 20" Black Sand All-Terrain (range not yet EPA-rated)
-  // Premium standard wheel: 20" Bicolor Carbon All-Season (330 mi EPA)
-  // Premium optional wheel: 21" Liquid Tungsten All-Season (range not yet EPA-rated)
   const R2_SPECS = {
     performance: {
       hp: 656, torque: 609, zero60: 3.6, price: 57990,
-      stdWheel: '21', stdRange: 330, altRange: 315, // 20" AT est.
+      stdWheel: '21', stdRange: 330, altRange: 315,
     },
     premium: {
       hp: 450, torque: 537, zero60: 4.6, price: 53990,
-      stdWheel: '20', stdRange: 330, altRange: 332, // 21" all-season est. (similar range)
+      stdWheel: '20', stdRange: 330, altRange: 332,
     },
   };
 
@@ -760,7 +716,6 @@
     const perf = document.getElementById('r1sPerformance');
     const perfGroup = document.getElementById('perfGroup');
 
-    // Tri and Quad: lock to Max, lock to Performance
     if (drive === 'tri' || drive === 'quad') {
       battery.value = 'max';
       battery.disabled = true;
@@ -771,7 +726,6 @@
       battery.disabled = false;
       perf.disabled = false;
       perfGroup.style.opacity = '1';
-      // Standard pack: no Performance option
       if (battery.value === 'standard') {
         perf.value = 'standard';
         perf.disabled = true;
@@ -781,7 +735,6 @@
     updateComparison();
   }
 
-  // Also lock perf when battery changes to Standard
   document.getElementById('r1sBattery').addEventListener('change', function() {
     const drive = document.getElementById('r1sDrive').value;
     const perf = document.getElementById('r1sPerformance');
@@ -807,14 +760,7 @@
     const wheels = document.getElementById('r1sWheels').value;
     const r2trim = document.getElementById('r2Trim').value;
 
-    // ── R1S ──
-
-    let r1sSpecs;
-    let r1sDrivetrain;
-    let r1sBatteryLabel;
-    let r1sBasePrice;
-    let r1sPerfLabel;
-    let r1sConfigLabel;
+    let r1sSpecs, r1sDrivetrain, r1sBatteryLabel, r1sBasePrice, r1sPerfLabel, r1sConfigLabel;
 
     if (drive === 'dual') {
       r1sSpecs = R1S_SPECS.dual[battery][perf] || R1S_SPECS.dual[battery].standard;
@@ -842,28 +788,6 @@
     const r1sRange = (drive === 'dual'
       ? R1S_RANGE.dual[battery]
       : R1S_RANGE[drive].max) + R1S_WHEEL_ADJ[wheels];
-    
-// ── WEIGHT ──
-
-let r1sWeight;
-
-if (drive === 'dual') {
-  if (battery === 'standard') {
-    r1sWeight = '~6,450 lb';
-  } else if (battery === 'large') {
-    r1sWeight = '~6,700 lb';
-  } else {
-    r1sWeight = '~6,900 lb';
-  }
-} else if (drive === 'tri') {
-  r1sWeight = '~6,950 lb';
-} else {
-  r1sWeight = '~7,000 lb';
-}
-
-document.getElementById('r1s-weight').textContent = r1sWeight;
-    
-    // ── R2 ──
 
     const r2 = R2_SPECS[r2trim];
     const useAlt = document.getElementById('r2Wheels').value === 'alt';
@@ -871,20 +795,14 @@ document.getElementById('r1s-weight').textContent = r1sWeight;
     const r2WheelLabel = r2trim === 'performance'
       ? (useAlt ? '20" Black Sand All-Terrain' : '21" Liquid Tungsten All-Season')
       : (useAlt ? '21" Liquid Tungsten All-Season' : '20" Bicolor Carbon All-Season');
-    const r2RangeLabel = useAlt
-      ? `~${r2Range} mi est.`
-      : `${r2Range} mi EPA`;
+    const r2RangeLabel = useAlt ? `~${r2Range} mi est.` : `${r2Range} mi EPA`;
     const r2BatteryLabel = '87.9 kWh';
     const r2ConfigLabel = `${r2trim.charAt(0).toUpperCase() + r2trim.slice(1)} · ${r2WheelLabel}`;
-
-    // ── HEADER ──
 
     document.getElementById('r1sConfigText').textContent = r1sConfigLabel;
     document.getElementById('r2ConfigText').textContent = r2ConfigLabel;
     document.getElementById('r1sPriceHeader').textContent = `$${fmt(r1sBasePrice)}`;
     document.getElementById('r2PriceHeader').textContent = `Est. $${fmt(r2.price)}`;
-
-    // ── PRICE ──
 
     const savings = r1sBasePrice - r2.price;
     document.getElementById('r1s-price').className = 'compare-cell';
@@ -893,72 +811,61 @@ document.getElementById('r1s-weight').textContent = r1sWeight;
     document.getElementById('r2-price').innerHTML =
       `Est. $${fmt(r2.price)} <span class="badge badge-better">$${Math.round(savings/1000)}K less</span>`;
 
-    // ── RANGE ──
-
     const r1sWins = r1sRange >= r2Range;
     setCell('r1s-range', `${r1sRange} mi`, r1sWins);
     document.getElementById('r2-range').className = r1sWins ? 'compare-cell' : 'compare-cell winner';
     document.getElementById('r2-range').textContent = r2RangeLabel;
-
-    // ── BATTERY ──
 
     document.getElementById('r1s-battery').className = 'compare-cell winner';
     document.getElementById('r1s-battery').textContent = r1sBatteryLabel;
     document.getElementById('r2-battery').className = 'compare-cell';
     document.getElementById('r2-battery').textContent = `~${r2BatteryLabel}`;
 
-    // ── DC CHARGE ──
-
     document.getElementById('r1s-charge').className = 'compare-cell winner';
     document.getElementById('r1s-charge').textContent = r1sSpecs.charge;
     document.getElementById('r2-charge').className = 'compare-cell';
     document.getElementById('r2-charge').textContent = '~210 kW';
-
-    // ── HP ──
 
     const r1sHpWins = r1sSpecs.hp >= r2.hp;
     setCell('r1s-hp', `${fmt(r1sSpecs.hp)} hp`, r1sHpWins);
     document.getElementById('r2-hp').className = r1sHpWins ? 'compare-cell' : 'compare-cell winner';
     document.getElementById('r2-hp').textContent = `${fmt(r2.hp)} hp`;
 
-    // ── TORQUE ──
-
     const r1sTqWins = r1sSpecs.torque >= r2.torque;
     setCell('r1s-torque', `${fmt(r1sSpecs.torque)} lb-ft`, r1sTqWins);
     document.getElementById('r2-torque').className = r1sTqWins ? 'compare-cell' : 'compare-cell winner';
     document.getElementById('r2-torque').textContent = `${fmt(r2.torque)} lb-ft`;
-
-    // ── 0-60 ──
 
     const r1s060Wins = r1sSpecs.zero60 <= r2.zero60;
     setCell('r1s-060', `${r1sSpecs.zero60} sec`, r1s060Wins);
     document.getElementById('r2-060').className = r1s060Wins ? 'compare-cell' : 'compare-cell winner';
     document.getElementById('r2-060').textContent = `${r2.zero60} sec`;
 
-    // ── DRIVETRAIN ──
-
     setEqual('r1s-drivetrain', r1sDrivetrain);
     setEqual('r2-drivetrain', 'Dual Motor AWD');
 
-    // ── SUSPENSION ROW ── update dynamically for R2
     const suspCell = document.querySelector('#r2-susp');
     if (suspCell) {
       suspCell.textContent = r2trim === 'performance'
         ? 'Semi-active (Performance)'
         : 'Fixed suspension (Premium)';
     }
-
   }
 
   // ── NAV ──────────────────────────────────
 
- </script>
+  fetch('/nav.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('site-nav').innerHTML = html;
+      const path = window.location.pathname;
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href !== '/' && path.startsWith(href)) a.classList.add('active');
+      });
+    })
+    .catch(() => {});
 
-<script src="/nav-init.js"></script>
-
-<script>
-
-  // INIT
   updateComparison();
 
 </script>
