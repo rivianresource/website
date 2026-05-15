@@ -1,72 +1,275 @@
 [
   {
     "version": "2026.15",
-    "date": "May 2026",
+    "name": "Hey Rivian",
+    "date": "May 11, 2026",
     "type": "major",
-    "rollout": "Rolling deployment",
-    "categories": ["ai", "autonomy", "infotainment"],
     "highlights": [
-      "Introduces Rivian Assistant AI voice assistant",
-      "Improved smoothness for Lane Change on Command and Universal Hands-Free",
-      "Improved performance and reliability of remote commands from the Rivian mobile app",
-      "Improved driver assistance camera defrost performance",
-      "Fixed rare passive locking issue with multiple digital keys present"
-    ]
+      "Rivian Assistant — AI voice assistant activated by \"Hey Rivian\" or long-pressing the left thumbwheel",
+      "Profile PIN security — lock your driver profile with a 4–6 digit PIN via the app",
+      "Current road name now displayed on the navigation map",
+      "Improved defrost for front driver assistance cameras",
+      "Gen 2: Improved Lane Change on Command and Universal Hands-Free smoothness"
+    ],
+    "rollout": "Rolling out"
   },
   {
     "version": "2026.07",
-    "date": "April 2026",
-    "type": "minor",
-    "rollout": "99% rolled out",
-    "categories": ["infotainment", "connectivity", "fixes"],
+    "name": "Improved Navigation",
+    "date": "April 9, 2026",
+    "type": "major",
     "highlights": [
-      "Improved infotainment app launch speed and responsiveness",
-      "Improved Wi-Fi, cellular, and app connectivity reliability",
-      "Added Apple Music streaming quality settings",
-      "Improved in-vehicle connectivity status indicators",
-      "General system stability and performance improvements"
-    ]
+      "Rear Defrost now automatically activates front wiper heating element",
+      "Apple Music adds Dolby Audio support and adaptive Streaming Quality setting",
+      "Gen 2: Fixed range estimate fluctuations and reduced highway steering wheel vibrations",
+      "Improved general infotainment stability and app launch speed"
+    ],
+    "rollout": "Released"
   },
   {
     "version": "2026.03",
-    "date": "February 2026",
+    "name": "Cold Snap",
+    "date": "February 19, 2026",
     "type": "major",
-    "rollout": "Completed",
-    "categories": ["cold-weather", "charging", "mobile-app"],
     "highlights": [
-      "Cold weather range visibility improvements",
-      "Battery energy availability indicators added",
-      "Expanded cold weather range notifications",
-      "Apple Watch Rivian app support introduced",
-      "Improved charging preparation visibility"
-    ]
+      "Cold weather range loss notifications — battery shading shows unavailable energy",
+      "Apple Watch companion app for remote vehicle access and control",
+      "Launch mode for Performance Dual and Quad-Motor vehicles",
+      "Sport mode now available on all Dual-Motor variants",
+      "Unreal Engine 5.5 upgrade for smoother 3D vehicle renderings"
+    ],
+    "rollout": "Released"
   },
   {
     "version": "2025.46",
-    "date": "December 2025",
+    "name": "Wide Open",
+    "date": "December 18, 2025",
     "type": "major",
-    "rollout": "Completed",
-    "categories": ["autonomy", "digital-key", "off-road"],
     "highlights": [
-      "Universal Hands-Free expanded to more supported roads",
-      "New Autonomy Drive Styles settings added",
-      "Rivian Digital Key support added with Apple Wallet and Android support",
-      "RAD Tuner custom off-road drive mode introduced",
-      "Kick Turn introduced for Quad-Motor vehicles"
-    ]
+      "Driver display now customizable — swap between Driver Assistance and Maps views",
+      "Universal Hands-Free expands to 3.5M+ miles of North American roads (Gen 2)",
+      "Rivian Digital Key via iPhone Wallet, Google Pixel, and Samsung (Gen 2)",
+      "RAD Tuner custom drive modes for Quad-Motor vehicles",
+      "Kick Turn — pivot in place or tight turns for Quad-Motor off-road"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2025.38",
+    "name": "Spooky Swamp",
+    "date": "October 21, 2025",
+    "type": "major",
+    "highlights": [
+      "Climate Hold — runs climate for a set time after exiting",
+      "Auto cabin ventilation on warm days to prevent extreme cabin temps",
+      "Plug and Charge support for Electrify America and IONNA chargers",
+      "Spooky Swamp Halloween car costume mode",
+      "Improved Gear Guard reliability and thumbnail display fixes"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2025.34",
+    "name": "Energy Unlocked",
+    "date": "September 25, 2025",
+    "type": "major",
+    "highlights": [
+      "Co-Steer — adjust position within lane while Highway Assist is active (Gen 2)",
+      "Enhanced Highway Assist availability up 50% on urban/suburban roads (Gen 2)",
+      "Smart Charging Schedule reduces home charging costs by 20%+ automatically",
+      "Custom equalizer profiles — save and rename audio presets",
+      "Gen 2: Refined bass and Dolby Atmos blending improvements"
+    ],
+    "rollout": "Released"
   },
   {
     "version": "2025.26",
-    "date": "August 2025",
+    "name": "Peak Response",
+    "date": "August 19, 2025",
     "type": "major",
-    "rollout": "Completed",
-    "categories": ["autonomy", "charging"],
     "highlights": [
-      "Enhanced Gen 2 perception system improvements",
-      "Improved traffic detection and lane handling",
-      "Expanded battery conditioning support",
-      "Improved navigation responsiveness",
-      "Steering improvements for Sport and Off-Road modes"
-    ]
+      "Enhanced perception upgrades for autonomous and active safety features (Gen 2)",
+      "Improved cut-in and merge detection with quicker reaction times (Gen 2)",
+      "Enhanced steering calibrations for Sport and Off-Road drive modes",
+      "Alexa now works with YouTube",
+      "Improved cabin climate in humid conditions (Gen 2)"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2025.22",
+    "name": "Route Awakening",
+    "date": "July 15, 2025",
+    "type": "major",
+    "highlights": [
+      "Rivian Navigation with Google Maps — live traffic, incidents, satellite imagery",
+      "All New Launch Cam for Tri/Quad-Motor vehicles with telemetry overlay (Gen 2)",
+      "New Vehicle Dynamics Handling Control for better ride comfort and roll control (Gen 2)",
+      "Rivian Adventure Network off-peak pricing now live",
+      "Driver Assistance now works when electrical accessory is on tow hitch"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2025.18",
+    "name": "Powered Up, Locked Down",
+    "date": "June 3, 2025",
+    "type": "major",
+    "highlights": [
+      "Multi-factor Drive — require app authentication before starting vehicle",
+      "New Rivian Energy app with usage monitoring, charge curve visualization",
+      "On-demand battery preconditioning for DC fast charging",
+      "Improved DC fast charging for Max, Standard, and Large packs (Gen 2)",
+      "Enhanced driver display with more detailed vehicle models"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2025.14",
+    "name": "AI DJ & RAP Updates",
+    "date": "May 6, 2025",
+    "type": "major",
+    "highlights": [
+      "Spotify DJ AI-based song recommendations with artist commentary",
+      "Media apps remember recent searches across driver profile switches",
+      "Highway Assist auto-updates for road construction via Wi-Fi (Gen 1)",
+      "Driver profiles now save personal navigation destinations",
+      "Improved proximity-based locking and network handoff reliability"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2025.10",
+    "name": "Gen 1 RAP & Watchful Gear Guard",
+    "date": "April 8, 2025",
+    "type": "major",
+    "highlights": [
+      "Smart Turn Signal automation after manual lane changes (Gen 1)",
+      "Enhanced Gear Guard now records objects — not just people",
+      "Critical Tire Pressure Alerts for unsafe pressure levels",
+      "Powered tonneau cover v2 fix for opening issues (Gen 2)",
+      "Faster cold weather Level 2 charging and expanded SiriusXM features"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2025.06",
+    "name": "Highway Assist & Wheel Swap",
+    "date": "March 11, 2025",
+    "type": "major",
+    "highlights": [
+      "Enhanced Highway Assist with hands-free driving and Driver Attention Detection (Gen 2)",
+      "New Go Chime alerts when vehicle ahead drives away (Gen 2)",
+      "Wheel and Tire Swap — save up to 6 configurations with range estimates",
+      "New Rally drive mode for Performance Dual-Motor vehicles",
+      "Rivian Digital Key via iPhone Wallet and Google native (Gen 2)"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2024.51",
+    "name": "Rise & Shine",
+    "date": "January 23, 2025",
+    "type": "major",
+    "highlights": [
+      "Smart Turn Signal automatically cancels after manual lane changes (Gen 2)",
+      "Cold weather improvements — front fascia heating and extended pre-conditioning",
+      "Improved charging efficiency for Dual Large and Max packs (Gen 2)",
+      "Navigation favorites now sync with driver profiles and mobile app",
+      "Apple Music volume and Dolby Atmos track switching fixed"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2024.47",
+    "name": "Holiday Casting",
+    "date": "December 18, 2024",
+    "type": "major",
+    "highlights": [
+      "Google Cast and YouTube video streaming via new Video app",
+      "Smart seat climate icons auto-switch between Heat and Ventilate",
+      "Key fob support via app 2.16+ (Gen 2)",
+      "Improved DC fast charging for Large/Max packs (Gen 2)",
+      "Holiday lighting and sounds for the season"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2024.43",
+    "name": "Audio Profile Linking",
+    "date": "November 22, 2024",
+    "type": "major",
+    "highlights": [
+      "Media streaming accounts now link to driver profiles",
+      "New lock sounds — bluebird chirp or owl hoot",
+      "Google Gemini AI summaries for navigation places (Connect+)",
+      "Improved Gear Guard storage notifications",
+      "General infotainment stability improvements"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2024.39",
+    "name": "Halloween Mode",
+    "date": "October 2024",
+    "type": "major",
+    "highlights": [
+      "Halloween car costume — K.I.T.T., DeLorean, or haunted house modes",
+      "New navigation maneuver panel and improved driver display layout",
+      "TIDAL Dolby Atmos support",
+      "Automatic front camera during Park Assist",
+      "Improved Highway Assist steering smoothness (Gen 2)"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2024.35",
+    "name": "Gear Guard Live",
+    "date": "September 2024",
+    "type": "minor",
+    "highlights": [
+      "Gear Guard Live view added"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2024.31",
+    "name": "Accent Lighting",
+    "date": "August 2024",
+    "type": "minor",
+    "highlights": [
+      "Accent lighting improvements"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2024.27",
+    "name": "Connect+",
+    "date": "July 2024",
+    "type": "minor",
+    "highlights": [
+      "Connect+ subscription service introduced"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2024.19",
+    "name": "UI Refresh",
+    "date": "May 2024",
+    "type": "minor",
+    "highlights": [
+      "Major UI refresh across center display"
+    ],
+    "rollout": "Released"
+  },
+  {
+    "version": "2024.11",
+    "name": "Charging Score",
+    "date": "March 2024",
+    "type": "minor",
+    "highlights": [
+      "Charging Score feature introduced"
+    ],
+    "rollout": "Released"
   }
 ]
