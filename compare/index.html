@@ -421,7 +421,7 @@
 
           <div class="builder-group">
             <div class="builder-label">Trim</div>
-            <select class="builder-select" id="r2Trim" onchange="updateComparison()">
+            <select class="builder-select" id="r2Trim" onchange="onTrimChange()">
               <option value="premium">Premium — 450 hp · $53,990</option>
               <option value="performance" selected>Performance — 656 hp · $57,990</option>
             </select>
@@ -430,13 +430,13 @@
           <div class="builder-group">
             <div class="builder-label">Wheels</div>
             <select class="builder-select" id="r2Wheels" onchange="updateComparison()">
-              <option value="std" selected>Standard wheels (included)</option>
-              <option value="alt">Alternate wheels (+$1,000–$2,000)</option>
+              <option value="std" selected>21" Liquid Tungsten All-Season (included · 335 mi EPA)</option>
+              <option value="alt">20" Black Sand All-Terrain +$1,000 · 314 mi EPA</option>
             </select>
           </div>
 
           <div class="builder-note" id="r2WheelNote">
-            Performance standard: 21" Liquid Tungsten All-Season (335 mi EPA). Optional: 20" Black Sand All-Terrain +$1,000 (314 mi EPA). Premium standard: 20" Bicolor Carbon All-Season (330 mi EPA). Optional: 21" Liquid Tungsten All-Season +$2,000 (EPA range not yet published). Tow hooks are standard on both trims; towing requires optional tow package (~$1,500).
+            Tow hooks are standard on both trims. Towing up to 4,400 lb requires the optional tow package (~$1,500). EPA range on the Premium 21" upgrade not yet published by Rivian.
           </div>
 
         </div>
@@ -791,6 +791,23 @@
     updateComparison();
   });
 
+  // ── R2 TRIM CHANGE ───────────────────────
+
+  function onTrimChange() {
+    const trim = document.getElementById('r2Trim').value;
+    const wheelSel = document.getElementById('r2Wheels');
+    if (trim === 'performance') {
+      wheelSel.innerHTML = `
+        <option value="std" selected>21" Liquid Tungsten All-Season (included · 335 mi EPA)</option>
+        <option value="alt">20" Black Sand All-Terrain +$1,000 · 314 mi EPA</option>`;
+    } else {
+      wheelSel.innerHTML = `
+        <option value="std" selected>20" Bicolor Carbon All-Season (included · 330 mi EPA)</option>
+        <option value="alt">21" Liquid Tungsten All-Season +$2,000 · EPA range not yet published</option>`;
+    }
+    updateComparison();
+  }
+
   // ── MAIN UPDATE ──────────────────────────
 
   function updateComparison() {
@@ -904,23 +921,12 @@
     }
   }
 
-  // ── NAV ──────────────────────────────────
-
-  fetch('/nav.html')
-    .then(r => r.text())
-    .then(html => {
-      document.getElementById('site-nav').innerHTML = html;
-      const path = window.location.pathname;
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        const href = a.getAttribute('href');
-        if (href !== '/' && path.startsWith(href)) a.classList.add('active');
-      });
-    })
-    .catch(() => {});
-
   updateComparison();
 
 </script>
+
+<script src="/nav-init.js"></script>
+
 
 </body>
 </html>
