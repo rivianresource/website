@@ -3,7 +3,9 @@
     "version": "2026.15",
     "name": "Hey Rivian",
     "date": "May 11, 2026",
+    "firstSpotted": "May 8, 2026",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Rivian Assistant — AI voice assistant activated by \"Hey Rivian\" or long-pressing the left thumbwheel",
       "Profile PIN security — lock your driver profile with a 4–6 digit PIN via the app",
@@ -11,18 +13,27 @@
       "Improved defrost for front driver assistance cameras",
       "Gen 2: Improved Lane Change on Command and Universal Hands-Free smoothness"
     ],
+    "bugs": [
+      "Some owners report Hey Rivian activating unintentionally at highway speed",
+      "Profile PIN prompt occasionally appears on every startup even when not set"
+    ],
     "rollout": "Rolling out"
   },
   {
     "version": "2026.07",
     "name": "Improved Navigation",
     "date": "April 9, 2026",
+    "firstSpotted": "April 5, 2026",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Rear Defrost now automatically activates front wiper heating element",
       "Apple Music adds Dolby Audio support and adaptive Streaming Quality setting",
       "Gen 2: Fixed range estimate fluctuations and reduced highway steering wheel vibrations",
       "Improved general infotainment stability and app launch speed"
+    ],
+    "bugs": [
+      "Apple Music Dolby Audio toggle occasionally resets to off after vehicle restart"
     ],
     "rollout": "Released"
   },
@@ -30,7 +41,9 @@
     "version": "2026.03",
     "name": "Cold Snap",
     "date": "February 19, 2026",
+    "firstSpotted": "February 14, 2026",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Cold weather range loss notifications — battery shading shows unavailable energy",
       "Apple Watch companion app for remote vehicle access and control",
@@ -38,13 +51,19 @@
       "Sport mode now available on all Dual-Motor variants",
       "Unreal Engine 5.5 upgrade for smoother 3D vehicle renderings"
     ],
+    "bugs": [
+      "Launch mode unavailable for some Performance Dual owners until a second OTA push resolved it",
+      "Apple Watch app requires re-pairing after some vehicle restarts"
+    ],
     "rollout": "Released"
   },
   {
     "version": "2025.46",
     "name": "Wide Open",
     "date": "December 18, 2025",
+    "firstSpotted": "December 12, 2025",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Driver display now customizable — swap between Driver Assistance and Maps views",
       "Universal Hands-Free expands to 3.5M+ miles of North American roads (Gen 2)",
@@ -52,13 +71,19 @@
       "RAD Tuner custom drive modes for Quad-Motor vehicles",
       "Kick Turn — pivot in place or tight turns for Quad-Motor off-road"
     ],
+    "bugs": [
+      "Digital Key occasionally fails to authenticate on cold mornings — resolved in 2026.07",
+      "RAD Tuner settings reset to default after OTA reboot for some users"
+    ],
     "rollout": "Released"
   },
   {
     "version": "2025.38",
     "name": "Spooky Swamp",
     "date": "October 21, 2025",
+    "firstSpotted": "October 16, 2025",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Climate Hold — runs climate for a set time after exiting",
       "Auto cabin ventilation on warm days to prevent extreme cabin temps",
@@ -66,13 +91,18 @@
       "Spooky Swamp Halloween car costume mode",
       "Improved Gear Guard reliability and thumbnail display fixes"
     ],
+    "bugs": [
+      "Plug and Charge not recognized at some Electrify America stations — required manual session start"
+    ],
     "rollout": "Released"
   },
   {
     "version": "2025.34",
     "name": "Energy Unlocked",
     "date": "September 25, 2025",
+    "firstSpotted": "September 19, 2025",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Co-Steer — adjust position within lane while Highway Assist is active (Gen 2)",
       "Enhanced Highway Assist availability up 50% on urban/suburban roads (Gen 2)",
@@ -80,13 +110,18 @@
       "Custom equalizer profiles — save and rename audio presets",
       "Gen 2: Refined bass and Dolby Atmos blending improvements"
     ],
+    "bugs": [
+      "Smart Charging Schedule occasionally ignored utility TOU windows — resolved in 2025.38"
+    ],
     "rollout": "Released"
   },
   {
     "version": "2025.26",
     "name": "Peak Response",
     "date": "August 19, 2025",
+    "firstSpotted": "August 14, 2025",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Enhanced perception upgrades for autonomous and active safety features (Gen 2)",
       "Improved cut-in and merge detection with quicker reaction times (Gen 2)",
@@ -94,13 +129,16 @@
       "Alexa now works with YouTube",
       "Improved cabin climate in humid conditions (Gen 2)"
     ],
+    "bugs": [],
     "rollout": "Released"
   },
   {
     "version": "2025.22",
     "name": "Route Awakening",
     "date": "July 15, 2025",
+    "firstSpotted": "July 10, 2025",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Rivian Navigation with Google Maps — live traffic, incidents, satellite imagery",
       "All New Launch Cam for Tri/Quad-Motor vehicles with telemetry overlay (Gen 2)",
@@ -108,13 +146,18 @@
       "Rivian Adventure Network off-peak pricing now live",
       "Driver Assistance now works when electrical accessory is on tow hitch"
     ],
+    "bugs": [
+      "Launch Cam telemetry overlay missing on some Tri-Motor units — resolved in 2025.26"
+    ],
     "rollout": "Released"
   },
   {
     "version": "2025.18",
     "name": "Powered Up, Locked Down",
     "date": "June 3, 2025",
+    "firstSpotted": "May 28, 2025",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Multi-factor Drive — require app authentication before starting vehicle",
       "New Rivian Energy app with usage monitoring, charge curve visualization",
@@ -122,13 +165,18 @@
       "Improved DC fast charging for Max, Standard, and Large packs (Gen 2)",
       "Enhanced driver display with more detailed vehicle models"
     ],
+    "bugs": [
+      "Multi-factor Drive occasionally locked out drivers when app was slow to respond — patched in 2025.22"
+    ],
     "rollout": "Released"
   },
   {
     "version": "2025.14",
     "name": "AI DJ & RAP Updates",
     "date": "May 6, 2025",
+    "firstSpotted": "April 30, 2025",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Spotify DJ AI-based song recommendations with artist commentary",
       "Media apps remember recent searches across driver profile switches",
@@ -136,13 +184,18 @@
       "Driver profiles now save personal navigation destinations",
       "Improved proximity-based locking and network handoff reliability"
     ],
+    "bugs": [
+      "Spotify DJ would occasionally stop mid-session and require manual restart"
+    ],
     "rollout": "Released"
   },
   {
     "version": "2025.10",
     "name": "Gen 1 RAP & Watchful Gear Guard",
     "date": "April 8, 2025",
+    "firstSpotted": "April 2, 2025",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Smart Turn Signal automation after manual lane changes (Gen 1)",
       "Enhanced Gear Guard now records objects — not just people",
@@ -150,13 +203,18 @@
       "Powered tonneau cover v2 fix for opening issues (Gen 2)",
       "Faster cold weather Level 2 charging and expanded SiriusXM features"
     ],
+    "bugs": [
+      "Gear Guard object detection caused excessive recording events for some owners — refined in 2025.14"
+    ],
     "rollout": "Released"
   },
   {
     "version": "2025.06",
     "name": "Highway Assist & Wheel Swap",
     "date": "March 11, 2025",
+    "firstSpotted": "March 6, 2025",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Enhanced Highway Assist with hands-free driving and Driver Attention Detection (Gen 2)",
       "New Go Chime alerts when vehicle ahead drives away (Gen 2)",
@@ -164,13 +222,19 @@
       "New Rally drive mode for Performance Dual-Motor vehicles",
       "Rivian Digital Key via iPhone Wallet and Google native (Gen 2)"
     ],
+    "bugs": [
+      "Go Chime triggered incorrectly at some traffic lights — resolved in 2025.10",
+      "Rally mode unavailable on some Performance Dual builds until a second push"
+    ],
     "rollout": "Released"
   },
   {
     "version": "2024.51",
     "name": "Rise & Shine",
     "date": "January 23, 2025",
+    "firstSpotted": "January 17, 2025",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Smart Turn Signal automatically cancels after manual lane changes (Gen 2)",
       "Cold weather improvements — front fascia heating and extended pre-conditioning",
@@ -178,13 +242,16 @@
       "Navigation favorites now sync with driver profiles and mobile app",
       "Apple Music volume and Dolby Atmos track switching fixed"
     ],
+    "bugs": [],
     "rollout": "Released"
   },
   {
     "version": "2024.47",
     "name": "Holiday Casting",
     "date": "December 18, 2024",
+    "firstSpotted": "December 12, 2024",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Google Cast and YouTube video streaming via new Video app",
       "Smart seat climate icons auto-switch between Heat and Ventilate",
@@ -192,13 +259,18 @@
       "Improved DC fast charging for Large/Max packs (Gen 2)",
       "Holiday lighting and sounds for the season"
     ],
+    "bugs": [
+      "Google Cast dropped connection intermittently on some units — resolved in 2024.51"
+    ],
     "rollout": "Released"
   },
   {
     "version": "2024.43",
     "name": "Audio Profile Linking",
     "date": "November 22, 2024",
+    "firstSpotted": "November 18, 2024",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Media streaming accounts now link to driver profiles",
       "New lock sounds — bluebird chirp or owl hoot",
@@ -206,13 +278,16 @@
       "Improved Gear Guard storage notifications",
       "General infotainment stability improvements"
     ],
+    "bugs": [],
     "rollout": "Released"
   },
   {
     "version": "2024.39",
     "name": "Halloween Mode",
     "date": "October 2024",
+    "firstSpotted": "October 2024",
     "type": "major",
+    "gen": "both",
     "highlights": [
       "Halloween car costume — K.I.T.T., DeLorean, or haunted house modes",
       "New navigation maneuver panel and improved driver display layout",
@@ -220,56 +295,62 @@
       "Automatic front camera during Park Assist",
       "Improved Highway Assist steering smoothness (Gen 2)"
     ],
+    "bugs": [],
     "rollout": "Released"
   },
   {
     "version": "2024.35",
     "name": "Gear Guard Live",
     "date": "September 2024",
+    "firstSpotted": "September 2024",
     "type": "minor",
-    "highlights": [
-      "Gear Guard Live view added"
-    ],
+    "gen": "both",
+    "highlights": ["Gear Guard Live view added"],
+    "bugs": [],
     "rollout": "Released"
   },
   {
     "version": "2024.31",
     "name": "Accent Lighting",
     "date": "August 2024",
+    "firstSpotted": "August 2024",
     "type": "minor",
-    "highlights": [
-      "Accent lighting improvements"
-    ],
+    "gen": "both",
+    "highlights": ["Accent lighting improvements"],
+    "bugs": [],
     "rollout": "Released"
   },
   {
     "version": "2024.27",
     "name": "Connect+",
     "date": "July 2024",
+    "firstSpotted": "July 2024",
     "type": "minor",
-    "highlights": [
-      "Connect+ subscription service introduced"
-    ],
+    "gen": "both",
+    "highlights": ["Connect+ subscription service introduced"],
+    "bugs": [],
     "rollout": "Released"
   },
   {
     "version": "2024.19",
     "name": "UI Refresh",
     "date": "May 2024",
+    "firstSpotted": "May 2024",
     "type": "minor",
-    "highlights": [
-      "Major UI refresh across center display"
-    ],
+    "gen": "both",
+    "highlights": ["Major UI refresh across center display"],
+    "bugs": [],
     "rollout": "Released"
   },
   {
     "version": "2024.11",
     "name": "Charging Score",
     "date": "March 2024",
+    "firstSpotted": "March 2024",
     "type": "minor",
-    "highlights": [
-      "Charging Score feature introduced"
-    ],
+    "gen": "both",
+    "highlights": ["Charging Score feature introduced"],
+    "bugs": [],
     "rollout": "Released"
   }
 ]
