@@ -567,6 +567,42 @@
 
     </div>
 
+    <!-- SIZE -->
+    <div class="compare-section">
+      <div class="compare-section-header">Size</div>
+
+      <div class="compare-row">
+        <div class="compare-label">Length</div>
+        <div class="compare-cell winner">200.8 in</div>
+        <div class="compare-cell">185.9 in</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="compare-label">Width (body)</div>
+        <div class="compare-cell winner">82.0 in</div>
+        <div class="compare-cell">75.0 in</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="compare-label">Height</div>
+        <div class="compare-cell winner">77.3 in</div>
+        <div class="compare-cell">66.9 in</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="compare-label">Wheelbase</div>
+        <div class="compare-cell winner">121.1 in</div>
+        <div class="compare-cell">115.6 in</div>
+      </div>
+
+      <div class="compare-row">
+        <div class="compare-label">Curb weight</div>
+        <div class="compare-cell" id="r1s-weight"></div>
+        <div class="compare-cell">~4,850 lb est.</div>
+      </div>
+
+    </div>
+
     <!-- TECH -->
     <div class="compare-section">
       <div class="compare-section-header">Tech & Features</div>
@@ -855,6 +891,18 @@
       const quadRanges = { std: 374, '22dark': 338, '20at': 325, '20atdark': 325 };
       r1sRange = quadRanges[wheels] || 374;
     }
+
+    // ── WEIGHT ──
+    let r1sWeight;
+    if (drive === 'dual') {
+      r1sWeight = battery === 'standard' ? '~6,450 lb' : battery === 'large' ? '~6,700 lb' : '~6,900 lb';
+    } else if (drive === 'tri') {
+      r1sWeight = '~6,950 lb';
+    } else {
+      r1sWeight = '~7,000 lb';
+    }
+    const weightEl = document.getElementById('r1s-weight');
+    if (weightEl) weightEl.textContent = r1sWeight;
 
     const r2 = R2_SPECS[r2trim];
     const useAlt = document.getElementById('r2Wheels').value === 'alt';
