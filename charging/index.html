@@ -964,9 +964,51 @@
 
     /* Plug notes */
     const PLUG_NOTES = {
-      nacs: '2024+ R1S/R1T and all R2 models have a native NACS port — use Rivian Adventure Network and Tesla Superchargers natively. A CCS1 adapter may still be needed for some third-party DC chargers.',
-      ccs:  '2022–2023 R1S/R1T use CCS1 natively. You can access Tesla Superchargers with a Rivian-approved NACS DC adapter (sold separately, ~$200). A2Z also makes a compatible adapter for less.',
+      nacs: '2026+ Gen 2 R1S/R1T and all R2 models have a native NACS port — use Rivian Adventure Network and Tesla Superchargers natively. A CCS1 adapter may still be needed for some third-party DC chargers.',
+      ccs:  '2021–2025 Gen 1 R1S/R1T use CCS1 natively. You can access Tesla Superchargers with a Rivian-approved NACS DC adapter (sold separately, ~$200). A2Z also makes a compatible adapter for less.',
     };
+
+    /* ── Determine whether the selected vehicle is NACS-native ──
+       Gen 2 R1/R1T (id contains '-g2-') = NACS (Rivian switched in 2026).
+       Gen 1 R1/R1T (id contains '-g1-') = CCS1.
+       All R2 = NACS only.
+    */
+    function isNacsVehicle(vehicleId) {
+      return vehicleId.startsWith('r2-') || vehicleId.includes('-g2-');
+    }
+
+    /* ── Update plug selector state based on selected trim ── */
+    function updatePlugState(vehicleId) {
+      const nacsOnly = isNacsVehicle(vehicleId);
+      const plugBtns = document.querySelectorAll('#plugGrid .charger-btn');
+
+      if (nacsOnly) {
+        // Lock to NACS
+        currentPlug = 'nacs';
+        plugBtns.forEach(b => {
+          const isNacs = b.dataset.plug === 'nacs';
+          b.classList.toggle('selected', isNacs);
+          b.disabled = !isNacs;
+          b.style.opacity = isNacs ? '1' : '0.4';
+          b.style.cursor = isNacs ? 'pointer' : 'not-allowed';
+        });
+      } else {
+        // CCS1 vehicle — both options available; default to CCS if currently locked
+        plugBtns.forEach(b => {
+          b.disabled = false;
+          b.style.opacity = '1';
+          b.style.cursor = 'pointer';
+        });
+        // If coming from a NACS-only selection, reset to CCS
+        if (currentPlug === 'nacs') {
+          currentPlug = 'ccs';
+          plugBtns.forEach(b => {
+            b.classList.toggle('selected', b.dataset.plug === 'ccs');
+          });
+        }
+      }
+      updatePlugNote();
+    }
 
     /* Charger data */
     const CHARGERS = {
@@ -991,7 +1033,7 @@
 
       const gens = model === 'r2'
         ? [{ key:'gen2', label:'2026–2027' }]
-        : [{ key:'gen2', label:'2025+' }, { key:'gen1', label:'2021–2024' }];
+        : [{ key:'gen2', label:'2026+ (Gen 2 · NACS)' }, { key:'gen1', label:'2021–2025 (Gen 1 · CCS1)' }];
 
       gens.forEach(({ key, label }) => {
         if (!data[key]) return;
@@ -1068,24 +1110,9 @@
       const firstTrim = TRIMS[currentModel].gen2[0];
       currentVehicle = firstTrim.id;
 
-      // R2 always NACS — lock plug selector
-      if (currentModel === 'r2') {
-        currentPlug = 'nacs';
-        document.querySelectorAll('#plugGrid .charger-btn').forEach(b => {
-          b.classList.toggle('selected', b.dataset.plug === 'nacs');
-          b.disabled = b.dataset.plug !== 'nacs';
-          b.style.opacity = b.dataset.plug !== 'nacs' ? '0.4' : '1';
-        });
-      } else {
-        document.querySelectorAll('#plugGrid .charger-btn').forEach(b => {
-          b.disabled = false;
-          b.style.opacity = '1';
-        });
-      }
-
       renderTrims(currentModel);
       renderWheels(currentModel, currentVehicle);
-      updatePlugNote();
+      updatePlugState(currentVehicle);
       updateSidebar();
       updateCalc();
     }
@@ -1107,6 +1134,8 @@
         if (prevGen !== newGen) renderWheels(currentModel, currentVehicle);
       }
 
+      // Update plug selector whenever trim changes (gen1↔gen2 changes NACS availability)
+      updatePlugState(currentVehicle);
       updateSidebar();
       updateCalc();
     }
@@ -1331,7 +1360,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       renderTrims(currentModel);
       renderWheels(currentModel, currentVehicle);
-      updatePlugNote();
+      updatePlugState(currentVehicle);
       updateSidebar();
       updateCalc();
     });
