@@ -466,8 +466,8 @@
 
   <!-- ─── REFERRAL STRIP ─── -->
   <div class="referral-strip">
-    <div class="container strip-inner">
-      <span class="strip-label">Referral code</span>
+    <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
+      <span class="strip-label">Referral Code</span>
       <span class="strip-code">SCOTT4395475</span>
       <span class="strip-divider"></span>
       <span class="strip-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
@@ -693,22 +693,9 @@
   </footer>
 
   <!-- ─── SCRIPTS ─── -->
-  <script>
+ <script src="/nav-init.js"></script>
 
-    /* ── Load shared nav ── */
-    fetch('/nav.html')
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById('site-nav').innerHTML = html;
-        const path = window.location.pathname;
-        document.querySelectorAll('.nav-links a').forEach(a => {
-          const href = a.getAttribute('href');
-          if (href === '/' ? path === '/' : path.startsWith(href)) {
-            a.classList.add('active');
-          }
-        });
-      })
-      .catch(() => {});
+  <script>
 
     /* ── Referral strip copy ── */
     function stripCopyCode() {
