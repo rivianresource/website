@@ -365,18 +365,9 @@ async function loadLiveSoftwareVersion() {
     currentVersion.textContent =
       latest.version;
 
-    currentDate.innerHTML = `
-      ${latest.date}
-      ·
-      Powered by
-      <a
-        href="https://rivianroamer.com/software-updates/"
-        target="_blank"
-        rel="noopener noreferrer"
-        style="color:#9FE1CB;font-weight:600;text-decoration:none;">
-        Rivian Roamer
-      </a>
-    `;
+    currentDate.textContent = latest.rollout
+  ? `${latest.date} · ${latest.rollout}`
+  : latest.date;
 
     currentHighlights.innerHTML =
       latest.highlights
