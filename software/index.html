@@ -427,7 +427,7 @@ async function renderSoftwareTimeline() {
     const updates = await response.json();
 
     timeline.innerHTML =
-      updates.map((update, index) => `
+  updates.slice(1).map((update, index) => `
 
         <div
           class="update-entry ${index === 0 ? 'featured' : ''}"
