@@ -440,7 +440,7 @@
         <div class="tip-item"><div class="tip-num">3</div><div class="tip-text"><strong>Utilize good lighting</strong>Inspect paint in direct sunlight. Phone flashlight can be helpful for panel gaps and undercarriage.</div></div>
         <div class="tip-item"><div class="tip-num">4</div><div class="tip-text"><strong>Photograph everything of concern</strong>Timestamped photos help if issues surface later.</div></div>
         <div class="tip-item"><div class="tip-num">5</div><div class="tip-text"><strong>Create a service ticket in the app</strong>Delivery-day service requests are meaningful and best to address any issues asap.</div></div>
-        <div class="tip-item"><div class="tip-num">6</div><div class="tip-text"><strong>Verify Referral Code is applied<</strong>Referral codes can be added after ordering, prior to delivery. Take advantage of gear credits and free RAN charging.</div></div>
+        <div class="tip-item"><div class="tip-num">6</div><div class="tip-text"><strong>Verify Referral Code is applied</strong>Referral codes can be added after ordering, prior to delivery. Take advantage of gear credits and free RAN charging.</div></div>
       </div>
       <div class="sidebar-referral">
         <div class="sidebar-referral-label">Ordering a Rivian?</div>
@@ -513,16 +513,11 @@
     chevron.style.transform=wrap.classList.contains('open')?'rotate(180deg)':'';
   }
 
-  fetch('/nav.html')
-    .then(r=>r.text())
-    .then(html=>{
-      document.getElementById('site-nav').innerHTML=html;
-      const path=window.location.pathname;
-      document.querySelectorAll('.nav-links a').forEach(a=>{
-        const href=a.getAttribute('href');
-        if(href!=='/'&&path.startsWith(href))a.classList.add('active');
-      });
-    }).catch(()=>{});
+</script>
+
+<script src="/nav-init.js"></script>
+
+<script>
 
   function stripCopyCode(){
     gtag('event','copy_referral_code');
