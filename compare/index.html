@@ -352,7 +352,7 @@
   <div class="compare-page">
 
     <div class="disclaimer">
-      Specifications, pricing, charging speeds, and estimated ranges may change over time and can vary based on wheels, tires, options, software updates, and production revisions. Displayed pricing does not include destination fees ($1,895), taxes, registration, premium paint colors, interior upgrades, accessories, or optional equipment. R2 specifications are based on Rivian public announcements and pre-production information and remain subject to change. Ranges shown are EPA estimates based on standard wheel configurations; actual range varies. Always verify final configuration details directly at Rivian.com before ordering.
+      Specifications, pricing, charging speeds, and estimated ranges may change over time and can vary based on wheels, tires, options, software updates, and production revisions. Displayed pricing does not include destination fees (R1S: $1,895 · R2: $1,495), taxes, registration, premium paint colors, interior upgrades, accessories, or optional equipment. R2 specifications reflect the Performance and Premium trims available in 2026; Standard RWD arrives in 2027. Ranges shown are EPA estimates based on standard wheel configurations; actual range varies. Always verify final configuration details directly at Rivian.com before ordering.
     </div>
 
     <!-- BUILDERS -->
@@ -396,14 +396,16 @@
           <div class="builder-group">
             <div class="builder-label">Wheels</div>
             <select class="builder-select" id="r1sWheels" onchange="updateComparison()">
-              <option value="20">20" All-Terrain (−18 mi range)</option>
-              <option value="22sport">22" Sport (−8 mi range)</option>
-              <option value="22range" selected>22" Range / Aero (EPA baseline)</option>
+              <option value="std" selected>22" Sport Bright (included · EPA baseline)</option>
+              <option value="22range">22" Range +$1,000</option>
+              <option value="22dark">22" Sport Dark +$1,000–$2,000</option>
+              <option value="20at">20" All-Terrain +$3,700</option>
+              <option value="20atdark">20" All-Terrain Dark +$4,700–$5,700</option>
             </select>
           </div>
 
           <div class="builder-note">
-            Performance Upgrade available on Large and Max packs only. Adds Sport and Soft Sand drive modes.
+            Performance Upgrade available on Large and Max packs only. 20" All-Terrain wheels require the All-Terrain Package (includes compact spare and Reinforced Underbody Shield). Quad uses exclusive Burnished Bronze wheels; alternate AT wheels included.
           </div>
 
         </div>
@@ -428,13 +430,13 @@
           <div class="builder-group">
             <div class="builder-label">Wheels</div>
             <select class="builder-select" id="r2Wheels" onchange="updateComparison()">
-              <option value="std" selected>Standard (trim default)</option>
-              <option value="alt">Alternate wheel option</option>
+              <option value="std" selected>Standard wheels (included)</option>
+              <option value="alt">Alternate wheels (+$1,000–$2,000)</option>
             </select>
           </div>
 
           <div class="builder-note" id="r2WheelNote">
-            Performance standard: 21" Liquid Tungsten All-Season (330 mi EPA). Optional: 20" Black Sand All-Terrain (range est., not EPA-rated). Premium standard: 20" Bicolor Carbon All-Season (330 mi EPA). Optional: 21" Liquid Tungsten All-Season. Towing requires optional tow package (~$1,500).
+            Performance standard: 21" Liquid Tungsten All-Season (335 mi EPA). Optional: 20" Black Sand All-Terrain +$1,000 (314 mi EPA). Premium standard: 20" Bicolor Carbon All-Season (330 mi EPA). Optional: 21" Liquid Tungsten All-Season +$2,000 (EPA range not yet published). Tow hooks are standard on both trims; towing requires optional tow package (~$1,500).
           </div>
 
         </div>
@@ -536,7 +538,7 @@
       <div class="compare-row">
         <div class="compare-label">Towing</div>
         <div class="compare-cell winner">7,700 lb</div>
-        <div class="compare-cell">4,400 lb (w/ tow pkg)</div>
+        <div class="compare-cell">4,400 lb (tow pkg req.)</div>
       </div>
 
       <div class="compare-row">
@@ -554,7 +556,7 @@
       <div class="compare-row">
         <div class="compare-label">Water fording</div>
         <div class="compare-cell winner">43 in</div>
-        <div class="compare-cell">~20 in</div>
+        <div class="compare-cell">19.7 in</div>
       </div>
 
       <div class="compare-row">
@@ -639,10 +641,29 @@
 
   const PERF_UPGRADE = 5000;
 
-  const WHEEL_ADDER = {
-    '20':      3500,
-    '22sport': 1800,
-    '22range': 0,
+  // Wheel cost adders per drivetrain — source: Rivian configurator May 2026
+  const WHEEL_COST = {
+    dual: { std: 0, '22range': 1000, '22dark': 2000, '20at': 3700, '20atdark': 5700 },
+    tri:  { std: 0, '22range': 1000, '22dark': 1000, '20at': 3700, '20atdark': 4700 },
+    quad: { std: 0 },
+  };
+
+  // EPA range per drivetrain per wheel — source: Rivian configurator May 2026
+  // Dual: Sport Bright is EPA baseline per pack; AT wheels lock to 289 mi regardless of pack
+  // Tri: Sport Bright baseline 371 mi; AT wheels 329 mi
+  // Quad: all wheels included; Sport Burnished Bronze=374, Super Sport=338, AT variants=325
+  const WHEEL_RANGE = {
+    dual: {
+      std:       { max: 410, large: 329, standard: 270 },
+      '22range': { max: 410, large: 329, standard: 270 },
+      '22dark':  { max: 410, large: 329, standard: 270 },
+      '20at':    { max: 289, large: 289, standard: 289 },
+      '20atdark':{ max: 289, large: 289, standard: 289 },
+    },
+    tri: {
+      std: 371, '22range': 371, '22dark': 371, '20at': 329, '20atdark': 329,
+    },
+    quad: { std: 374 },
   };
 
   const R1S_SPECS = {
@@ -675,20 +696,15 @@
     max:      '141.5 kWh',
   };
 
-  const R1S_WHEEL_ADJ = {
-    '22range': 0,
-    '22sport': -8,
-    '20':     -18,
-  };
 
   const R2_SPECS = {
     performance: {
       hp: 656, torque: 609, zero60: 3.6, price: 57990,
-      stdWheel: '21', stdRange: 330, altRange: 315,
+      stdWheel: '21', stdRange: 335, altRange: 314,
     },
     premium: {
       hp: 450, torque: 537, zero60: 4.6, price: 53990,
-      stdWheel: '20', stdRange: 330, altRange: 332,
+      stdWheel: '20', stdRange: 330, altRange: null,
     },
   };
 
@@ -715,7 +731,32 @@
     const battery = document.getElementById('r1sBattery');
     const perf = document.getElementById('r1sPerformance');
     const perfGroup = document.getElementById('perfGroup');
+    const wheelSel = document.getElementById('r1sWheels');
 
+    // Rebuild wheel options per drivetrain
+    if (drive === 'quad') {
+      wheelSel.innerHTML = `<option value="std" selected>22" Sport Burnished Bronze (included · 374 mi EPA)</option>
+        <option value="22dark">22" Super Sport (included · 338 mi EPA)</option>
+        <option value="20at">20" Dune Satin Graphite All-Terrain (included · 325 mi EPA)</option>
+        <option value="20atdark">20" All-Terrain Burnished Bronze (included · 325 mi EPA)</option>`;
+      wheelSel.disabled = false;
+    } else if (drive === 'tri') {
+      wheelSel.innerHTML = `<option value="std" selected>22" Sport Bright (included · EPA baseline)</option>
+        <option value="22range">22" Range +$1,000</option>
+        <option value="22dark">22" Sport Dark +$1,000</option>
+        <option value="20at">20" All-Terrain +$3,700 · 329 mi EPA</option>
+        <option value="20atdark">20" All-Terrain Dark +$4,700 · 329 mi EPA</option>`;
+      wheelSel.disabled = false;
+    } else {
+      wheelSel.innerHTML = `<option value="std" selected>22" Sport Bright (included · EPA baseline)</option>
+        <option value="22range">22" Range +$1,000</option>
+        <option value="22dark">22" Sport Dark +$2,000</option>
+        <option value="20at">20" All-Terrain +$3,700 · 289 mi EPA</option>
+        <option value="20atdark">20" All-Terrain Dark +$5,700 · 289 mi EPA</option>`;
+      wheelSel.disabled = false;
+    }
+
+    // Tri and Quad: lock to Max pack and Performance
     if (drive === 'tri' || drive === 'quad') {
       battery.value = 'max';
       battery.disabled = true;
@@ -768,26 +809,35 @@
       r1sBatteryLabel = R1S_BATTERY[battery];
       r1sBasePrice = BASE_PRICE.dual[battery];
       if (perf === 'performance' && battery !== 'standard') r1sBasePrice += PERF_UPGRADE;
-      r1sBasePrice += WHEEL_ADDER[wheels];
+      r1sBasePrice += (WHEEL_COST.dual[wheels] || 0);
       r1sPerfLabel = perf === 'performance' && battery !== 'standard' ? 'Performance' : 'Standard Output';
       r1sConfigLabel = `Dual ${battery.charAt(0).toUpperCase() + battery.slice(1)} · ${r1sPerfLabel} · ${r1sBatteryLabel}`;
     } else if (drive === 'tri') {
       r1sSpecs = R1S_SPECS.tri.max.performance;
       r1sDrivetrain = 'Tri Motor AWD';
       r1sBatteryLabel = R1S_BATTERY.max;
-      r1sBasePrice = BASE_PRICE.tri.max + WHEEL_ADDER[wheels];
+      r1sBasePrice = BASE_PRICE.tri.max + (WHEEL_COST.tri[wheels] || 0);
       r1sConfigLabel = `Tri Max · ${r1sBatteryLabel}`;
     } else {
       r1sSpecs = R1S_SPECS.quad.max.performance;
       r1sDrivetrain = 'Quad Motor AWD';
       r1sBatteryLabel = R1S_BATTERY.max;
-      r1sBasePrice = BASE_PRICE.quad.max + WHEEL_ADDER[wheels];
+      r1sBasePrice = BASE_PRICE.quad.max;
       r1sConfigLabel = `Quad Max · ${r1sBatteryLabel}`;
     }
 
-    const r1sRange = (drive === 'dual'
-      ? R1S_RANGE.dual[battery]
-      : R1S_RANGE[drive].max) + R1S_WHEEL_ADJ[wheels];
+    // Range — pull directly from WHEEL_RANGE table (no adjustment math)
+    let r1sRange;
+    if (drive === 'dual') {
+      const wr = WHEEL_RANGE.dual[wheels] || WHEEL_RANGE.dual.std;
+      r1sRange = wr[battery] || wr.max;
+    } else if (drive === 'tri') {
+      r1sRange = WHEEL_RANGE.tri[wheels] || WHEEL_RANGE.tri.std;
+    } else {
+      // Quad: all wheels included, different ranges per selection
+      const quadRanges = { std: 374, '22dark': 338, '20at': 325, '20atdark': 325 };
+      r1sRange = quadRanges[wheels] || 374;
+    }
 
     const r2 = R2_SPECS[r2trim];
     const useAlt = document.getElementById('r2Wheels').value === 'alt';
@@ -795,7 +845,9 @@
     const r2WheelLabel = r2trim === 'performance'
       ? (useAlt ? '20" Black Sand All-Terrain' : '21" Liquid Tungsten All-Season')
       : (useAlt ? '21" Liquid Tungsten All-Season' : '20" Bicolor Carbon All-Season');
-    const r2RangeLabel = useAlt ? `~${r2Range} mi est.` : `${r2Range} mi EPA`;
+    const r2RangeLabel = useAlt
+      ? (r2.altRange ? `${r2.altRange} mi EPA` : 'Range not yet EPA-rated')
+      : `${r2Range} mi EPA`;
     const r2BatteryLabel = '87.9 kWh';
     const r2ConfigLabel = `${r2trim.charAt(0).toUpperCase() + r2trim.slice(1)} · ${r2WheelLabel}`;
 
@@ -811,7 +863,7 @@
     document.getElementById('r2-price').innerHTML =
       `Est. $${fmt(r2.price)} <span class="badge badge-better">$${Math.round(savings/1000)}K less</span>`;
 
-    const r1sWins = r1sRange >= r2Range;
+    const r1sWins = r2Range !== null ? r1sRange >= r2Range : true;
     setCell('r1s-range', `${r1sRange} mi`, r1sWins);
     document.getElementById('r2-range').className = r1sWins ? 'compare-cell' : 'compare-cell winner';
     document.getElementById('r2-range').textContent = r2RangeLabel;
@@ -824,7 +876,7 @@
     document.getElementById('r1s-charge').className = 'compare-cell winner';
     document.getElementById('r1s-charge').textContent = r1sSpecs.charge;
     document.getElementById('r2-charge').className = 'compare-cell';
-    document.getElementById('r2-charge').textContent = '~210 kW';
+    document.getElementById('r2-charge').textContent = '210–217 kW';
 
     const r1sHpWins = r1sSpecs.hp >= r2.hp;
     setCell('r1s-hp', `${fmt(r1sSpecs.hp)} hp`, r1sHpWins);
