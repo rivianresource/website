@@ -44,9 +44,8 @@
       .desktop-sidebar{display:none}
     }
     .delivery-main{display:flex;flex-direction:column;gap:14px}
-    .desktop-sidebar{display:flex;flex-direction:column;gap:14px}
-    .desktop-sidebar-inner{position:sticky;top:52px;display:flex;flex-direction:column;gap:14px;max-height:calc(100vh - 64px);overflow-y:auto;padding-right:2px;scrollbar-width:none}
-    .desktop-sidebar-inner::-webkit-scrollbar{display:none}
+    .desktop-sidebar{position:sticky;top:52px;display:flex;flex-direction:column;gap:14px;max-height:calc(100vh - 64px);overflow-y:auto;scrollbar-width:none}
+    .desktop-sidebar::-webkit-scrollbar{display:none}
 
     /* ── MOBILE TIPS ── */
     .mobile-tips-btn,.mobile-sidebar-wrap{display:none}
@@ -482,7 +481,6 @@
 
     <!-- DESKTOP SIDEBAR -->
     <div class="desktop-sidebar">
-      <div class="desktop-sidebar-inner">
       <div class="card tip-card">
         <div class="section-label">Delivery day tips</div>
         <div class="tip-item"><div class="tip-num">1</div><div class="tip-text"><strong>Download the Rivian App</strong>This will be your primary key and a requirement to complete delivery.</div></div>
@@ -504,7 +502,6 @@
         <div class="sidebar-referral-code">SCOTT4395475</div>
         <div class="sidebar-referral-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging on qualifying orders.</div>
         <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn" onclick="gtag('event','open_rivian_configurator')">Configure Your Rivian &rarr;</a>
-      </div>
       </div>
     </div>
 
