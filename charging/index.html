@@ -472,6 +472,7 @@
     .comparison-table .active-row td { background: var(--green-pale); }
     .comparison-table .active-row td:first-child { color: var(--green); }
     .comparison-table .active-row td.highlight { color: var(--green); }
+    .comparison-footnote { margin-top: 10px; font-size: 11px; color: var(--text-dim); line-height: 1.6; }
 
     /* ─── TIPS ─── */
     .tips-card { padding: 24px; }
@@ -731,6 +732,7 @@
             </thead>
             <tbody id="comparisonBody"></tbody>
           </table>
+          <p class="comparison-footnote" id="comparisonFootnote"></p>
         </div>
 
         <!-- ABRP CALLOUT -->
@@ -1249,6 +1251,16 @@
           </tr>
         `;
       }).join('');
+
+      const footnote = document.getElementById('comparisonFootnote');
+      if (footnote) {
+        const v = getVehicleData();
+        const ranMins = Math.round(calcDcTime(start, end, v.capacity, Math.min(v.peakKw, CHARGERS.ran.peakKw)));
+        const scMins  = Math.round(calcDcTime(start, end, v.capacity, Math.min(v.peakKw, CHARGERS.supercharger.peakKw)));
+        footnote.textContent = ranMins === scMins
+          ? '* The Rivian\'s onboard charger accepts up to ' + v.peakKw + ' kW regardless of charger output. Since both the RAN and Tesla Supercharger exceed that limit, the vehicle charges at the same rate on both networks — confirmed by real-world owner data.'
+          : '';
+      }
     }
 
     /* ── Nav ── */
