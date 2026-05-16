@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>2026 Rivian R1T &amp; R1S Delivery Checklist</title>
-  <meta name="description" content="Streamlined 2026 Rivian R1T and R1S delivery inspection checklist. 55 items across 6 sections — done in 45 minutes."/>
+  <title>Rivian R1S &amp; R1T Delivery Checklist — 55-Point Inspection Guide</title>
+  <meta name="description" content="A 55-point delivery inspection checklist for the 2026 Rivian R1S and R1T. Six sections covering exterior, interior, powertrain, tech, and documentation — designed to complete in under an hour."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -416,7 +416,7 @@
       padding: 16px;
       color: #fff;
     }
-    .referral-label { font-size: 10px; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .07em; font-weight: 600; margin-bottom: 3px; }
+    .referral-label { font-size: 10px; color: #ffffff; text-transform: uppercase; letter-spacing: .07em; font-weight: 600; margin-bottom: 3px; }
     .referral-code { font-family: 'DM Sans', sans-serif; font-size: 20px; font-weight: 800; color: var(--green-light); letter-spacing: .04em; margin-bottom: 6px; }
     .referral-perks { font-size: 11.5px; color: rgba(255,255,255,.7); line-height: 1.55; margin-bottom: 12px; }
     .referral-perks strong { color: #fff; }
@@ -443,6 +443,20 @@
       .checklist-item { padding: 12px 13px; gap: 10px; }
       .page-header { padding: 22px 16px 20px; }
     }
+
+    .recall-entry-sm {
+      border-left: 2px solid var(--border-hover);
+      padding: 7px 10px;
+      margin-bottom: 7px;
+      background: var(--bg);
+      border-radius: 0 6px 6px 0;
+    }
+    .recall-entry-sm:last-child { margin-bottom: 0; }
+    .recall-campaign-sm { font-size: 11px; font-weight: 700; color: var(--green); margin-bottom: 1px; }
+    .recall-component-sm { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .recall-consequence-sm { font-size: 11px; color: var(--text-muted); line-height: 1.45; }
+    .recall-vehicle-sm { font-size: 10px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: .06em; margin: 10px 0 5px; }
+    .recall-vehicle-sm:first-child { margin-top: 0; }
   </style>
 </head>
 <body>
@@ -1134,6 +1148,10 @@
       <p>If you find issues, don't panic. Rivian expects some and the process for getting them fixed is clear. The key is documenting everything <em>before</em> you drive away.</p>
     </div>
 
+    <div class="owner-note">
+      <p>Have a suggestion to improve this checklist? If you've been through a Rivian delivery and noticed something missing, I'd love to hear it — <a href="mailto:rivianrewardshub@gmail.com" style="color:var(--green); text-decoration:none;">rivianrewardshub@gmail.com</a>.</p>
+    </div>
+
     <button class="reset-btn" onclick="resetAll()">
       <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-5"/></svg>
       Reset checklist
@@ -1188,6 +1206,10 @@
         <a href="https://rivianroamer.com" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
       </div>
       <div class="resource-row">
+        <div><div class="resource-name">Rivian Gear Shop</div><div class="resource-desc">Accessories, key fobs, and owner gear</div></div>
+        <a href="https://rivian.com/gear-shop" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+      </div>
+      <div class="resource-row">
         <div><div class="resource-name">Rivian Recall Info</div><div class="resource-desc">Official active campaigns</div></div>
         <a href="https://rivian.com/support/article/recall-information" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
       </div>
@@ -1197,11 +1219,20 @@
       </div>
     </div>
 
+    <div class="sidebar-card">
+      <div class="sidebar-label" style="display:flex; align-items:center; gap:6px; margin-bottom:12px;">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Active Recalls
+      </div>
+      <div id="recallsFeedDelivery">
+        <div style="font-size:12px; color:var(--text-dim);">Loading…</div>
+      </div>
+    </div>
+
     <div class="referral-card">
-      <div class="referral-label">Ordering a Rivian?</div>
+      <div class="referral-label">Using a referral code?</div>
+      <p style="font-size:12px; color:#ffffff; line-height:1.6; margin-bottom:10px;">Owner referral codes give both the buyer and referrer Rivian Rewards points, plus 3 months of free Adventure Network charging. Points range from 100–500 depending on configuration.</p>
       <div class="referral-code">SCOTT4395475</div>
-      <div class="referral-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging on qualifying orders.</div>
-      <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="referral-btn">Configure Your Rivian →</a>
     </div>
 
   </div>
@@ -1257,6 +1288,52 @@
     });
     updateProgress();
   }
+</script>
+<script src="/shared.js"></script>
+<script>
+  (async function loadRecallsDelivery() {
+    const container = document.getElementById('recallsFeedDelivery');
+    const vehicles = [
+      { label: '2026 R1S', make: 'Rivian', model: 'R1S', year: '2026' },
+      { label: '2025 R1S', make: 'Rivian', model: 'R1S', year: '2025' },
+      { label: '2026 R1T', make: 'Rivian', model: 'R1T', year: '2026' },
+      { label: '2025 R1T', make: 'Rivian', model: 'R1T', year: '2025' },
+    ];
+    try {
+      const results = await Promise.all(vehicles.map(v =>
+        fetch(`https://api.nhtsa.gov/recalls/recallsByVehicle?make=${v.make}&model=${v.model}&modelYear=${v.year}`)
+          .then(r => r.json())
+          .then(d => ({ ...v, recalls: d.results || [] }))
+          .catch(() => ({ ...v, recalls: [] }))
+      ));
+      const seen = new Set();
+      const grouped = results.map(v => ({
+        ...v,
+        recalls: v.recalls.filter(r => {
+          if (seen.has(r.NHTSACampaignNumber)) return false;
+          seen.add(r.NHTSACampaignNumber);
+          return true;
+        })
+      })).filter(v => v.recalls.length > 0);
+
+      if (grouped.length === 0) {
+        container.innerHTML = `<p style="font-size:11px; color:var(--text-dim);">No open recalls found for 2025–2026 R1S or R1T.</p>`;
+        return;
+      }
+      container.innerHTML = grouped.map(v => `
+        <div class="recall-vehicle-sm">${v.label}</div>
+        ${v.recalls.map(r => `
+          <div class="recall-entry-sm">
+            <div class="recall-campaign-sm">${r.NHTSACampaignNumber}</div>
+            <div class="recall-component-sm">${r.Component}</div>
+            <div class="recall-consequence-sm">${r.Consequence}</div>
+          </div>
+        `).join('')}
+      `).join('');
+    } catch(e) {
+      container.innerHTML = `<p style="font-size:11px; color:var(--text-dim);">Unable to load. <a href="https://www.nhtsa.gov/vehicle-safety/recalls" target="_blank" rel="noopener noreferrer" style="color:var(--green);">Check NHTSA →</a></p>`;
+    }
+  })();
 </script>
 <script src="/nav-init.js"></script>
 </body>

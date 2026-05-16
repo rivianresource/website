@@ -13,7 +13,7 @@
   />
   <link rel="canonical" href="https://www.rivianresource.com/charging/"/>
   <meta property="og:title" content="Rivian Charging Time Calculator"/>
-  <meta property="og:description" content="Estimate charging time, range added, and kWh for your Rivian R1S or R1T across different charger types."/>
+  <meta property="og:description" content="Free Rivian charging tools to estimate real-world charging time, charging costs, battery percentage, and miles added for the R1S, R1T, and R2. Personalized to your location, vehicle, and charger type."/>
   <meta property="og:image" content="https://www.rivianresource.com/r1s.jpg"/>
   <meta property="og:url" content="https://www.rivianresource.com/charging/"/>
   <meta property="og:type" content="website"/>
@@ -26,7 +26,7 @@
     gtag('config', 'G-SB8DBC8NBQ');
   </script>
 
-  <link rel="icon" type="image/png" href="/images/logo.svg">
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -39,9 +39,9 @@
     .calc-layout {
       display: grid;
       grid-template-columns: 1fr 300px;
-      gap: 24px;
+      gap: 24px 32px;
       align-items: start;
-      padding: 32px 0 56px;
+      padding: 24px 0 56px;
     }
 
     @media (max-width: 860px) {
@@ -49,7 +49,36 @@
       .calc-sidebar { display: none; }
     }
 
-    .calc-main { display: flex; flex-direction: column; gap: 20px; }
+    .calc-main { display: flex; flex-direction: column; gap: 0; }
+
+    .calc-section-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 32px 0 16px;
+    }
+
+    .calc-section-heading:first-child {
+      padding-top: 0;
+    }
+
+    .calc-section-heading h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    .calc-section-heading-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .calc-section-gap { height: 20px; }
     .calc-sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 80px; }
 
     /* ─── MODEL SELECTOR ─── */
@@ -520,6 +549,12 @@
     .sidebar-stat-label { font-size: 13px; color: var(--text-muted); }
     .sidebar-stat-value { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); }
     .sidebar-stat-value.green { color: var(--green); }
+    .cost-summary-card { padding: 20px; }
+    .cost-summary-stat { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .cost-summary-stat:last-child { border-bottom: none; }
+    .cost-summary-label { font-size: 13px; color: var(--text-muted); }
+    .cost-summary-value { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; color: var(--green); }
+    .cost-summary-value.neutral { color: var(--text); }
 
     .disclaimer {
       font-size: 11px;
@@ -527,6 +562,198 @@
       line-height: 1.6;
       margin-top: 12px;
     }
+
+  .jump-nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .jump-nav a {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 11px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all .15s;
+    white-space: nowrap;
+  }
+  .jump-nav a:hover {
+    background: var(--green-pale);
+    border-color: var(--green);
+    color: var(--green-dark);
+  }
+
+  .calc-card { padding: 24px; }
+
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  @media (max-width: 640px) {
+    .calc-grid { grid-template-columns: 1fr; }
+  }
+
+  .calc-inputs { display: flex; flex-direction: column; gap: 16px; }
+
+  .calc-field { display: flex; flex-direction: column; gap: 5px; }
+
+  .calc-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .calc-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+
+  .calc-input-wrap:focus-within {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(29,158,117,0.1);
+  }
+
+  .calc-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    outline: none;
+    min-width: 0;
+  }
+
+  .calc-input-prefix { padding-left: 4px; }
+
+  .calc-select {
+    width: 100%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a94a8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    transition: border-color 0.15s;
+  }
+
+  .calc-select:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(29,158,117,0.1);
+  }
+
+  .calc-select-wrap { position: relative; }
+
+  .calc-unit {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dim);
+    padding: 0 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .calc-unit-left {
+    padding-left: 12px;
+    padding-right: 4px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .calc-hint {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+
+  .calc-results {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .calc-result-block {
+    padding: 10px 0;
+  }
+
+  .calc-result-highlight {
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin: 2px 0;
+  }
+
+  .calc-result-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 3px;
+  }
+
+  .calc-result-val {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.1;
+  }
+
+  .calc-result-big { font-size: 32px; }
+  .calc-result-green { color: var(--green); }
+  .calc-result-red { color: #991b1b; }
+
+  .calc-result-sub {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  .calc-result-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 0;
+  }
+
+  .calc-result-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
 
   </style>
 
@@ -537,8 +764,8 @@
 
   <div class="referral-strip">
     <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
-      <span class="strip-label">Referral Code</span>
-      <span class="strip-code">SCOTT4395475</span>
+      <span class="strip-label">Referral code</span>
+      <span class="strip-code" onclick="stripCopyCode()" style="cursor:pointer;">SCOTT4395475</span>
       <span class="strip-divider"></span>
       <span class="strip-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
       <button class="strip-btn" onclick="stripCopyCode()">
@@ -553,8 +780,15 @@
     <div class="container">
       <div class="page-eyebrow">Owner Tool</div>
       <h1 class="page-title">Rivian Charging Calculator</h1>
-      <p class="page-sub">Estimate charging time, miles added, and kWh delivered for your R1S, R1T, or R2 across different charger types. Select your model, trim, wheels, and plug type for an accurate estimate.</p>
+      <p class="page-sub">Two calculators to help you understand your Rivian's real-world charging costs and time estimates. Personalized to your location, vehicle, and charger type.</p>
     </div>
+  </div>
+
+  <div class="container" style="padding-top:16px; padding-bottom:4px;">
+    <nav class="jump-nav">
+      <a href="#charging-cost">Charging Cost Calculator</a>
+      <a href="#charging-time">Charging Time Calculator</a>
+    </nav>
   </div>
 
   <div class="container">
@@ -563,6 +797,121 @@
       <!-- MAIN CALCULATOR -->
       <div class="calc-main">
 
+        <!-- CHARGING COST CALCULATOR -->
+        <div class="calc-section-heading" id="charging-cost">
+          <h2>Charging Cost Calculator</h2>
+          <div class="calc-section-heading-line"></div>
+        </div>
+        <div class="card calc-card" id="costCalc">
+  <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px; line-height:1.6;">See how much you're saving versus gas every month.</p>
+
+  <div class="calc-grid">
+
+    <!-- LEFT: INPUTS -->
+    <div class="calc-inputs">
+
+      <div class="calc-field">
+        <label class="calc-label">Miles driven per month</label>
+        <div class="calc-input-wrap">
+          <input type="number" id="miles" value="1200" min="0" max="5000" class="calc-input" oninput="calcCost()">
+          <span class="calc-unit">mi</span>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Vehicle</label>
+        <div class="calc-select-wrap">
+          <select id="costVehicle" class="calc-input calc-select" onchange="updateBatteryOptions()">
+            <option value="r1" selected>R1S / R1T</option>
+            <option value="r2">R2</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Battery configuration</label>
+        <div class="calc-select-wrap">
+          <select id="battery" class="calc-input calc-select" onchange="calcCost()">
+            <option value="2.9">Standard Range (~270 mi) — 2.9 mi/kWh</option>
+            <option value="3.1" selected="">Large Pack (~329 mi) — 3.1 mi/kWh</option>
+            <option value="3.3">Max Range (~410 mi) — 3.3 mi/kWh</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Home electricity rate</label>
+        <div class="calc-input-wrap">
+          <span class="calc-unit calc-unit-left">$</span>
+          <input type="number" id="electricRate" value="0.16" min="0.05" max="0.60" step="0.01" class="calc-input calc-input-prefix" oninput="calcCost()">
+          <span class="calc-unit">/kWh</span>
+        </div>
+        <div class="calc-hint" id="elecRateHint">US avg ~$0.16 · Nevada ~$0.12</div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Previous car's fuel economy</label>
+        <div class="calc-input-wrap">
+          <input type="number" id="mpg" value="28" min="10" max="60" class="calc-input" oninput="calcCost()">
+          <span class="calc-unit">MPG</span>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Current gas price</label>
+        <div class="calc-input-wrap">
+          <span class="calc-unit calc-unit-left">$</span>
+          <input type="number" id="gasPrice" value="3.89" min="2.00" max="8.00" step="0.01" class="calc-input calc-input-prefix" oninput="calcCost()">
+          <span class="calc-unit">/gal</span>
+        </div>
+        <div class="calc-hint" id="gasPriceHint">Loading current prices…</div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: RESULTS -->
+    <div class="calc-results">
+
+      <div class="calc-result-block">
+        <div class="calc-result-label">Monthly charging cost</div>
+        <div class="calc-result-val" id="resMonthlyCost">$62</div>
+        <div class="calc-result-sub" id="resMonthlyKwh">387 kWh estimated</div>
+      </div>
+
+      <div class="calc-result-block">
+        <div class="calc-result-label">What you'd spend on gas</div>
+        <div class="calc-result-val calc-result-red" id="resMonthlyGas">$167</div>
+        <div class="calc-result-sub" id="resMonthlyGal">43 gallons estimated</div>
+      </div>
+
+      <div class="calc-result-divider"></div>
+
+      <div class="calc-result-block calc-result-highlight">
+        <div class="calc-result-label">Monthly savings</div>
+        <div class="calc-result-val calc-result-green" id="resMonthlySavings">$105</div>
+      </div>
+
+      <div class="calc-result-block calc-result-highlight">
+        <div class="calc-result-label">Annual savings</div>
+        <div class="calc-result-val calc-result-green calc-result-big" id="resAnnualSavings">$1,257</div>
+      </div>
+
+      <div class="calc-result-note" id="resNote">At this rate you'll save $6,287 over 5 years compared to driving your previous vehicle.</div>
+
+    </div>
+
+  </div>
+
+  <p style="font-size:11px; color:var(--text-dim); margin-top:18px; line-height:1.6;">
+    Assumes home charging only. Real-world efficiency varies by temperature, speed, and driving style. Public charging costs vary by network and location.
+  </p>
+</div>
+
+        <div class="calc-section-gap"></div>
+        <div class="calc-section-heading" id="charging-time">
+          <h2>Charging Time Calculator</h2>
+          <div class="calc-section-heading-line"></div>
+        </div>
         <!-- STEP 1: MODEL -->
         <div class="card" style="padding:24px;">
           <div class="section-label">Step 1 — Model</div>
@@ -783,8 +1132,29 @@
       <!-- SIDEBAR -->
       <div class="calc-sidebar">
 
+        <!-- COST SUMMARY (shown when cost calc in view) -->
+        <div class="card cost-summary-card" id="sidebarCostSummary" style="display:none;">
+          <div class="section-label">Cost summary</div>
+          <div class="cost-summary-stat">
+            <span class="cost-summary-label">Location</span>
+            <span class="cost-summary-value neutral" id="summaryState">—</span>
+          </div>
+          <div class="cost-summary-stat">
+            <span class="cost-summary-label">Monthly savings</span>
+            <span class="cost-summary-value" id="summaryMonthlySavings">—</span>
+          </div>
+          <div class="cost-summary-stat">
+            <span class="cost-summary-label">Annual savings</span>
+            <span class="cost-summary-value" id="summaryAnnualSavings">—</span>
+          </div>
+          <div class="cost-summary-stat">
+            <span class="cost-summary-label">vs. gas (monthly)</span>
+            <span class="cost-summary-value neutral" id="summaryGasCost">—</span>
+          </div>
+        </div>
+
         <!-- CURRENT CONFIG -->
-        <div class="card sidebar-stat-card">
+        <div class="card sidebar-stat-card" id="sidebarConfigCard">
           <div class="section-label">Selected config</div>
           <div class="sidebar-stats">
             <div class="sidebar-stat">
@@ -816,13 +1186,10 @@
         </div>
 
         <div class="sidebar-referral">
-          <div class="sidebar-referral-label">Ordering a Rivian?</div>
-          <div class="sidebar-referral-code">SCOTT4395475</div>
-          <div class="sidebar-referral-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging.</div>
-          <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn" onclick="gtag('event','open_rivian_configurator')">
-            Configure Your Rivian →
-          </a>
-        </div>
+  <div class="sidebar-referral-label">Using a referral code?</div>
+  <p style="font-size:12px; color:#ffffff; line-height:1.6; margin-bottom:10px;">Owner referral codes give both the buyer and referrer Rivian Rewards points, plus 3 months of free Adventure Network charging. Points range from 100–500 depending on configuration.</p>
+  <div class="sidebar-referral-code">SCOTT4395475</div>
+</div>
 
         <div class="card" style="padding:20px;">
           <div class="section-label">Related</div>
@@ -837,6 +1204,10 @@
           <div class="resource-row">
             <div><div class="resource-name">A2Z CCS1 Adapter</div><div class="resource-desc">Reviewed for RAN use</div></div>
             <a href="/accessories/#a2z-adapter" class="resource-link">Review</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">Rivian Gear Shop</div><div class="resource-desc">Accessories, key fobs, and owner gear</div></div>
+            <a href="https://rivian.com/gear-shop" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
           </div>
         </div>
 
@@ -1345,17 +1716,6 @@
   <script src="/nav-init.js"></script>
 
   <script>
-    function stripCopyCode() {
-      gtag('event', 'copy_referral_code');
-      navigator.clipboard.writeText('SCOTT4395475').then(() => {
-        const el = document.getElementById('stripCopied');
-        el.style.display = 'inline';
-        setTimeout(() => {
-          window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
-          setTimeout(() => { el.style.display = 'none'; }, 3000);
-        }, 600);
-      });
-    }
 
     document.addEventListener('DOMContentLoaded', () => {
       renderTrims(currentModel);
@@ -1366,12 +1726,187 @@
     });
   </script>
 
+  <script src="/shared.js"></script>
+
   <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-    document.addEventListener('keydown', e => {
-      if ((e.ctrlKey || e.metaKey) && ['u','s','c','x'].includes(e.key.toLowerCase())) e.preventDefault();
-    });
+  const STATE_RATES = {
+    AL:0.14, AK:0.24, AZ:0.13, AR:0.11, CA:0.28, CO:0.14, CT:0.24,
+    DE:0.14, FL:0.13, GA:0.13, HI:0.44, ID:0.10, IL:0.14, IN:0.13,
+    IA:0.12, KS:0.13, KY:0.11, LA:0.10, ME:0.22, MD:0.15, MA:0.24,
+    MI:0.17, MN:0.14, MS:0.12, MO:0.12, MT:0.11, NE:0.11, NV:0.12,
+    NH:0.22, NJ:0.17, NM:0.13, NY:0.21, NC:0.12, ND:0.10, OH:0.13,
+    OK:0.10, OR:0.11, PA:0.15, RI:0.23, SC:0.13, SD:0.11, TN:0.12,
+    TX:0.13, UT:0.11, VT:0.18, VA:0.13, WA:0.10, WV:0.12, WI:0.15,
+    WY:0.10, DC:0.15
+  };
+
+  // Hardcoded fallback gas prices by state
+  const FALLBACK_GAS_PRICES = {
+    AL:3.19, AK:3.89, AZ:3.45, AR:3.09, CA:4.79, CO:3.29, CT:3.49,
+    DE:3.19, FL:3.39, GA:3.09, HI:4.69, ID:3.39, IL:3.59, IN:3.29,
+    IA:3.19, KS:3.09, KY:3.09, LA:3.09, ME:3.39, MD:3.29, MA:3.49,
+    MI:3.39, MN:3.19, MS:3.09, MO:3.09, MT:3.39, NE:3.19, NV:3.89,
+    NH:3.39, NJ:3.29, NM:3.29, NY:3.59, NC:3.19, ND:3.19, OH:3.19,
+    OK:3.09, OR:3.79, PA:3.49, RI:3.39, SC:3.09, SD:3.19, TN:3.09,
+    TX:3.09, UT:3.49, VT:3.39, VA:3.29, WA:3.99, WV:3.19, WI:3.19,
+    WY:3.29, DC:3.59
+  };
+
+  let gasPricesData = null;
+
+  async function loadGasPrices() {
+    try {
+      const res = await fetch('/scripts/gas-prices.json', { cache: 'no-cache' });
+      if (!res.ok) throw new Error('fetch failed');
+      gasPricesData = await res.json();
+    } catch(e) {
+      gasPricesData = null; // will fall back to hardcoded table
+    }
+  }
+
+  async function detectGasPrice(state) {
+    const hint  = document.getElementById('gasPriceHint');
+    const input = document.getElementById('gasPrice');
+    const prices = gasPricesData ? gasPricesData.states : FALLBACK_GAS_PRICES;
+    const updated = gasPricesData ? gasPricesData.updated : null;
+    const national = gasPricesData ? parseFloat(gasPricesData.national) : 3.39;
+
+    const statePrice = state && prices[state] ? parseFloat(prices[state]) : null;
+    const price = statePrice || national;
+
+    input.value = price.toFixed(2);
+
+    if (statePrice && updated) {
+      hint.textContent = `Your state avg $${price.toFixed(2)} · Updated ${updated}`;
+    } else if (statePrice) {
+      hint.textContent = `Your state avg $${price.toFixed(2)} · adjust to your local price`;
+    } else if (updated) {
+      hint.textContent = `National avg $${price.toFixed(2)} · Updated ${updated}`;
+    } else {
+      hint.textContent = `National avg ~$${price.toFixed(2)} · adjust to your local price`;
+    }
+
+    calcCost();
+  }
+
+  async function detectElectricRate() {
+    let detectedState = null;
+    try {
+      const res = await fetch('https://ipapi.co/json/', { cache: 'force-cache' });
+      if (!res.ok) throw new Error('geo failed');
+      const data = await res.json();
+      detectedState = data.region_code;
+      const rate = STATE_RATES[detectedState];
+      if (!rate) throw new Error('state not found');
+      const input = document.getElementById('electricRate');
+      const hint  = document.getElementById('elecRateHint');
+      input.value = rate.toFixed(2);
+      hint.textContent = `Your state avg ~$${rate.toFixed(2)} (${data.region || detectedState})`;
+      const summaryStateEl = document.getElementById('summaryState');
+      if (summaryStateEl) summaryStateEl.textContent = data.region || detectedState;
+      calcCost();
+    } catch(e) {
+      // fall back to defaults already set in HTML
+    }
+    await detectGasPrice(detectedState);
+  }
+
+  const BATTERY_OPTIONS = {
+    r1: [
+      { value: '2.9', label: 'Standard Range (~270 mi) — 2.9 mi/kWh' },
+      { value: '3.1', label: 'Large Pack (~329 mi) — 3.1 mi/kWh', selected: true },
+      { value: '3.3', label: 'Max Range (~410 mi) — 3.3 mi/kWh' },
+    ],
+    r2: [
+      { value: '3.4', label: 'Standard (~260 mi) — 3.4 mi/kWh', selected: true },
+      { value: '3.6', label: 'Long Range (~300 mi) — 3.6 mi/kWh' },
+    ],
+  };
+
+  function updateBatteryOptions() {
+    const vehicle = document.getElementById('costVehicle').value;
+    const select  = document.getElementById('battery');
+    const options = BATTERY_OPTIONS[vehicle] || BATTERY_OPTIONS.r1;
+    select.innerHTML = options.map(o =>
+      `<option value="${o.value}"${o.selected ? ' selected' : ''}>${o.label}</option>`
+    ).join('');
+    calcCost();
+  }
+
+  function calcCost() {
+    const miles       = parseFloat(document.getElementById('miles').value) || 0;
+    const efficiency  = parseFloat(document.getElementById('battery').value) || 3.1;
+    const elecRate    = parseFloat(document.getElementById('electricRate').value) || 0.16;
+    const mpg         = parseFloat(document.getElementById('mpg').value) || 28;
+    const gasPrice    = parseFloat(document.getElementById('gasPrice').value) || 3.89;
+
+    if (miles <= 0) return;
+
+    const kwhNeeded     = miles / efficiency;
+    const monthlyCost   = kwhNeeded * elecRate;
+    const gallonsNeeded = miles / mpg;
+    const monthlyGas    = gallonsNeeded * gasPrice;
+    const monthlySaving = monthlyGas - monthlyCost;
+    const annualSaving  = monthlySaving * 12;
+
+    function fmt(n) {
+      return '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    document.getElementById('resMonthlyCost').textContent     = fmt(monthlyCost);
+    document.getElementById('resMonthlyKwh').textContent      = Math.round(kwhNeeded) + ' kWh estimated';
+    document.getElementById('resMonthlyGas').textContent      = fmt(monthlyGas);
+    document.getElementById('resMonthlyGal').textContent      = Math.round(gallonsNeeded) + ' gallons estimated';
+    document.getElementById('resMonthlySavings').textContent  = monthlySaving >= 0 ? fmt(monthlySaving) : '-' + fmt(monthlySaving);
+    document.getElementById('resAnnualSavings').textContent   = annualSaving >= 0 ? fmt(annualSaving) : '-' + fmt(annualSaving);
+
+    const noteEl = document.getElementById('resNote');
+    if (annualSaving > 0) {
+      noteEl.textContent = 'At this rate you\'ll save ' + fmt(annualSaving * 5) + ' over 5 years compared to driving your previous vehicle.';
+    } else {
+      noteEl.textContent = 'Adjust your inputs — electricity costs may exceed gas at current rates.';
+    }
+    updateCostSummary();
+  }
+
+  function updateCostSummary() {
+    const monthlySavings = document.getElementById('resMonthlySavings')?.textContent || '—';
+    const annualSavings  = document.getElementById('resAnnualSavings')?.textContent || '—';
+    const gasCost        = document.getElementById('resMonthlyGas')?.textContent || '—';
+    document.getElementById('summaryMonthlySavings').textContent = monthlySavings;
+    document.getElementById('summaryAnnualSavings').textContent  = annualSavings;
+    document.getElementById('summaryGasCost').textContent        = gasCost;
+  }
+
+  function initSidebarObserver() {
+    const costHeading = document.getElementById('charging-cost');
+    const timeHeading = document.getElementById('charging-time');
+    const configCard  = document.getElementById('sidebarConfigCard');
+    const costSummary = document.getElementById('sidebarCostSummary');
+    if (!costHeading || !timeHeading || !configCard || !costSummary) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.target.id === 'charging-time' && entry.isIntersecting) {
+          configCard.style.display  = '';
+          costSummary.style.display = 'none';
+        } else if (entry.target.id === 'charging-cost' && entry.isIntersecting) {
+          configCard.style.display  = 'none';
+          costSummary.style.display = '';
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '-80px 0px -40% 0px' });
+
+    observer.observe(costHeading);
+    observer.observe(timeHeading);
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    calcCost();
+    await loadGasPrices();
+    detectElectricRate();
+    initSidebarObserver();
+  });
   </script>
 
 </body>

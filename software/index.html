@@ -7,12 +7,14 @@
   <meta name="description" content="Rivian OTA software update history for R1S and R1T — version numbers, release dates, Gen 1 vs Gen 2 applicability, known bugs, and key features for every update."/>
   <link rel="canonical" href="https://www.rivianresource.com/software/"/>
   <meta property="og:title" content="Rivian Software Update Tracker"/>
+  <meta property="og:description" content="Track Rivian software updates — version history, release notes, and what's new for R1S, R1T, and R2 owners."/>
+  <meta property="og:url" content="https://www.rivianrewardshub.com/software/" />
   <meta property="og:type" content="website"/>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SB8DBC8NBQ');</script>
 
-  <link rel="icon" type="image/png" href="/images/logo.svg">
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -245,10 +247,10 @@
 
   <div class="referral-strip">
     <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
-      <span class="strip-label">Referral Code</span>
-      <span class="strip-code">SCOTT4395475</span>
+      <span class="strip-label">Referral code</span>
+      <span class="strip-code" onclick="stripCopyCode()" style="cursor:pointer;">SCOTT4395475</span>
       <span class="strip-divider"></span>
-      <span class="strip-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
+      <span class="strip-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
       <button class="strip-btn" onclick="stripCopyCode()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         Copy
@@ -317,11 +319,10 @@
         </div>
 
         <div class="sidebar-referral">
-          <div class="sidebar-referral-label">Ordering a Rivian?</div>
-          <div class="sidebar-referral-code">SCOTT4395475</div>
-          <div class="sidebar-referral-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging.</div>
-          <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn">Configure Your Rivian &rarr;</a>
-        </div>
+  <div class="sidebar-referral-label">Using a referral code?</div>
+  <p style="font-size:12px; color:#ffffff; line-height:1.6; margin-bottom:10px;">Owner referral codes give both the buyer and referrer Rivian Rewards points, plus 3 months of free Adventure Network charging. Points range from 100–500 depending on configuration.</p>
+  <div class="sidebar-referral-code">SCOTT4395475</div>
+</div>
 
         <div class="card" style="padding:20px;">
           <div class="section-label">Related</div>
@@ -336,6 +337,10 @@
           <div class="resource-row">
             <div><div class="resource-name">r/Rivian</div><div class="resource-desc">Community update notes</div></div>
             <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">Rivian Gear Shop</div><div class="resource-desc">Accessories, key fobs, and owner gear</div></div>
+            <a href="https://rivian.com/gear-shop" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
           </div>
         </div>
 
@@ -353,18 +358,6 @@
 <script src="/nav-init.js"></script>
 
 <script>
-  function stripCopyCode() {
-    gtag('event', 'copy_referral_code');
-    navigator.clipboard.writeText('SCOTT4395475').then(() => {
-      const el = document.getElementById('stripCopied');
-      el.style.display = 'inline';
-      setTimeout(() => {
-        window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
-        setTimeout(() => { el.style.display = 'none'; }, 3000);
-      }, 600);
-    });
-  }
-
   function genTag(gen) {
     if (gen === 'gen2') return '<span class="update-tag tag-gen2">Gen 2 Only</span>';
     if (gen === 'gen1') return '<span class="update-tag tag-gen1">Gen 1 Only</span>';
@@ -391,98 +384,90 @@
     return `<div class="first-spotted">First spotted: ${update.firstSpotted}</div>`;
   }
 
-  async function loadLiveSoftwareVersion() {
+  function loadLiveSoftwareVersion(updates) {
     const currentVersion   = document.querySelector('.cv-version');
     const currentDate      = document.querySelector('.cv-date');
     const currentHighlights = document.querySelector('.cv-highlights');
 
-    try {
-      const response = await fetch('/software/updates.json?v=' + Date.now());
-      if (!response.ok) throw new Error('Unable to load OTA data');
-      const updates = await response.json();
-      if (!updates.length) throw new Error('No OTA data found');
-      const latest = updates[0];
-      currentVersion.textContent = latest.version;
-      currentDate.textContent = latest.rollout
-        ? `${latest.date} · ${latest.rollout}`
-        : latest.date;
-      currentHighlights.innerHTML = latest.highlights
-        .map(item => `<div class="cv-highlight">${item}</div>`)
-        .join('');
-    } catch(e) {
-      console.error(e);
-      currentVersion.textContent = 'Unavailable';
-      currentDate.textContent = 'Unable to retrieve OTA data';
-      currentHighlights.innerHTML = '';
-    }
+    if (!updates.length) throw new Error('No OTA data found');
+    const latest = updates[0];
+    currentVersion.textContent = latest.version;
+    currentDate.textContent = latest.rollout
+      ? `${latest.date} · ${latest.rollout}`
+      : latest.date;
+    currentHighlights.innerHTML = latest.highlights
+      .map(item => `<div class="cv-highlight">${item}</div>`)
+      .join('');
   }
 
-  async function renderSoftwareTimeline() {
+  function renderSoftwareTimeline(updates) {
     const timeline = document.getElementById('softwareTimeline');
     if (!timeline) return;
-    try {
-      const response = await fetch('/software/updates.json?v=' + Date.now());
-      if (!response.ok) throw new Error('Unable to load updates');
-      const updates = await response.json();
 
-      timeline.innerHTML = updates.slice(1).map((update, index) => `
-        <div class="update-entry ${index === 0 ? 'featured' : ''}" id="v${update.version.replace('.', '-')}">
-          <div class="update-card">
-            <div class="update-header">
-              <div>
-                <div class="update-version">${update.version}</div>
-                <div class="update-name">${update.name || ''}</div>
-                <div class="update-date">${update.date}</div>
-                ${firstSpottedHtml(update)}
-              </div>
-              <div class="update-tags">
-                <span class="update-tag ${update.type === 'major' ? 'tag-major' : 'tag-minor'}">${update.type}</span>
-                ${genTag(update.gen || 'both')}
-              </div>
+    timeline.innerHTML = updates.slice(1).map((update, index) => `
+      <div class="update-entry ${index === 0 ? 'featured' : ''}" id="v${update.version.replaceAll('.', '-')}">
+        <div class="update-card">
+          <div class="update-header">
+            <div>
+              <div class="update-version">${update.version}</div>
+              <div class="update-name">${update.name || ''}</div>
+              <div class="update-date">${update.date}</div>
+              ${firstSpottedHtml(update)}
             </div>
-            <div class="update-changes">
-              ${update.highlights.map(item => `
-                <div class="update-change">
-                  <span class="change-dot dot-feature"></span>
-                  ${item}
-                </div>
-              `).join('')}
+            <div class="update-tags">
+              <span class="update-tag ${update.type === 'major' ? 'tag-major' : 'tag-minor'}">${update.type}</span>
+              ${genTag(update.gen || 'both')}
             </div>
-            ${bugsHtml(update.bugs)}
           </div>
+          <div class="update-changes">
+            ${update.highlights.map(item => `
+              <div class="update-change">
+                <span class="change-dot dot-feature"></span>
+                ${item}
+              </div>
+            `).join('')}
+          </div>
+          ${bugsHtml(update.bugs)}
         </div>
-      `).join('');
-
-    } catch(e) {
-      console.error(e);
-      timeline.innerHTML = `<div class="card" style="padding:20px;">Unable to load OTA history.</div>`;
-    }
+      </div>
+    `).join('');
   }
 
-  async function renderQuickJump() {
+  function renderQuickJump(updates) {
     const quickJump = document.getElementById('softwareQuickJump');
     if (!quickJump) return;
+    quickJump.innerHTML = updates.map((update, index) => `
+      <a href="#v${update.version.replaceAll('.', '-')}" class="vq-row">
+        <div>
+          <div class="vq-version">${update.version}</div>
+          <div class="vq-date">${update.date}</div>
+        </div>
+        ${index === 0 ? '<span class="vq-current">Current</span>' : ''}
+      </a>
+    `).join('');
+  }
+
+  async function loadAllSoftwareData() {
     try {
-      const response = await fetch('/software/updates.json?v=' + Date.now());
-      if (!response.ok) throw new Error('Unable to load updates');
-      const updates = await response.json();
-      quickJump.innerHTML = updates.map((update, index) => `
-        <a href="#v${update.version.replace('.', '-')}" class="vq-row">
-          <div>
-            <div class="vq-version">${update.version}</div>
-            <div class="vq-date">${update.date}</div>
-          </div>
-          ${index === 0 ? '<span class="vq-current">Current</span>' : ''}
-        </a>
-      `).join('');
+      const data = await fetch('/software/updates.json?v=' + Date.now()).then(r => r.json());
+      loadLiveSoftwareVersion(data);
+      renderSoftwareTimeline(data);
+      renderQuickJump(data);
     } catch(e) {
-      console.error(e);
+      console.error('Failed to load software data:', e);
+      const cv = document.querySelector('.cv-version');
+      const cd = document.querySelector('.cv-date');
+      if (cv) cv.textContent = 'Unavailable';
+      if (cd) cd.textContent = 'Unable to retrieve OTA data';
+      const timeline = document.getElementById('softwareTimeline');
+      if (timeline) timeline.innerHTML = `<div class="card" style="padding:20px;">Unable to load OTA history.</div>`;
     }
   }
 
-  renderSoftwareTimeline();
-  renderQuickJump();
-  loadLiveSoftwareVersion();
+  document.addEventListener('DOMContentLoaded', () => {
+    loadAllSoftwareData();
+  });
 </script>
+  <script src="/shared.js"></script>
 </body>
 </html>
