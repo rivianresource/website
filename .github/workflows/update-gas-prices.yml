@@ -17,9 +17,8 @@ jobs:
           EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
         run: |
           curl -s --globoff "https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${EIA_API_KEY}&frequency=weekly&data[0]=value&facets[series][]=EMM_EPMR_PTE_NUS_DPG&facets[series][]=EMM_EPMR_PTE_R10_DPG&facets[series][]=EMM_EPMR_PTE_R20_DPG&facets[series][]=EMM_EPMR_PTE_R30_DPG&facets[series][]=EMM_EPMR_PTE_R40_DPG&facets[series][]=EMM_EPMR_PTE_R50_DPG&sort[0][column]=period&sort[0][direction]=desc&length=10" > eia_raw.json
-
-      - name: Debug EIA response
-        run: cat eia_raw.json
+          echo "EIA response:"
+          cat eia_raw.json
 
       - name: Process and write gas-prices.json
         run: |
