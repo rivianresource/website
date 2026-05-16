@@ -6,7 +6,7 @@ fetch('/nav.html')
     const path = window.location.pathname;
     document.querySelectorAll('.nav-links a').forEach(a => {
       const href = a.getAttribute('href');
-      if (href !== '/' && path.startsWith(href)) a.classList.add('active');
+      if (href === '/' ? path === '/' : path.startsWith(href)) a.classList.add('active');
     });
     const btn     = document.getElementById('navHamburger');
     const links   = document.getElementById('navLinks');

@@ -257,6 +257,32 @@ footer {
 
 footer img { width: 80px; opacity: 0.3; display: block; margin: 0 auto 12px; }
 
+.footer-guides {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-guides-label {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.footer-guides a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.footer-guides a:hover { color: var(--green); }
+
 /* ─── SIDEBAR REFERRAL CARD ─── */
 .sidebar-referral {
   background: var(--green-dark);
