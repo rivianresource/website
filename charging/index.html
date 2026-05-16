@@ -987,7 +987,7 @@
           <input type="number" id="electricRate" value="0.16" min="0.05" max="0.60" step="0.01" class="calc-input calc-input-prefix" oninput="calcCost()">
           <span class="calc-unit">/kWh</span>
         </div>
-        <div class="calc-hint">US avg ~$0.16 · Nevada ~$0.12</div>
+        <div class="calc-hint" id="elecRateHint">US avg ~$0.16 · Nevada ~$0.12</div>
       </div>
 
       <div class="calc-field">
@@ -1657,6 +1657,35 @@
   <script src="/shared.js"></script>
 
   <script>
+  const STATE_RATES = {
+    AL:0.14, AK:0.24, AZ:0.13, AR:0.11, CA:0.28, CO:0.14, CT:0.24,
+    DE:0.14, FL:0.13, GA:0.13, HI:0.44, ID:0.10, IL:0.14, IN:0.13,
+    IA:0.12, KS:0.13, KY:0.11, LA:0.10, ME:0.22, MD:0.15, MA:0.24,
+    MI:0.17, MN:0.14, MS:0.12, MO:0.12, MT:0.11, NE:0.11, NV:0.12,
+    NH:0.22, NJ:0.17, NM:0.13, NY:0.21, NC:0.12, ND:0.10, OH:0.13,
+    OK:0.10, OR:0.11, PA:0.15, RI:0.23, SC:0.13, SD:0.11, TN:0.12,
+    TX:0.13, UT:0.11, VT:0.18, VA:0.13, WA:0.10, WV:0.12, WI:0.15,
+    WY:0.10, DC:0.15
+  };
+
+  async function detectElectricRate() {
+    try {
+      const res = await fetch('https://ipapi.co/json/', { cache: 'force-cache' });
+      if (!res.ok) throw new Error('geo failed');
+      const data = await res.json();
+      const state = data.region_code;
+      const rate = STATE_RATES[state];
+      if (!rate) throw new Error('state not found');
+      const input = document.getElementById('electricRate');
+      const hint  = document.getElementById('elecRateHint');
+      input.value = rate.toFixed(2);
+      hint.textContent = `Your state avg ~$${rate.toFixed(2)} (${data.region || state})`;
+      calcCost();
+    } catch(e) {
+      // fall back to defaults already set in HTML
+    }
+  }
+
   function calcCost() {
     const miles       = parseFloat(document.getElementById('miles').value) || 0;
     const efficiency  = parseFloat(document.getElementById('battery').value) || 3.1;
@@ -1692,7 +1721,10 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded', calcCost);
+  document.addEventListener('DOMContentLoaded', () => {
+    calcCost();
+    detectElectricRate();
+  });
   </script>
 
 </body>
