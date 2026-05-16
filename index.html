@@ -5,15 +5,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Rivian Referral Code + Rewards Points | Real Owner Reviews</title>
+  <title>Rivian R1S Owner Resource — Reviews, Tools &amp; Ownership Guides</title>
 
   <meta
     name="description"
-    content="Use Rivian referral code SCOTT4395475 for Rivian Rewards points and complimentary Adventure Network charging. Real Rivian R1S owner reviews, accessories, charging impressions, and ownership resources."
+    content="Real-world Rivian R1S ownership reviews, delivery checklist, charging calculator, accessory guides, and ownership resources from a Las Vegas-based owner."
   />
   <link rel="canonical" href="https://www.rivianrewardshub.com/" />
-  <meta property="og:title" content="Rivian Referral Code — Rewards Points + Free Charging"/>
-  <meta property="og:description" content="Use Rivian referral code SCOTT4395475 for Rivian Rewards points and complimentary Adventure Network charging. Independent Rivian owner reviews and ownership resources."/>
+  <meta property="og:title" content="Rivian R1S Owner Resource — Reviews, Tools &amp; Ownership Guides"/>
+  <meta property="og:description" content="Real-world Rivian R1S ownership reviews, delivery checklist, charging calculator, accessory guides, and ownership resources from a Las Vegas-based owner."/>
   <meta property="og:image" content="https://www.rivianrewardshub.com/r1s.jpg" />
   <meta property="og:url" content="https://www.rivianrewardshub.com/" />
   <meta property="og:type" content="website" />
@@ -27,7 +27,7 @@
     gtag('config', 'G-SB8DBC8NBQ');
   </script>
 
-  <link rel="icon" type="image/png" href="/images/logo.svg">
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -470,7 +470,7 @@
   <!-- ─── REFERRAL STRIP ─── -->
   <div class="referral-strip">
     <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
-      <span class="strip-label">Referral Code</span>
+      <span class="strip-label">Referral code</span>
       <span
   class="strip-code"
   onclick="stripCopyCode()"
@@ -635,15 +635,13 @@
 
           <!-- REFERRAL REWARDS -->
           <div class="card rewards-card">
-            <div class="section-label">Referral rewards</div>
+            <div class="section-label">Using a referral code?</div>
+            <p style="font-size:13px; color:var(--text-muted); line-height:1.6; margin-bottom:14px;">When you order a Rivian using an owner referral code, both you and the referring owner receive Rivian Rewards points — plus 3 months of complimentary Adventure Network charging. Points vary by configuration:</p>
             <div class="rewards-row"><span class="rewards-row-label">Tri / Quad Motor</span><span class="rewards-row-val">500 pts</span></div>
             <div class="rewards-row"><span class="rewards-row-label">Dual Max Battery</span><span class="rewards-row-val">250 pts</span></div>
             <div class="rewards-row"><span class="rewards-row-label">Dual Standard</span><span class="rewards-row-val">100 pts</span></div>
             <div class="rewards-row"><span class="rewards-row-label">Free charging</span><span class="rewards-row-val gold">3 months ⚡</span></div>
-            <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="cta-btn" onclick="gtag('event','open_rivian_configurator')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Configure Your Rivian
-            </a>
+            <p style="font-size:12px; color:var(--text-dim); margin-top:12px;">My code: <strong style="color:var(--text); letter-spacing:0.03em;">SCOTT4395475</strong></p>
           </div>
 
           <!-- OWNER RESOURCES -->
@@ -692,8 +690,7 @@
   <footer>
     <div class="container">
       <img src="/images/logo.svg" alt="Rivian Rewards Hub">
-      Independent Rivian owner resource featuring reviews, referral rewards, charging impressions, and ownership content.<br>
-      Not affiliated with or endorsed by Rivian Automotive, Inc.
+      Independent Rivian owner resource · Not affiliated with or endorsed by Rivian Automotive, Inc.
     </div>
   </footer>
 
@@ -702,17 +699,10 @@
 
   <script>
 
-    /* ── Referral strip copy ── */
-    function stripCopyCode() {
-      gtag('event', 'copy_referral_code');
-      navigator.clipboard.writeText('SCOTT4395475').then(() => {
-        const el = document.getElementById('stripCopied');
-        el.style.display = 'inline';
-        setTimeout(() => {
-          window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
-          setTimeout(() => { el.style.display = 'none'; }, 3000);
-        }, 600);
-      });
+    /* ── Shared vote formatter ── */
+    function fmtVotes(n) {
+      if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
+      return n.toString();
     }
 
     /* ── News Teaser — 6 articles, 3-col grid ── */
@@ -757,11 +747,6 @@
           .filter(p => !p.stickied)
           .slice(0, 7);
 
-        function fmtVotes(n) {
-          if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
-          return n.toString();
-        }
-
         container.innerHTML = posts.map(p => `
           <a href="https://www.reddit.com${p.permalink}" target="_blank" rel="noopener noreferrer" class="reddit-row">
             <div class="reddit-votes">
@@ -800,10 +785,6 @@
           .map(c => c.data)
           .filter(p => !p.stickied)
           .slice(0, 6);
-
-        function fmtVotes(n) {
-          return n >= 1000 ? (n / 1000).toFixed(1) + 'k' : n.toString();
-        }
 
         container.innerHTML = posts.map(p => `
           <a href="https://www.reddit.com${p.permalink}" target="_blank" rel="noopener noreferrer" class="reddit-row">
@@ -857,14 +838,7 @@
 
   </script>
 
-  <!-- Image / right-click protection -->
-  <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-    document.addEventListener('keydown', e => {
-      if ((e.ctrlKey || e.metaKey) && ['u','s','c','x'].includes(e.key.toLowerCase())) e.preventDefault();
-    });
-  </script>
+  <script src="/shared.js"></script>
 
 </body>
 </html>
