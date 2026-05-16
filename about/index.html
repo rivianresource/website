@@ -7,6 +7,8 @@
   <meta name="description" content="About the owner behind Rivian Rewards Hub — Rivian ownership experience, why the site was created, and long-term R1S ownership impressions."/>
   <link rel="canonical" href="https://www.rivianrewardshub.com/about/"/>
   <meta property="og:title" content="About Rivian Rewards Hub"/>
+  <meta property="og:description" content="About the owner behind Rivian Rewards Hub — a Las Vegas-based R1S owner sharing real-world reviews, accessories, and ownership resources."/>
+  <meta property="og:url" content="https://www.rivianrewardshub.com/about/" />
   <meta property="og:image" content="https://www.rivianrewardshub.com/r1s.jpg"/>
   <meta property="og:type" content="website"/>
 
@@ -18,7 +20,7 @@
     gtag('config', 'G-SB8DBC8NBQ');
   </script>
 
-  <link rel="icon" type="image/png" href="/images/logo.svg">
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -68,7 +70,6 @@
 
     /* ─── OWNER CARD ─── */
     .owner-card {
-      background: var(--bg-secondary);
       border-radius: var(--radius-sm);
       padding: 20px;
       margin-top: 16px;
@@ -76,7 +77,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 1px;
       background: var(--border);
-      border-radius: var(--radius-sm);
       overflow: hidden;
     }
 
@@ -158,7 +158,7 @@
   <div class="referral-strip">
     <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
       <span class="strip-label">Referral code</span>
-      <span class="strip-code">SCOTT4395475</span>
+      <span class="strip-code" onclick="stripCopyCode()" style="cursor:pointer;">SCOTT4395475</span>
       <span class="strip-divider"></span>
       <span class="strip-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
       <button class="strip-btn" onclick="stripCopyCode()">
@@ -283,28 +283,7 @@
 
 <script src="/nav-init.js"></script>
 
-<script>
-
-    function stripCopyCode() {
-      gtag('event', 'copy_referral_code');
-      navigator.clipboard.writeText('SCOTT4395475').then(() => {
-        const el = document.getElementById('stripCopied');
-        el.style.display = 'inline';
-        setTimeout(() => {
-          window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
-          setTimeout(() => { el.style.display = 'none'; }, 3000);
-        }, 600);
-      });
-    }
-  </script>
-
-  <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-    document.addEventListener('keydown', e => {
-      if ((e.ctrlKey || e.metaKey) && ['u','s','c','x'].includes(e.key.toLowerCase())) e.preventDefault();
-    });
-  </script>
+  <script src="/shared.js"></script>
 
 </body>
 </html>

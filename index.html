@@ -27,7 +27,7 @@
     gtag('config', 'G-SB8DBC8NBQ');
   </script>
 
-  <link rel="icon" type="image/png" href="/images/logo.svg">
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -470,7 +470,7 @@
   <!-- ─── REFERRAL STRIP ─── -->
   <div class="referral-strip">
     <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
-      <span class="strip-label">Referral Code</span>
+      <span class="strip-label">Referral code</span>
       <span
   class="strip-code"
   onclick="stripCopyCode()"
@@ -692,8 +692,7 @@
   <footer>
     <div class="container">
       <img src="/images/logo.svg" alt="Rivian Rewards Hub">
-      Independent Rivian owner resource featuring reviews, referral rewards, charging impressions, and ownership content.<br>
-      Not affiliated with or endorsed by Rivian Automotive, Inc.
+      Independent Rivian owner resource · Not affiliated with or endorsed by Rivian Automotive, Inc.
     </div>
   </footer>
 
@@ -702,17 +701,10 @@
 
   <script>
 
-    /* ── Referral strip copy ── */
-    function stripCopyCode() {
-      gtag('event', 'copy_referral_code');
-      navigator.clipboard.writeText('SCOTT4395475').then(() => {
-        const el = document.getElementById('stripCopied');
-        el.style.display = 'inline';
-        setTimeout(() => {
-          window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
-          setTimeout(() => { el.style.display = 'none'; }, 3000);
-        }, 600);
-      });
+    /* ── Shared vote formatter ── */
+    function fmtVotes(n) {
+      if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
+      return n.toString();
     }
 
     /* ── News Teaser — 6 articles, 3-col grid ── */
@@ -757,11 +749,6 @@
           .filter(p => !p.stickied)
           .slice(0, 7);
 
-        function fmtVotes(n) {
-          if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
-          return n.toString();
-        }
-
         container.innerHTML = posts.map(p => `
           <a href="https://www.reddit.com${p.permalink}" target="_blank" rel="noopener noreferrer" class="reddit-row">
             <div class="reddit-votes">
@@ -800,10 +787,6 @@
           .map(c => c.data)
           .filter(p => !p.stickied)
           .slice(0, 6);
-
-        function fmtVotes(n) {
-          return n >= 1000 ? (n / 1000).toFixed(1) + 'k' : n.toString();
-        }
 
         container.innerHTML = posts.map(p => `
           <a href="https://www.reddit.com${p.permalink}" target="_blank" rel="noopener noreferrer" class="reddit-row">
@@ -857,14 +840,7 @@
 
   </script>
 
-  <!-- Image / right-click protection -->
-  <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-    document.addEventListener('keydown', e => {
-      if ((e.ctrlKey || e.metaKey) && ['u','s','c','x'].includes(e.key.toLowerCase())) e.preventDefault();
-    });
-  </script>
+  <script src="/shared.js"></script>
 
 </body>
 </html>
