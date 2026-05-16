@@ -312,6 +312,64 @@
 
     .acc-strip-desc { font-size: 12px; color: var(--text-dim); line-height: 1.45; }
 
+    /* ─── RECALLS CARD ─── */
+    .recalls-card { padding: 20px 24px; }
+
+    .recall-group { margin-bottom: 18px; }
+    .recall-group:last-child { margin-bottom: 0; }
+
+    .recall-vehicle {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 8px;
+    }
+
+    .recall-entry {
+      border-left: 3px solid var(--border-hover);
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      background: var(--bg-secondary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .recall-entry:last-child { margin-bottom: 0; }
+
+    .recall-campaign {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 2px;
+    }
+
+    .recall-component {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .recall-consequence {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .recall-none {
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 6px 0;
+    }
+
+    .recall-error {
+      font-size: 12px;
+      color: var(--text-dim);
+      padding: 6px 0;
+    }
+
     /* ─── STOCK CARD ─── */
     .stock-card { padding: 20px; }
 
@@ -602,6 +660,20 @@
             </div>
           </div>
 
+          <!-- ACTIVE RECALLS -->
+          <div class="card recalls-card">
+            <div class="news-header">
+              <div class="section-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Active Recalls
+              </div>
+              <a href="https://www.nhtsa.gov/vehicle-safety/recalls" target="_blank" rel="noopener noreferrer" class="link-btn" style="font-size:12px;">NHTSA ↗</a>
+            </div>
+            <div id="recallsFeed">
+              <div class="recall-none" style="color:var(--text-dim); font-size:13px;">Loading recall data…</div>
+            </div>
+          </div>
+
         </div>
 
         <!-- RIGHT COLUMN -->
@@ -833,11 +905,63 @@
       }
     }
 
+    /* ── NHTSA Recall Feed ── */
+    async function loadRecalls() {
+      const container = document.getElementById('recallsFeed');
+      const vehicles = [
+        { label: '2026 R1S', make: 'Rivian', model: 'R1S', year: '2026' },
+        { label: '2025 R1S', make: 'Rivian', model: 'R1S', year: '2025' },
+        { label: '2026 R1T', make: 'Rivian', model: 'R1T', year: '2026' },
+        { label: '2025 R1T', make: 'Rivian', model: 'R1T', year: '2025' },
+      ];
+
+      try {
+        const results = await Promise.all(vehicles.map(v =>
+          fetch(`https://api.nhtsa.gov/recalls/recallsByVehicle?make=${v.make}&model=${v.model}&modelYear=${v.year}`)
+            .then(r => r.json())
+            .then(d => ({ ...v, recalls: d.results || [] }))
+            .catch(() => ({ ...v, recalls: [] }))
+        ));
+
+        // Deduplicate across models by campaign number
+        const seen = new Set();
+        const grouped = results.map(v => ({
+          ...v,
+          recalls: v.recalls.filter(r => {
+            if (seen.has(r.NHTSACampaignNumber)) return false;
+            seen.add(r.NHTSACampaignNumber);
+            return true;
+          })
+        })).filter(v => v.recalls.length > 0);
+
+        if (grouped.length === 0) {
+          container.innerHTML = `<p class="recall-none">No open recalls found for 2025–2026 R1S or R1T.</p>`;
+          return;
+        }
+
+        container.innerHTML = grouped.map(v => `
+          <div class="recall-group">
+            <div class="recall-vehicle">${v.label}</div>
+            ${v.recalls.map(r => `
+              <div class="recall-entry">
+                <div class="recall-campaign">${r.NHTSACampaignNumber}</div>
+                <div class="recall-component">${r.Component}</div>
+                <div class="recall-consequence">${r.Consequence}</div>
+              </div>
+            `).join('')}
+          </div>
+        `).join('');
+      } catch(e) {
+        container.innerHTML = `<p class="recall-error">Unable to load recall data. <a href="https://www.nhtsa.gov/vehicle-safety/recalls" target="_blank" rel="noopener noreferrer" style="color:var(--green);">Check NHTSA directly →</a></p>`;
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       loadNewsTeaser();
       loadRedditFeed();
       loadForumsFeed();
       loadSoftwareWidget();
+      loadRecalls();
     });
 
   </script>
