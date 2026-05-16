@@ -493,20 +493,6 @@
 
   <div id="site-nav"></div>
 
-  <div class="referral-strip">
-    <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
-      <span class="strip-label">Referral Code</span>
-      <span class="strip-code">SCOTT4395475</span>
-      <span class="strip-divider"></span>
-      <span class="strip-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
-      <button class="strip-btn" onclick="stripCopyCode()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        Copy
-      </button>
-      <span class="strip-copied" id="stripCopied">&#10003; Copied!</span>
-    </div>
-  </div>
-
   <div class="page-header">
     <div class="container">
       <div class="page-eyebrow">Owner Resource &middot; New in 2026.15</div>
@@ -600,18 +586,6 @@
 <script src="/nav-init.js"></script>
 
 <script>
-  function stripCopyCode() {
-    gtag('event', 'copy_referral_code');
-    navigator.clipboard.writeText('SCOTT4395475').then(() => {
-      const el = document.getElementById('stripCopied');
-      el.style.display = 'inline';
-      setTimeout(() => {
-        window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
-        setTimeout(() => { el.style.display = 'none'; }, 3000);
-      }, 600);
-    });
-  }
-
   const ICONS = {
     thermometer: `<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>`,
     truck: `<svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
