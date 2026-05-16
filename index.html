@@ -89,12 +89,15 @@
     /* ─── MAIN LAYOUT ─── */
     .main-layout { padding: 24px 0 48px; }
 
-    .main-grid {
-      display: grid;
-      grid-template-columns: 1fr 288px;
-      gap: 20px;
-      align-items: start;
-    }
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 288px;
+  gap: 20px;
+  align-items: start;
+}
+
+.left-col { min-width: 0; }
+.right-col { min-width: 0; }
 
     @media (max-width: 860px) {
       .main-grid { grid-template-columns: 1fr; }
