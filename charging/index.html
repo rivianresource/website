@@ -528,6 +528,175 @@
       margin-top: 12px;
     }
 
+  .calc-card { padding: 24px; }
+
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  @media (max-width: 640px) {
+    .calc-grid { grid-template-columns: 1fr; }
+  }
+
+  .calc-inputs { display: flex; flex-direction: column; gap: 16px; }
+
+  .calc-field { display: flex; flex-direction: column; gap: 5px; }
+
+  .calc-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .calc-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+
+  .calc-input-wrap:focus-within {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(29,158,117,0.1);
+  }
+
+  .calc-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    outline: none;
+    min-width: 0;
+  }
+
+  .calc-input-prefix { padding-left: 4px; }
+
+  .calc-select {
+    width: 100%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a94a8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    transition: border-color 0.15s;
+  }
+
+  .calc-select:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(29,158,117,0.1);
+  }
+
+  .calc-select-wrap { position: relative; }
+
+  .calc-unit {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dim);
+    padding: 0 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .calc-unit-left {
+    padding-left: 12px;
+    padding-right: 4px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .calc-hint {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+
+  .calc-results {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .calc-result-block {
+    padding: 10px 0;
+  }
+
+  .calc-result-highlight {
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin: 2px 0;
+  }
+
+  .calc-result-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 3px;
+  }
+
+  .calc-result-val {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.1;
+  }
+
+  .calc-result-big { font-size: 32px; }
+  .calc-result-green { color: var(--green); }
+  .calc-result-red { color: #991b1b; }
+
+  .calc-result-sub {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  .calc-result-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 0;
+  }
+
+  .calc-result-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+
   </style>
 
 </head>
@@ -749,6 +918,103 @@
             </a>
           </div>
         </div>
+
+        <!-- CHARGING COST CALCULATOR -->
+        <div class="card calc-card" id="costCalc">
+  <div class="section-label">Charging cost calculator</div>
+  <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px; line-height:1.6;">See how much you're saving versus gas every month.</p>
+
+  <div class="calc-grid">
+
+    <!-- LEFT: INPUTS -->
+    <div class="calc-inputs">
+
+      <div class="calc-field">
+        <label class="calc-label">Miles driven per month</label>
+        <div class="calc-input-wrap">
+          <input type="number" id="miles" value="1200" min="0" max="5000" class="calc-input" oninput="calcCost()">
+          <span class="calc-unit">mi</span>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Battery configuration</label>
+        <div class="calc-select-wrap">
+          <select id="battery" class="calc-input calc-select" onchange="calcCost()">
+            <option value="2.9">Standard Range (~270 mi) — 2.9 mi/kWh</option>
+            <option value="3.1" selected="">Large Pack (~329 mi) — 3.1 mi/kWh</option>
+            <option value="3.3">Max Range (~410 mi) — 3.3 mi/kWh</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Home electricity rate</label>
+        <div class="calc-input-wrap">
+          <span class="calc-unit calc-unit-left">$</span>
+          <input type="number" id="electricRate" value="0.16" min="0.05" max="0.60" step="0.01" class="calc-input calc-input-prefix" oninput="calcCost()">
+          <span class="calc-unit">/kWh</span>
+        </div>
+        <div class="calc-hint">US avg ~$0.16 · Nevada ~$0.12</div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Previous car's fuel economy</label>
+        <div class="calc-input-wrap">
+          <input type="number" id="mpg" value="28" min="10" max="60" class="calc-input" oninput="calcCost()">
+          <span class="calc-unit">MPG</span>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Current gas price</label>
+        <div class="calc-input-wrap">
+          <span class="calc-unit calc-unit-left">$</span>
+          <input type="number" id="gasPrice" value="3.89" min="2.00" max="8.00" step="0.01" class="calc-input calc-input-prefix" oninput="calcCost()">
+          <span class="calc-unit">/gal</span>
+        </div>
+        <div class="calc-hint">Las Vegas avg · adjust to your local price</div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: RESULTS -->
+    <div class="calc-results">
+
+      <div class="calc-result-block">
+        <div class="calc-result-label">Monthly charging cost</div>
+        <div class="calc-result-val" id="resMonthlyCost">$62</div>
+        <div class="calc-result-sub" id="resMonthlyKwh">387 kWh estimated</div>
+      </div>
+
+      <div class="calc-result-block">
+        <div class="calc-result-label">What you'd spend on gas</div>
+        <div class="calc-result-val calc-result-red" id="resMonthlyGas">$167</div>
+        <div class="calc-result-sub" id="resMonthlyGal">43 gallons estimated</div>
+      </div>
+
+      <div class="calc-result-divider"></div>
+
+      <div class="calc-result-block calc-result-highlight">
+        <div class="calc-result-label">Monthly savings</div>
+        <div class="calc-result-val calc-result-green" id="resMonthlySavings">$105</div>
+      </div>
+
+      <div class="calc-result-block calc-result-highlight">
+        <div class="calc-result-label">Annual savings</div>
+        <div class="calc-result-val calc-result-green calc-result-big" id="resAnnualSavings">$1,257</div>
+      </div>
+
+      <div class="calc-result-note" id="resNote">At this rate you'll save $6,287 over 5 years compared to driving your previous vehicle.</div>
+
+    </div>
+
+  </div>
+
+  <p style="font-size:11px; color:var(--text-dim); margin-top:18px; line-height:1.6;">
+    Assumes home charging only. Real-world efficiency varies by temperature, speed, and driving style. Public charging costs vary by network and location.
+  </p>
+</div>
 
         <!-- TIPS -->
         <div class="card tips-card">
@@ -1357,6 +1623,45 @@
   </script>
 
   <script src="/shared.js"></script>
+
+  <script>
+  function calcCost() {
+    const miles       = parseFloat(document.getElementById('miles').value) || 0;
+    const efficiency  = parseFloat(document.getElementById('battery').value) || 3.1;
+    const elecRate    = parseFloat(document.getElementById('electricRate').value) || 0.16;
+    const mpg         = parseFloat(document.getElementById('mpg').value) || 28;
+    const gasPrice    = parseFloat(document.getElementById('gasPrice').value) || 3.89;
+
+    if (miles <= 0) return;
+
+    const kwhNeeded     = miles / efficiency;
+    const monthlyCost   = kwhNeeded * elecRate;
+    const gallonsNeeded = miles / mpg;
+    const monthlyGas    = gallonsNeeded * gasPrice;
+    const monthlySaving = monthlyGas - monthlyCost;
+    const annualSaving  = monthlySaving * 12;
+
+    function fmt(n) {
+      return '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    document.getElementById('resMonthlyCost').textContent     = fmt(monthlyCost);
+    document.getElementById('resMonthlyKwh').textContent      = Math.round(kwhNeeded) + ' kWh estimated';
+    document.getElementById('resMonthlyGas').textContent      = fmt(monthlyGas);
+    document.getElementById('resMonthlyGal').textContent      = Math.round(gallonsNeeded) + ' gallons estimated';
+    document.getElementById('resMonthlySavings').textContent  = monthlySaving >= 0 ? fmt(monthlySaving) : '-' + fmt(monthlySaving);
+    document.getElementById('resAnnualSavings').textContent   = annualSaving >= 0 ? fmt(annualSaving) : '-' + fmt(annualSaving);
+
+    const noteEl = document.getElementById('resNote');
+    if (annualSaving > 0) {
+      noteEl.textContent = 'At this rate you\'ll save ' + fmt(annualSaving * 5) + ' over 5 years compared to driving your previous vehicle.';
+    } else {
+      noteEl.textContent = 'Adjust your inputs — electricity costs may exceed gas at current rates.';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', calcCost);
+  </script>
 
 </body>
 </html>
