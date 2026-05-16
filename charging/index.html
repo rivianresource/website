@@ -782,6 +782,16 @@
       </div>
 
       <div class="calc-field">
+        <label class="calc-label">Vehicle</label>
+        <div class="calc-select-wrap">
+          <select id="costVehicle" class="calc-input calc-select" onchange="updateBatteryOptions()">
+            <option value="r1" selected>R1S / R1T</option>
+            <option value="r2">R2</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-field">
         <label class="calc-label">Battery configuration</label>
         <div class="calc-select-wrap">
           <select id="battery" class="calc-input calc-select" onchange="calcCost()">
@@ -1735,6 +1745,28 @@
       // fall back to defaults already set in HTML
     }
     await detectGasPrice(detectedState);
+  }
+
+  const BATTERY_OPTIONS = {
+    r1: [
+      { value: '2.9', label: 'Standard Range (~270 mi) — 2.9 mi/kWh' },
+      { value: '3.1', label: 'Large Pack (~329 mi) — 3.1 mi/kWh', selected: true },
+      { value: '3.3', label: 'Max Range (~410 mi) — 3.3 mi/kWh' },
+    ],
+    r2: [
+      { value: '3.4', label: 'Standard (~260 mi) — 3.4 mi/kWh', selected: true },
+      { value: '3.6', label: 'Long Range (~300 mi) — 3.6 mi/kWh' },
+    ],
+  };
+
+  function updateBatteryOptions() {
+    const vehicle = document.getElementById('costVehicle').value;
+    const select  = document.getElementById('battery');
+    const options = BATTERY_OPTIONS[vehicle] || BATTERY_OPTIONS.r1;
+    select.innerHTML = options.map(o =>
+      `<option value="${o.value}"${o.selected ? ' selected' : ''}>${o.label}</option>`
+    ).join('');
+    calcCost();
   }
 
   function calcCost() {
