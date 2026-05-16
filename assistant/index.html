@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hey Rivian — Voice Assistant Command Guide | Rivian Rewards Hub</title>
+  <meta name="description" content="Complete guide to Hey Rivian voice commands — climate, navigation, charging, media, calendar, and vehicle controls. Owner-verified commands for R1S and R1T."/>
+  <link rel="canonical" href="https://www.rivianrewardshub.com/assistant/"/>
+  <meta property="og:title" content="Hey Rivian Voice Assistant Command Guide"/>
+  <meta property="og:type" content="website"/>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SB8DBC8NBQ');</script>
+
+  <link rel="icon" type="image/png" href="/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "aabd2c264abb41589ccfd2223c79ae42"}'></script>
+
+  <style>
+    /* ─── LAYOUT ─── */
+    .ast-layout {
+      display: grid;
+      grid-template-columns: 1fr 272px;
+      gap: 28px;
+      align-items: start;
+      padding: 32px 0 56px;
+    }
+
+    @media (max-width: 860px) {
+      .ast-layout { grid-template-columns: 1fr; }
+      .ast-sidebar { display: none; }
+    }
+
+    .ast-main { display: flex; flex-direction: column; gap: 24px; }
+    .ast-sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 80px; }
+
+    /* ─── HERO CARD ─── */
+    .ast-hero {
+      background: var(--green-dark);
+      border-radius: var(--radius);
+      padding: 28px 28px 24px;
+    }
+
+    .ast-hero-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .ast-hero-label { font-size: 11px; font-weight: 600; color: #9FE1CB; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .ast-hero-title { font-family: 'DM Sans', sans-serif; font-size: 32px; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 6px; letter-spacing: -0.02em; }
+    .ast-hero-sub { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+    .ast-hero-badge {
+      background: rgba(255,255,255,0.12);
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .ast-hero-badge-val { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 800; color: #fff; }
+    .ast-hero-badge-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+    .ast-hero-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .ast-meta-item {
+      background: rgba(255,255,255,0.07);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+    }
+
+    .ast-meta-label { font-size: 10px; font-weight: 600; color: #9FE1CB; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+    .ast-meta-val { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.45; }
+
+    .ast-alexa-warning {
+      background: rgba(186,117,23,0.2);
+      border: 1px solid rgba(186,117,23,0.35);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .ast-alexa-icon {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      margin-top: 1px;
+      color: #f5c265;
+    }
+
+    .ast-alexa-text { font-size: 13px; color: #f5c265; line-height: 1.5; }
+
+    /* ─── JUMP NAV ─── */
+    .jump-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .jump-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .jump-pill:hover {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-pale);
+    }
+
+    /* ─── CATEGORY CARDS ─── */
+    .cat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 22px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cat-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cat-icon svg {
+      width: 17px;
+      height: 17px;
+      stroke: var(--green);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .cat-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .cat-count {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 9px;
+    }
+
+    .cmd-list { padding: 8px 0; }
+
+    .cmd-item {
+      padding: 10px 22px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cmd-item:last-child { border-bottom: none; }
+
+    .cmd-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .cmd-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .cmd-text::before {
+      content: '"';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .cmd-text::after {
+      content: '"';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .cmd-unverified {
+      flex-shrink: 0;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 3px;
+      background: #fef3e2;
+      color: var(--gold);
+      border: 1px solid rgba(186,117,23,0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .cmd-notes {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-top: 4px;
+    }
+
+    /* ─── OWNER NOTE ─── */
+    .owner-note {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 14px 16px;
+    }
+
+    .owner-note p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .owner-note p + p { margin-top: 6px; }
+    .owner-note strong { color: var(--text); }
+
+    /* ─── TIPS ─── */
+    .tips-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px 22px;
+    }
+
+    .tip-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .tip-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .tip-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── LIMITATIONS ─── */
+    .limit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 8px 0;
+    }
+
+    .limit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 22px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .limit-item:last-child { border-bottom: none; }
+
+    .limit-dot {
+      flex-shrink: 0;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #A32D2D;
+      opacity: 0.7;
+      margin-top: 8px;
+    }
+
+    .limit-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ─── CHANGELOG ─── */
+    .changelog-entry {
+      border-left: 2px solid var(--border);
+      padding-left: 24px;
+      padding-bottom: 28px;
+      position: relative;
+      margin-left: 12px;
+    }
+
+    .changelog-entry::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--green);
+      border: 2px solid var(--green);
+      position: absolute;
+      left: -7px;
+      top: 4px;
+    }
+
+    .changelog-entry:last-child { padding-bottom: 0; }
+
+    .changelog-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(29,158,117,0.3);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+    }
+
+    .changelog-version {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .changelog-date { font-size: 12px; color: var(--text-dim); margin-bottom: 12px; }
+
+    .changelog-changes { display: flex; flex-direction: column; gap: 7px; }
+
+    .changelog-change {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .changelog-change::before {
+      content: '';
+      flex-shrink: 0;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      margin-top: 7px;
+    }
+
+    /* ─── SIDEBAR JUMP LIST ─── */
+    .sidebar-jump { padding: 18px 20px; }
+
+    .sjump-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color 0.15s;
+    }
+
+    .sjump-item:last-child { border-bottom: none; }
+    .sjump-item:hover { color: var(--green); }
+
+    .sjump-item svg {
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* ─── CONNECT+ SIDEBAR CARD ─── */
+    .connect-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+
+    .connect-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .connect-price-row:last-child { border-bottom: none; }
+
+    .connect-price-label { font-size: 13px; color: var(--text-muted); }
+
+    .connect-price-val {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    /* ─── PAGE DISCLAIMER ─── */
+    .page-disclaimer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 40px;
+      text-align: center;
+    }
+
+    .page-disclaimer p {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto 4px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav"></div>
+
+  <div class="referral-strip">
+    <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
+      <span class="strip-label">Referral Code</span>
+      <span class="strip-code">SCOTT4395475</span>
+      <span class="strip-divider"></span>
+      <span class="strip-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
+      <button class="strip-btn" onclick="stripCopyCode()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy
+      </button>
+      <span class="strip-copied" id="stripCopied">&#10003; Copied!</span>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="page-eyebrow">Owner Resource &middot; New in 2026.15</div>
+      <h1 class="page-title">Hey Rivian — Voice Assistant Guide</h1>
+      <p class="page-sub">Owner-verified commands for R1S and R1T — climate, navigation, vehicle controls, media, calendar, and more. Built on Rivian Unified Intelligence.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="ast-layout">
+
+      <!-- ─── MAIN COLUMN ─── -->
+      <div class="ast-main" id="astMain">
+        <div class="card" style="padding:20px; text-align:center; color:var(--text-dim); font-size:14px;">
+          Loading assistant data&hellip;
+        </div>
+      </div>
+
+      <!-- ─── SIDEBAR ─── -->
+      <div class="ast-sidebar">
+
+        <div class="card sidebar-jump">
+          <div class="section-label">Jump to category</div>
+          <div id="sidebarJump"></div>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <div class="section-label">Check your version</div>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.65; margin-bottom:8px;">Settings &rarr; About &rarr; Software Version</p>
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.65;">Hey Rivian requires software 2026.15 or later. Update via the Rivian app or in-vehicle Settings.</p>
+        </div>
+
+        <div class="connect-card" id="sidebarConnectCard">
+          <div class="section-label">Connect+ required</div>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.6; margin-bottom:12px;">Hey Rivian is included with an active Connect+ subscription.</p>
+          <div id="sidebarConnectPricing"></div>
+        </div>
+
+        <div class="sidebar-referral">
+          <div class="sidebar-referral-label">Ordering a Rivian?</div>
+          <div class="sidebar-referral-code">SCOTT4395475</div>
+          <div class="sidebar-referral-perks"><strong>500 pts</strong> + <strong>3 months</strong> free Adventure Network charging.</div>
+          <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-referral-btn">Configure Your Rivian &rarr;</a>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <div class="section-label">Owner resources</div>
+          <div class="resource-row">
+            <div><div class="resource-name">Software Updates</div><div class="resource-desc">Full OTA version history</div></div>
+            <a href="/software/" class="resource-link">View</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">Delivery Checklist</div><div class="resource-desc">55-point pre-delivery guide</div></div>
+            <a href="/delivery/" class="resource-link">View</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">r/Rivian</div><div class="resource-desc">Community voice command tips</div></div>
+            <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+          </div>
+          <div class="resource-row">
+            <div><div class="resource-name">Rivian Forums</div><div class="resource-desc">Rivian assistant discussions</div></div>
+            <a href="https://www.rivianforums.com/forum/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── DISCLAIMER ─── -->
+  <div class="container">
+    <div class="page-disclaimer">
+      <p>Commands are owner-verified and may vary by software version, vehicle generation, and connected services. This is not an official Rivian resource.</p>
+      <p>Connect+ pricing is current as of May 2026. Verify current pricing at <a href="https://rivian.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-dim);text-decoration:underline;">rivian.com</a>.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <img src="/images/logo.svg" alt="Rivian Rewards Hub">
+      Independent Rivian owner resource &middot; Not affiliated with or endorsed by Rivian Automotive, Inc.
+    </div>
+  </footer>
+
+<script src="/nav-init.js"></script>
+
+<script>
+  function stripCopyCode() {
+    gtag('event', 'copy_referral_code');
+    navigator.clipboard.writeText('SCOTT4395475').then(() => {
+      const el = document.getElementById('stripCopied');
+      el.style.display = 'inline';
+      setTimeout(() => {
+        window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
+        setTimeout(() => { el.style.display = 'none'; }, 3000);
+      }, 600);
+    });
+  }
+
+  const ICONS = {
+    thermometer: `<svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>`,
+    truck: `<svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+    map: `<svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>`,
+    zap: `<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+    music: `<svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`,
+    message: `<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+    calendar: `<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+    book: `<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
+    globe: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`
+  };
+
+  function renderHero(data) {
+    return `
+      <div class="ast-hero">
+        <div class="ast-hero-top">
+          <div>
+            <div class="ast-hero-label">Rivian Unified Intelligence</div>
+            <div class="ast-hero-title">Hey Rivian</div>
+            <div class="ast-hero-sub">As of version ${data.version} &middot; Last updated ${data.lastUpdated}</div>
+          </div>
+          <div class="ast-hero-badge">
+            <div class="ast-hero-badge-val">${data.version}</div>
+            <div class="ast-hero-badge-label">Current version</div>
+          </div>
+        </div>
+
+        <div class="ast-hero-meta">
+          <div class="ast-meta-item">
+            <div class="ast-meta-label">Activation</div>
+            <div class="ast-meta-val">${data.activation.join(' &middot; ')}</div>
+          </div>
+          <div class="ast-meta-item">
+            <div class="ast-meta-label">Compatibility</div>
+            <div class="ast-meta-val">${data.compatibility}</div>
+          </div>
+          <div class="ast-meta-item">
+            <div class="ast-meta-label">Requires</div>
+            <div class="ast-meta-val">Connect+ &mdash; ${data.connectPlusPrice}</div>
+          </div>
+        </div>
+
+        <div class="ast-alexa-warning">
+          <svg class="ast-alexa-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <span class="ast-alexa-text"><strong style="color:#f5c265;">Alexa note:</strong> ${data.alexa}</span>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderJumpNav(categories) {
+    return `
+      <div class="card" style="padding:16px 20px;">
+        <div class="section-label" style="margin-bottom:12px;">Jump to category</div>
+        <div class="jump-nav">
+          ${categories.map(cat => `
+            <a href="#cat-${cat.id}" class="jump-pill">
+              ${ICONS[cat.icon] ? `<span style="display:inline-flex;width:13px;height:13px;stroke:currentColor;fill:none;">${ICONS[cat.icon].replace('<svg', '<svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"')}</span>` : ''}
+              ${cat.title}
+            </a>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderCategory(cat) {
+    return `
+      <div class="cat-card" id="cat-${cat.id}">
+        <div class="cat-header">
+          <div class="cat-icon">${ICONS[cat.icon] || ''}</div>
+          <div class="cat-title">${cat.title}</div>
+          <span class="cat-count">${cat.commands.length}</span>
+        </div>
+        <div class="cmd-list">
+          ${cat.commands.map(cmd => `
+            <div class="cmd-item">
+              <div class="cmd-row">
+                <div class="cmd-text">${cmd.text}</div>
+                ${!cmd.verified ? '<span class="cmd-unverified">Unverified</span>' : ''}
+              </div>
+              ${cmd.notes ? `<div class="cmd-notes">${cmd.notes}</div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderOwnerNote(note) {
+    return `
+      <div class="owner-note">
+        <p><strong>Owner's take:</strong> ${note}</p>
+      </div>
+    `;
+  }
+
+  function renderTips(tips) {
+    return `
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="cat-title">Tips</div>
+        </div>
+        <div class="tips-list">
+          ${tips.map((tip, i) => `
+            <div class="tip-item">
+              <div class="tip-num">${i + 1}</div>
+              <div class="tip-text">${tip}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderLimitations(limitations) {
+    return `
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#fff0f0;">
+            <svg viewBox="0 0 24 24" style="stroke:#A32D2D;"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          </div>
+          <div class="cat-title">Limitations</div>
+        </div>
+        <div class="limit-list">
+          ${limitations.map(item => `
+            <div class="limit-item">
+              <span class="limit-dot"></span>
+              <span class="limit-text">${item}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderChangelog(changelog) {
+    return `
+      <div>
+        <div class="section-label" style="margin-bottom:16px;">Changelog</div>
+        ${changelog.map(entry => `
+          <div class="changelog-entry">
+            <div class="changelog-card">
+              <div class="changelog-version">${entry.version}</div>
+              <div class="changelog-date">${entry.date}</div>
+              <div class="changelog-changes">
+                ${entry.changes.map(c => `<div class="changelog-change">${c}</div>`).join('')}
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function renderSidebarJump(categories) {
+    const el = document.getElementById('sidebarJump');
+    if (!el) return;
+    el.innerHTML = categories.map(cat => `
+      <a href="#cat-${cat.id}" class="sjump-item">
+        <span style="display:inline-flex;width:13px;height:13px;">${ICONS[cat.icon] ? ICONS[cat.icon].replace('<svg', '<svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"') : ''}</span>
+        ${cat.title}
+      </a>
+    `).join('');
+  }
+
+  function renderSidebarConnect(data) {
+    const el = document.getElementById('sidebarConnectPricing');
+    if (!el) return;
+    const [monthly, annual] = data.connectPlusPrice.split(' or ');
+    el.innerHTML = `
+      <div class="connect-price-row">
+        <span class="connect-price-label">Monthly</span>
+        <span class="connect-price-val">${monthly}</span>
+      </div>
+      <div class="connect-price-row">
+        <span class="connect-price-label">Annual</span>
+        <span class="connect-price-val">${annual}</span>
+      </div>
+    `;
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const main = document.getElementById('astMain');
+    try {
+      const res = await fetch('/assistant/commands.json?v=' + Date.now());
+      if (!res.ok) throw new Error('Failed to load assistant data');
+      const data = await res.json();
+
+      const sections = [];
+      sections.push(renderHero(data));
+      sections.push(renderJumpNav(data.categories));
+      sections.push(renderOwnerNote(data.ownerNote));
+      data.categories.forEach(cat => sections.push(renderCategory(cat)));
+      sections.push(renderTips(data.tips));
+      sections.push(renderLimitations(data.limitations));
+      sections.push(renderChangelog(data.changelog));
+
+      main.innerHTML = sections.join('');
+
+      renderSidebarJump(data.categories);
+      renderSidebarConnect(data);
+
+    } catch(e) {
+      console.error(e);
+      main.innerHTML = `<div class="card" style="padding:24px; color:var(--text-muted);">Unable to load assistant data. Please try refreshing.</div>`;
+    }
+  });
+</script>
+</body>
+</html>
