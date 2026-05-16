@@ -817,7 +817,7 @@
           <input type="number" id="gasPrice" value="3.89" min="2.00" max="8.00" step="0.01" class="calc-input calc-input-prefix" oninput="calcCost()">
           <span class="calc-unit">/gal</span>
         </div>
-        <div class="calc-hint">Las Vegas avg · adjust to your local price</div>
+        <div class="calc-hint" id="gasPriceHint">Loading current prices…</div>
       </div>
 
     </div>
@@ -1668,22 +1668,73 @@
     WY:0.10, DC:0.15
   };
 
+  // Hardcoded fallback gas prices by state
+  const FALLBACK_GAS_PRICES = {
+    AL:3.19, AK:3.89, AZ:3.45, AR:3.09, CA:4.79, CO:3.29, CT:3.49,
+    DE:3.19, FL:3.39, GA:3.09, HI:4.69, ID:3.39, IL:3.59, IN:3.29,
+    IA:3.19, KS:3.09, KY:3.09, LA:3.09, ME:3.39, MD:3.29, MA:3.49,
+    MI:3.39, MN:3.19, MS:3.09, MO:3.09, MT:3.39, NE:3.19, NV:3.89,
+    NH:3.39, NJ:3.29, NM:3.29, NY:3.59, NC:3.19, ND:3.19, OH:3.19,
+    OK:3.09, OR:3.79, PA:3.49, RI:3.39, SC:3.09, SD:3.19, TN:3.09,
+    TX:3.09, UT:3.49, VT:3.39, VA:3.29, WA:3.99, WV:3.19, WI:3.19,
+    WY:3.29, DC:3.59
+  };
+
+  let gasPricesData = null;
+
+  async function loadGasPrices() {
+    try {
+      const res = await fetch('/scripts/gas-prices.json', { cache: 'no-cache' });
+      if (!res.ok) throw new Error('fetch failed');
+      gasPricesData = await res.json();
+    } catch(e) {
+      gasPricesData = null; // will fall back to hardcoded table
+    }
+  }
+
+  async function detectGasPrice(state) {
+    const hint  = document.getElementById('gasPriceHint');
+    const input = document.getElementById('gasPrice');
+    const prices = gasPricesData ? gasPricesData.states : FALLBACK_GAS_PRICES;
+    const updated = gasPricesData ? gasPricesData.updated : null;
+    const national = gasPricesData ? parseFloat(gasPricesData.national) : 3.39;
+
+    const statePrice = state && prices[state] ? parseFloat(prices[state]) : null;
+    const price = statePrice || national;
+
+    input.value = price.toFixed(2);
+
+    if (statePrice && updated) {
+      hint.textContent = `Your state avg $${price.toFixed(2)} · Updated ${updated}`;
+    } else if (statePrice) {
+      hint.textContent = `Your state avg $${price.toFixed(2)} · adjust to your local price`;
+    } else if (updated) {
+      hint.textContent = `National avg $${price.toFixed(2)} · Updated ${updated}`;
+    } else {
+      hint.textContent = `National avg ~$${price.toFixed(2)} · adjust to your local price`;
+    }
+
+    calcCost();
+  }
+
   async function detectElectricRate() {
+    let detectedState = null;
     try {
       const res = await fetch('https://ipapi.co/json/', { cache: 'force-cache' });
       if (!res.ok) throw new Error('geo failed');
       const data = await res.json();
-      const state = data.region_code;
-      const rate = STATE_RATES[state];
+      detectedState = data.region_code;
+      const rate = STATE_RATES[detectedState];
       if (!rate) throw new Error('state not found');
       const input = document.getElementById('electricRate');
       const hint  = document.getElementById('elecRateHint');
       input.value = rate.toFixed(2);
-      hint.textContent = `Your state avg ~$${rate.toFixed(2)} (${data.region || state})`;
+      hint.textContent = `Your state avg ~$${rate.toFixed(2)} (${data.region || detectedState})`;
       calcCost();
     } catch(e) {
       // fall back to defaults already set in HTML
     }
+    await detectGasPrice(detectedState);
   }
 
   function calcCost() {
@@ -1721,9 +1772,10 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
     calcCost();
-    detectElectricRate();
+    await loadGasPrices();
+    detectElectricRate(); // also calls detectGasPrice internally
   });
   </script>
 
