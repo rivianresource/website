@@ -626,40 +626,6 @@
             <a href="/reviews/2026-rivian-r1s-90-day-review/" class="link-btn">Read full review</a>
           </div>
 
-          <!-- ACCESSORIES STRIP -->
-          <div class="acc-strip">
-            <div class="section-label">Accessories</div>
-            <div class="acc-strip-grid">
-              <a href="/accessories/#t7shield-review" class="acc-strip-card">
-                <div class="acc-strip-icon">
-                  <svg viewBox="0 0 24 24"><path d="M5 12H3l9-9 9 9h-2M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
-                </div>
-                <div>
-                  <div class="acc-strip-name">Gear Guard</div>
-                  <div class="acc-strip-desc">Samsung T7 Shield 1TB — reviewed for heat resistance and setup ease</div>
-                </div>
-              </a>
-              <a href="/accessories/#a2z-adapter" class="acc-strip-card">
-                <div class="acc-strip-icon">
-                  <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                </div>
-                <div>
-                  <div class="acc-strip-name">Charging</div>
-                  <div class="acc-strip-desc">A2Z CCS1 adapter + TWRAPS dual wireless charger — both reviewed</div>
-                </div>
-              </a>
-              <a href="/accessories/#twcharger-review" class="acc-strip-card">
-                <div class="acc-strip-icon">
-                  <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <div>
-                  <div class="acc-strip-name">Interior</div>
-                  <div class="acc-strip-desc">TWRAPS wireless charger — MagSafe upgrade with Dark Ash Wood finish</div>
-                </div>
-              </a>
-            </div>
-          </div>
-
           <!-- ACTIVE RECALLS -->
           <div class="card recalls-card">
             <div class="news-header">
@@ -705,15 +671,22 @@
   <a href="/software/" class="link-btn" style="margin-top:12px;font-size:13px;">Full update history</a>
 </div>
 
-          <!-- REFERRAL REWARDS -->
-          <div class="card rewards-card">
-            <div class="section-label">Using a referral code?</div>
-            <p style="font-size:13px; color:var(--text-muted); line-height:1.6; margin-bottom:14px;">When you order a Rivian using an owner referral code, both you and the referring owner receive Rivian Rewards points — plus 3 months of complimentary Adventure Network charging. Points vary by configuration:</p>
-            <div class="rewards-row"><span class="rewards-row-label">Tri / Quad Motor</span><span class="rewards-row-val">500 pts</span></div>
-            <div class="rewards-row"><span class="rewards-row-label">Dual Max Battery</span><span class="rewards-row-val">250 pts</span></div>
-            <div class="rewards-row"><span class="rewards-row-label">Dual Standard</span><span class="rewards-row-val">100 pts</span></div>
-            <div class="rewards-row"><span class="rewards-row-label">Free charging</span><span class="rewards-row-val gold">3 months ⚡</span></div>
-            <p style="font-size:12px; color:var(--text-dim); margin-top:12px;">My code: <strong style="color:var(--text); letter-spacing:0.03em;">SCOTT4395475</strong></p>
+          <!-- ACCESSORIES -->
+          <div class="card" style="padding:20px;">
+            <div class="section-label">Accessories</div>
+            <div class="resource-row">
+              <div><div class="resource-name">Gear Guard SSD</div><div class="resource-desc">Samsung T7 Shield 1TB — reviewed</div></div>
+              <a href="/accessories/#t7shield-review" class="resource-link">Review</a>
+            </div>
+            <div class="resource-row">
+              <div><div class="resource-name">CCS1 Adapter</div><div class="resource-desc">A2Z adapter for third-party DCFC</div></div>
+              <a href="/accessories/#a2z-adapter" class="resource-link">Review</a>
+            </div>
+            <div class="resource-row">
+              <div><div class="resource-name">Wireless Charger</div><div class="resource-desc">TWRAPS dual MagSafe upgrade</div></div>
+              <a href="/accessories/#twcharger-review" class="resource-link">Review</a>
+            </div>
+            <a href="/accessories/" class="link-btn" style="margin-top:12px;font-size:13px;">All accessories →</a>
           </div>
 
           <!-- OWNER RESOURCES -->
@@ -743,6 +716,17 @@
               <div><div class="resource-name">r/Rivian</div><div class="resource-desc">Reddit community</div></div>
               <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
             </div>
+          </div>
+
+          <!-- REFERRAL REWARDS -->
+          <div class="card rewards-card">
+            <div class="section-label">Using a referral code?</div>
+            <p style="font-size:13px; color:var(--text-muted); line-height:1.6; margin-bottom:14px;">When you order a Rivian using an owner referral code, both you and the referring owner receive Rivian Rewards points — plus 3 months of complimentary Adventure Network charging. Points vary by configuration:</p>
+            <div class="rewards-row"><span class="rewards-row-label">Tri / Quad Motor</span><span class="rewards-row-val">500 pts</span></div>
+            <div class="rewards-row"><span class="rewards-row-label">Dual Max Battery</span><span class="rewards-row-val">250 pts</span></div>
+            <div class="rewards-row"><span class="rewards-row-label">Dual Standard</span><span class="rewards-row-val">100 pts</span></div>
+            <div class="rewards-row"><span class="rewards-row-label">Free charging</span><span class="rewards-row-val gold">3 months ⚡</span></div>
+            <p style="font-size:12px; color:var(--text-dim); margin-top:12px;">My code: <strong style="color:var(--text); letter-spacing:0.03em;">SCOTT4395475</strong></p>
           </div>
 
         </div>
@@ -939,18 +923,53 @@
           return;
         }
 
-        container.innerHTML = grouped.map(v => `
+        // Flatten all entries for cap logic
+        const allEntries = grouped.flatMap(v =>
+          v.recalls.map(r => ({ ...r, vehicleLabel: v.label }))
+        );
+        const CAP = 5;
+        const visible = allEntries.slice(0, CAP);
+        const hidden  = allEntries.slice(CAP);
+
+        function renderEntry(r) {
+          return `<div class="recall-entry">
+            <div class="recall-campaign">${r.NHTSACampaignNumber}</div>
+            <div class="recall-component">${r.Component}</div>
+            <div class="recall-consequence">${r.Consequence}</div>
+          </div>`;
+        }
+
+        // Group visible entries by vehicle label
+        const visibleByVehicle = {};
+        visible.forEach(r => {
+          if (!visibleByVehicle[r.vehicleLabel]) visibleByVehicle[r.vehicleLabel] = [];
+          visibleByVehicle[r.vehicleLabel].push(r);
+        });
+        const hiddenByVehicle = {};
+        hidden.forEach(r => {
+          if (!hiddenByVehicle[r.vehicleLabel]) hiddenByVehicle[r.vehicleLabel] = [];
+          hiddenByVehicle[r.vehicleLabel].push(r);
+        });
+
+        const visibleHTML = Object.entries(visibleByVehicle).map(([label, entries]) => `
           <div class="recall-group">
-            <div class="recall-vehicle">${v.label}</div>
-            ${v.recalls.map(r => `
-              <div class="recall-entry">
-                <div class="recall-campaign">${r.NHTSACampaignNumber}</div>
-                <div class="recall-component">${r.Component}</div>
-                <div class="recall-consequence">${r.Consequence}</div>
-              </div>
-            `).join('')}
+            <div class="recall-vehicle">${label}</div>
+            ${entries.map(renderEntry).join('')}
           </div>
         `).join('');
+
+        const hiddenHTML = hidden.length > 0 ? Object.entries(hiddenByVehicle).map(([label, entries]) => `
+          <div class="recall-group">
+            <div class="recall-vehicle">${label}</div>
+            ${entries.map(renderEntry).join('')}
+          </div>
+        `).join('') : '';
+
+        container.innerHTML = visibleHTML
+          + (hidden.length > 0 ? `
+            <div id="recallsExtra" style="display:none;">${hiddenHTML}</div>
+            <a href="#" id="recallsToggle" style="font-size:12px; color:var(--green); text-decoration:none; display:inline-block; margin-top:8px;" onclick="event.preventDefault(); const x=document.getElementById('recallsExtra'); const t=document.getElementById('recallsToggle'); const open=x.style.display==='none'; x.style.display=open?'':'none'; t.textContent=open?'Show less ↑':'See all recalls →';">See all recalls →</a>
+          ` : '');
       } catch(e) {
         container.innerHTML = `<p class="recall-error">Unable to load recall data. <a href="https://www.nhtsa.gov/vehicle-safety/recalls" target="_blank" rel="noopener noreferrer" style="color:var(--green);">Check NHTSA directly →</a></p>`;
       }
