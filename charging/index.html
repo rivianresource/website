@@ -528,6 +528,29 @@
       margin-top: 12px;
     }
 
+  .jump-nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .jump-nav a {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 11px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all .15s;
+    white-space: nowrap;
+  }
+  .jump-nav a:hover {
+    background: var(--green-pale);
+    border-color: var(--green);
+    color: var(--green-dark);
+  }
+
   .calc-card { padding: 24px; }
 
   .calc-grid {
@@ -726,12 +749,20 @@
     </div>
   </div>
 
+  <div class="container" style="padding-top:16px; padding-bottom:4px;">
+    <nav class="jump-nav">
+      <a href="#charging-time">Charging Time Calculator</a>
+      <a href="#charging-cost">Charging Cost Calculator</a>
+    </nav>
+  </div>
+
   <div class="container">
     <div class="calc-layout">
 
       <!-- MAIN CALCULATOR -->
       <div class="calc-main">
 
+        <div id="charging-time"></div>
         <!-- STEP 1: MODEL -->
         <div class="card" style="padding:24px;">
           <div class="section-label">Step 1 — Model</div>
@@ -920,6 +951,7 @@
         </div>
 
         <!-- CHARGING COST CALCULATOR -->
+        <div id="charging-cost"></div>
         <div class="card calc-card" id="costCalc">
   <div class="section-label">Charging cost calculator</div>
   <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px; line-height:1.6;">See how much you're saving versus gas every month.</p>
