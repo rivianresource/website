@@ -349,7 +349,7 @@
       left: 0;
       transform: translateY(-50%);
       width: 100%;
-      height: 100%;
+      height: 44px;
       opacity: 0;
       cursor: pointer;
       margin: 0;
@@ -584,6 +584,57 @@
     background: var(--green-pale);
     border-color: var(--green);
     color: var(--green-dark);
+  }
+  .jump-nav a.active {
+    background: var(--green-pale);
+    border-color: var(--green);
+    color: var(--green-dark);
+  }
+
+  .mobile-config-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 10px 16px;
+    z-index: 200;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .mobile-config-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+  .mobile-config-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+  .mobile-config-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .mobile-config-value.green { color: var(--green); }
+  .mobile-config-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  @media (max-width: 860px) {
+    .mobile-config-bar { display: flex; }
+    body { padding-bottom: 64px; }
   }
 
   .calc-card { padding: 24px; }
@@ -850,11 +901,12 @@
       </div>
 
       <div class="calc-field">
-        <label class="calc-label">Previous car's fuel economy</label>
+        <label class="calc-label">Comparison vehicle fuel economy</label>
         <div class="calc-input-wrap">
           <input type="number" id="mpg" value="28" min="10" max="60" class="calc-input" oninput="calcCost()">
           <span class="calc-unit">MPG</span>
         </div>
+        <div class="calc-hint">Enter your previous or comparison vehicle's MPG</div>
       </div>
 
       <div class="calc-field">
@@ -1032,29 +1084,29 @@
             <div class="result-tile primary">
               <div class="result-primary-group">
                 <div class="result-tile-label">Estimated time</div>
-                <div class="result-tile-value" id="resultTime">—</div>
-                <div class="result-tile-unit">minutes</div>
+                <div class="result-tile-value" id="resultTime"> </div>
+                <div class="result-tile-unit" id="resultTimeUnit">minutes</div>
               </div>
               <div class="result-divider"></div>
               <div class="result-primary-group">
                 <div class="result-tile-label">Miles added</div>
-                <div class="result-tile-value" id="resultMiles">—</div>
+                <div class="result-tile-value" id="resultMiles"> </div>
                 <div class="result-tile-unit">est. range</div>
               </div>
             </div>
             <div class="result-tile">
               <div class="result-tile-label">Energy delivered</div>
-              <div class="result-tile-value" id="resultKwh">—</div>
+              <div class="result-tile-value" id="resultKwh"> </div>
               <div class="result-tile-unit">kWh</div>
             </div>
             <div class="result-tile">
               <div class="result-tile-label">% added</div>
-              <div class="result-tile-value" id="resultPct">—</div>
+              <div class="result-tile-value" id="resultPct"> </div>
               <div class="result-tile-unit">battery</div>
             </div>
             <div class="result-tile">
               <div class="result-tile-label">Avg charge rate</div>
-              <div class="result-tile-value" id="resultKw">—</div>
+              <div class="result-tile-value" id="resultKw"> </div>
               <div class="result-tile-unit">kW avg</div>
             </div>
           </div>
@@ -1092,7 +1144,7 @@
               <div style="font-family:'DM Sans',sans-serif; font-size:16px; font-weight:700; color:var(--text); margin-bottom:6px;">A Better Route Planner (ABRP)</div>
               <p style="font-size:14px; color:var(--text-muted); line-height:1.7; margin-bottom:0;">The calculator above estimates a single charging session. For full route planning with stop-by-stop charging guidance, real-time charger availability, elevation data, weather, and Rivian-specific consumption profiles, ABRP is the tool owners actually use on road trips.</p>
             </div>
-            <a href="https://abetterrouteplanner.com/?plan_uuid=&vehicle=rivian_r1s_2026" target="_blank" rel="noopener noreferrer" class="cta-btn" style="white-space:nowrap; margin-top:0; width:auto; flex-shrink:0;">
+            <a href="https://abetterrouteplanner.com/?plan_uuid=&vehicle=rivian_r1s_2026" target="_blank" rel="noopener noreferrer" class="cta-btn" id="abrpLink" style="white-space:nowrap; margin-top:0; width:auto; flex-shrink:0;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Open ABRP
             </a>
@@ -1133,7 +1185,7 @@
       <div class="calc-sidebar">
 
         <!-- COST SUMMARY (shown when cost calc in view) -->
-        <div class="card cost-summary-card" id="sidebarCostSummary" style="display:none;">
+        <div class="card cost-summary-card" id="sidebarCostSummary">
           <div class="section-label">Cost summary</div>
           <div class="cost-summary-stat">
             <span class="cost-summary-label">Location</span>
@@ -1154,7 +1206,7 @@
         </div>
 
         <!-- CURRENT CONFIG -->
-        <div class="card sidebar-stat-card" id="sidebarConfigCard">
+        <div class="card sidebar-stat-card" id="sidebarConfigCard" style="display:none;">
           <div class="section-label">Selected config</div>
           <div class="sidebar-stats">
             <div class="sidebar-stat">
@@ -1185,11 +1237,11 @@
           <p class="disclaimer">Estimates based on real-world charging curves. Actual times vary by temperature, battery condition, and site-specific charger capacity.</p>
         </div>
 
-        <div class="sidebar-referral">
-  <div class="sidebar-referral-label">Using a referral code?</div>
-  <p style="font-size:12px; color:#ffffff; line-height:1.6; margin-bottom:10px;">Owner referral codes give both the buyer and referrer Rivian Rewards points, plus 3 months of free Adventure Network charging. Points range from 100–500 depending on configuration.</p>
-  <div class="sidebar-referral-code">SCOTT4395475</div>
-</div>
+        <div class="card" style="padding:20px; text-align:center;">
+          <div class="section-label">Referral code</div>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.6; margin-bottom:10px;">Use an owner referral code when ordering — both you and the referrer get Rivian Rewards points plus 3 months of free Adventure Network charging.</p>
+          <div style="font-family:'DM Sans',sans-serif; font-size:20px; font-weight:800; color:var(--green); letter-spacing:.04em;">SCOTT4395475</div>
+        </div>
 
         <div class="card" style="padding:20px;">
           <div class="section-label">Related</div>
@@ -1216,7 +1268,7 @@
   </div>
 
   <footer>
-    <div class="container">
+    <div style="max-width:1160px; margin:0 auto; padding:0 20px;">
       <img src="/images/logo.svg" alt="Rivian Resource">
       Independent Rivian owner resource · Not affiliated with or endorsed by Rivian Automotive, Inc.
       <div class="footer-guides">
@@ -1492,6 +1544,7 @@
       updatePlugState(currentVehicle);
       updateSidebar();
       updateCalc();
+      updateAbrpLink();
     }
 
     /* ── Select vehicle (trim) ── */
@@ -1515,6 +1568,7 @@
       updatePlugState(currentVehicle);
       updateSidebar();
       updateCalc();
+      updateAbrpLink();
     }
 
     /* ── Select wheel ── */
@@ -1551,6 +1605,8 @@
       const c = CHARGERS[currentCharger];
       document.getElementById('sidebarCharger').textContent = c.name;
       document.getElementById('sidebarSpeed').textContent   = c.peakKw + ' kW';
+      const mobileCharger = document.getElementById('mobileCharger');
+      if (mobileCharger) mobileCharger.textContent = c.name;
       updateCalc();
     }
 
@@ -1573,6 +1629,31 @@
       document.getElementById('sidebarCapacity').textContent = v.capacity + ' kWh';
       document.getElementById('sidebarRange').textContent    = Math.round(v.range * wheelFactor) + ' mi';
       document.getElementById('sidebarSpeed').textContent    = v.peakKw + ' kW';
+
+      const selectedWheelBtn = document.querySelector('.wheel-btn.selected');
+      if (selectedWheelBtn) {
+        document.getElementById('sidebarWheel').textContent =
+          selectedWheelBtn.querySelector('.wheel-btn-size').textContent + '" ' +
+          selectedWheelBtn.querySelector('.wheel-btn-label').textContent;
+      }
+
+      const mobileVehicle = document.getElementById('mobileVehicle');
+      if (mobileVehicle) mobileVehicle.textContent = v.label;
+    }
+
+    /* ── ABRP dynamic link ── */
+    const ABRP_VEHICLES = {
+      r1s: 'rivian_r1s_2026',
+      r1t: 'rivian_r1t_2026',
+      r2:  'rivian_r2_2026',
+    };
+
+    function updateAbrpLink() {
+      const link = document.getElementById('abrpLink');
+      if (link) {
+        const vehicle = ABRP_VEHICLES[currentModel] || 'rivian_r1s_2026';
+        link.href = `https://abetterrouteplanner.com/?plan_uuid=&vehicle=${vehicle}`;
+      }
     }
 
     /* ── DC fast charging curve model ──
@@ -1657,7 +1738,12 @@
       const result = calcSession(currentCharger, start, end);
       if (!result) return;
 
-      document.getElementById('resultTime').textContent  = fmtTime(result.minutes);
+      document.getElementById('resultTime').textContent = result.minutes < 60
+        ? result.minutes
+        : fmtTime(result.minutes);
+      document.getElementById('resultTimeUnit').textContent = result.minutes < 60 ? 'minutes' : '';
+      const mobileTime = document.getElementById('mobileTime');
+      if (mobileTime) mobileTime.textContent = fmtTime(result.minutes);
       document.getElementById('resultMiles').textContent = result.milesAdded + ' mi';
       document.getElementById('resultKwh').textContent   = result.kwhDelivered;
       document.getElementById('resultPct').textContent   = '+' + result.pctAdded;
@@ -1729,10 +1815,42 @@
       updatePlugState(currentVehicle);
       updateSidebar();
       updateCalc();
+      updateAbrpLink();
+
+      (function initJumpNav() {
+        const sections = ['charging-cost', 'charging-time'];
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const link = document.querySelector(`.jump-nav a[href="#${entry.target.id}"]`);
+            if (link) link.classList.toggle('active', entry.isIntersecting);
+          });
+        }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+        sections.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) observer.observe(el);
+        });
+      })();
     });
   </script>
 
   <script src="/shared.js"></script>
+
+  <div class="mobile-config-bar" id="mobileConfigBar">
+    <div class="mobile-config-item">
+      <div class="mobile-config-label">Vehicle</div>
+      <div class="mobile-config-value" id="mobileVehicle">R1S Max</div>
+    </div>
+    <div class="mobile-config-divider"></div>
+    <div class="mobile-config-item">
+      <div class="mobile-config-label">Charger</div>
+      <div class="mobile-config-value" id="mobileCharger">Rivian RAN</div>
+    </div>
+    <div class="mobile-config-divider"></div>
+    <div class="mobile-config-item">
+      <div class="mobile-config-label">Est. time</div>
+      <div class="mobile-config-value green" id="mobileTime">—</div>
+    </div>
+  </div>
 
   <script>
   const STATE_RATES = {
@@ -1819,13 +1937,13 @@
 
   const BATTERY_OPTIONS = {
     r1: [
-      { value: '2.9', label: 'Standard Range (~270 mi) — 2.9 mi/kWh' },
-      { value: '3.1', label: 'Large Pack (~329 mi) — 3.1 mi/kWh', selected: true },
-      { value: '3.3', label: 'Max Range (~410 mi) — 3.3 mi/kWh' },
+      { value: '2.9', label: 'Standard Pack (~270 mi) — 2.9 mi/kWh' },
+      { value: '3.1', label: 'Large Pack (~330 mi) — 3.1 mi/kWh', selected: true },
+      { value: '3.3', label: 'Max Pack (~410 mi) — 3.3 mi/kWh' },
     ],
     r2: [
-      { value: '3.4', label: 'Standard (~260 mi) — 3.4 mi/kWh', selected: true },
-      { value: '3.6', label: 'Long Range (~300 mi) — 3.6 mi/kWh' },
+      { value: '3.6', label: 'Performance / Premium (~330 mi EPA) — 3.6 mi/kWh', selected: true },
+      { value: '3.8', label: 'Standard RWD (~345 mi est., avail. 2027) — 3.8 mi/kWh' },
     ],
   };
 
