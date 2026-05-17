@@ -7,7 +7,7 @@
   "compatibility": "All Gen 1 and Gen 2 R1S and R1T owners. Coming to R2 at launch.",
   "platform": "Rivian Unified Intelligence",
   "alexa": "Enabling Rivian Assistant disables Alexa integration — you cannot run both simultaneously.",
-  "ownerNote": "I've been using Hey Rivian since 2026.15 dropped. The biggest thing: you don't need to memorize commands — just talk to it like a person and it figures it out. The conversational navigation chaining is genuinely better than anything I used with Alexa. The unintentional wake word activations at highway speed are real but infrequent.",
+  "ownerNote": "I've been using Hey Rivian since 2026.15 dropped. The biggest thing: you don't need to memorize commands — just talk to it like a person and it figures it out. In my experience, conversational navigation chaining feels noticeably better than Alexa. The unintentional wake word activations at highway speed are real but infrequent.",
   "categories": [
     {
       "id": "climate",
@@ -33,8 +33,8 @@
         { "text": "Switch to Off-Road mode.", "notes": null, "verified": true },
         { "text": "Raise the suspension.", "notes": "Air suspension equipped vehicles only.", "verified": true },
         { "text": "Open the frunk.", "notes": null, "verified": true },
-        { "text": "Open the garage door.", "notes": "Requires HomeLink or compatible smart home integration configured in settings.", "verified": true },
-        { "text": "Close the garage door.", "notes": "Requires HomeLink or compatible smart home integration configured in settings.", "verified": true },
+        { "text": "Open the garage door.", "notes": "Works with configured HomeLink garage doors.", "verified": true },
+        { "text": "Close the garage door.", "notes": "Works with configured HomeLink garage doors.", "verified": true },
         { "text": "Turn on camp mode.", "notes": null, "verified": true },
         { "text": "Show the cameras.", "notes": null, "verified": true }
       ]
@@ -52,7 +52,7 @@
         { "text": "Find a charger near lunch.", "notes": "Conversational chaining — combines POI search with charging stop planning.", "verified": true },
         { "text": "Can I make it there without charging?", "notes": "Range-aware navigation query.", "verified": true },
         { "text": "Find a place to eat near my next charging stop.", "notes": "Multi-step agentic command.", "verified": true },
-        { "text": "Find a coffee shop on the way to my next appointment and text my contact an ETA.", "notes": "Requires Google Calendar integration. Demonstrates full agentic chaining.", "verified": true }
+        { "text": "Find a coffee shop on the way to my next appointment and text my contact an ETA.", "notes": "Rivian has demonstrated multi-step conversational requests combining navigation, calendar, and messaging. Real-world results may vary — full chaining in a single command is not yet widely owner-validated.", "verified": false }
       ]
     },
     {
@@ -72,7 +72,7 @@
       "title": "Media",
       "icon": "music",
       "commands": [
-        { "text": "Play Noah Kahan on Spotify.", "notes": "Works across Apple Music, Spotify, Tidal, and SiriusXM.", "verified": true },
+        { "text": "Play Noah Kahan on Spotify.", "notes": "Media commands work with supported music services including Spotify and Apple Music.", "verified": true },
         { "text": "Volume 10.", "notes": null, "verified": true },
         { "text": "Skip this song.", "notes": null, "verified": true },
         { "text": "Resume playback.", "notes": null, "verified": true },
@@ -97,7 +97,7 @@
       "commands": [
         { "text": "What's my first appointment today?", "notes": "Requires Google Calendar connected in settings.", "verified": true },
         { "text": "Navigate to my next meeting.", "notes": "Requires Google Calendar.", "verified": true },
-        { "text": "Move my 2pm meeting to 3pm.", "notes": "Requires Google Calendar. Full calendar management via voice.", "verified": true },
+        { "text": "Try moving my 2pm meeting to 3pm.", "notes": "Requires Google Calendar. Rivian officially supports rescheduling, but some calendar management actions may be limited during initial rollout.", "verified": false },
         { "text": "What time do I need to leave?", "notes": "Requires Google Calendar.", "verified": true }
       ]
     },
@@ -130,12 +130,12 @@
     "English only at launch",
     "Cloud connection required — does not work offline",
     "Some owners report unintentional wake word activations at highway speed",
-    "Third-party integrations limited to Google Calendar at launch — Apple Calendar and Outlook support coming in future updates"
+    "Google Calendar is the primary third-party integration available at launch — Apple Calendar and Outlook support coming in future updates"
   ],
   "tips": [
     "Just chat with it naturally — 'I'm running late, text my wife' works as well as any structured command. You don't need to memorize specific phrases.",
     "Use conversational phrasing rather than keyword commands. 'I'm cold' works better than 'Set HVAC 70'.",
-    "The assistant remembers context within a session — you can say 'make it warmer' after setting a temperature without repeating yourself.",
+    "The assistant appears to maintain conversational context during a session — you can say 'make it warmer' after setting a temperature without repeating yourself.",
     "Connect Google Calendar in Settings to unlock the full agentic chaining features.",
     "Personal context is saved to your individual driver profile — household members won't see your preferences.",
     "You can disable the Hey Rivian wake word, limit location sharing, or turn off the memory feature in privacy settings."
