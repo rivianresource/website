@@ -8,7 +8,7 @@
     "Hold left steering wheel button",
     "Tap the assistant icon on the center display"
   ],
-  "compatibility": "All Gen 1 and Gen 2 R1S and R1T owners. Coming to R2 at launch.",
+  "compatibility": "All Gen 1 and Gen 2 R1S and R1T owners. Expected to be available on R2 at launch.",
   "alexa": "Enabling Rivian Assistant disables Alexa integration — you cannot run both simultaneously.",
   "ownerNote": "I've been using Hey Rivian since 2026.15 dropped. The biggest thing: you don't need to memorize commands — just talk to it like a person and it figures it out. In my experience, conversational navigation chaining feels noticeably better than Alexa. The unintentional wake word activations at highway speed are real but infrequent.",
   "categories": [
@@ -302,7 +302,7 @@
       "date": "May 12, 2026",
       "changes": [
         "Initial launch — Hey Rivian available to all Gen 1 and Gen 2 R1S and R1T owners on Connect+",
-        "Google Calendar integration — first agentic third-party integration",
+        "Google Calendar integration — first third-party productivity integration",
         "Full vehicle control, navigation chaining, media, messaging, and owner's guide categories live"
       ]
     }
