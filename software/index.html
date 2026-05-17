@@ -68,7 +68,6 @@
     }
 
     .cv-badge-val { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 800; color: #fff; }
-    .cv-badge-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
 
     /* ─── UPDATE ENTRY ─── */
     .update-entry {
@@ -281,7 +280,7 @@
             <div class="cv-highlights"></div>
           </div>
           <div>
-            <div class="cv-badge"><div class="cv-badge-val">Gen 2</div><div class="cv-badge-label">Primary platform</div></div>
+            <div class="cv-badge"><div class="cv-badge-val">Gen 1 + Gen 2</div></div>
           </div>
         </div>
 
@@ -391,9 +390,10 @@
   }
 
   function loadLiveSoftwareVersion(updates) {
-    const currentVersion   = document.querySelector('.cv-version');
-    const currentDate      = document.querySelector('.cv-date');
+    const currentVersion    = document.querySelector('.cv-version');
+    const currentDate       = document.querySelector('.cv-date');
     const currentHighlights = document.querySelector('.cv-highlights');
+    const currentBadgeVal   = document.querySelector('.cv-badge-val');
 
     if (!updates.length) throw new Error('No OTA data found');
     const latest = updates[0];
@@ -404,6 +404,10 @@
     currentHighlights.innerHTML = latest.highlights
       .map(item => `<div class="cv-highlight">${item}</div>`)
       .join('');
+    if (currentBadgeVal) {
+      const genLabels = { gen1: 'Gen 1 only', gen2: 'Gen 2 only', both: 'Gen 1 + Gen 2' };
+      currentBadgeVal.textContent = genLabels[latest.gen] || 'Gen 1 + Gen 2';
+    }
   }
 
   function renderSoftwareTimeline(updates) {
