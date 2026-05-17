@@ -59,15 +59,6 @@
     .cv-highlight { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.5; }
     .cv-highlight::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green-light); flex-shrink: 0; margin-top: 7px; }
 
-    .cv-badge {
-      background: rgba(255,255,255,0.12);
-      border-radius: var(--radius-sm);
-      padding: 10px 16px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-
-    .cv-badge-val { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 800; color: #fff; }
 
     /* ─── UPDATE ENTRY ─── */
     .update-entry {
@@ -280,7 +271,6 @@
             <div class="cv-highlights"></div>
           </div>
           <div>
-            <div class="cv-badge"><div class="cv-badge-val">Gen 1 + Gen 2</div></div>
           </div>
         </div>
 
@@ -393,8 +383,6 @@
     const currentVersion    = document.querySelector('.cv-version');
     const currentDate       = document.querySelector('.cv-date');
     const currentHighlights = document.querySelector('.cv-highlights');
-    const currentBadgeVal   = document.querySelector('.cv-badge-val');
-
     if (!updates.length) throw new Error('No OTA data found');
     const latest = updates[0];
     currentVersion.textContent = latest.version;
@@ -404,10 +392,6 @@
     currentHighlights.innerHTML = latest.highlights
       .map(item => `<div class="cv-highlight">${item}</div>`)
       .join('');
-    if (currentBadgeVal) {
-      const genLabels = { gen1: 'Gen 1 only', gen2: 'Gen 2 only', both: 'Gen 1 + Gen 2' };
-      currentBadgeVal.textContent = genLabels[latest.gen] || 'Gen 1 + Gen 2';
-    }
   }
 
   function renderSoftwareTimeline(updates) {
