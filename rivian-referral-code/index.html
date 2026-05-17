@@ -493,60 +493,88 @@
 
     .sidebar-copied { font-size: 12px; color: var(--green-light); font-weight: 600; display: none; text-align: center; margin-top: 6px; }
 
-    /* ─── SITE NAV MINI ─── */
-    .mini-nav {
-      background: var(--bg-card);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .mini-nav-inner {
-      display: flex;
+    /* ─── MOBILE COPY BAR ─── */
+    .mobile-copy-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--green-dark);
+      padding: 12px 16px;
+      z-index: 200;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      padding: 13px 0;
+      gap: 12px;
     }
-
-    .mini-nav-brand {
+    .mobile-copy-bar-text { display: flex; flex-direction: column; }
+    .mobile-copy-bar-code { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 800; color: #fff; letter-spacing: 0.04em; }
+    .mobile-copy-bar-perks { font-size: 11px; color: #9FE1CB; }
+    .mobile-copy-bar-btn {
       display: flex;
       align-items: center;
-      gap: 9px;
-      text-decoration: none;
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      gap: 6px;
+      background: var(--green-light);
+      color: #0a2e22;
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px;
       font-weight: 700;
-      font-size: 16px;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .mobile-copy-bar-copied {
+      font-size: 12px;
+      color: var(--green-light);
+      font-weight: 600;
+      display: none;
+      text-align: center;
+      width: 100%;
+    }
+    @media (max-width: 860px) {
+      .mobile-copy-bar { display: flex; flex-wrap: wrap; }
+      body { padding-bottom: 72px; }
     }
 
-    .mini-nav-brand img { width: 30px; height: 30px; border-radius: 7px; }
-
-    .mini-nav-link {
-      font-size: 13px;
+    /* ─── MOBILE JUMP NAV ─── */
+    .referral-jump-nav {
+      display: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: 8px;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+      scrollbar-width: none;
+    }
+    .referral-jump-nav::-webkit-scrollbar { display: none; }
+    .referral-jump-pill {
+      display: inline-block;
+      flex-shrink: 0;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
       color: var(--text-muted);
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      transition: color 0.2s ease;
+      white-space: nowrap;
     }
-
-    .mini-nav-link:hover { color: var(--green); }
-    .mini-nav-link::after { content: '→'; }
+    .referral-jump-pill:hover { border-color: var(--green); color: var(--green); }
+    @media (max-width: 860px) {
+      .referral-jump-nav { display: flex; }
+    }
 
   </style>
 
 </head>
 <body>
 
-  <!-- ─── MINIMAL NAV — not part of main site nav ─── -->
-  <div class="mini-nav">
-    <div class="container mini-nav-inner">
-      <a href="/" class="mini-nav-brand">
-        <img src="/images/logo.svg" alt="Rivian Resource">
-        <span>Rivian Resource</span>
-      </a>
-      <a href="/" class="mini-nav-link">Back to site</a>
-    </div>
-  </div>
+  <div id="site-nav"></div>
 
   <!-- ─── HERO ─── -->
   <div class="hero-section">
@@ -575,10 +603,13 @@
       <div class="btn-row">
         <button class="btn-primary" onclick="heroCopy()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy Code &amp; Open Rivian
+          Copy Code
         </button>
+        <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          Configure on Rivian →
+        </a>
       </div>
-      <div class="copied-msg" id="heroCopied">✓ Code copied — opening Rivian configurator…</div>
+      <div class="copied-msg" id="heroCopied">✓ Copied — paste SCOTT4395475 at checkout</div>
 
       <div class="steps-strip">
         <div class="step">
@@ -606,6 +637,13 @@
     </div>
   </div>
 
+  <div class="referral-jump-nav">
+    <a href="#section-rewards" class="referral-jump-pill">What you get</a>
+    <a href="#section-points" class="referral-jump-pill">Points by config</a>
+    <a href="#section-about" class="referral-jump-pill">About this code</a>
+    <a href="#section-faq" class="referral-jump-pill">FAQ</a>
+  </div>
+
   <!-- ─── CONTENT ─── -->
   <div class="content-layout">
     <div class="container">
@@ -614,7 +652,7 @@
         <div class="content-main">
 
           <!-- REWARDS SUMMARY -->
-          <div class="card rewards-section">
+          <div class="card rewards-section" id="section-rewards">
             <div class="section-label">What you receive</div>
             <div class="rewards-grid">
               <div class="reward-tile">
@@ -637,11 +675,15 @@
                 <div class="reward-tile-value" style="font-size:16px;">None</div>
                 <div class="reward-tile-desc">Auto-linked after delivery</div>
               </div>
+              <div class="reward-tile" style="grid-column: 1 / -1; background: #fef9ec; border-color: rgba(186,117,23,0.2);">
+                <div class="reward-tile-label" style="color:var(--gold);">Important timing note</div>
+                <div class="reward-tile-desc" style="font-size:13px; color:var(--text-muted); margin-top:4px; line-height:1.6;">The 3-month complimentary charging period starts from your <strong style="color:var(--text);">delivery date</strong>, not from your first charge session. Plan your road trips accordingly.</div>
+              </div>
             </div>
           </div>
 
           <!-- POINTS BY CONFIG -->
-          <div class="card points-section">
+          <div class="card points-section" id="section-points">
             <div class="section-label">Points by configuration</div>
             <p style="font-size:14px; color:var(--text-muted); margin-top:6px; margin-bottom:0;">Points vary based on the vehicle configuration you order. Subject to Rivian program terms.</p>
             <div class="points-table">
@@ -649,11 +691,14 @@
               <div class="points-row"><span class="points-config">Dual Motor Max Battery</span><span class="points-value">250 pts</span></div>
               <div class="points-row"><span class="points-config">Dual Motor Large Battery</span><span class="points-value">250 pts</span></div>
               <div class="points-row"><span class="points-config">Dual Motor Standard</span><span class="points-value">100 pts</span></div>
+              <div class="points-row"><span class="points-config">R2 Performance / Premium</span><span class="points-value">250 pts</span></div>
+              <div class="points-row"><span class="points-config">R2 Standard (avail. 2027)</span><span class="points-value">100 pts</span></div>
             </div>
+            <p style="font-size:11px; color:var(--text-dim); margin-top:10px; line-height:1.6;">R2 point values based on current Rivian program terms — verify at rivian.com before ordering as program details are subject to change.</p>
           </div>
 
           <!-- OWNER CONTEXT -->
-          <div class="card owner-section">
+          <div class="card owner-section" id="section-about">
             <div class="section-label">About this code</div>
             <p>This referral code belongs to a Las Vegas–based R1S owner who took delivery of a 2026 Rivian R1S Dual Max in early 2026. Not an anonymous link farm — an actual owner with real charging network experience and a 90-day ownership review on this site.</p>
             <p>The vehicle gets regular use on Southwest road trips — Zion, Las Vegas to LA, Eastern Sierra — which means real-world impressions of the Adventure Network, not just parking lot charging sessions.</p>
@@ -665,16 +710,16 @@
             <div class="owner-stats">
               <div class="owner-stat"><div class="owner-stat-value">2026</div><div class="owner-stat-label">Model year</div></div>
               <div class="owner-stat"><div class="owner-stat-value">R1S</div><div class="owner-stat-label">Vehicle</div></div>
-              <div class="owner-stat"><div class="owner-stat-value">LV</div><div class="owner-stat-label">Based in</div></div>
+              <div class="owner-stat"><div class="owner-stat-value" style="font-size:13px; line-height:1.3;">Las Vegas, NV</div><div class="owner-stat-label">Based in</div></div>
             </div>
           </div>
 
           <!-- FAQ -->
-          <div class="card faq-section">
+          <div class="card faq-section" id="section-faq">
             <div class="section-label">Frequently asked</div>
             <div class="faq-list">
 
-              <div class="faq-item">
+              <div class="faq-item open">
                 <button class="faq-q" onclick="toggleFaq(this)">
                   What if I forgot to enter the referral code at checkout?
                   <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -784,7 +829,7 @@
 
   <!-- ─── FOOTER ─── -->
   <footer>
-    <div class="container">
+    <div style="max-width:1160px; margin:0 auto; padding:0 20px;">
       <img src="/images/logo.svg" alt="Rivian Resource">
       Independent Rivian owner resource · Not affiliated with or endorsed by Rivian Automotive, Inc.
       <div class="footer-guides">
@@ -797,18 +842,31 @@
   </footer>
 
   <!-- ─── SCRIPTS ─── -->
+  <script src="/nav-init.js"></script>
+
+  <div class="mobile-copy-bar" id="mobileCopyBar">
+    <div class="mobile-copy-bar-text">
+      <div class="mobile-copy-bar-code">SCOTT4395475</div>
+      <div class="mobile-copy-bar-perks">500 pts + 3 months free charging</div>
+    </div>
+    <button class="mobile-copy-bar-btn" onclick="mobileCopy()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      Copy Code
+    </button>
+    <div class="mobile-copy-bar-copied" id="mobileCopied">✓ Copied — paste at checkout</div>
+  </div>
+
   <script>
     function heroCopy() {
-      gtag('event', 'copy_referral_code');
       navigator.clipboard.writeText('SCOTT4395475').then(() => {
+        gtag('event', 'copy_referral_code');
         const el = document.getElementById('heroCopied');
-        if (el) el.style.display = 'block';
-        setTimeout(() => {
-          window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
-          setTimeout(() => { if (el) el.style.display = 'none'; }, 3000);
-        }, 600);
+        if (el) {
+          el.style.display = 'block';
+          setTimeout(() => { el.style.display = 'none'; }, 3000);
+        }
       }).catch(() => {
-        window.open('https://rivian.com/configurations/list?reprCode=SCOTT4395475', '_blank');
+        // Clipboard denied — silently fail, user can copy manually
       });
     }
 
@@ -818,6 +876,20 @@
         const el = document.getElementById('sidebarCopied');
         if (el) el.style.display = 'block';
         setTimeout(() => { if (el) el.style.display = 'none'; }, 3000);
+      }).catch(() => {});
+    }
+
+    function mobileCopy() {
+      navigator.clipboard.writeText('SCOTT4395475').then(() => {
+        gtag('event', 'copy_referral_code_mobile');
+        const btn = document.querySelector('.mobile-copy-bar-btn');
+        const msg = document.getElementById('mobileCopied');
+        if (btn) btn.style.display = 'none';
+        if (msg) msg.style.display = 'block';
+        setTimeout(() => {
+          if (btn) btn.style.display = 'flex';
+          if (msg) msg.style.display = 'none';
+        }, 3000);
       }).catch(() => {});
     }
 
