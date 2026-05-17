@@ -215,7 +215,24 @@
     .skeleton { background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border) 50%, var(--bg-secondary) 75%); background-size: 400px 100%; animation: shimmer 1.4s infinite; }
     .skeleton-row { padding: 10px 12px; }
 
-    /* ─── REDDIT FEED ─── */
+    .reddit-tab {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .reddit-tab.active {
+      background: var(--green-pale);
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    /* ─── REVIEW / GUIDE CARDS ─── */
     .review-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -248,6 +265,60 @@
       line-height: 1.7;
       margin-bottom: 16px;
       max-width: 680px;
+    }
+
+    .guide-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .guide-card .review-title {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+    .guide-card .review-excerpt {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+    .guide-card .link-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* ─── MOBILE JUMP NAV ─── */
+    .mobile-jump-nav {
+      display: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: 8px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+      scrollbar-width: none;
+    }
+    .mobile-jump-nav::-webkit-scrollbar { display: none; }
+    .mobile-jump-pill {
+      display: inline-block;
+      flex-shrink: 0;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .mobile-jump-pill:hover { border-color: var(--green); color: var(--green); }
+    @media (max-width: 860px) {
+      .mobile-jump-nav { display: flex; }
     }
 
     /* ─── ACCESSORIES STRIP ─── */
@@ -551,7 +622,18 @@
     <div class="container">
       <div class="hero-eyebrow">Real owner resource</div>
       <h1 class="hero-title">Rivian tools, reviews, news & resources for R1S, R1T, and R2 owners.</h1>
+      <p class="hero-sub">Owner-written guides, real-world reviews, tools, and community resources for R1S, R1T, and R2 owners.</p>
     </div>
+  </div>
+
+  <!-- ─── MOBILE JUMP NAV ─── -->
+  <div class="mobile-jump-nav" id="mobileJumpNav">
+    <a href="#section-news" class="mobile-jump-pill">News</a>
+    <a href="#section-assistant" class="mobile-jump-pill">Hey Rivian</a>
+    <a href="#section-reddit" class="mobile-jump-pill">Reddit</a>
+    <a href="#section-review" class="mobile-jump-pill">Review</a>
+    <a href="#section-recalls" class="mobile-jump-pill">Recalls</a>
+    <a href="#section-resources" class="mobile-jump-pill">Resources</a>
   </div>
 
   <!-- ─── MAIN ─── -->
@@ -563,7 +645,7 @@
         <div class="left-col">
 
           <!-- NEWS — 6 cards, 3 columns -->
-          <div class="card">
+          <div class="card" id="section-news">
             <div class="news-header">
               <div class="section-label">Latest Rivian &amp; EV news</div>
             </div>
@@ -578,7 +660,7 @@
           </div>
 
           <!-- RIVIAN ASSISTANT CALLOUT -->
-          <div class="review-card">
+          <div class="review-card" id="section-assistant">
             <div class="section-label">New feature</div>
             <h2 class="review-title">Hey Rivian — Voice Assistant Guide</h2>
             <div class="review-meta">
@@ -590,14 +672,18 @@
             <a href="/assistant/" class="link-btn">Read the guide</a>
           </div>
 
-          <!-- REDDIT FEED -->
-          <div class="card">
+          <!-- REDDIT FEED — tabbed -->
+          <div class="card" id="section-reddit">
             <div class="news-header">
               <div class="section-label">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="var(--green)" xmlns="http://www.w3.org/2000/svg"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
-                r/Rivian — Trending
+                r/Rivian
               </div>
-              <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" class="link-btn" style="font-size:12px;">Open Reddit</a>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button class="reddit-tab active" id="tabTrending" onclick="switchRedditTab('trending')">Trending</button>
+                <button class="reddit-tab" id="tabLatest" onclick="switchRedditTab('latest')">Latest</button>
+                <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" class="link-btn" style="font-size:12px;">Open Reddit</a>
+              </div>
             </div>
             <div class="reddit-feed" id="redditFeed">
               <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:70%; border-radius:4px;"></div></div>
@@ -607,25 +693,8 @@
               <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:75%; border-radius:4px;"></div></div>
             </div>
           </div>
-          <!-- RIVIAN COMMUNITY — Reddit new posts -->
-          <div class="card">
-            <div class="news-header">
-              <div class="section-label">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                r/Rivian — Latest
-              </div>
-              <a href="https://www.reddit.com/r/Rivian/new/" target="_blank" rel="noopener noreferrer" class="link-btn" style="font-size:12px;">Open Reddit</a>
-            </div>
-            <div class="forums-feed" id="forumsFeed">
-              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:68%; border-radius:4px;"></div></div>
-              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:52%; border-radius:4px;"></div></div>
-              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:75%; border-radius:4px;"></div></div>
-              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:60%; border-radius:4px;"></div></div>
-              <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:70%; border-radius:4px;"></div></div>
-            </div>
-          </div>
 
-          <div class="review-card">
+          <div class="review-card" id="section-review">
             <div class="section-label">Featured review</div>
             <h2 class="review-title">90 Days With My 2026 Rivian R1S</h2>
             <div class="review-meta">
@@ -638,15 +707,17 @@
             <a href="/reviews/2026-rivian-r1s-90-day-review/" class="link-btn">Read full review</a>
           </div>
 
-          <div class="review-card">
+          <div class="guide-card">
+            <div>
             <div class="section-label">Featured guide</div>
             <h2 class="review-title">R1S vs R2 — Full Comparison</h2>
             <p class="review-excerpt">Side-by-side breakdown of range, price, dimensions, towing capacity, and feature differences to help you decide which Rivian is right for you.</p>
+            </div>
             <a href="/compare/" class="link-btn">See the comparison</a>
           </div>
 
           <!-- ACTIVE RECALLS -->
-          <div class="card recalls-card">
+          <div class="card recalls-card" id="section-recalls">
             <div class="news-header">
               <div class="section-label">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -709,7 +780,7 @@
           </div>
 
           <!-- OWNER RESOURCES -->
-          <div class="card resources-card">
+          <div class="card resources-card" id="section-resources">
             <div class="section-label">Owner resources</div>
             <div class="resource-row">
               <div><div class="resource-name">Rivian Roamer</div><div class="resource-desc">VIN lookup, inventory tracker</div></div>
@@ -745,7 +816,6 @@
             <div class="rewards-row"><span class="rewards-row-label">Dual Max Battery</span><span class="rewards-row-val">250 pts</span></div>
             <div class="rewards-row"><span class="rewards-row-label">Dual Standard</span><span class="rewards-row-val">100 pts</span></div>
             <div class="rewards-row"><span class="rewards-row-label">Free charging</span><span class="rewards-row-val gold">3 months ⚡</span></div>
-            <p style="font-size:12px; color:var(--text-dim); margin-top:12px;">My code: <strong style="color:var(--text); letter-spacing:0.03em;">SCOTT4395475</strong></p>
           </div>
 
         </div>
@@ -760,7 +830,7 @@
     <div class="contact-card">
       <div class="section-label" style="justify-content:center; margin-bottom:10px;">Get in touch</div>
       <h2 style="font-family:'DM Sans',sans-serif; font-size:clamp(22px,3vw,30px); font-weight:800; color:var(--text); margin-bottom:12px; letter-spacing:-0.02em;">Questions or ownership chat?</h2>
-      <p>Accessory recommendations, road trip tips, referral questions — happy to talk Rivian.</p>
+      <p>Questions, tips, or reader submissions — accessory recommendations, road trip notes, ownership observations. Happy to talk Rivian.</p>
       <a class="contact-link" href="mailto:rivianresource@gmail.com">rivianresource@gmail.com</a>
     </div>
   </div>
@@ -819,81 +889,56 @@
       }
     }
 
-    /* ── r/Rivian Reddit Feed ── */
-    async function loadRedditFeed() {
-      const container = document.getElementById('redditFeed');
-      try {
-        const res = await fetch('https://www.reddit.com/r/Rivian/hot.json?limit=8', {
-          headers: { 'Accept': 'application/json' }
-        });
-        if (!res.ok) throw new Error('Reddit fetch failed');
-        const data = await res.json();
-        const posts = data.data.children
-          .map(c => c.data)
-          .filter(p => !p.stickied)
-          .slice(0, 7);
+    /* ── r/Rivian Reddit Feed — tabbed ── */
+    let redditCache = { trending: null, latest: null };
+    let activeRedditTab = 'trending';
 
-        container.innerHTML = posts.map(p => `
-          <a href="https://www.reddit.com${p.permalink}" target="_blank" rel="noopener noreferrer" class="reddit-row">
-            <div class="reddit-votes">
-              <div class="reddit-votes-num">${fmtVotes(p.ups)}</div>
-              <div class="reddit-votes-label">pts</div>
+    function renderRedditPosts(posts) {
+      const container = document.getElementById('redditFeed');
+      container.innerHTML = posts.map(p => `
+        <a href="https://www.reddit.com${p.permalink}" target="_blank" rel="noopener noreferrer" class="reddit-row">
+          <div class="reddit-votes">
+            <div class="reddit-votes-num">${fmtVotes(p.ups)}</div>
+            <div class="reddit-votes-label">pts</div>
+          </div>
+          <div class="reddit-divider"></div>
+          <div class="reddit-content">
+            <div class="reddit-title">${p.title}</div>
+            <div class="reddit-meta">
+              ${p.link_flair_text ? `<span class="reddit-flair">${p.link_flair_text}</span>` : ''}
+              <span class="reddit-comments">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                ${p.num_comments} comments
+              </span>
+              <span>u/${p.author}</span>
             </div>
-            <div class="reddit-divider"></div>
-            <div class="reddit-content">
-              <div class="reddit-title">${p.title}</div>
-              <div class="reddit-meta">
-                ${p.link_flair_text ? `<span class="reddit-flair">${p.link_flair_text}</span>` : ''}
-                <span class="reddit-comments">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                  ${p.num_comments} comments
-                </span>
-                <span>u/${p.author}</span>
-              </div>
-            </div>
-          </a>
-        `).join('');
+          </div>
+        </a>
+      `).join('');
+    }
+
+    async function loadRedditTab(tab) {
+      const container = document.getElementById('redditFeed');
+      if (redditCache[tab]) { renderRedditPosts(redditCache[tab]); return; }
+      container.innerHTML = `<div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px;width:70%;border-radius:4px;"></div></div>`.repeat(5);
+      try {
+        const endpoint = tab === 'trending' ? 'hot' : 'new';
+        const res = await fetch(`https://www.reddit.com/r/Rivian/${endpoint}.json?limit=8`, { headers: { 'Accept': 'application/json' } });
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        const posts = data.data.children.map(c => c.data).filter(p => !p.stickied).slice(0, 7);
+        redditCache[tab] = posts;
+        renderRedditPosts(posts);
       } catch(e) {
         container.innerHTML = `<p style="padding:8px 12px; font-size:13px; color:var(--text-muted);">Visit <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" style="color:var(--green);">r/Rivian on Reddit →</a></p>`;
       }
     }
 
-    /* ── Rivian Community — Reddit /new feed ── */
-    async function loadForumsFeed() {
-      const container = document.getElementById('forumsFeed');
-      try {
-        const res = await fetch('https://www.reddit.com/r/Rivian/new.json?limit=8', {
-          headers: { 'Accept': 'application/json' }
-        });
-        if (!res.ok) throw new Error('fetch failed');
-        const data = await res.json();
-        const posts = data.data.children
-          .map(c => c.data)
-          .filter(p => !p.stickied)
-          .slice(0, 6);
-
-        container.innerHTML = posts.map(p => `
-          <a href="https://www.reddit.com${p.permalink}" target="_blank" rel="noopener noreferrer" class="reddit-row">
-            <div class="reddit-votes">
-              <div class="reddit-votes-num">${fmtVotes(p.ups)}</div>
-              <div class="reddit-votes-label">pts</div>
-            </div>
-            <div class="reddit-divider"></div>
-            <div class="reddit-content">
-              <div class="reddit-title">${p.title}</div>
-              <div class="reddit-meta">
-                ${p.link_flair_text ? `<span class="reddit-flair">${p.link_flair_text}</span>` : ''}
-                <span class="reddit-comments">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                  ${p.num_comments} comments
-                </span>
-              </div>
-            </div>
-          </a>
-        `).join('');
-      } catch(e) {
-        container.innerHTML = `<p style="padding:8px 12px; font-size:13px; color:var(--text-muted);">Visit <a href="https://www.reddit.com/r/Rivian/new/" target="_blank" rel="noopener noreferrer" style="color:var(--green);">r/Rivian →</a></p>`;
-      }
+    function switchRedditTab(tab) {
+      activeRedditTab = tab;
+      document.getElementById('tabTrending').classList.toggle('active', tab === 'trending');
+      document.getElementById('tabLatest').classList.toggle('active', tab === 'latest');
+      loadRedditTab(tab);
     }
 
  async function loadSoftwareWidget() {
@@ -1003,8 +1048,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       loadNewsTeaser();
-      loadRedditFeed();
-      loadForumsFeed();
+      loadRedditTab('trending');
       loadSoftwareWidget();
       loadRecalls();
     });
