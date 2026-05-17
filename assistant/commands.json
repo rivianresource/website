@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "May 16, 2026",
+  "lastUpdated": "May 17, 2026",
   "version": "2026.15",
   "requiresConnectPlus": true,
   "connectPlusPrice": "$14.99/month or $149.99/year",
-  "activation": ["Say 'Hey Rivian'", "Hold left steering wheel button", "Tap the screen"],
+  "activation": ["Say 'Hey Rivian' or 'OK Rivian'", "Hold left steering wheel button", "Tap the assistant icon on the center display"],
   "compatibility": "All Gen 1 and Gen 2 R1S and R1T owners. Coming to R2 at launch.",
   "platform": "Rivian Unified Intelligence",
   "alexa": "Enabling Rivian Assistant disables Alexa integration — you cannot run both simultaneously.",
@@ -33,13 +33,10 @@
         { "text": "Switch to Off-Road mode.", "notes": null, "verified": true },
         { "text": "Raise the suspension.", "notes": "Air suspension equipped vehicles only.", "verified": true },
         { "text": "Open the frunk.", "notes": null, "verified": true },
-        { "text": "Close the tailgate.", "notes": "R1T only.", "verified": true },
         { "text": "Open the garage door.", "notes": "Requires HomeLink or compatible smart home integration configured in settings.", "verified": true },
         { "text": "Close the garage door.", "notes": "Requires HomeLink or compatible smart home integration configured in settings.", "verified": true },
         { "text": "Turn on camp mode.", "notes": null, "verified": true },
-        { "text": "Show the cameras.", "notes": null, "verified": true },
-        { "text": "Fold the mirrors.", "notes": null, "verified": true },
-        { "text": "Turn on interior lights.", "notes": null, "verified": true }
+        { "text": "Show the cameras.", "notes": null, "verified": true }
       ]
     },
     {
@@ -76,7 +73,6 @@
       "icon": "music",
       "commands": [
         { "text": "Play Noah Kahan on Spotify.", "notes": "Works across Apple Music, Spotify, Tidal, and SiriusXM.", "verified": true },
-        { "text": "Play podcasts.", "notes": null, "verified": true },
         { "text": "Volume 10.", "notes": null, "verified": true },
         { "text": "Skip this song.", "notes": null, "verified": true },
         { "text": "Resume playback.", "notes": null, "verified": true },
@@ -90,7 +86,7 @@
       "commands": [
         { "text": "Read my messages.", "notes": null, "verified": true },
         { "text": "Text Sarah and tell her I'm running late.", "notes": "Natural phrasing works — no need to dictate the exact message.", "verified": true },
-        { "text": "Text John I'll arrive in 20 minutes.", "notes": "Can send in your preferred tone.", "verified": true },
+        { "text": "Text John I'll arrive in 20 minutes.", "notes": null, "verified": true },
         { "text": "Call Mike.", "notes": null, "verified": true }
       ]
     },
@@ -124,8 +120,7 @@
         { "text": "What's the weather at my destination?", "notes": null, "verified": true },
         { "text": "Summarize local news.", "notes": null, "verified": true },
         { "text": "When does the national park close?", "notes": null, "verified": true },
-        { "text": "Tell me a joke.", "notes": "The assistant has personality — conversational and general knowledge queries work just as well as vehicle commands.", "verified": true },
-        { "text": "What's a good podcast for a long drive?", "notes": null, "verified": true }
+        { "text": "Tell me a joke.", "notes": "The assistant has personality — conversational and general knowledge queries work just as well as vehicle commands.", "verified": true }
       ]
     }
   ],
@@ -135,9 +130,7 @@
     "English only at launch",
     "Cloud connection required — does not work offline",
     "Some owners report unintentional wake word activations at highway speed",
-    "Profile PIN prompt occasionally appears on every startup even when not set",
-    "Third-party integrations limited to Google Calendar at launch — more coming",
-    "Will not control safety-critical systems (windows, brakes)"
+    "Third-party integrations limited to Google Calendar at launch — Apple Calendar and Outlook support coming in future updates"
   ],
   "tips": [
     "Just chat with it naturally — 'I'm running late, text my wife' works as well as any structured command. You don't need to memorize specific phrases.",
@@ -150,7 +143,7 @@
   "changelog": [
     {
       "version": "2026.15",
-      "date": "May 11, 2026",
+      "date": "May 12, 2026",
       "changes": [
         "Initial launch — Hey Rivian available to all Gen 1 and Gen 2 R1S and R1T owners on Connect+",
         "Google Calendar integration — first agentic third-party integration",
