@@ -3,9 +3,12 @@
   "version": "2026.15",
   "requiresConnectPlus": true,
   "connectPlusPrice": "$14.99/month or $149.99/year",
-  "activation": ["Say 'Hey Rivian' or 'OK Rivian'", "Hold left steering wheel button", "Tap the assistant icon on the center display"],
+  "activation": [
+    "Say 'Hey Rivian' or 'OK Rivian'",
+    "Hold left steering wheel button",
+    "Tap the assistant icon on the center display"
+  ],
   "compatibility": "All Gen 1 and Gen 2 R1S and R1T owners. Coming to R2 at launch.",
-  "platform": "Rivian Unified Intelligence",
   "alexa": "Enabling Rivian Assistant disables Alexa integration — you cannot run both simultaneously.",
   "ownerNote": "I've been using Hey Rivian since 2026.15 dropped. The biggest thing: you don't need to memorize commands — just talk to it like a person and it figures it out. In my experience, conversational navigation chaining feels noticeably better than Alexa. The unintentional wake word activations at highway speed are real but infrequent.",
   "categories": [
@@ -14,14 +17,38 @@
       "title": "Climate Control",
       "icon": "thermometer",
       "commands": [
-        { "text": "Set cabin temperature to 70 degrees.", "notes": null, "verified": true },
-        { "text": "Make it warmer.", "notes": null, "verified": true },
-        { "text": "I'm cold.", "notes": "Natural conversational phrasing — no need to use exact commands.", "verified": true },
-        { "text": "Turn on seat heaters.", "notes": null, "verified": true },
-        { "text": "Turn on passenger seat ventilation.", "notes": null, "verified": true },
-        { "text": "Defrost the windshield.", "notes": null, "verified": true },
-        { "text": "Turn on rear defrost.", "notes": null, "verified": true },
-        { "text": "Make everyone's seat toasty except mine.", "notes": "Rivian's flagship multi-parameter demo command — controls individual seat heating in a single request.", "verified": true }
+        {
+          "text": "Set cabin temperature to 70 degrees.",
+          "notes": null
+        },
+        {
+          "text": "Make it warmer.",
+          "notes": null
+        },
+        {
+          "text": "I'm cold.",
+          "notes": "Natural conversational phrasing — no need to use exact commands."
+        },
+        {
+          "text": "Turn on seat heaters.",
+          "notes": null
+        },
+        {
+          "text": "Turn on passenger seat ventilation.",
+          "notes": null
+        },
+        {
+          "text": "Defrost the windshield.",
+          "notes": null
+        },
+        {
+          "text": "Turn on rear defrost.",
+          "notes": null
+        },
+        {
+          "text": "Make everyone's seat toasty except mine.",
+          "notes": "Rivian's flagship multi-parameter demo command — controls individual seat heating in a single request."
+        }
       ]
     },
     {
@@ -29,14 +56,38 @@
       "title": "Vehicle Controls",
       "icon": "truck",
       "commands": [
-        { "text": "Switch to All-Purpose mode.", "notes": null, "verified": true },
-        { "text": "Switch to Off-Road mode.", "notes": null, "verified": true },
-        { "text": "Raise the suspension.", "notes": "Air suspension equipped vehicles only.", "verified": true },
-        { "text": "Open the frunk.", "notes": null, "verified": true },
-        { "text": "Open the garage door.", "notes": "Works with configured HomeLink garage doors.", "verified": true },
-        { "text": "Close the garage door.", "notes": "Works with configured HomeLink garage doors.", "verified": true },
-        { "text": "Turn on camp mode.", "notes": null, "verified": true },
-        { "text": "Show the cameras.", "notes": null, "verified": true }
+        {
+          "text": "Switch to All-Purpose mode.",
+          "notes": null
+        },
+        {
+          "text": "Switch to Off-Road mode.",
+          "notes": null
+        },
+        {
+          "text": "Raise the suspension.",
+          "notes": "Air suspension equipped vehicles only."
+        },
+        {
+          "text": "Open the frunk.",
+          "notes": null
+        },
+        {
+          "text": "Open the garage door.",
+          "notes": "Works with configured HomeLink garage doors."
+        },
+        {
+          "text": "Close the garage door.",
+          "notes": "Works with configured HomeLink garage doors."
+        },
+        {
+          "text": "Turn on camp mode.",
+          "notes": null
+        },
+        {
+          "text": "Show the cameras.",
+          "notes": null
+        }
       ]
     },
     {
@@ -44,15 +95,42 @@
       "title": "Navigation",
       "icon": "map",
       "commands": [
-        { "text": "Navigate home.", "notes": null, "verified": true },
-        { "text": "Take me to the nearest car wash.", "notes": null, "verified": true },
-        { "text": "Find coffee nearby.", "notes": null, "verified": true },
-        { "text": "Navigate to Zion National Park.", "notes": null, "verified": true },
-        { "text": "Find a Buc-ee's along my route.", "notes": "Route-aware POI search — works with any brand or category, not just Buc-ee's.", "verified": true },
-        { "text": "Find a charger near lunch.", "notes": "Conversational chaining — combines POI search with charging stop planning.", "verified": true },
-        { "text": "Can I make it there without charging?", "notes": "Range-aware navigation query.", "verified": true },
-        { "text": "Find a place to eat near my next charging stop.", "notes": "Multi-step agentic command.", "verified": true },
-        { "text": "Find a coffee shop on the way to my next appointment and text my contact an ETA.", "notes": "Rivian has demonstrated multi-step conversational requests combining navigation, calendar, and messaging. Real-world results may vary — full chaining in a single command is not yet widely owner-validated.", "verified": false }
+        {
+          "text": "Navigate home.",
+          "notes": null
+        },
+        {
+          "text": "Take me to the nearest car wash.",
+          "notes": null
+        },
+        {
+          "text": "Find coffee nearby.",
+          "notes": null
+        },
+        {
+          "text": "Navigate to Zion National Park.",
+          "notes": null
+        },
+        {
+          "text": "Find a Buc-ee's along my route.",
+          "notes": "Route-aware POI search — works with any brand or category, not just Buc-ee's."
+        },
+        {
+          "text": "Find a charger near lunch.",
+          "notes": "Conversational chaining — combines POI search with charging stop planning."
+        },
+        {
+          "text": "Can I make it there without charging?",
+          "notes": "Range-aware navigation query."
+        },
+        {
+          "text": "Find a place to eat near my next charging stop.",
+          "notes": "Observed in demos and early owner testing — multi-step navigation chaining is supported but real-world results may vary."
+        },
+        {
+          "text": "Find a coffee shop on the way to my next appointment and text my contact an ETA.",
+          "notes": "Rivian has demonstrated multi-step conversational requests combining navigation, calendar, and messaging. Real-world results may vary — full chaining in a single command is not yet widely owner-validated."
+        }
       ]
     },
     {
@@ -60,11 +138,26 @@
       "title": "Charging",
       "icon": "zap",
       "commands": [
-        { "text": "Find a fast charger nearby.", "notes": null, "verified": true },
-        { "text": "Navigate to a Rivian Adventure Network charger.", "notes": null, "verified": true },
-        { "text": "What's my charging speed?", "notes": null, "verified": true },
-        { "text": "Set charge limit to 80%.", "notes": null, "verified": true },
-        { "text": "How long until I reach 80%?", "notes": null, "verified": true }
+        {
+          "text": "Find a fast charger nearby.",
+          "notes": null
+        },
+        {
+          "text": "Navigate to a Rivian Adventure Network charger.",
+          "notes": null
+        },
+        {
+          "text": "What's my charging speed?",
+          "notes": null
+        },
+        {
+          "text": "Set charge limit to 80%.",
+          "notes": null
+        },
+        {
+          "text": "How long until I reach 80%?",
+          "notes": null
+        }
       ]
     },
     {
@@ -72,11 +165,26 @@
       "title": "Media",
       "icon": "music",
       "commands": [
-        { "text": "Play Noah Kahan on Spotify.", "notes": "Media commands work with supported music services including Spotify and Apple Music.", "verified": true },
-        { "text": "Volume 10.", "notes": null, "verified": true },
-        { "text": "Skip this song.", "notes": null, "verified": true },
-        { "text": "Resume playback.", "notes": null, "verified": true },
-        { "text": "What song is this?", "notes": null, "verified": true }
+        {
+          "text": "Play Noah Kahan on Spotify.",
+          "notes": "Media commands work with supported music services including Spotify and Apple Music."
+        },
+        {
+          "text": "Volume 10.",
+          "notes": null
+        },
+        {
+          "text": "Skip this song.",
+          "notes": null
+        },
+        {
+          "text": "Resume playback.",
+          "notes": null
+        },
+        {
+          "text": "What song is this?",
+          "notes": null
+        }
       ]
     },
     {
@@ -84,10 +192,22 @@
       "title": "Messaging & Calls",
       "icon": "message",
       "commands": [
-        { "text": "Read my messages.", "notes": null, "verified": true },
-        { "text": "Text Sarah and tell her I'm running late.", "notes": "Natural phrasing works — no need to dictate the exact message.", "verified": true },
-        { "text": "Text John I'll arrive in 20 minutes.", "notes": null, "verified": true },
-        { "text": "Call Mike.", "notes": null, "verified": true }
+        {
+          "text": "Read my messages.",
+          "notes": null
+        },
+        {
+          "text": "Text Sarah and tell her I'm running late.",
+          "notes": "Natural phrasing works — no need to dictate the exact message."
+        },
+        {
+          "text": "Text John I'll arrive in 20 minutes.",
+          "notes": null
+        },
+        {
+          "text": "Call Mike.",
+          "notes": null
+        }
       ]
     },
     {
@@ -95,10 +215,22 @@
       "title": "Calendar",
       "icon": "calendar",
       "commands": [
-        { "text": "What's my first appointment today?", "notes": "Requires Google Calendar connected in settings.", "verified": true },
-        { "text": "Navigate to my next meeting.", "notes": "Requires Google Calendar.", "verified": true },
-        { "text": "Try moving my 2pm meeting to 3pm.", "notes": "Requires Google Calendar. Rivian officially supports rescheduling, but some calendar management actions may be limited during initial rollout.", "verified": false },
-        { "text": "What time do I need to leave?", "notes": "Requires Google Calendar.", "verified": true }
+        {
+          "text": "What's my first appointment today?",
+          "notes": "Requires Google Calendar connected in settings."
+        },
+        {
+          "text": "Navigate to my next meeting.",
+          "notes": "Requires Google Calendar."
+        },
+        {
+          "text": "Try moving my 2pm meeting to 3pm.",
+          "notes": "Requires Google Calendar. Rivian officially supports rescheduling, but some calendar management actions may be limited during initial rollout."
+        },
+        {
+          "text": "What time do I need to leave?",
+          "notes": "Requires Google Calendar."
+        }
       ]
     },
     {
@@ -106,10 +238,22 @@
       "title": "Owner's Guide",
       "icon": "book",
       "commands": [
-        { "text": "What does this warning light mean?", "notes": "Rivian bills the assistant as an encyclopedia for your vehicle — replaces digging through the owner's manual.", "verified": true },
-        { "text": "How do I use camp mode?", "notes": null, "verified": true },
-        { "text": "How do I open the charge port manually?", "notes": null, "verified": true },
-        { "text": "What tire pressure should I use?", "notes": null, "verified": true }
+        {
+          "text": "What does this warning light mean?",
+          "notes": "Rivian bills the assistant as an encyclopedia for your vehicle — replaces digging through the owner's manual."
+        },
+        {
+          "text": "How do I use camp mode?",
+          "notes": null
+        },
+        {
+          "text": "How do I open the charge port manually?",
+          "notes": null
+        },
+        {
+          "text": "What tire pressure should I use?",
+          "notes": null
+        }
       ]
     },
     {
@@ -117,10 +261,22 @@
       "title": "General Knowledge",
       "icon": "globe",
       "commands": [
-        { "text": "What's the weather at my destination?", "notes": null, "verified": true },
-        { "text": "Summarize local news.", "notes": null, "verified": true },
-        { "text": "When does the national park close?", "notes": null, "verified": true },
-        { "text": "Tell me a joke.", "notes": "The assistant has personality — conversational and general knowledge queries work just as well as vehicle commands.", "verified": true }
+        {
+          "text": "What's the weather at my destination?",
+          "notes": null
+        },
+        {
+          "text": "Summarize local news.",
+          "notes": null
+        },
+        {
+          "text": "When does the national park close?",
+          "notes": null
+        },
+        {
+          "text": "Tell me a joke.",
+          "notes": "The assistant has personality — conversational and general knowledge queries work just as well as vehicle commands."
+        }
       ]
     }
   ],
@@ -128,7 +284,7 @@
     "Requires active Connect+ subscription or trial ($14.99/month or $149.99/year)",
     "Enabling Rivian Assistant disables Alexa — you cannot run both",
     "English only at launch",
-    "Cloud connection required — does not work offline",
+    "Many assistant features require an internet connection — some local vehicle controls may still function without connectivity",
     "Some owners report unintentional wake word activations at highway speed",
     "Google Calendar is the primary third-party integration available at launch — Apple Calendar and Outlook support coming in future updates"
   ],
@@ -137,7 +293,7 @@
     "Use conversational phrasing rather than keyword commands. 'I'm cold' works better than 'Set HVAC 70'.",
     "The assistant appears to maintain conversational context during a session — you can say 'make it warmer' after setting a temperature without repeating yourself.",
     "Connect Google Calendar in Settings to unlock the full agentic chaining features.",
-    "Personal context is saved to your individual driver profile — household members won't see your preferences.",
+    "Some preferences and conversational context may be tied to the active driver profile — household members may not see your settings.",
     "You can disable the Hey Rivian wake word, limit location sharing, or turn off the memory feature in privacy settings."
   ],
   "changelog": [
