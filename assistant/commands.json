@@ -278,7 +278,7 @@
   "tips": [
     "Use conversational phrasing rather than keyword commands. 'I'm cold' works better than 'Set HVAC 70'.",
     "The assistant appears to maintain context during a session — you can say 'make it warmer' after setting a temperature without repeating yourself.",
-    "Connect Google Calendar in Settings to unlock the full agentic chaining features.",
+    "Connect Google Calendar in Settings for meeting navigation and related assistant features.",
     "Some preferences and context may be tied to the active driver profile — household members may not see your settings.",
     "You can disable the Hey Rivian wake word, limit location sharing, or turn off the memory feature in privacy settings."
   ],
