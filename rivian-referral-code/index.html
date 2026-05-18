@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -831,117 +832,305 @@
 
             <div class="scene-stage" id="sceneStage">
 
-              <svg class="scene-svg active" id="scene0" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
-                <rect width="680" height="260" fill="#0d1117"/>
-                <rect width="680" height="130" fill="#0a0a1a"/>
-                <circle cx="340" cy="0" r="180" fill="#1a1a3e" opacity="0.5"/>
-                <rect y="130" width="680" height="130" fill="#1a0a00"/>
-                <rect y="160" width="680" height="100" fill="#0f0600"/>
-                <circle cx="80" cy="50" r="2.5" fill="#fff" opacity="0.8"/>
-                <circle cx="150" cy="25" r="2" fill="#fff" opacity="0.6"/>
-                <circle cx="320" cy="18" r="2.5" fill="#fff" opacity="0.9"/>
-                <circle cx="500" cy="20" r="2.5" fill="#fff" opacity="0.8"/>
-                <circle cx="580" cy="55" r="2" fill="#fff" opacity="0.6"/>
-                <circle cx="640" cy="32" r="2" fill="#fff" opacity="0.7"/>
-                <rect x="160" y="72" width="360" height="126" rx="6" fill="#162018"/>
-                <rect x="170" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#8adcb0" stroke-width="2"/>
-                <rect x="177" y="89" width="36" height="84" rx="18" fill="#040904"/>
-                <rect x="181" y="93" width="28" height="76" rx="14" fill="none" stroke="#6ecfa0" stroke-width="1.2" opacity="0.6"/>
-                <rect x="460" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#8adcb0" stroke-width="2"/>
-                <rect x="467" y="89" width="36" height="84" rx="18" fill="#040904"/>
-                <rect x="471" y="93" width="28" height="76" rx="14" fill="none" stroke="#6ecfa0" stroke-width="1.2" opacity="0.6"/>
-                <rect x="220" y="126" width="240" height="4" rx="2" fill="#a8eece" opacity="0.9"/>
-                <rect x="217" y="124" width="246" height="8" rx="3" fill="#6ee7b7" opacity="0.09"/>
-                <text x="170" y="218" text-anchor="middle" font-size="22" fill="#cc8800" font-family="serif" font-weight="bold" font-style="italic">STAR</text>
-                <text x="340" y="218" text-anchor="middle" font-size="22" fill="#cc8800" font-family="serif" font-weight="bold" font-style="italic">WARS</text>
-                <text x="510" y="218" text-anchor="middle" font-size="22" fill="#cc8800" font-family="serif" font-weight="bold" font-style="italic">ROGUE</text>
-                <text x="340" y="245" text-anchor="middle" font-size="10" fill="rgba(255,200,0,0.4)" font-family="monospace">"I find your lack of charging infrastructure disturbing."</text>
+              <!-- SCENE 0: STAR WARS -->
+              <svg class="scene-svg active" id="scene0" viewBox="0 0 680 275" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="sw-glow" cx="50%" cy="30%" r="80%">
+                    <stop offset="0%" stop-color="#22226e"/>
+                    <stop offset="100%" stop-color="#04040f"/>
+                  </radialGradient>
+                  <radialGradient id="sw-planet" cx="35%" cy="30%" r="50%">
+                    <stop offset="0%" stop-color="#6655aa"/>
+                    <stop offset="100%" stop-color="#220e60"/>
+                  </radialGradient>
+                </defs>
+                <rect width="680" height="275" fill="url(#sw-glow)"/>
+                <!-- Stars -->
+                <circle cx="30" cy="12" r="1.5" fill="#fff" opacity="0.95"/>
+                <circle cx="78" cy="35" r="1" fill="#fff" opacity="0.85"/>
+                <circle cx="135" cy="8" r="2" fill="#fff" opacity="0.9"/>
+                <circle cx="188" cy="48" r="1" fill="#fff" opacity="0.8"/>
+                <circle cx="248" cy="18" r="1.5" fill="#fff" opacity="0.95"/>
+                <circle cx="298" cy="6" r="1" fill="#fff" opacity="0.8"/>
+                <circle cx="358" cy="40" r="1.2" fill="#fff" opacity="0.7"/>
+                <circle cx="418" cy="14" r="2" fill="#fff" opacity="0.95"/>
+                <circle cx="475" cy="52" r="1" fill="#fff" opacity="0.8"/>
+                <circle cx="530" cy="9" r="1.5" fill="#fff" opacity="0.9"/>
+                <circle cx="592" cy="30" r="1" fill="#fff" opacity="0.85"/>
+                <circle cx="645" cy="48" r="1.5" fill="#fff" opacity="0.9"/>
+                <circle cx="55" cy="68" r="1.2" fill="#fff" opacity="0.6"/>
+                <circle cx="168" cy="75" r="1" fill="#fff" opacity="0.7"/>
+                <circle cx="338" cy="62" r="1" fill="#fff" opacity="0.6"/>
+                <circle cx="455" cy="72" r="1.2" fill="#fff" opacity="0.65"/>
+                <circle cx="618" cy="70" r="1" fill="#fff" opacity="0.6"/>
+                <!-- Planet large vivid upper-right -->
+                <circle cx="572" cy="58" r="52" fill="url(#sw-planet)" opacity="0.95"/>
+                <circle cx="572" cy="58" r="52" fill="none" stroke="#9977ee" stroke-width="2" opacity="0.7"/>
+                <ellipse cx="572" cy="72" rx="76" ry="13" fill="none" stroke="#bbaaff" stroke-width="3" opacity="0.6"/>
+                <!-- Twin suns horizon -->
+                <circle cx="80" cy="155" r="18" fill="#ffdd44" opacity="0.85"/>
+                <circle cx="80" cy="155" r="28" fill="#ff9900" opacity="0.2"/>
+                <circle cx="112" cy="155" r="12" fill="#ffaa22" opacity="0.7"/>
+                <!-- Desert ground -->
+                <rect y="153" width="680" height="107" fill="#110800"/>
+                <rect y="150" width="680" height="8" fill="#241000" opacity="0.95"/>
+                <ellipse cx="80" cy="157" rx="140" ry="20" fill="#0d0500"/>
+                <ellipse cx="600" cy="159" rx="130" ry="18" fill="#0d0500"/>
+                <line x1="20" y1="210" x2="140" y2="228" stroke="#0a0300" stroke-width="1.2" opacity="0.8"/>
+                <line x1="400" y1="205" x2="560" y2="218" stroke="#0a0300" stroke-width="1.2" opacity="0.7"/>
+                <!-- CAR smaller: 370px wide centered -->
+                <rect x="155" y="148" width="370" height="68" rx="14" fill="#0e1810"/>
+                <rect x="155" y="148" width="370" height="68" rx="14" fill="none" stroke="#cc8800" stroke-width="1.2" opacity="0.5"/>
+                <rect x="163" y="146" width="40" height="72" rx="20" fill="#060c04" stroke="#f0c832" stroke-width="2.5"/>
+                <rect x="170" y="153" width="26" height="58" rx="13" fill="#030802"/>
+                <rect x="173" y="156" width="20" height="52" rx="10" fill="none" stroke="#f0d040" stroke-width="1.8" opacity="0.9"/>
+                <rect x="477" y="146" width="40" height="72" rx="20" fill="#060c04" stroke="#f0c832" stroke-width="2.5"/>
+                <rect x="484" y="153" width="26" height="58" rx="13" fill="#030802"/>
+                <rect x="487" y="156" width="20" height="52" rx="10" fill="none" stroke="#f0d040" stroke-width="1.8" opacity="0.9"/>
+                <rect x="203" y="179" width="274" height="4" rx="2" fill="#f8e040" opacity="0.95"/>
+                <rect x="200" y="176" width="280" height="10" rx="4" fill="#f0c820" opacity="0.18"/>
+                <ellipse cx="183" cy="222" rx="42" ry="6" fill="#cc8800" opacity="0.2"/>
+                <ellipse cx="497" cy="222" rx="42" ry="6" fill="#cc8800" opacity="0.2"/>
+                <text x="340" y="240" text-anchor="middle" font-size="22" fill="#ffe820" font-family="serif" font-weight="bold" font-style="italic" letter-spacing="8" opacity="0.98">STAR WARS</text>
+                <text x="340" y="256" text-anchor="middle" font-size="9.5" fill="rgba(255,220,0,0.65)" font-family="monospace">"I find your lack of charging infrastructure disturbing."</text>
               </svg>
 
-              <svg class="scene-svg" id="scene1" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
-                <rect width="680" height="260" fill="#0a0f1a"/>
-                <rect y="160" width="680" height="100" fill="#0a0a0f"/>
-                <rect x="0" y="128" width="680" height="42" fill="#111830" opacity="0.9"/>
-                <circle cx="580" cy="65" r="45" fill="#ffff44" opacity="0.06"/>
-                <circle cx="580" cy="65" r="30" fill="#ffff66" opacity="0.07"/>
-                <circle cx="100" cy="50" r="2" fill="#fff" opacity="0.5"/>
-                <circle cx="300" cy="65" r="2" fill="#fff" opacity="0.6"/>
-                <circle cx="420" cy="22" r="2" fill="#fff" opacity="0.5"/>
-                <ellipse cx="340" cy="160" rx="200" ry="10" fill="#222244" opacity="0.5"/>
-                <rect x="160" y="72" width="360" height="126" rx="6" fill="#162018"/>
-                <rect x="170" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#8aaad0" stroke-width="2"/>
-                <rect x="177" y="89" width="36" height="84" rx="18" fill="#040904"/>
-                <rect x="181" y="93" width="28" height="76" rx="14" fill="none" stroke="#6e9fc0" stroke-width="1.2" opacity="0.6"/>
-                <rect x="460" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#8aaad0" stroke-width="2"/>
-                <rect x="467" y="89" width="36" height="84" rx="18" fill="#040904"/>
-                <rect x="471" y="93" width="28" height="76" rx="14" fill="none" stroke="#6e9fc0" stroke-width="1.2" opacity="0.6"/>
-                <rect x="220" y="126" width="240" height="4" rx="2" fill="#a8cce8" opacity="0.9"/>
-                <rect x="217" y="124" width="246" height="8" rx="3" fill="#6eaae7" opacity="0.09"/>
-                <text x="340" y="214" text-anchor="middle" font-size="20" fill="#88aaff" font-family="serif" font-weight="bold" letter-spacing="6">INTERSTELLAR</text>
-                <text x="340" y="236" text-anchor="middle" font-size="12" fill="#6688cc" font-family="serif">The Endurance &amp; 3 Months Free Charging</text>
-                <text x="340" y="252" text-anchor="middle" font-size="10" fill="rgba(136,170,255,0.4)" font-family="monospace">"Do not go gentle into that good charging station."</text>
+              <!-- SCENE 1: INTERSTELLAR -->
+              <svg class="scene-svg" id="scene1" viewBox="0 0 680 275" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="is-bg" cx="50%" cy="40%" r="80%">
+                    <stop offset="0%" stop-color="#101e38"/>
+                    <stop offset="100%" stop-color="#020610"/>
+                  </radialGradient>
+                  <radialGradient id="is-blackhole" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#000000"/>
+                    <stop offset="50%" stop-color="#000000"/>
+                    <stop offset="72%" stop-color="#ff7700" stop-opacity="0.85"/>
+                    <stop offset="100%" stop-color="#ffaa00" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <rect width="680" height="275" fill="url(#is-bg)"/>
+                <circle cx="28" cy="16" r="1.2" fill="#fff" opacity="0.9"/>
+                <circle cx="85" cy="48" r="1.5" fill="#fff" opacity="0.75"/>
+                <circle cx="170" cy="10" r="1" fill="#fff" opacity="0.95"/>
+                <circle cx="230" cy="62" r="1.2" fill="#fff" opacity="0.65"/>
+                <circle cx="305" cy="20" r="1.5" fill="#fff" opacity="0.85"/>
+                <circle cx="410" cy="52" r="1" fill="#fff" opacity="0.75"/>
+                <circle cx="488" cy="12" r="1.5" fill="#fff" opacity="0.95"/>
+                <circle cx="572" cy="40" r="1.2" fill="#fff" opacity="0.8"/>
+                <circle cx="642" cy="22" r="1.5" fill="#fff" opacity="0.7"/>
+                <circle cx="52" cy="80" r="1" fill="#fff" opacity="0.5"/>
+                <circle cx="392" cy="76" r="1" fill="#fff" opacity="0.55"/>
+                <circle cx="530" cy="68" r="1" fill="#fff" opacity="0.5"/>
+                <!-- Black hole vivid left -->
+                <circle cx="118" cy="72" r="58" fill="url(#is-blackhole)"/>
+                <ellipse cx="118" cy="88" rx="88" ry="14" fill="none" stroke="#ff7700" stroke-width="6" opacity="0.8"/>
+                <ellipse cx="118" cy="84" rx="88" ry="14" fill="none" stroke="#ffcc44" stroke-width="2" opacity="0.5"/>
+                <path d="M 48 28 Q 66 72 48 116" fill="none" stroke="#ffaa44" stroke-width="2.5" opacity="0.45"/>
+                <path d="M 188 28 Q 170 72 188 116" fill="none" stroke="#ffaa44" stroke-width="2.5" opacity="0.45"/>
+                <!-- Saturn vivid right -->
+                <circle cx="570" cy="55" r="40" fill="#4a5f75" opacity="0.95"/>
+                <circle cx="570" cy="55" r="40" fill="none" stroke="#88aacc" stroke-width="1" opacity="0.5"/>
+                <ellipse cx="570" cy="67" rx="64" ry="11" fill="none" stroke="#99bbdd" stroke-width="3" opacity="0.75"/>
+                <!-- Ice ground -->
+                <rect y="148" width="680" height="112" fill="#050d1a"/>
+                <rect y="144" width="680" height="8" fill="#0c1c35" opacity="0.95"/>
+                <ellipse cx="340" cy="148" rx="340" ry="5" fill="#2244aa" opacity="0.35"/>
+                <!-- CAR smaller -->
+                <rect x="155" y="142" width="370" height="68" rx="14" fill="#09111e"/>
+                <rect x="155" y="142" width="370" height="68" rx="14" fill="none" stroke="#5577cc" stroke-width="1.5" opacity="0.7"/>
+                <rect x="163" y="140" width="40" height="72" rx="20" fill="#060c14" stroke="#88aaee" stroke-width="2.5"/>
+                <rect x="170" y="147" width="26" height="58" rx="13" fill="#030810"/>
+                <rect x="173" y="150" width="20" height="52" rx="10" fill="none" stroke="#7799dd" stroke-width="1.8" opacity="0.95"/>
+                <rect x="477" y="140" width="40" height="72" rx="20" fill="#060c14" stroke="#88aaee" stroke-width="2.5"/>
+                <rect x="484" y="147" width="26" height="58" rx="13" fill="#030810"/>
+                <rect x="487" y="150" width="20" height="52" rx="10" fill="none" stroke="#7799dd" stroke-width="1.8" opacity="0.95"/>
+                <rect x="203" y="173" width="274" height="4" rx="2" fill="#aaccff" opacity="0.95"/>
+                <rect x="200" y="170" width="280" height="10" rx="4" fill="#88aaff" opacity="0.2"/>
+                <ellipse cx="183" cy="215" rx="40" ry="5" fill="#4466bb" opacity="0.18"/>
+                <ellipse cx="497" cy="215" rx="40" ry="5" fill="#4466bb" opacity="0.18"/>
+                <text x="340" y="236" text-anchor="middle" font-size="20" fill="#aaccff" font-family="serif" font-weight="bold" letter-spacing="7" opacity="0.98">INTERSTELLAR</text>
+                <text x="340" y="250" text-anchor="middle" font-size="11" fill="#7799cc" font-family="serif">The Endurance &amp; 3 Months Free Charging</text>
+                <text x="340" y="259" text-anchor="middle" font-size="9" fill="rgba(150,180,255,0.65)" font-family="monospace">"Do not go gentle into that good charging station."</text>
               </svg>
 
-              <svg class="scene-svg" id="scene2" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
-                <rect width="680" height="260" fill="#0f0a00"/>
-                <rect y="155" width="680" height="105" fill="#1a0f00"/>
-                <rect x="0" y="128" width="680" height="38" fill="#2a1800" opacity="0.9"/>
-                <rect x="40" y="80" width="28" height="80" fill="#3d2800" opacity="0.8"/>
-                <rect x="558" y="72" width="28" height="88" fill="#3d2800" opacity="0.8"/>
-                <ellipse cx="340" cy="160" rx="180" ry="9" fill="#2a1800" opacity="0.5"/>
-                <rect x="160" y="72" width="360" height="126" rx="6" fill="#162018"/>
-                <rect x="170" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#d0aa6e" stroke-width="2"/>
-                <rect x="177" y="89" width="36" height="84" rx="18" fill="#040904"/>
-                <rect x="181" y="93" width="28" height="76" rx="14" fill="none" stroke="#c09a50" stroke-width="1.2" opacity="0.6"/>
-                <rect x="460" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#d0aa6e" stroke-width="2"/>
-                <rect x="467" y="89" width="36" height="84" rx="18" fill="#040904"/>
-                <rect x="471" y="93" width="28" height="76" rx="14" fill="none" stroke="#c09a50" stroke-width="1.2" opacity="0.6"/>
-                <rect x="220" y="126" width="240" height="4" rx="2" fill="#e8cc90" opacity="0.9"/>
-                <rect x="217" y="124" width="246" height="8" rx="3" fill="#e7c46e" opacity="0.09"/>
-                <text x="340" y="210" text-anchor="middle" font-size="20" fill="#cc8800" font-family="serif" font-weight="bold" letter-spacing="2">The Good, The Bad</text>
-                <text x="340" y="232" text-anchor="middle" font-size="16" fill="#aa6600" font-family="serif">&amp; The Rivian</text>
-                <text x="340" y="252" text-anchor="middle" font-size="10" fill="rgba(204,136,0,0.4)" font-family="monospace">"Two kinds of people: those with a referral code, and those who dig."</text>
+              <!-- SCENE 2: THE GOOD THE BAD & THE RIVIAN -->
+              <svg class="scene-svg" id="scene2" viewBox="0 0 680 275" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="wb-sky" cx="50%" cy="10%" r="90%">
+                    <stop offset="0%" stop-color="#5c3200"/>
+                    <stop offset="100%" stop-color="#100600"/>
+                  </radialGradient>
+                  <radialGradient id="wb-sun" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#fff0a0"/>
+                    <stop offset="40%" stop-color="#ff9900"/>
+                    <stop offset="100%" stop-color="#cc4400" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <rect width="680" height="275" fill="url(#wb-sky)"/>
+                <!-- Vivid setting sun -->
+                <circle cx="340" cy="158" r="55" fill="url(#wb-sun)" opacity="0.95"/>
+                <circle cx="340" cy="158" r="72" fill="none" stroke="#ff8800" stroke-width="2.5" opacity="0.5"/>
+                <circle cx="340" cy="158" r="95" fill="none" stroke="#dd6600" stroke-width="1.5" opacity="0.3"/>
+                <circle cx="340" cy="158" r="118" fill="none" stroke="#aa4400" stroke-width="1" opacity="0.2"/>
+                <!-- Ground -->
+                <rect y="153" width="680" height="107" fill="#1e0a00"/>
+                <rect y="149" width="680" height="8" fill="#301200" opacity="0.95"/>
+                <line x1="30" y1="200" x2="130" y2="218" stroke="#0e0500" stroke-width="1.2" opacity="0.8"/>
+                <line x1="200" y1="192" x2="310" y2="208" stroke="#0e0500" stroke-width="1" opacity="0.7"/>
+                <line x1="390" y1="204" x2="530" y2="194" stroke="#0e0500" stroke-width="1.2" opacity="0.8"/>
+                <line x1="565" y1="210" x2="660" y2="198" stroke="#0e0500" stroke-width="1" opacity="0.7"/>
+                <!-- Mesas vivid -->
+                <polygon points="0,153 80,85 175,153" fill="#150800" opacity="0.95"/>
+                <polygon points="505,153 600,78 680,153" fill="#150800" opacity="0.95"/>
+                <!-- Cacti proper shape -->
+                <rect x="24" y="90" width="12" height="62" rx="6" fill="#1a0900" opacity="0.98"/>
+                <rect x="10" y="106" width="14" height="10" rx="5" fill="#1a0900" opacity="0.98"/>
+                <rect x="24" y="106" width="14" height="10" rx="5" fill="#1a0900" opacity="0.98"/>
+                <rect x="36" y="100" width="14" height="10" rx="5" fill="#1a0900" opacity="0.98"/>
+                <rect x="24" y="100" width="14" height="10" rx="5" fill="#1a0900" opacity="0.98"/>
+                <rect x="640" y="84" width="12" height="68" rx="6" fill="#1a0900" opacity="0.98"/>
+                <rect x="626" y="100" width="14" height="10" rx="5" fill="#1a0900" opacity="0.98"/>
+                <rect x="640" y="100" width="14" height="10" rx="5" fill="#1a0900" opacity="0.98"/>
+                <rect x="652" y="94" width="14" height="10" rx="5" fill="#1a0900" opacity="0.98"/>
+                <rect x="640" y="94" width="14" height="10" rx="5" fill="#1a0900" opacity="0.98"/>
+                <!-- CAR smaller -->
+                <rect x="155" y="147" width="370" height="68" rx="14" fill="#1e1004"/>
+                <rect x="155" y="147" width="370" height="68" rx="14" fill="none" stroke="#dd7700" stroke-width="1.5" opacity="0.6"/>
+                <rect x="163" y="145" width="40" height="72" rx="20" fill="#0e0800" stroke="#f0a030" stroke-width="2.5"/>
+                <rect x="170" y="152" width="26" height="58" rx="13" fill="#090400"/>
+                <rect x="173" y="155" width="20" height="52" rx="10" fill="none" stroke="#e8a020" stroke-width="1.8" opacity="0.95"/>
+                <rect x="477" y="145" width="40" height="72" rx="20" fill="#0e0800" stroke="#f0a030" stroke-width="2.5"/>
+                <rect x="484" y="152" width="26" height="58" rx="13" fill="#090400"/>
+                <rect x="487" y="155" width="20" height="52" rx="10" fill="none" stroke="#e8a020" stroke-width="1.8" opacity="0.95"/>
+                <rect x="203" y="178" width="274" height="4" rx="2" fill="#f0c840" opacity="0.95"/>
+                <rect x="200" y="175" width="280" height="10" rx="4" fill="#cc9920" opacity="0.2"/>
+                <ellipse cx="340" cy="220" rx="160" ry="6" fill="#0e0500" opacity="0.6"/>
+                <text x="340" y="238" text-anchor="middle" font-size="19" fill="#ffaa00" font-family="serif" font-weight="bold" letter-spacing="2" opacity="0.98">The Good, The Bad</text>
+                <text x="340" y="252" text-anchor="middle" font-size="15" fill="#cc7700" font-family="serif" font-weight="bold">&amp; The Rivian</text>
+                <text x="340" y="259" text-anchor="middle" font-size="8.5" fill="rgba(220,150,0,0.65)" font-family="monospace">"Two kinds of people: those with a referral code, and those who dig."</text>
               </svg>
 
-              <svg class="scene-svg" id="scene3" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
-                <rect width="680" height="260" fill="#001a0a"/>
-                <rect y="160" width="680" height="100" fill="#002200"/>
-                <rect x="0" y="128" width="680" height="42" fill="#001a00" opacity="0.9"/>
-                <circle cx="200" cy="65" r="55" fill="#003300" opacity="0.45"/>
-                <circle cx="500" cy="40" r="38" fill="#004400" opacity="0.35"/>
-                <ellipse cx="340" cy="160" rx="200" ry="10" fill="#002200" opacity="0.7"/>
-                <rect x="160" y="72" width="360" height="126" rx="6" fill="#162018"/>
-                <rect x="170" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#6ad08a" stroke-width="2"/>
-                <rect x="177" y="89" width="36" height="84" rx="18" fill="#040904"/>
-                <rect x="181" y="93" width="28" height="76" rx="14" fill="none" stroke="#50c070" stroke-width="1.2" opacity="0.6"/>
-                <rect x="460" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#6ad08a" stroke-width="2"/>
-                <rect x="467" y="89" width="36" height="84" rx="18" fill="#040904"/>
-                <rect x="471" y="93" width="28" height="76" rx="14" fill="none" stroke="#50c070" stroke-width="1.2" opacity="0.6"/>
-                <rect x="220" y="126" width="240" height="4" rx="2" fill="#88e8a0" opacity="0.9"/>
-                <rect x="217" y="124" width="246" height="8" rx="3" fill="#6ee790" opacity="0.09"/>
-                <text x="340" y="210" text-anchor="middle" font-size="22" fill="#00cc44" font-family="monospace" font-weight="bold" letter-spacing="2">JURASSIC PARK</text>
-                <text x="340" y="232" text-anchor="middle" font-size="13" fill="#009933" font-family="monospace">&amp; Charge</text>
-                <text x="340" y="252" text-anchor="middle" font-size="10" fill="rgba(0,204,68,0.4)" font-family="monospace">"Life, uh... finds a way. So does 0% APR financing."</text>
+              <!-- SCENE 3: JURASSIC PARK -->
+              <svg class="scene-svg" id="scene3" viewBox="0 0 680 275" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="jp-bg" cx="50%" cy="20%" r="80%">
+                    <stop offset="0%" stop-color="#00401a"/>
+                    <stop offset="100%" stop-color="#000e05"/>
+                  </radialGradient>
+                  <radialGradient id="jp-moon" cx="35%" cy="32%" r="50%">
+                    <stop offset="0%" stop-color="#eef8dd"/>
+                    <stop offset="100%" stop-color="#8899aa"/>
+                  </radialGradient>
+                </defs>
+                <rect width="680" height="275" fill="url(#jp-bg)"/>
+                <!-- Moon bright upper-left -->
+                <circle cx="78" cy="50" r="40" fill="url(#jp-moon)" opacity="0.92"/>
+                <circle cx="78" cy="50" r="40" fill="none" stroke="#cceeaa" stroke-width="1.5" opacity="0.5"/>
+                <circle cx="66" cy="40" r="6" fill="none" stroke="#aaccaa" stroke-width="1.2" opacity="0.4"/>
+                <circle cx="88" cy="58" r="4" fill="none" stroke="#aaccaa" stroke-width="1" opacity="0.35"/>
+                <!-- Rain bright -->
+                <line x1="170" y1="0" x2="163" y2="48" stroke="#336633" stroke-width="1.2" opacity="0.55"/>
+                <line x1="230" y1="4" x2="223" y2="55" stroke="#336633" stroke-width="1.2" opacity="0.5"/>
+                <line x1="300" y1="0" x2="293" y2="50" stroke="#336633" stroke-width="1.2" opacity="0.55"/>
+                <line x1="370" y1="6" x2="363" y2="58" stroke="#336633" stroke-width="1" opacity="0.45"/>
+                <line x1="440" y1="0" x2="433" y2="52" stroke="#336633" stroke-width="1.2" opacity="0.55"/>
+                <line x1="510" y1="4" x2="503" y2="56" stroke="#336633" stroke-width="1.2" opacity="0.5"/>
+                <line x1="590" y1="0" x2="583" y2="48" stroke="#336633" stroke-width="1.2" opacity="0.55"/>
+                <line x1="650" y1="8" x2="643" y2="55" stroke="#336633" stroke-width="1" opacity="0.45"/>
+                <!-- Lightning bright upper-right -->
+                <polyline points="575,4 562,46 580,46 564,90" fill="none" stroke="#aaffaa" stroke-width="3" opacity="0.9"/>
+                <polyline points="575,4 562,46 580,46 564,90" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.7"/>
+                <!-- Jungle dense framing -->
+                <ellipse cx="38" cy="90" rx="80" ry="110" fill="#00280e" opacity="1"/>
+                <ellipse cx="8" cy="70" rx="58" ry="85" fill="#003312" opacity="1"/>
+                <ellipse cx="65" cy="115" rx="55" ry="60" fill="#003c14" opacity="0.95"/>
+                <ellipse cx="642" cy="90" rx="80" ry="110" fill="#00280e" opacity="1"/>
+                <ellipse cx="672" cy="70" rx="58" ry="85" fill="#003312" opacity="1"/>
+                <ellipse cx="615" cy="115" rx="55" ry="60" fill="#003c14" opacity="0.95"/>
+                <!-- Wet road -->
+                <rect y="148" width="680" height="112" fill="#010f04"/>
+                <rect y="144" width="680" height="7" fill="#021808" opacity="0.95"/>
+                <ellipse cx="140" cy="228" rx="32" ry="8" fill="#004418" opacity="0.8"/>
+                <ellipse cx="530" cy="232" rx="24" ry="6" fill="#004418" opacity="0.7"/>
+                <!-- CAR smaller -->
+                <rect x="155" y="143" width="370" height="68" rx="14" fill="#021a08"/>
+                <rect x="155" y="143" width="370" height="68" rx="14" fill="none" stroke="#00cc44" stroke-width="1.5" opacity="0.6"/>
+                <rect x="163" y="141" width="40" height="72" rx="20" fill="#010c04" stroke="#44ee88" stroke-width="2.5"/>
+                <rect x="170" y="148" width="26" height="58" rx="13" fill="#010802"/>
+                <rect x="173" y="151" width="20" height="52" rx="10" fill="none" stroke="#44cc66" stroke-width="1.8" opacity="0.95"/>
+                <rect x="477" y="141" width="40" height="72" rx="20" fill="#010c04" stroke="#44ee88" stroke-width="2.5"/>
+                <rect x="484" y="148" width="26" height="58" rx="13" fill="#010802"/>
+                <rect x="487" y="151" width="20" height="52" rx="10" fill="none" stroke="#44cc66" stroke-width="1.8" opacity="0.95"/>
+                <rect x="203" y="174" width="274" height="4" rx="2" fill="#66ff99" opacity="0.95"/>
+                <rect x="200" y="171" width="280" height="10" rx="4" fill="#44cc77" opacity="0.2"/>
+                <line x1="250" y1="143" x2="246" y2="170" stroke="#00bb33" stroke-width="0.8" opacity="0.3"/>
+                <line x1="320" y1="143" x2="316" y2="173" stroke="#00bb33" stroke-width="0.8" opacity="0.25"/>
+                <line x1="400" y1="143" x2="396" y2="168" stroke="#00bb33" stroke-width="0.8" opacity="0.3"/>
+                <line x1="460" y1="143" x2="456" y2="171" stroke="#00bb33" stroke-width="0.8" opacity="0.25"/>
+                <text x="340" y="234" text-anchor="middle" font-size="21" fill="#00ff66" font-family="monospace" font-weight="bold" letter-spacing="2" opacity="0.98">JURASSIC PARK</text>
+                <text x="340" y="249" text-anchor="middle" font-size="12" fill="#00bb44" font-family="monospace">&amp; Charge</text>
+                <text x="340" y="259" text-anchor="middle" font-size="9" fill="rgba(0,220,80,0.65)" font-family="monospace">"Life, uh... finds a way. So does 0% APR financing."</text>
               </svg>
 
-              <svg class="scene-svg" id="scene4" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
-                <rect width="680" height="260" fill="#000810"/>
-                <rect y="160" width="680" height="100" fill="#000508"/>
-                <rect x="0" y="128" width="680" height="42" fill="#00060c" opacity="0.9"/>
-                <rect x="0" y="148" width="680" height="4" fill="#0066aa" opacity="0.45"/>
-                <ellipse cx="340" cy="160" rx="200" ry="9" fill="#001122" opacity="0.6"/>
-                <rect x="160" y="72" width="360" height="126" rx="6" fill="#162018"/>
-                <rect x="170" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#6aaaff" stroke-width="2"/>
-                <rect x="177" y="89" width="36" height="84" rx="18" fill="#040904"/>
-                <rect x="181" y="93" width="28" height="76" rx="14" fill="none" stroke="#4488ee" stroke-width="1.2" opacity="0.6"/>
-                <rect x="460" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#6aaaff" stroke-width="2"/>
-                <rect x="467" y="89" width="36" height="84" rx="18" fill="#040904"/>
-                <rect x="471" y="93" width="28" height="76" rx="14" fill="none" stroke="#4488ee" stroke-width="1.2" opacity="0.6"/>
-                <rect x="220" y="126" width="240" height="4" rx="2" fill="#88ccff" opacity="0.9"/>
-                <rect x="217" y="124" width="246" height="8" rx="3" fill="#6eaaff" opacity="0.09"/>
-                <text x="340" y="212" text-anchor="middle" font-size="26" fill="#0099ff" font-family="monospace" font-weight="bold" letter-spacing="5">TRON</text>
-                <text x="340" y="234" text-anchor="middle" font-size="12" fill="#0066cc" font-family="monospace">Legacy Charging Grid</text>
-                <text x="340" y="252" text-anchor="middle" font-size="10" fill="rgba(0,153,255,0.4)" font-family="monospace">"On the grid, everything runs on electricity. Finally, a Rivian story."</text>
+              <!-- SCENE 4: TRON -->
+              <svg class="scene-svg" id="scene4" viewBox="0 0 680 275" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="tr-bg" cx="50%" cy="35%" r="75%">
+                    <stop offset="0%" stop-color="#001c38"/>
+                    <stop offset="100%" stop-color="#000408"/>
+                  </radialGradient>
+                </defs>
+                <rect width="680" height="275" fill="url(#tr-bg)"/>
+                <!-- Grid floor -->
+                <line x1="0" y1="260" x2="340" y2="168" stroke="#0066dd" stroke-width="1" opacity="0.6"/>
+                <line x1="136" y1="260" x2="340" y2="168" stroke="#0055cc" stroke-width="0.8" opacity="0.5"/>
+                <line x1="272" y1="260" x2="340" y2="168" stroke="#0055cc" stroke-width="0.8" opacity="0.45"/>
+                <line x1="408" y1="260" x2="340" y2="168" stroke="#0055cc" stroke-width="0.8" opacity="0.45"/>
+                <line x1="544" y1="260" x2="340" y2="168" stroke="#0055cc" stroke-width="0.8" opacity="0.5"/>
+                <line x1="680" y1="260" x2="340" y2="168" stroke="#0066dd" stroke-width="1" opacity="0.6"/>
+                <line x1="0" y1="240" x2="680" y2="195" stroke="#0055cc" stroke-width="0.8" opacity="0.5"/>
+                <line x1="0" y1="218" x2="680" y2="210" stroke="#0055cc" stroke-width="0.7" opacity="0.4"/>
+                <!-- Horizon glow -->
+                <rect x="0" y="166" width="680" height="4" fill="#00aaff" opacity="0.8"/>
+                <rect x="0" y="162" width="680" height="8" fill="#0077ff" opacity="0.25"/>
+                <!-- Circuit traces bright -->
+                <polyline points="15,10 15,65 58,65 58,115 100,115" fill="none" stroke="#0099ff" stroke-width="2.5" opacity="0.8"/>
+                <circle cx="15" cy="10" r="5" fill="#0099ff" opacity="0.9"/>
+                <circle cx="100" cy="115" r="5" fill="#0099ff" opacity="0.9"/>
+                <polyline points="665,10 665,65 622,65 622,115 580,115" fill="none" stroke="#0099ff" stroke-width="2.5" opacity="0.8"/>
+                <circle cx="665" cy="10" r="5" fill="#0099ff" opacity="0.9"/>
+                <circle cx="580" cy="115" r="5" fill="#0099ff" opacity="0.9"/>
+                <!-- Recognizer bright upper center -->
+                <rect x="296" y="5" width="88" height="12" rx="3" fill="#0077dd" opacity="0.95"/>
+                <rect x="312" y="17" width="56" height="40" rx="3" fill="#005599" opacity="0.9"/>
+                <rect x="284" y="40" width="112" height="10" rx="3" fill="#0077dd" opacity="0.85"/>
+                <rect x="320" y="50" width="40" height="16" rx="2" fill="#004488" opacity="0.9"/>
+                <!-- Light cycles far edges -->
+                <rect x="22" y="156" width="36" height="12" rx="3" fill="#0099ff" opacity="0.95"/>
+                <line x1="22" y1="162" x2="0" y2="162" stroke="#0077ee" stroke-width="2.5" opacity="0.85"/>
+                <rect x="622" y="156" width="36" height="12" rx="3" fill="#ff7700" opacity="0.95"/>
+                <line x1="658" y1="162" x2="680" y2="162" stroke="#dd5500" stroke-width="2.5" opacity="0.85"/>
+                <!-- CAR smaller -->
+                <rect x="155" y="143" width="370" height="68" rx="14" fill="#000c1a"/>
+                <rect x="155" y="143" width="370" height="68" rx="14" fill="none" stroke="#0099ff" stroke-width="2.5" opacity="0.9"/>
+                <rect x="163" y="141" width="40" height="72" rx="20" fill="#000814" stroke="#55bbff" stroke-width="3"/>
+                <rect x="170" y="148" width="26" height="58" rx="13" fill="#000510"/>
+                <rect x="173" y="151" width="20" height="52" rx="10" fill="none" stroke="#3399ee" stroke-width="2" opacity="0.98"/>
+                <rect x="477" y="141" width="40" height="72" rx="20" fill="#000814" stroke="#55bbff" stroke-width="3"/>
+                <rect x="484" y="148" width="26" height="58" rx="13" fill="#000510"/>
+                <rect x="487" y="151" width="20" height="52" rx="10" fill="none" stroke="#3399ee" stroke-width="2" opacity="0.98"/>
+                <rect x="203" y="174" width="274" height="5" rx="2.5" fill="#55ddff" opacity="0.98"/>
+                <rect x="200" y="171" width="280" height="11" rx="4" fill="#0099ff" opacity="0.28"/>
+                <!-- Corner brackets -->
+                <polyline points="163,143 155,143 155,157" fill="none" stroke="#0099ff" stroke-width="2.5" opacity="0.85"/>
+                <polyline points="517,143 525,143 525,157" fill="none" stroke="#0099ff" stroke-width="2.5" opacity="0.85"/>
+                <polyline points="163,211 155,211 155,197" fill="none" stroke="#0099ff" stroke-width="2.5" opacity="0.85"/>
+                <polyline points="517,211 525,211 525,197" fill="none" stroke="#0099ff" stroke-width="2.5" opacity="0.85"/>
+                <ellipse cx="340" cy="215" rx="185" ry="5" fill="#0077ff" opacity="0.18"/>
+                <text x="340" y="234" text-anchor="middle" font-size="26" fill="#00aaff" font-family="monospace" font-weight="bold" letter-spacing="8" opacity="0.98">TRON</text>
+                <text x="340" y="249" text-anchor="middle" font-size="11" fill="#0077cc" font-family="monospace" letter-spacing="2">Legacy Charging Grid</text>
+                <text x="340" y="259" text-anchor="middle" font-size="9" fill="rgba(0,170,255,0.65)" font-family="monospace">"On the grid, everything runs on electricity. Finally, a Rivian story."</text>
               </svg>
 
             </div>
