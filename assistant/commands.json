@@ -10,7 +10,7 @@
   ],
   "compatibility": "All Gen 1 and Gen 2 R1S and R1T owners. Expected to be available on R2 at launch.",
   "alexa": "Enabling Rivian Assistant disables Alexa integration — you cannot run both simultaneously.",
-  "ownerNote": "I've been using Hey Rivian since 2026.15 dropped. The biggest thing: you don't need to memorize commands — just talk to it like a person and it figures it out. In my experience, conversational navigation chaining feels noticeably better than Alexa. The unintentional wake word activations at highway speed are real but infrequent.",
+  "ownerNote": "I've been using Hey Rivian since 2026.15 dropped. Sometimes it's great, sometimes it's not.  The biggest thing: you don't need to memorize commands — just talk to it like a person and it figures it out. In my experience, conversational navigation chaining feels noticeably better than Alexa.",
   "categories": [
     {
       "id": "climate",
@@ -27,7 +27,7 @@
         },
         {
           "text": "I'm cold.",
-          "notes": "Natural conversational phrasing — no need to use exact commands."
+          "notes": null
         },
         {
           "text": "Turn on seat heaters.",
@@ -44,10 +44,6 @@
         {
           "text": "Turn on rear defrost.",
           "notes": null
-        },
-        {
-          "text": "Turn on the driver seat heater.",
-          "notes": "Rivian's flagship multi-parameter demo command — controls individual seat heating in a single request."
         }
       ]
     },
@@ -104,10 +100,6 @@
           "notes": null
         },
         {
-          "text": "Find coffee nearby.",
-          "notes": null
-        },
-        {
           "text": "Navigate to Zion National Park.",
           "notes": null
         },
@@ -117,15 +109,15 @@
         },
         {
           "text": "Find a charger nearby.",
-          "notes": "Conversational chaining — combines POI search with charging stop planning."
+          "notes": null
         },
         {
           "text": "Can I make it there without charging?",
-          "notes": "Range-aware navigation query."
+          "notes": "Range-aware navigation question."
         },
         {
           "text": "Find a place to eat near my next charging stop.",
-          "notes": "Observed in demos and early owner testing — multi-step navigation chaining is supported but real-world results may vary."
+          "notes": null
         }
       ]
     },
@@ -221,7 +213,7 @@
         },
         {
           "text": "What’s my next meeting?",
-          "notes": "Requires Google Calendar. Rivian officially supports rescheduling, but some calendar management actions may be limited during initial rollout."
+          "notes": "Requires Google Calendar."
         },
         {
           "text": "What time do I need to leave?",
@@ -271,25 +263,23 @@
         },
         {
           "text": "Tell me a joke.",
-          "notes": "The assistant has personality — conversational and general knowledge queries work just as well as vehicle commands."
+          "notes": "The assistant has personality."
         }
       ]
     }
   ],
   "limitations": [
     "Requires active Connect+ subscription or trial ($14.99/month or $149.99/year)",
-    "Enabling Rivian Assistant disables Alexa — you cannot run both",
     "English only at launch",
     "Many assistant features require an internet connection — some local vehicle controls may still function without connectivity",
     "Some owners report unintentional wake word activations at highway speed",
     "Google Calendar is the primary third-party integration available at launch — Apple Calendar and Outlook support coming in future updates"
   ],
   "tips": [
-    "Just chat with it naturally — 'I'm running late, text my wife' works as well as any structured command. You don't need to memorize specific phrases.",
     "Use conversational phrasing rather than keyword commands. 'I'm cold' works better than 'Set HVAC 70'.",
-    "The assistant appears to maintain conversational context during a session — you can say 'make it warmer' after setting a temperature without repeating yourself.",
+    "The assistant appears to maintain context during a session — you can say 'make it warmer' after setting a temperature without repeating yourself.",
     "Connect Google Calendar in Settings to unlock the full agentic chaining features.",
-    "Some preferences and conversational context may be tied to the active driver profile — household members may not see your settings.",
+    "Some preferences and context may be tied to the active driver profile — household members may not see your settings.",
     "You can disable the Hey Rivian wake word, limit location sharing, or turn off the memory feature in privacy settings."
   ],
   "changelog": [
