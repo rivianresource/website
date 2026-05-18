@@ -321,68 +321,6 @@
       .mobile-jump-nav { display: flex; }
     }
 
-    /* ─── ACCESSORIES STRIP ─── */
-    .acc-strip {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 24px;
-    }
-
-    .acc-strip-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    @media (max-width: 560px) { .acc-strip-grid { grid-template-columns: 1fr; } }
-
-    .acc-strip-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 16px;
-      text-decoration: none;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      transition: border-color 0.2s ease, transform 0.2s ease;
-    }
-
-    .acc-strip-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
-
-    .acc-strip-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: var(--green-pale);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .acc-strip-icon svg {
-      width: 18px;
-      height: 18px;
-      stroke: var(--green);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .acc-strip-name {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 3px;
-    }
-
-    .acc-strip-desc { font-size: 12px; color: var(--text-dim); line-height: 1.45; }
-
     /* ─── RECALLS CARD ─── */
     .recalls-card { padding: 20px 24px; }
 
@@ -489,45 +427,6 @@
 
     .cta-btn:hover { background: #18b882; transform: translateY(-1px); }
 
-    /* ─── FORUMS FEED ─── */
-    .forums-feed { display: flex; flex-direction: column; gap: 2px; }
-
-    .forums-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 12px;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      transition: background 0.15s ease;
-    }
-
-    .forums-row:hover { background: var(--bg-secondary); }
-
-    .forums-category {
-      flex-shrink: 0;
-      background: var(--green-pale);
-      color: var(--green);
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 3px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-top: 2px;
-      white-space: nowrap;
-    }
-
-    .forums-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.4;
-      flex: 1;
-    }
-
-    .forums-meta { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
-
     /* ─── SOFTWARE TRACKER (sidebar) ─── */
     .sw-version {
       font-family: 'DM Sans', sans-serif;
@@ -588,6 +487,15 @@
 
     .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
+    .mobile-sidebar-cards {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+    }
+    @media (max-width: 860px) {
+      .mobile-sidebar-cards { display: flex; }
+    }
+
   </style>
 
 </head>
@@ -622,7 +530,7 @@
     <div class="container">
       <div class="hero-eyebrow">Real owner resource</div>
       <h1 class="hero-title">Rivian tools, reviews, news & resources for R1S, R1T, and R2 owners.</h1>
-      <p class="hero-sub">Owner-written guides, real-world reviews, tools, and community resources for R1S, R1T, and R2 owners.</p>
+      <p class="hero-sub">An independent resource from a Las Vegas-based R1S owner — not Rivian's official site, just real ownership experience.</p>
     </div>
   </div>
 
@@ -633,6 +541,7 @@
     <a href="#section-reddit" class="mobile-jump-pill">Reddit</a>
     <a href="#section-review" class="mobile-jump-pill">Review</a>
     <a href="#section-recalls" class="mobile-jump-pill">Recalls</a>
+    <a href="#section-accessories" class="mobile-jump-pill">Accessories</a>
     <a href="#section-resources" class="mobile-jump-pill">Resources</a>
   </div>
 
@@ -730,6 +639,56 @@
             </div>
           </div>
 
+          <!-- MOBILE-ONLY SIDEBAR CARDS -->
+          <div class="mobile-sidebar-cards">
+
+            <div class="card" style="padding:20px;">
+              <div class="section-label">Latest software</div>
+              <div class="sw-version" id="swVersionMobile"> </div>
+              <div class="sw-date" id="swDateMobile"> </div>
+              <div class="sw-highlights" id="swHighlightsMobile"></div>
+              <a href="/software/" class="link-btn" style="margin-top:12px;font-size:13px;">Full update history</a>
+            </div>
+
+            <div class="card" style="padding:20px;">
+              <div class="section-label">Tested accessories</div>
+              <div class="resource-row">
+                <div>
+                  <div class="resource-name">Samsung T7 Shield 1TB</div>
+                  <div class="resource-desc">Heat-resistant Gear Guard SSD — plug and play</div>
+                </div>
+                <a href="https://amzn.to/4ttCWun" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon →</a>
+              </div>
+              <div class="resource-row">
+                <div>
+                  <div class="resource-name">A2Z CCS1 Adapter</div>
+                  <div class="resource-desc">Essential for NACS owners at third-party chargers</div>
+                </div>
+                <a href="https://amzn.to/4eBEaQw" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon →</a>
+              </div>
+              <div class="resource-row">
+                <div>
+                  <div class="resource-name">TWRAPS Wireless Charger</div>
+                  <div class="resource-desc">MagSafe dual charger — looks factory installed</div>
+                </div>
+                <a href="https://amzn.to/3P3wwE5" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon →</a>
+              </div>
+              <a href="/accessories/" class="link-btn" style="margin-top:12px;font-size:13px;">Read full reviews →</a>
+              <p style="font-size:10px; color:var(--text-dim); margin-top:8px; line-height:1.5;">As an Amazon Associate I may earn from qualifying purchases.</p>
+            </div>
+
+            <div class="card" style="padding:20px;">
+              <div class="section-label">Using a referral code?</div>
+              <p style="font-size:13px; color:var(--text-muted); line-height:1.6; margin-bottom:14px;">Order a Rivian with an owner referral code to receive Rewards points and 3 months of complimentary Adventure Network charging.</p>
+              <div class="rewards-row"><span class="rewards-row-label">Tri / Quad Motor</span><span class="rewards-row-val">500 pts</span></div>
+              <div class="rewards-row"><span class="rewards-row-label">Dual Max Battery</span><span class="rewards-row-val">250 pts</span></div>
+              <div class="rewards-row"><span class="rewards-row-label">Dual Standard</span><span class="rewards-row-val">100 pts</span></div>
+              <div class="rewards-row"><span class="rewards-row-label">Free charging</span><span class="rewards-row-val gold">3 months ⚡</span></div>
+              <a href="/rivian-referral-code/" class="link-btn" style="margin-top:16px; font-size:13px; display:flex; justify-content:center;">Use code SCOTT4395475 →</a>
+            </div>
+
+          </div>
+
         </div>
 
         <!-- RIGHT COLUMN -->
@@ -755,14 +714,14 @@
          <!-- SOFTWARE TRACKER -->
 <div class="card" style="padding:20px;">
   <div class="section-label">Software update</div>
-  <div class="sw-version" id="swVersion">—</div>
-  <div class="sw-date" id="swDate">Loading...</div>
+  <div class="sw-version" id="swVersion"> </div>
+  <div class="sw-date" id="swDate"> </div>
   <div class="sw-highlights" id="swHighlights"></div>
   <a href="/software/" class="link-btn" style="margin-top:12px;font-size:13px;">Full update history</a>
 </div>
 
           <!-- ACCESSORIES -->
-          <div class="card" style="padding:20px;">
+          <div class="card" id="section-accessories" style="padding:20px;">
             <div class="section-label">Tested accessories</div>
             <div class="resource-row">
               <div>
@@ -826,6 +785,7 @@
             <div class="rewards-row"><span class="rewards-row-label">Dual Max Battery</span><span class="rewards-row-val">250 pts</span></div>
             <div class="rewards-row"><span class="rewards-row-label">Dual Standard</span><span class="rewards-row-val">100 pts</span></div>
             <div class="rewards-row"><span class="rewards-row-label">Free charging</span><span class="rewards-row-val gold">3 months ⚡</span></div>
+            <a href="/rivian-referral-code/" class="link-btn" style="margin-top:16px; font-size:13px; display:flex; justify-content:center;">Use code SCOTT4395475 →</a>
           </div>
 
         </div>
@@ -847,7 +807,7 @@
 
   <!-- ─── FOOTER ─── -->
   <footer>
-    <div class="container">
+    <div style="max-width:1160px; margin:0 auto; padding:0 20px;">
       <img src="/images/logo.svg" alt="Rivian Resource">
       Independent Rivian owner resource featuring reviews, referral rewards, charging impressions, and ownership content.<br>
       Not affiliated with or endorsed by Rivian Automotive, Inc.
@@ -965,6 +925,12 @@
           .slice(0, 4)
           .map(h => `<div class="sw-highlight">${h}</div>`)
           .join('');
+        const mvEl = document.getElementById('swVersionMobile');
+        const mdEl = document.getElementById('swDateMobile');
+        const mhEl = document.getElementById('swHighlightsMobile');
+        if (mvEl) mvEl.textContent = latest.version;
+        if (mdEl) mdEl.textContent = latest.name ? `${latest.name} · ${latest.date}` : latest.date;
+        if (mhEl) mhEl.innerHTML = latest.highlights.slice(0, 3).map(h => `<div class="sw-highlight">${h}</div>`).join('');
       } catch(e) {
         document.getElementById('swDate').textContent = 'Unable to load update data';
       }
