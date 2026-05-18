@@ -46,7 +46,7 @@
           "notes": null
         },
         {
-          "text": "Make everyone's seat toasty except mine.",
+          "text": "Turn on the driver seat heater.",
           "notes": "Rivian's flagship multi-parameter demo command — controls individual seat heating in a single request."
         }
       ]
@@ -116,7 +116,7 @@
           "notes": "Route-aware POI search — works with any brand or category, not just Buc-ee's."
         },
         {
-          "text": "Find a charger near lunch.",
+          "text": "Find a charger nearby.",
           "notes": "Conversational chaining — combines POI search with charging stop planning."
         },
         {
@@ -126,10 +126,6 @@
         {
           "text": "Find a place to eat near my next charging stop.",
           "notes": "Observed in demos and early owner testing — multi-step navigation chaining is supported but real-world results may vary."
-        },
-        {
-          "text": "Find a coffee shop on the way to my next appointment and text my contact an ETA.",
-          "notes": "Rivian has demonstrated multi-step conversational requests combining navigation, calendar, and messaging. Real-world results may vary — full chaining in a single command is not yet widely owner-validated."
         }
       ]
     },
@@ -224,7 +220,7 @@
           "notes": "Requires Google Calendar."
         },
         {
-          "text": "Try moving my 2pm meeting to 3pm.",
+          "text": "What’s my next meeting?",
           "notes": "Requires Google Calendar. Rivian officially supports rescheduling, but some calendar management actions may be limited during initial rollout."
         },
         {
