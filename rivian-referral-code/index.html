@@ -37,6 +37,14 @@
     "mainEntity": [
       {
         "@type": "Question",
+        "name": "Does using a Rivian referral code cost me anything extra?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The referral code gives you free charging and rewards points at no additional cost. Same price, same Rivian, same everything — you just also get the perks."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "What if I forgot to enter the Rivian referral code at checkout?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -98,6 +106,75 @@
 
   <style>
 
+    /* ─── REFERRAL STRIP ─── */
+    .referral-strip {
+      background: var(--green-dark);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .strip-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .strip-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #9FE1CB;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .strip-code {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+
+    .strip-divider {
+      width: 1px;
+      height: 16px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .strip-perks {
+      font-size: 13px;
+      color: #9FE1CB;
+    }
+
+    .strip-perks strong { color: #fff; }
+
+    .strip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--green-light);
+      color: #0a2e22;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .strip-btn:hover { background: #7de0bb; }
+
+    .strip-copied {
+      font-size: 12px;
+      color: var(--green-light);
+      font-weight: 600;
+      display: none;
+    }
+
     /* ─── HERO ─── */
     .hero-section {
       background: var(--bg-card);
@@ -132,7 +209,7 @@
 
     .hero-title {
       font-family: 'DM Sans', sans-serif;
-      font-size: clamp(32px, 5vw, 56px);
+      font-size: clamp(32px, 5vw, 52px);
       font-weight: 800;
       color: var(--text);
       line-height: 1.1;
@@ -227,10 +304,10 @@
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
     }
 
-    .btn-secondary:hover { border-color: var(--border-hover); transform: translateY(-2px); background: var(--bg-secondary); }
+    .btn-secondary:hover { transform: translateY(-2px); background: var(--bg-secondary); }
 
     .copied-msg {
       display: none;
@@ -283,9 +360,7 @@
     @media (max-width: 600px) { .steps-strip { grid-template-columns: 1fr; } }
 
     /* ─── CONTENT LAYOUT ─── */
-    .content-layout {
-      padding: 40px 0 56px;
-    }
+    .content-layout { padding: 40px 0 56px; }
 
     .content-grid {
       display: grid;
@@ -300,31 +375,6 @@
 
     .content-main { display: flex; flex-direction: column; gap: 20px; }
     .content-side { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 80px; }
-
-    /* ─── REWARDS BREAKDOWN ─── */
-    .rewards-section { padding: 24px; }
-
-    .rewards-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    @media (max-width: 560px) { .rewards-grid { grid-template-columns: 1fr; } }
-
-    .reward-tile {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 16px;
-    }
-
-    .reward-tile-label { font-size: 11px; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
-    .reward-tile-value { font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 800; color: var(--text); }
-    .reward-tile-value.green { color: var(--green); }
-    .reward-tile-value.gold  { color: var(--gold); }
-    .reward-tile-desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; line-height: 1.4; }
 
     /* ─── POINTS TABLE ─── */
     .points-section { padding: 24px; }
@@ -350,48 +400,102 @@
     .points-config { font-size: 14px; color: var(--text-muted); }
     .points-value  { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700; color: var(--green); }
 
-    /* ─── OWNER SECTION ─── */
-    .owner-section { padding: 24px; }
-
-    .owner-section p {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 14px;
+    /* ─── TIMING CALLOUT ─── */
+    .timing-callout {
+      background: #fef9ec;
+      border: 1px solid rgba(186,117,23,0.2);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
     }
 
-    .owner-section p:last-of-type { margin-bottom: 0; }
+    .timing-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; line-height: 1; }
 
-    .owner-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 18px;
+    .timing-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    .owner-stat {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-sm);
-      padding: 12px 14px;
-      text-align: center;
-    }
+    .timing-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .timing-text strong { color: var(--text); }
 
-    .owner-stat-value { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
-    .owner-stat-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    /* ─── SCENE ROTATOR ─── */
+    .scene-section { padding: 24px; }
 
-    .inline-link {
-      color: var(--green);
-      text-decoration: none;
+    .scene-badge {
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       font-weight: 600;
-      border-bottom: 1px solid rgba(29,158,117,0.3);
-      transition: border-color 0.2s;
+      margin-bottom: 14px;
+      font-family: 'DM Sans', sans-serif;
     }
 
-    .inline-link:hover { border-color: var(--green); }
+    .scene-stage {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #0a0f0d;
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+
+    .scene-svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .scene-svg.active { opacity: 1; }
+
+    .scene-caption { margin-bottom: 10px; }
+    .scene-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .scene-quote { font-size: 12px; color: var(--text-dim); font-style: italic; min-height: 18px; }
+
+    .scene-controls { display: flex; align-items: center; gap: 10px; }
+    .scene-dots { display: flex; gap: 5px; }
+
+    .dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--border-hover);
+      cursor: pointer;
+      transition: background 0.2s;
+      border: none;
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .dot.active { background: var(--green); }
+
+    .scene-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 14px;
+      cursor: pointer;
+      padding: 3px 8px;
+      border-radius: 4px;
+      transition: border-color 0.15s, color 0.15s;
+      font-family: 'Figtree', sans-serif;
+      line-height: 1.4;
+    }
+
+    .scene-btn:hover { border-color: var(--green); color: var(--green); }
 
     /* ─── FAQ ─── */
     .faq-section { padding: 24px; }
-
     .faq-list { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
 
     .faq-item {
@@ -439,12 +543,22 @@
     }
 
     .faq-item.open .faq-a { max-height: 300px; padding: 0 18px 16px; }
+    .faq-a p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
-    .faq-a p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.7;
+    /* ─── BACK SECTION ─── */
+    .back-section { padding: 24px; }
+    .back-section p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px; }
+
+    /* ─── INLINE LINK ─── */
+    .inline-link {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(29,158,117,0.3);
+      transition: border-color 0.2s;
     }
+
+    .inline-link:hover { border-color: var(--green); }
 
     /* ─── SIDEBAR ─── */
     .sidebar-copy-card {
@@ -490,16 +604,13 @@
     }
 
     .sidebar-configure-link:hover { color: #fff; text-decoration: underline; }
-
     .sidebar-copied { font-size: 12px; color: var(--green-light); font-weight: 600; display: none; text-align: center; margin-top: 6px; }
 
     /* ─── MOBILE COPY BAR ─── */
     .mobile-copy-bar {
       display: none;
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       background: var(--green-dark);
       padding: 12px 16px;
       z-index: 200;
@@ -507,9 +618,11 @@
       justify-content: space-between;
       gap: 12px;
     }
+
     .mobile-copy-bar-text { display: flex; flex-direction: column; }
     .mobile-copy-bar-code { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 800; color: #fff; letter-spacing: 0.04em; }
     .mobile-copy-bar-perks { font-size: 11px; color: #9FE1CB; }
+
     .mobile-copy-bar-btn {
       display: flex;
       align-items: center;
@@ -526,21 +639,16 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
-    .mobile-copy-bar-copied {
-      font-size: 12px;
-      color: var(--green-light);
-      font-weight: 600;
-      display: none;
-      text-align: center;
-      width: 100%;
-    }
+
+    .mobile-copy-bar-copied { font-size: 12px; color: var(--green-light); font-weight: 600; display: none; text-align: center; width: 100%; }
+
     @media (max-width: 860px) {
       .mobile-copy-bar { display: flex; flex-wrap: wrap; }
       body { padding-bottom: 72px; }
     }
 
     /* ─── MOBILE JUMP NAV ─── */
-    .referral-jump-nav {
+    .jump-nav {
       display: none;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -550,8 +658,10 @@
       background: var(--bg-card);
       scrollbar-width: none;
     }
-    .referral-jump-nav::-webkit-scrollbar { display: none; }
-    .referral-jump-pill {
+
+    .jump-nav::-webkit-scrollbar { display: none; }
+
+    .jump-pill {
       display: inline-block;
       flex-shrink: 0;
       background: var(--bg-secondary);
@@ -564,9 +674,11 @@
       text-decoration: none;
       white-space: nowrap;
     }
-    .referral-jump-pill:hover { border-color: var(--green); color: var(--green); }
+
+    .jump-pill:hover { border-color: var(--green); color: var(--green); }
+
     @media (max-width: 860px) {
-      .referral-jump-nav { display: flex; }
+      .jump-nav { display: flex; }
     }
 
   </style>
@@ -576,12 +688,29 @@
 
   <div id="site-nav"></div>
 
+  <!-- ─── REFERRAL STRIP ─── -->
+  <div class="referral-strip">
+    <div class="container">
+      <div class="strip-inner">
+        <span class="strip-label">Referral code</span>
+        <span class="strip-code">SCOTT4395475</span>
+        <div class="strip-divider"></div>
+        <span class="strip-perks"><strong>3 months free</strong> Adventure Network charging + up to <strong>500 pts</strong></span>
+        <button class="strip-btn" onclick="stripCopy()">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy &amp; configure
+        </button>
+        <span class="strip-copied" id="stripCopied">✓ Copied</span>
+      </div>
+    </div>
+  </div>
+
   <!-- ─── HERO ─── -->
   <div class="hero-section">
     <div class="container">
       <div class="hero-eyebrow">Rivian Referral Program</div>
-      <h1 class="hero-title">Rivian Referral Code:<br><span>SCOTT4395475</span></h1>
-      <p class="hero-sub">Use this code when ordering a qualifying R1S, R1T, or R2 to receive Rivian Rewards points and 3 months of complimentary Adventure Network charging.</p>
+      <h1 class="hero-title">If you don't have a friend<br>with a Rivian, <span>you found one.</span></h1>
+      <p class="hero-sub">Use code SCOTT4395475 when ordering a qualifying R1S, R1T, or R2 to get 3 months of free Adventure Network charging and Rivian Rewards points — and it costs you nothing extra.</p>
 
       <div class="code-block">
         <div>
@@ -637,11 +766,13 @@
     </div>
   </div>
 
-  <div class="referral-jump-nav">
-    <a href="#section-rewards" class="referral-jump-pill">What you get</a>
-    <a href="#section-points" class="referral-jump-pill">Points by config</a>
-    <a href="#section-about" class="referral-jump-pill">About this code</a>
-    <a href="#section-faq" class="referral-jump-pill">FAQ</a>
+  <!-- ─── MOBILE JUMP NAV ─── -->
+  <div class="jump-nav">
+    <a href="#section-points" class="jump-pill">Points by config</a>
+    <a href="#section-timing" class="jump-pill">Timing note</a>
+    <a href="#section-scenes" class="jump-pill">Cinematic universe</a>
+    <a href="#section-faq" class="jump-pill">FAQ</a>
+    <a href="#section-back" class="jump-pill">More from this site</a>
   </div>
 
   <!-- ─── CONTENT ─── -->
@@ -651,66 +782,186 @@
 
         <div class="content-main">
 
-          <!-- REWARDS SUMMARY -->
-          <div class="card rewards-section" id="section-rewards">
-            <div class="section-label">What you receive</div>
-            <div class="rewards-grid">
-              <div class="reward-tile">
-                <div class="reward-tile-label">Max rewards points</div>
-                <div class="reward-tile-value green">500 pts</div>
-                <div class="reward-tile-desc">Tri or Quad Motor orders</div>
-              </div>
-              <div class="reward-tile">
-                <div class="reward-tile-label">Free charging</div>
-                <div class="reward-tile-value gold">3 months</div>
-                <div class="reward-tile-desc">Rivian Adventure Network</div>
-              </div>
-              <div class="reward-tile">
-                <div class="reward-tile-label">Compatible models</div>
-                <div class="reward-tile-value" style="font-size:16px; line-height:1.3;">R1S · R1T · R2</div>
-                <div class="reward-tile-desc">All qualifying orders</div>
-              </div>
-              <div class="reward-tile">
-                <div class="reward-tile-label">Activation needed</div>
-                <div class="reward-tile-value" style="font-size:16px;">None</div>
-                <div class="reward-tile-desc">Auto-linked after delivery</div>
-              </div>
-              <div class="reward-tile" style="grid-column: 1 / -1; background: #fef9ec; border-color: rgba(186,117,23,0.2);">
-                <div class="reward-tile-label" style="color:var(--gold);">Important timing note</div>
-                <div class="reward-tile-desc" style="font-size:13px; color:var(--text-muted); margin-top:4px; line-height:1.6;">The 3-month complimentary charging period starts from your <strong style="color:var(--text);">delivery date</strong>, not from your first charge session. Plan your road trips accordingly.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- POINTS BY CONFIG -->
+          <!-- POINTS TABLE -->
           <div class="card points-section" id="section-points">
             <div class="section-label">Points by configuration</div>
-            <p style="font-size:14px; color:var(--text-muted); margin-top:6px; margin-bottom:0;">Points vary based on the vehicle configuration you order. Subject to Rivian program terms.</p>
+            <p style="font-size:14px; color:var(--text-muted); margin-top:6px; margin-bottom:0;">All qualifying orders also receive 3 months of free Adventure Network charging. Points vary by configuration.</p>
             <div class="points-table">
-              <div class="points-row"><span class="points-config">Tri Motor or Quad Motor</span><span class="points-value">500 pts</span></div>
-              <div class="points-row"><span class="points-config">Dual Motor Max Battery</span><span class="points-value">250 pts</span></div>
-              <div class="points-row"><span class="points-config">Dual Motor Large Battery</span><span class="points-value">250 pts</span></div>
-              <div class="points-row"><span class="points-config">Dual Motor Standard</span><span class="points-value">100 pts</span></div>
-              <div class="points-row"><span class="points-config">R2 Performance / Premium</span><span class="points-value">250 pts</span></div>
-              <div class="points-row"><span class="points-config">R2 Standard (avail. 2027)</span><span class="points-value">100 pts</span></div>
+              <div class="points-row">
+                <span class="points-config">Tri Motor or Quad Motor</span>
+                <span class="points-value">500 pts + free charging</span>
+              </div>
+              <div class="points-row">
+                <span class="points-config">Dual Motor Max or Large Battery</span>
+                <span class="points-value">250 pts + free charging</span>
+              </div>
+              <div class="points-row">
+                <span class="points-config">Dual Motor Standard</span>
+                <span class="points-value">100 pts + free charging</span>
+              </div>
+              <div class="points-row">
+                <span class="points-config">R2 Performance / Premium</span>
+                <span class="points-value">250 pts + free charging</span>
+              </div>
+              <div class="points-row">
+                <span class="points-config">R2 Standard (avail. 2027)</span>
+                <span class="points-value">100 pts + free charging</span>
+              </div>
+              <div class="points-row">
+                <span class="points-config">Free Adventure Network charging</span>
+                <span class="points-value" style="color:var(--gold);">3 months ⚡</span>
+              </div>
             </div>
-            <p style="font-size:11px; color:var(--text-dim); margin-top:10px; line-height:1.6;">R2 point values based on current Rivian program terms — verify at rivian.com before ordering as program details are subject to change.</p>
+            <p style="font-size:11px; color:var(--text-dim); margin-top:10px; line-height:1.6;">Subject to Rivian program terms. Verify current rewards at <a href="https://rivian.com" target="_blank" rel="noopener noreferrer" style="color:var(--green); font-weight:600;">rivian.com</a> before ordering as program details can change.</p>
           </div>
 
-          <!-- OWNER CONTEXT -->
-          <div class="card owner-section" id="section-about">
-            <div class="section-label">About this code</div>
-            <p>This referral code belongs to a Las Vegas–based R1S owner who took delivery of a 2026 Rivian R1S Dual Max in early 2026. Not an anonymous link farm — an actual owner with real charging network experience and a 90-day ownership review on this site.</p>
-            <p>The vehicle gets regular use on Southwest road trips — Zion, Las Vegas to LA, Eastern Sierra — which means real-world impressions of the Adventure Network, not just parking lot charging sessions.</p>
-            <p>Using this code supports the site at no cost to you, while getting you the same rewards any Rivian referral code provides.</p>
-            <div style="display:flex; flex-direction:column; gap:6px; margin-top:4px;">
-              <a href="/reviews/2026-rivian-r1s-90-day-review/" class="inline-link">Read the 90-day R1S ownership review →</a>
-              <a href="/accessories/" class="inline-link">Browse accessory reviews →</a>
+          <!-- TIMING CALLOUT -->
+          <div class="timing-callout" id="section-timing">
+            <div class="timing-icon">⚠️</div>
+            <div>
+              <div class="timing-title">Timing note worth knowing</div>
+              <p class="timing-text">The 3-month free charging period starts from your <strong>delivery date</strong> — not from your first plug-in session. The clock runs whether or not you've had a chance to charge yet. Plan your first road trips early and don't let the window go to waste.</p>
             </div>
-            <div class="owner-stats">
-              <div class="owner-stat"><div class="owner-stat-value">2026</div><div class="owner-stat-label">Model year</div></div>
-              <div class="owner-stat"><div class="owner-stat-value">R1S</div><div class="owner-stat-label">Vehicle</div></div>
-              <div class="owner-stat"><div class="owner-stat-value" style="font-size:13px; line-height:1.3;">Las Vegas, NV</div><div class="owner-stat-label">Based in</div></div>
+          </div>
+
+          <!-- SCENE ROTATOR -->
+          <div class="card scene-section" id="section-scenes">
+            <div class="section-label">Definitely AI-illustrated</div>
+            <div class="scene-badge">An R1S in every cinematic universe. You're welcome.</div>
+
+            <div class="scene-stage" id="sceneStage">
+
+              <svg class="scene-svg active" id="scene0" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+                <rect width="680" height="260" fill="#0d1117"/>
+                <rect width="680" height="130" fill="#0a0a1a"/>
+                <circle cx="340" cy="0" r="180" fill="#1a1a3e" opacity="0.5"/>
+                <rect y="130" width="680" height="130" fill="#1a0a00"/>
+                <rect y="160" width="680" height="100" fill="#0f0600"/>
+                <circle cx="80" cy="50" r="2.5" fill="#fff" opacity="0.8"/>
+                <circle cx="150" cy="25" r="2" fill="#fff" opacity="0.6"/>
+                <circle cx="320" cy="18" r="2.5" fill="#fff" opacity="0.9"/>
+                <circle cx="500" cy="20" r="2.5" fill="#fff" opacity="0.8"/>
+                <circle cx="580" cy="55" r="2" fill="#fff" opacity="0.6"/>
+                <circle cx="640" cy="32" r="2" fill="#fff" opacity="0.7"/>
+                <rect x="160" y="72" width="360" height="126" rx="6" fill="#162018"/>
+                <rect x="170" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#8adcb0" stroke-width="2"/>
+                <rect x="177" y="89" width="36" height="84" rx="18" fill="#040904"/>
+                <rect x="181" y="93" width="28" height="76" rx="14" fill="none" stroke="#6ecfa0" stroke-width="1.2" opacity="0.6"/>
+                <rect x="460" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#8adcb0" stroke-width="2"/>
+                <rect x="467" y="89" width="36" height="84" rx="18" fill="#040904"/>
+                <rect x="471" y="93" width="28" height="76" rx="14" fill="none" stroke="#6ecfa0" stroke-width="1.2" opacity="0.6"/>
+                <rect x="220" y="126" width="240" height="4" rx="2" fill="#a8eece" opacity="0.9"/>
+                <rect x="217" y="124" width="246" height="8" rx="3" fill="#6ee7b7" opacity="0.09"/>
+                <text x="170" y="218" text-anchor="middle" font-size="22" fill="#cc8800" font-family="serif" font-weight="bold" font-style="italic">STAR</text>
+                <text x="340" y="218" text-anchor="middle" font-size="22" fill="#cc8800" font-family="serif" font-weight="bold" font-style="italic">WARS</text>
+                <text x="510" y="218" text-anchor="middle" font-size="22" fill="#cc8800" font-family="serif" font-weight="bold" font-style="italic">ROGUE</text>
+                <text x="340" y="245" text-anchor="middle" font-size="10" fill="rgba(255,200,0,0.4)" font-family="monospace">"I find your lack of charging infrastructure disturbing."</text>
+              </svg>
+
+              <svg class="scene-svg" id="scene1" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+                <rect width="680" height="260" fill="#0a0f1a"/>
+                <rect y="160" width="680" height="100" fill="#0a0a0f"/>
+                <rect x="0" y="128" width="680" height="42" fill="#111830" opacity="0.9"/>
+                <circle cx="580" cy="65" r="45" fill="#ffff44" opacity="0.06"/>
+                <circle cx="580" cy="65" r="30" fill="#ffff66" opacity="0.07"/>
+                <circle cx="100" cy="50" r="2" fill="#fff" opacity="0.5"/>
+                <circle cx="300" cy="65" r="2" fill="#fff" opacity="0.6"/>
+                <circle cx="420" cy="22" r="2" fill="#fff" opacity="0.5"/>
+                <ellipse cx="340" cy="160" rx="200" ry="10" fill="#222244" opacity="0.5"/>
+                <rect x="160" y="72" width="360" height="126" rx="6" fill="#162018"/>
+                <rect x="170" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#8aaad0" stroke-width="2"/>
+                <rect x="177" y="89" width="36" height="84" rx="18" fill="#040904"/>
+                <rect x="181" y="93" width="28" height="76" rx="14" fill="none" stroke="#6e9fc0" stroke-width="1.2" opacity="0.6"/>
+                <rect x="460" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#8aaad0" stroke-width="2"/>
+                <rect x="467" y="89" width="36" height="84" rx="18" fill="#040904"/>
+                <rect x="471" y="93" width="28" height="76" rx="14" fill="none" stroke="#6e9fc0" stroke-width="1.2" opacity="0.6"/>
+                <rect x="220" y="126" width="240" height="4" rx="2" fill="#a8cce8" opacity="0.9"/>
+                <rect x="217" y="124" width="246" height="8" rx="3" fill="#6eaae7" opacity="0.09"/>
+                <text x="340" y="214" text-anchor="middle" font-size="20" fill="#88aaff" font-family="serif" font-weight="bold" letter-spacing="6">INTERSTELLAR</text>
+                <text x="340" y="236" text-anchor="middle" font-size="12" fill="#6688cc" font-family="serif">The Endurance &amp; 3 Months Free Charging</text>
+                <text x="340" y="252" text-anchor="middle" font-size="10" fill="rgba(136,170,255,0.4)" font-family="monospace">"Do not go gentle into that good charging station."</text>
+              </svg>
+
+              <svg class="scene-svg" id="scene2" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+                <rect width="680" height="260" fill="#0f0a00"/>
+                <rect y="155" width="680" height="105" fill="#1a0f00"/>
+                <rect x="0" y="128" width="680" height="38" fill="#2a1800" opacity="0.9"/>
+                <rect x="40" y="80" width="28" height="80" fill="#3d2800" opacity="0.8"/>
+                <rect x="558" y="72" width="28" height="88" fill="#3d2800" opacity="0.8"/>
+                <ellipse cx="340" cy="160" rx="180" ry="9" fill="#2a1800" opacity="0.5"/>
+                <rect x="160" y="72" width="360" height="126" rx="6" fill="#162018"/>
+                <rect x="170" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#d0aa6e" stroke-width="2"/>
+                <rect x="177" y="89" width="36" height="84" rx="18" fill="#040904"/>
+                <rect x="181" y="93" width="28" height="76" rx="14" fill="none" stroke="#c09a50" stroke-width="1.2" opacity="0.6"/>
+                <rect x="460" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#d0aa6e" stroke-width="2"/>
+                <rect x="467" y="89" width="36" height="84" rx="18" fill="#040904"/>
+                <rect x="471" y="93" width="28" height="76" rx="14" fill="none" stroke="#c09a50" stroke-width="1.2" opacity="0.6"/>
+                <rect x="220" y="126" width="240" height="4" rx="2" fill="#e8cc90" opacity="0.9"/>
+                <rect x="217" y="124" width="246" height="8" rx="3" fill="#e7c46e" opacity="0.09"/>
+                <text x="340" y="210" text-anchor="middle" font-size="20" fill="#cc8800" font-family="serif" font-weight="bold" letter-spacing="2">The Good, The Bad</text>
+                <text x="340" y="232" text-anchor="middle" font-size="16" fill="#aa6600" font-family="serif">&amp; The Rivian</text>
+                <text x="340" y="252" text-anchor="middle" font-size="10" fill="rgba(204,136,0,0.4)" font-family="monospace">"Two kinds of people: those with a referral code, and those who dig."</text>
+              </svg>
+
+              <svg class="scene-svg" id="scene3" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+                <rect width="680" height="260" fill="#001a0a"/>
+                <rect y="160" width="680" height="100" fill="#002200"/>
+                <rect x="0" y="128" width="680" height="42" fill="#001a00" opacity="0.9"/>
+                <circle cx="200" cy="65" r="55" fill="#003300" opacity="0.45"/>
+                <circle cx="500" cy="40" r="38" fill="#004400" opacity="0.35"/>
+                <ellipse cx="340" cy="160" rx="200" ry="10" fill="#002200" opacity="0.7"/>
+                <rect x="160" y="72" width="360" height="126" rx="6" fill="#162018"/>
+                <rect x="170" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#6ad08a" stroke-width="2"/>
+                <rect x="177" y="89" width="36" height="84" rx="18" fill="#040904"/>
+                <rect x="181" y="93" width="28" height="76" rx="14" fill="none" stroke="#50c070" stroke-width="1.2" opacity="0.6"/>
+                <rect x="460" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#6ad08a" stroke-width="2"/>
+                <rect x="467" y="89" width="36" height="84" rx="18" fill="#040904"/>
+                <rect x="471" y="93" width="28" height="76" rx="14" fill="none" stroke="#50c070" stroke-width="1.2" opacity="0.6"/>
+                <rect x="220" y="126" width="240" height="4" rx="2" fill="#88e8a0" opacity="0.9"/>
+                <rect x="217" y="124" width="246" height="8" rx="3" fill="#6ee790" opacity="0.09"/>
+                <text x="340" y="210" text-anchor="middle" font-size="22" fill="#00cc44" font-family="monospace" font-weight="bold" letter-spacing="2">JURASSIC PARK</text>
+                <text x="340" y="232" text-anchor="middle" font-size="13" fill="#009933" font-family="monospace">&amp; Charge</text>
+                <text x="340" y="252" text-anchor="middle" font-size="10" fill="rgba(0,204,68,0.4)" font-family="monospace">"Life, uh... finds a way. So does 0% APR financing."</text>
+              </svg>
+
+              <svg class="scene-svg" id="scene4" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+                <rect width="680" height="260" fill="#000810"/>
+                <rect y="160" width="680" height="100" fill="#000508"/>
+                <rect x="0" y="128" width="680" height="42" fill="#00060c" opacity="0.9"/>
+                <rect x="0" y="148" width="680" height="4" fill="#0066aa" opacity="0.45"/>
+                <ellipse cx="340" cy="160" rx="200" ry="9" fill="#001122" opacity="0.6"/>
+                <rect x="160" y="72" width="360" height="126" rx="6" fill="#162018"/>
+                <rect x="170" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#6aaaff" stroke-width="2"/>
+                <rect x="177" y="89" width="36" height="84" rx="18" fill="#040904"/>
+                <rect x="181" y="93" width="28" height="76" rx="14" fill="none" stroke="#4488ee" stroke-width="1.2" opacity="0.6"/>
+                <rect x="460" y="82" width="50" height="98" rx="25" fill="#060c06" stroke="#6aaaff" stroke-width="2"/>
+                <rect x="467" y="89" width="36" height="84" rx="18" fill="#040904"/>
+                <rect x="471" y="93" width="28" height="76" rx="14" fill="none" stroke="#4488ee" stroke-width="1.2" opacity="0.6"/>
+                <rect x="220" y="126" width="240" height="4" rx="2" fill="#88ccff" opacity="0.9"/>
+                <rect x="217" y="124" width="246" height="8" rx="3" fill="#6eaaff" opacity="0.09"/>
+                <text x="340" y="212" text-anchor="middle" font-size="26" fill="#0099ff" font-family="monospace" font-weight="bold" letter-spacing="5">TRON</text>
+                <text x="340" y="234" text-anchor="middle" font-size="12" fill="#0066cc" font-family="monospace">Legacy Charging Grid</text>
+                <text x="340" y="252" text-anchor="middle" font-size="10" fill="rgba(0,153,255,0.4)" font-family="monospace">"On the grid, everything runs on electricity. Finally, a Rivian story."</text>
+              </svg>
+
+            </div>
+
+            <div class="scene-caption">
+              <div class="scene-title" id="sceneTitle">Star Wars: A New Charge</div>
+              <div class="scene-quote" id="sceneQuote">"I find your lack of charging infrastructure disturbing."</div>
+            </div>
+
+            <div class="scene-controls">
+              <button class="scene-btn" onclick="prev()" aria-label="Previous scene">&#8592;</button>
+              <div class="scene-dots">
+                <button class="dot active" onclick="goTo(0)" aria-label="Scene 1"></button>
+                <button class="dot" onclick="goTo(1)" aria-label="Scene 2"></button>
+                <button class="dot" onclick="goTo(2)" aria-label="Scene 3"></button>
+                <button class="dot" onclick="goTo(3)" aria-label="Scene 4"></button>
+                <button class="dot" onclick="goTo(4)" aria-label="Scene 5"></button>
+              </div>
+              <button class="scene-btn" onclick="toggleAuto()" id="autoBtn" aria-label="Pause slideshow">&#9646;&#9646;</button>
+              <button class="scene-btn" onclick="next()" aria-label="Next scene">&#8594;</button>
             </div>
           </div>
 
@@ -721,187 +972,269 @@
 
               <div class="faq-item open">
                 <button class="faq-q" onclick="toggleFaq(this)">
-                  What if I forgot to enter the referral code at checkout?
+                  Does this cost me anything extra?
                   <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
-                <div class="faq-a"><p>Rivian Guides can typically add a referral code after ordering as long as your vehicle hasn't been delivered yet. Contact Rivian support through the app or website as early as possible and ask them to apply it before delivery. Once delivered, the code can no longer be added.</p></div>
+                <div class="faq-a"><p>No. Same price, same Rivian. You just also get free charging and rewards points. It's genuinely free — the referral program is funded by Rivian, not by any markup on your order.</p></div>
               </div>
 
               <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(this)">
-                  When are Rivian Rewards points added to my account?
+                  Why use this code over someone else's?
                   <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
-                <div class="faq-a"><p>Points are generally credited within two weeks of your vehicle being delivered. You'll see them appear in your Rivian Rewards account inside the Rivian app. If they haven't appeared after a few weeks, contact Rivian support with your order details.</p></div>
+                <div class="faq-a"><p>All referral codes give you the same rewards. The only difference is which owner gets points. At least this one comes with actual ownership content — reviews, charging tools, and accessory guides from someone who drives the vehicle daily.</p></div>
               </div>
 
               <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(this)">
-                  Do Rivian Rewards points expire?
+                  I forgot to enter it at checkout — now what?
                   <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
-                <div class="faq-a"><p>Yes. Points currently expire two years after being added to your account. Plan your redemptions before then — unused points are forfeited at expiration.</p></div>
+                <div class="faq-a"><p>Contact a Rivian Guide before your vehicle is delivered and ask them to add it. Once the vehicle is delivered, the code cannot be applied retroactively. Call rather than email — it's faster and more likely to get resolved before delivery day.</p></div>
               </div>
 
               <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(this)">
-                  How does the complimentary Adventure Network charging work?
+                  When do the points and charging show up?
                   <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
-                <div class="faq-a"><p>Complimentary charging is linked to your Rivian account after delivery — no separate activation required. Plug into any Rivian Adventure Network charger during the qualifying period and billing is handled automatically. The 3-month period starts from delivery, not from your first charge session.</p></div>
+                <div class="faq-a"><p>Generally within two weeks of delivery, credited to your Rivian Rewards account in the app. Free charging is auto-linked — no activation needed, just plug in at any Adventure Network charger. Points expire two years after being credited.</p></div>
               </div>
 
               <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(this)">
-                  Does the code work on all Rivian models and configurations?
+                  Are you actually a Rivian owner?
                   <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
-                <div class="faq-a"><p>The code applies to qualifying R1S, R1T, and R2 orders. Points vary by configuration — Tri and Quad Motor earn the most (500), Dual Max and Large earn 250, Dual Standard earns 100. The 3 months of free charging applies across qualifying configurations regardless of points tier.</p></div>
-              </div>
-
-              <div class="faq-item">
-                <button class="faq-q" onclick="toggleFaq(this)">
-                  Is Rivian Resource affiliated with Rivian?
-                  <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                </button>
-                <div class="faq-a"><p>No. Rivian Resource is an independent, owner-operated website and is not affiliated with or endorsed by Rivian Automotive, Inc. Rewards program details are subject to change by Rivian — verify current terms at rivian.com.</p></div>
+                <div class="faq-a"><p>Yes. 2026 R1S Dual Max, Las Vegas. The local Adventure Network stations are all CCS1 — get a CCS adapter before your first road trip. Sound + Vision package is worth it. The full ownership story is in the 90-day review linked below.</p></div>
               </div>
 
             </div>
           </div>
 
-        </div>
+          <!-- BACK / SITE LINKS -->
+          <div class="card back-section" id="section-back">
+            <div class="section-label">More from this site</div>
+            <p>Rivian Resource is an independent owner site — not a referral link farm with a thin content wrapper. Real reviews, a charging calculator, OTA software tracker, accessory guides, and delivery checklists from someone who actually owns the vehicle.</p>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <a href="/" class="inline-link">Back to Rivian Resource homepage</a>
+              <a href="/reviews/2026-rivian-r1s-90-day-review/" class="inline-link">Read the 90-day R1S ownership review</a>
+              <a href="/charging/" class="inline-link">Charging range calculator</a>
+              <a href="/software/" class="inline-link">OTA software update tracker</a>
+            </div>
+          </div>
+
+        </div><!-- end content-main -->
 
         <!-- SIDEBAR -->
         <div class="content-side">
 
           <div class="sidebar-copy-card">
-            <div class="sidebar-copy-label">Referral code</div>
+            <div class="sidebar-copy-label">Your referral code</div>
             <div class="sidebar-copy-code">SCOTT4395475</div>
-            <div class="sidebar-copy-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging on qualifying orders.</div>
+            <div class="sidebar-copy-perks"><strong>3 months</strong> free Adventure Network charging<br>Up to <strong>500 Rewards points</strong></div>
             <button class="sidebar-copy-btn" onclick="sidebarCopy()">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               Copy Code
             </button>
+            <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="sidebar-configure-link">Configure on Rivian →</a>
             <div class="sidebar-copied" id="sidebarCopied">✓ Copied!</div>
-          </div>
-
-          <div class="card" style="padding:20px;">
-            <div class="section-label">More from this owner</div>
-            <div class="resource-row">
-              <div><div class="resource-name">90-Day R1S Review</div><div class="resource-desc">Charging, service, software</div></div>
-              <a href="/reviews/2026-rivian-r1s-90-day-review/" class="resource-link">Read</a>
-            </div>
-            <div class="resource-row">
-              <div><div class="resource-name">Accessory Reviews</div><div class="resource-desc">Gear Guard, charging, more</div></div>
-              <a href="/accessories/" class="resource-link">Browse</a>
-            </div>
-            <div class="resource-row">
-              <div><div class="resource-name">About the site</div><div class="resource-desc">Owner background &amp; mission</div></div>
-              <a href="/about/" class="resource-link">Read</a>
-            </div>
           </div>
 
           <div class="card" style="padding:20px;">
             <div class="section-label">Owner resources</div>
             <div class="resource-row">
-              <div><div class="resource-name">Rivian Configurator</div><div class="resource-desc">Build your R1S, R1T, or R2</div></div>
-              <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="resource-link">Open</a>
+              <div>
+                <div class="resource-name">90-Day R1S Review</div>
+                <div class="resource-desc">Long-form ownership review, Las Vegas</div>
+              </div>
+              <a href="/reviews/2026-rivian-r1s-90-day-review/" class="resource-link">Read</a>
             </div>
             <div class="resource-row">
-              <div><div class="resource-name">Rivian Roamer</div><div class="resource-desc">VIN lookup, inventory tracker</div></div>
-              <a href="https://rivianroamer.com" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+              <div>
+                <div class="resource-name">Charging Calculator</div>
+                <div class="resource-desc">Real-world range and charging estimates</div>
+              </div>
+              <a href="/charging/" class="resource-link">Open</a>
             </div>
             <div class="resource-row">
-              <div><div class="resource-name">Rivian Gear Shop</div><div class="resource-desc">Accessories, key fobs, and owner gear</div></div>
-              <a href="https://rivian.com/gear-shop" target="_blank" rel="noopener noreferrer" class="resource-link">Visit</a>
+              <div>
+                <div class="resource-name">Software Tracker</div>
+                <div class="resource-desc">OTA update history and release notes</div>
+              </div>
+              <a href="/software/" class="resource-link">View</a>
             </div>
             <div class="resource-row">
-              <div><div class="resource-name">Charging Map</div><div class="resource-desc">Adventure Network stations</div></div>
-              <a href="https://rivian.com/experience/charging#map" target="_blank" rel="noopener noreferrer" class="resource-link">View</a>
+              <div>
+                <div class="resource-name">Delivery Checklist</div>
+                <div class="resource-desc">What to inspect before accepting delivery</div>
+              </div>
+              <a href="/delivery/" class="resource-link">View</a>
+            </div>
+            <div class="resource-row">
+              <div>
+                <div class="resource-name">R1S vs R2</div>
+                <div class="resource-desc">Full spec comparison and breakdown</div>
+              </div>
+              <a href="/compare/" class="resource-link">Compare</a>
             </div>
           </div>
 
-        </div>
+          <div class="card" style="padding:20px;">
+            <div class="section-label">Tested accessories</div>
+            <div class="resource-row">
+              <div>
+                <div class="resource-name">Samsung T7 Shield 1TB</div>
+                <div class="resource-desc">Heat-resistant Gear Guard SSD — plug and play</div>
+              </div>
+              <a href="https://amzn.to/4ttCWun" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon</a>
+            </div>
+            <div class="resource-row">
+              <div>
+                <div class="resource-name">A2Z CCS1 Adapter</div>
+                <div class="resource-desc">Essential for NACS owners — Las Vegas RAN is all CCS1</div>
+              </div>
+              <a href="https://amzn.to/4eBEaQw" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon</a>
+            </div>
+          </div>
+
+        </div><!-- end content-side -->
+
       </div>
     </div>
   </div>
 
   <!-- ─── FOOTER ─── -->
   <footer>
-    <div style="max-width:1160px; margin:0 auto; padding:0 20px;">
-      <img src="/images/logo.svg" alt="Rivian Resource">
-      Independent Rivian owner resource · Not affiliated with or endorsed by Rivian Automotive, Inc.
+    <div class="container">
+      <img src="/images/logo.svg" alt="Rivian Resource" />
+      <p>Independent owner resource &nbsp;·&nbsp; Not affiliated with Rivian Automotive, Inc.</p>
+      <p style="margin-top:4px;">SCOTT4395475 &nbsp;·&nbsp; Rewards subject to Rivian program terms &nbsp;·&nbsp; Verify at <a href="https://rivian.com" target="_blank" rel="noopener noreferrer" style="color:inherit;">rivian.com</a></p>
       <div class="footer-guides">
         <span class="footer-guides-label">Guides</span>
-        <a href="/compare/">R1S vs R2 Comparison</a>
+        <a href="/">Home</a>
+        <a href="/reviews/2026-rivian-r1s-90-day-review/">90-Day Review</a>
+        <a href="/charging/">Charging</a>
+        <a href="/software/">Software</a>
+        <a href="/delivery/">Delivery</a>
         <a href="/accessories/">Accessories</a>
-        <a href="/about/">About</a>
+        <a href="/compare/">R1S vs R2</a>
       </div>
     </div>
   </footer>
 
-  <!-- ─── SCRIPTS ─── -->
-  <script src="/nav-init.js"></script>
-
+  <!-- ─── MOBILE STICKY COPY BAR ─── -->
   <div class="mobile-copy-bar" id="mobileCopyBar">
     <div class="mobile-copy-bar-text">
       <div class="mobile-copy-bar-code">SCOTT4395475</div>
-      <div class="mobile-copy-bar-perks">500 pts + 3 months free charging</div>
+      <div class="mobile-copy-bar-perks">3 months free charging · up to 500 pts</div>
     </div>
     <button class="mobile-copy-bar-btn" onclick="mobileCopy()">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       Copy Code
     </button>
     <div class="mobile-copy-bar-copied" id="mobileCopied">✓ Copied — paste at checkout</div>
   </div>
 
+  <script src="/nav-init.js"></script>
+  <script src="/shared.js"></script>
+
   <script>
-    function heroCopy() {
+    /* ─── COPY HELPERS ─── */
+    function copyToClipboard(successCb) {
       navigator.clipboard.writeText('SCOTT4395475').then(() => {
-        gtag('event', 'copy_referral_code');
+        if (typeof gtag === 'function') gtag('event', 'copy_referral_code', { event_category: 'engagement' });
+        successCb();
+      }).catch(() => successCb());
+    }
+
+    function stripCopy() {
+      copyToClipboard(() => {
+        const el = document.getElementById('stripCopied');
+        el.style.display = 'inline';
+        setTimeout(() => { el.style.display = 'none'; }, 3000);
+      });
+    }
+
+    function heroCopy() {
+      copyToClipboard(() => {
         const el = document.getElementById('heroCopied');
-        if (el) {
-          el.style.display = 'block';
-          setTimeout(() => { el.style.display = 'none'; }, 3000);
-        }
-      }).catch(() => {
-        // Clipboard denied — silently fail, user can copy manually
+        el.style.display = 'block';
+        setTimeout(() => { el.style.display = 'none'; }, 4000);
       });
     }
 
     function sidebarCopy() {
-      gtag('event', 'copy_referral_code_sidebar');
-      navigator.clipboard.writeText('SCOTT4395475').then(() => {
+      copyToClipboard(() => {
         const el = document.getElementById('sidebarCopied');
-        if (el) el.style.display = 'block';
-        setTimeout(() => { if (el) el.style.display = 'none'; }, 3000);
-      }).catch(() => {});
+        el.style.display = 'block';
+        setTimeout(() => { el.style.display = 'none'; }, 3000);
+      });
     }
 
     function mobileCopy() {
-      navigator.clipboard.writeText('SCOTT4395475').then(() => {
-        gtag('event', 'copy_referral_code_mobile');
-        const btn = document.querySelector('.mobile-copy-bar-btn');
-        const msg = document.getElementById('mobileCopied');
-        if (btn) btn.style.display = 'none';
-        if (msg) msg.style.display = 'block';
+      copyToClipboard(() => {
+        const bar = document.getElementById('mobileCopyBar');
+        const copied = document.getElementById('mobileCopied');
+        bar.querySelector('.mobile-copy-bar-text').style.display = 'none';
+        bar.querySelector('.mobile-copy-bar-btn').style.display = 'none';
+        copied.style.display = 'block';
         setTimeout(() => {
-          if (btn) btn.style.display = 'flex';
-          if (msg) msg.style.display = 'none';
-        }, 3000);
-      }).catch(() => {});
+          bar.querySelector('.mobile-copy-bar-text').style.display = '';
+          bar.querySelector('.mobile-copy-bar-btn').style.display = '';
+          copied.style.display = 'none';
+        }, 3500);
+      });
     }
 
+    /* ─── FAQ ─── */
     function toggleFaq(btn) {
       const item = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     }
-  </script>
 
-  <script src="/shared.js"></script>
+    /* ─── SCENE ROTATOR ─── */
+    const scenes = [
+      { title: 'Star Wars: A New Charge', quote: '"I find your lack of charging infrastructure disturbing."' },
+      { title: 'Interstellar: The Endurance & 3 Months Free', quote: '"Do not go gentle into that good charging station."' },
+      { title: 'The Good, The Bad & The Rivian', quote: '"Two kinds of people: those with a referral code, and those who dig."' },
+      { title: 'Jurassic Park & Charge', quote: '"Life, uh... finds a way. So does 0% APR financing."' },
+      { title: 'TRON: Legacy Charging Grid', quote: '"On the grid, everything runs on electricity. Finally, a Rivian story."' }
+    ];
+
+    let current = 0, autoPlay = true, timer = null;
+
+    function goTo(n) {
+      document.getElementById('scene' + current).classList.remove('active');
+      document.querySelectorAll('.dot')[current].classList.remove('active');
+      current = n;
+      document.getElementById('scene' + current).classList.add('active');
+      document.querySelectorAll('.dot')[current].classList.add('active');
+      document.getElementById('sceneTitle').textContent = scenes[current].title;
+      document.getElementById('sceneQuote').textContent = scenes[current].quote;
+      resetTimer();
+    }
+
+    function next() { goTo((current + 1) % scenes.length); }
+    function prev() { goTo((current + scenes.length - 1) % scenes.length); }
+
+    function resetTimer() {
+      clearInterval(timer);
+      if (autoPlay) timer = setInterval(next, 4500);
+    }
+
+    function toggleAuto() {
+      autoPlay = !autoPlay;
+      document.getElementById('autoBtn').innerHTML = autoPlay ? '&#9646;&#9646;' : '&#9654;';
+      document.getElementById('autoBtn').setAttribute('aria-label', autoPlay ? 'Pause slideshow' : 'Play slideshow');
+      resetTimer();
+    }
+
+    timer = setInterval(next, 4500);
+  </script>
 
 </body>
 </html>
