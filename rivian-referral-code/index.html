@@ -467,31 +467,23 @@
       const tl={x:W-160,y:H/2,w:82,h:42,vy:0,bullets:[],lastShot:0,flash:0};
       const parts=[],stars=Array.from({length:55},()=>({x:Math.random()*W,y:Math.random()*H,s:Math.random()*1.5+0.5,sp:Math.random()*0.4+0.2})),road=Array.from({length:14},(_,i)=>({x:i*52})),keys={};
 
-      const GIST_ID='85cd384060888473147fd059b3ca6bc4';
-      const GIST_TOKEN='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';
-      const GIST_FILE='leaderboard.json';
+      const WORKER_URL='https://rivian-scores.scott-b9a.workers.dev';
 
       async function loadLB(){
         try{
-          const r=await fetch(`https://api.github.com/gists/${GIST_ID}`,{headers:{'Authorization':'token '+GIST_TOKEN,'Accept':'application/vnd.github.v3+json'}});
-          const data=await r.json();
-          const content=data.files[GIST_FILE].content;
-          const parsed=JSON.parse(content);
+          const r=await fetch(WORKER_URL);
+          const parsed=await r.json();
           lb=Array.isArray(parsed)?parsed:[];
         }catch(e){console.error('loadLB error',e);lb=[];}
       }
-      async function saveLB(){
-        try{
-          await fetch(`https://api.github.com/gists/${GIST_ID}`,{method:'PATCH',headers:{'Authorization':'token '+GIST_TOKEN,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify({files:{[GIST_FILE]:{content:JSON.stringify(lb)}}})});
-        }catch(e){console.error('saveLB error',e);}
-      }
+      async function saveLB(){} // writes handled by subScore via POST
       function isTop10(s){return lb.length<10||s>lb[lb.length-1].score;}
       async function subScore(name,s){
-        await loadLB();
-        lb.push({name:name.toUpperCase().slice(0,12)||'ANON',score:s,round,date:new Date().toLocaleDateString()});
-        lb.sort((a,b)=>b.score-a.score);
-        if(lb.length>10)lb=lb.slice(0,10);
-        await saveLB();
+        try{
+          const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name.toUpperCase().slice(0,12)||'ANON',score:s,round,date:new Date().toLocaleDateString()})});
+          const updated=await r.json();
+          if(Array.isArray(updated))lb=updated;
+        }catch(e){console.error('subScore error',e);}
       }
 
       const gc=document.getElementById('game-card');
