@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -493,7 +494,7 @@
       cv.addEventListener('click',()=>{cv.focus();if(state===ST.ENTRY)return;if(state===ST.TITLE||state===ST.WIN||state===ST.LOSE)startG();else if(state===ST.REND)nextR();});
 
       function startG(){score=0;round=1;rHP=8;tHP=8;reset();state=ST.PLAY;hud();}
-      function nextR(){round++;rHP=Math.min(8,rHP+3);tHP=8;reset();state=ST.PLAY;hud();}
+      function nextR(){round++;tHP=8;reset();state=ST.PLAY;hud();}
       function reset(){rv.x=90;rv.y=H/2;rv.vy=0;rv.bullets=[];rv.flash=0;rv.inv=60;tl.x=W-160;tl.y=H/2;tl.vy=0;tl.bullets=[];tl.flash=0;parts.length=0;}
       function hud(){
         document.getElementById('g-rhp').innerHTML=Array.from({length:8},(_,i)=>`<div style="width:11px;height:11px;border-radius:2px;background:${i<rHP?'#1dcf8a':'#222'}"></div>`).join('');
