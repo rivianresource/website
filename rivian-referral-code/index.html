@@ -584,7 +584,7 @@
       function drawLB(sy){
         t('— TOP 10 —',W/2,sy,10,'#555');
         if(!lb.length){t('NO SCORES YET — BE THE FIRST!',W/2,sy+16,9,'#333');return;}
-        lb.forEach((e,i)=>{const y=sy+14+i*16,col=i===0?'#ffcc00':i===1?'#aaaaaa':i===2?'#cc8844':'#3a3a3a';ctx.fillStyle=col;ctx.font='bold 10px monospace';ctx.textAlign='left';ctx.fillText(`${i+1}. ${e.name}`,W/2-110,y);ctx.textAlign='right';ctx.fillText(`${e.score} · R${e.round||1}`,W/2+110,y);});
+        lb.forEach((e,i)=>{const y=sy+14+i*16,col=i===0?'#ffcc00':i===1?'#aaaaaa':i===2?'#cc8844':'#3a3a3a';ctx.fillStyle=col;ctx.font='bold 10px monospace';ctx.textAlign='left';ctx.fillText(`${i+1}. ${e.name}`,W/2-110,y);ctx.textAlign='right';ctx.fillText(`${e.score}`,W/2+110,y);});
       }
       function drawEnd(win){
         ctx.fillStyle='#0a0a0a';ctx.fillRect(0,0,W,H);ctx.fillStyle='#111';ctx.fillRect(0,0,W,22);ctx.fillRect(0,H-11,W,11);ctx.fillStyle='#181818';ctx.fillRect(0,22,W,H-33);
