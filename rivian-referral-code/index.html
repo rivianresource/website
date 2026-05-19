@@ -490,7 +490,7 @@
       const nov=document.createElement('div');nov.id='g-name-ov';
       nov.innerHTML='<h3>🏆 TOP 10!</h3><p>YOU MADE THE LEADERBOARD</p><p id="g-ns"></p><input id="g-ni" maxlength="12" placeholder="YOUR NAME" autocomplete="off" spellcheck="false"/><button id="g-nb">SUBMIT SCORE</button><button id="g-nsk">Skip</button>';
       gc.appendChild(nov);
-      function showNE(s){pendSc=s;document.getElementById('g-ns').textContent='SCORE: '+s+' · ROUND: '+round;document.getElementById('g-ni').value='';nov.classList.add('show');setTimeout(()=>document.getElementById('g-ni').focus(),100);state=ST.ENTRY;}
+      function showNE(s){pendSc=s;document.getElementById('g-ns').textContent='SCORE: '+s+' · ROUND: '+finalRound;document.getElementById('g-ni').value='';nov.classList.add('show');setTimeout(()=>document.getElementById('g-ni').focus(),100);state=ST.ENTRY;}
       function hideNE(){nov.classList.remove('show');}
       document.getElementById('g-nb').addEventListener('click',async()=>{await subScore(document.getElementById('g-ni').value.trim(),pendSc);hideNE();state=ST.LOSE;});
       document.getElementById('g-ni').addEventListener('keydown',e=>{if(e.code==='Enter')document.getElementById('g-nb').click();e.stopPropagation();});
