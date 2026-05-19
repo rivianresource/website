@@ -639,7 +639,7 @@
         if(rv.inv<=0||Math.floor(rv.inv/4)%2===0)drawR2(rv.x,rv.y,rv.flash);drawModelY(tl.x,tl.y,tl.flash);
         ov(0.82);
         if(win){t('RIVIAN R2 WINS!',W/2,46,18,'#1dcf8a');t('FINAL SCORE: '+score+' · ROUND: '+round,W/2,64,10,'#ffcc00');t('"AND IT HAS A FRUNK."',W/2,80,10,'#444');}
-        else{t('YOU LOST.',W/2,46,18,'#cc3333');t('FINAL SCORE: '+finalScore+' · ROUND: '+finalRound,W/2,64,10,'#888');t(LQ[loseQ],W/2,82,13,'#666',600);}
+        else{t('TIME FOR A CHARGE.',W/2,46,18,'#cc3333');t('FINAL SCORE: '+finalScore+' · ROUND: '+finalRound,W/2,64,10,'#888');t(LQ[loseQ],W/2,82,13,'#666',600);}
         drawLB(96);t(win?'CLICK OR SPACE TO PLAY AGAIN':'CLICK OR SPACE TO TRY AGAIN',W/2,H-14,10,'#333');
       }
       function draw(){
