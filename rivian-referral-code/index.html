@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +43,37 @@
     .strip-btn { display:inline-flex; align-items:center; gap:5px; background:var(--green-light); color:#0a2e22; border:none; padding:6px 14px; border-radius:999px; font-family:'Figtree',sans-serif; font-size:12px; font-weight:700; cursor:pointer; transition:background 0.2s; }
     .strip-btn:hover { background:#7de0bb; }
     .strip-copied { font-size:12px; color:var(--green-light); font-weight:600; display:none; }
+
+    /* ─── GAME TOGGLE ─── */
+    .game-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 0;
+    }
+    .game-toggle:hover { border-color: var(--green); background: var(--bg-secondary); }
+    .game-toggle-arrow { font-size: 12px; color: var(--text-dim); transition: transform 0.3s; }
+    .game-toggle-arrow.open { transform: rotate(180deg); }
+    .game-collapse {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .game-collapse.open {
+      max-height: 600px;
+      padding-top: 12px;
+    }
 
     /* ─── GAME ─── */
     .game-section { padding: 32px 0 0; }
@@ -166,11 +198,7 @@
         <span class="strip-code">SCOTT4395475</span>
         <div class="strip-divider"></div>
         <span class="strip-perks"><strong>3 months free</strong> Adventure Network charging + up to <strong>500 pts</strong></span>
-        <button class="strip-btn" onclick="stripCopy()">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy &amp; configure
-        </button>
-        <span class="strip-copied" id="stripCopied">✓ Copied</span>
+<a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="strip-btn">Configure on Rivian →</a>
       </div>
     </div>
   </div>
@@ -179,6 +207,11 @@
 
     <!-- GAME -->
     <div class="game-section">
+      <button class="game-toggle" onclick="toggleGame()" id="gameToggle">
+        <span>🎮 Play: Rivian R2 vs Tesla Model Y</span>
+        <span class="game-toggle-arrow" id="gameArrow">▼</span>
+      </button>
+      <div class="game-collapse" id="gameCollapse">
       <div class="game-wrap" id="game-card">
         <div class="game-hud">
           <div class="ghside">
@@ -202,12 +235,14 @@
         </div>
       </div>
     </div>
+      </div><!-- end game-collapse -->
+    </div>
 
     <!-- HEADLINE BELOW GAME -->
     <div class="below-hero">
       <div class="below-eyebrow">Rivian Referral Program</div>
       <h1 class="below-title">If you don't have a friend<br>with a Rivian, <span>you found one.</span></h1>
-      <p class="below-sub">If you know a Rivian owner personally, start there — use their code. If you can't think of anyone, I'm happy to be your person. Either way, the rewards are the same and it costs you nothing extra.</p>
+      <p class="below-sub">If you know a Rivian owner personally, use their code. If not, I'm happy to be your person — the rewards are identical either way.</p>
 
       <div class="code-block">
         <div>
@@ -227,12 +262,9 @@
       </div>
 
       <div class="btn-row">
-        <button class="btn-primary" onclick="heroCopy()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy Code
-        </button>
-        <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="btn-secondary">Configure on Rivian →</a>
+        <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="btn-primary">Configure on Rivian →</a>
       </div>
+      <p style="font-size:13px;color:var(--text-dim);margin-top:14px;">Code applied automatically. Or <button onclick="heroCopy()" style="background:none;border:none;color:var(--green);font-size:13px;font-weight:600;cursor:pointer;padding:0;font-family:inherit;">copy SCOTT4395475</button> to enter manually.</p>
       <div class="copied-msg" id="heroCopied">✓ Copied — paste SCOTT4395475 at checkout</div>
     </div>
 
@@ -240,8 +272,8 @@
     <div class="content-main">
 
       <div class="card points-section">
-        <div class="section-label">Points by configuration</div>
-        <p style="font-size:14px;color:var(--text-muted);margin-top:6px;margin-bottom:0;">All qualifying orders also receive 3 months of free Adventure Network charging.</p>
+        <div class="section-label">What you get — and what it's worth</div>
+        <p style="font-size:14px;color:var(--text-muted);margin-top:6px;margin-bottom:0;">Every qualifying order gets 3 months of free Adventure Network charging. Points are redeemable at $1 each in the Rivian Gear Shop or toward accessories — 500 points = $500.</p>
         <div class="points-table">
           <div class="points-row"><span class="points-config">Tri Motor or Quad Motor</span><span class="points-value">500 pts + free charging</span></div>
           <div class="points-row"><span class="points-config">Dual Motor Max or Large Battery</span><span class="points-value">250 pts + free charging</span></div>
@@ -375,11 +407,11 @@
         <div class="faq-list">
           <div class="faq-item open">
             <button class="faq-q" onclick="toggleFaq(this)">Does this cost me anything extra?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-            <div class="faq-a"><p>No. Same price, same Rivian. You just also get free charging and rewards points. It's genuinely free — the referral program is funded by Rivian, not by any markup on your order.</p></div>
+            <div class="faq-a"><p>No. Same price, same Rivian. The referral program is funded by Rivian — no markup, no catch.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" onclick="toggleFaq(this)">Why use this code over someone else's?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-            <div class="faq-a"><p>Honestly, the rewards are identical regardless of whose code you use. If you have a friend or family member who owns a Rivian, start there. If you can't think of anyone, I'm here to help. Hopefully the other content on this site is useful above anything else.</p></div>
+            <div class="faq-a"><p>Honestly, the rewards are identical regardless of whose code you use. If you have a friend or family member who owns a Rivian, start there. If not, I'm here.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" onclick="toggleFaq(this)">I forgot to enter it at checkout — now what?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -437,6 +469,19 @@
   <script src="/nav-init.js"></script>
   <script src="/shared.js"></script>
   <script>
+    /* GAME TOGGLE */
+    function toggleGame(){
+      const collapse=document.getElementById('gameCollapse');
+      const arrow=document.getElementById('gameArrow');
+      const isOpen=collapse.classList.contains('open');
+      collapse.classList.toggle('open');
+      arrow.classList.toggle('open');
+      if(!isOpen){
+        // Focus canvas after open animation
+        setTimeout(()=>{ const cv=document.getElementById('g-canvas'); if(cv) cv.focus(); },420);
+      }
+    }
+
     /* COPY */
     function copyToClipboard(cb){navigator.clipboard.writeText('SCOTT4395475').then(()=>{if(typeof gtag==='function')gtag('event','copy_referral_code',{event_category:'engagement'});cb();}).catch(cb);}
     function stripCopy(){copyToClipboard(()=>{const el=document.getElementById('stripCopied');el.style.display='inline';setTimeout(()=>el.style.display='none',3000);});}
