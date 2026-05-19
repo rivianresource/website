@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +31,10 @@
   <style>
 
     .page-wrap { max-width: 760px !important; margin: 0 auto !important; padding: 0 20px 80px; width: 100%; box-sizing: border-box; }
+    body > .page-wrap, #main-content .page-wrap, .page-wrap { max-width: 760px !important; margin-left: auto !important; margin-right: auto !important; }
+
+    /* Constrain strip to match page width */
+    .referral-strip .strip-inner { max-width: 720px !important; margin: 0 auto !important; padding: 0 !important; }
 
     /* ─── STRIP ─── */
     .referral-strip { background: var(--green-dark); padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -211,8 +216,8 @@
         <span class="game-toggle-arrow" id="gameArrow">▼</span>
       </button>
       <div class="game-collapse" id="gameCollapse">
-      <div class="game-wrap" id="game-card">
-        <div class="game-hud">
+        <div class="game-wrap" id="game-card">
+          <div class="game-hud">
           <div class="ghside">
             <div class="ghlabel" style="color:#1dcf8a;">RIVIAN R2</div>
             <div class="ghhp" id="g-rhp"></div>
@@ -232,10 +237,9 @@
           <span class="gctrl"><span>SPACE</span> SHOOT</span>
           <span class="gctrl"><span>P</span> PAUSE</span>
         </div>
-      </div>
-    </div>
+        </div><!-- end game-wrap -->
       </div><!-- end game-collapse -->
-    </div>
+    </div><!-- end game-section -->
 
     <!-- HEADLINE BELOW GAME -->
     <div class="below-hero">
