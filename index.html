@@ -884,20 +884,17 @@ async function loadNewsTeaser() {
     `).join('');
   }
 
+  function cleanTitle(title) { return title.replace(/\s-\s[^-]+$/, ''); }
+  function getSource(title) { const p = title.split(' - '); return p.length > 1 ? p[p.length - 1] : ''; }
+  function formatDate(d) { return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
+
   try {
-    const rssFeed = encodeURIComponent('https://news.google.com/rss/search?q=Rivian+EV&hl=en-US&gl=US&ceid=US:en');
-    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}`);
-    if (!response.ok) throw new Error('Feed failed');
-    const data = await response.json();
+    const res = await fetch('https://newsrivianresourcecom.scott-b9a.workers.dev/');
+    if (!res.ok) throw new Error('Worker failed');
+    const data = await res.json();
     if (!data.items?.length) throw new Error('No items');
 
-    const articles = data.items.slice(0, 6);
-
-    function cleanTitle(title) { return title.replace(/\s-\s[^-]+$/, ''); }
-    function getSource(title) { const p = title.split(' - '); return p.length > 1 ? p[p.length - 1] : ''; }
-    function formatDate(d) { return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
-
-    renderArticles(articles.map(a => ({
+    renderArticles(data.items.slice(0, 6).map(a => ({
       source: getSource(a.title),
       title: cleanTitle(a.title),
       date: formatDate(a.pubDate),
