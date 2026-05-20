@@ -952,9 +952,9 @@
       const vinBtn = document.getElementById('vinBtn');
       vinInput.addEventListener('input', function() {
         const vin = this.value.trim().toUpperCase();
-        vinBtn.href = vin.length === 17
-          ? `https://www.nhtsa.gov/vehicle/vin-lookup#${vin}`
-          : 'https://www.nhtsa.gov/vehicle/vin-lookup';
+       vinBtn.href = vin.length === 17
+  ? `https://www.nhtsa.gov/recalls?vymm=${vin}`
+  : 'https://www.nhtsa.gov/recalls';
       });
 
       loadNewsTeaser();
