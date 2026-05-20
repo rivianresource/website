@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,15 +90,15 @@
     /* ─── MAIN LAYOUT ─── */
     .main-layout { padding: 24px 0 48px; }
 
-.main-grid {
-  display: grid;
-  grid-template-columns: 1fr 288px;
-  gap: 20px;
-  align-items: start;
-}
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 288px;
+      gap: 20px;
+      align-items: start;
+    }
 
-.left-col { min-width: 0; }
-.right-col { min-width: 0; }
+    .left-col { min-width: 0; }
+    .right-col { min-width: 0; }
 
     @media (max-width: 860px) {
       .main-grid { grid-template-columns: 1fr; }
@@ -324,60 +325,20 @@
     /* ─── RECALLS CARD ─── */
     .recalls-card { padding: 20px 24px; }
 
-    .recall-group { margin-bottom: 18px; }
-    .recall-group:last-child { margin-bottom: 0; }
-
-    .recall-vehicle {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      margin-bottom: 8px;
-    }
-
-    .recall-entry {
-      border-left: 3px solid var(--border-hover);
-      padding: 8px 12px;
-      margin-bottom: 8px;
-      background: var(--bg-secondary);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    }
-
-    .recall-entry:last-child { margin-bottom: 0; }
-
-    .recall-campaign {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--green);
-      margin-bottom: 2px;
-    }
-
-    .recall-component {
-      font-size: 12px;
-      font-weight: 600;
+    .vin-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Figtree', sans-serif;
+      font-size: 14px;
       color: var(--text);
-      margin-bottom: 3px;
+      background: var(--bg-secondary);
+      outline: none;
+      transition: border-color 0.2s ease;
     }
-
-    .recall-consequence {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .recall-none {
-      font-size: 13px;
-      color: var(--text-dim);
-      padding: 6px 0;
-    }
-
-    .recall-error {
-      font-size: 12px;
-      color: var(--text-dim);
-      padding: 6px 0;
-    }
+    .vin-input:focus { border-color: var(--green); }
 
     /* ─── STOCK CARD ─── */
     .stock-card { padding: 20px; }
@@ -508,13 +469,7 @@
   <div class="referral-strip">
     <div class="strip-inner" style="justify-content:center;max-width:1160px;margin:0 auto;">
       <span class="strip-label">Referral code</span>
-      <span
-  class="strip-code"
-  onclick="stripCopyCode()"
-  style="cursor:pointer;"
->
-  SCOTT4395475
-</span>
+      <span class="strip-code" onclick="stripCopyCode()" style="cursor:pointer;">SCOTT4395475</span>
       <span class="strip-divider"></span>
       <span class="strip-perks"><strong>Up to 500 pts</strong> + <strong>3 months</strong> free Adventure Network charging</span>
       <button class="strip-btn" onclick="stripCopyCode()">
@@ -618,25 +573,33 @@
 
           <div class="guide-card">
             <div>
-            <div class="section-label">Featured guide</div>
-            <h2 class="review-title">R1S vs R2 — Full Comparison</h2>
-            <p class="review-excerpt">Side-by-side breakdown of range, price, dimensions, towing capacity, and feature differences to help you decide which Rivian is right for you.</p>
+              <div class="section-label">Featured guide</div>
+              <h2 class="review-title">R1S vs R2 — Full Comparison</h2>
+              <p class="review-excerpt">Side-by-side breakdown of range, price, dimensions, towing capacity, and feature differences to help you decide which Rivian is right for you.</p>
             </div>
             <a href="/compare/" class="link-btn">See the comparison</a>
           </div>
 
-          <!-- ACTIVE RECALLS -->
+          <!-- RECALL VIN LOOKUP -->
           <div class="card recalls-card" id="section-recalls">
             <div class="news-header">
               <div class="section-label">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                Active Recalls
+                Recall Check
               </div>
-              <a href="https://www.nhtsa.gov/vehicle-safety/recalls" target="_blank" rel="noopener noreferrer" class="link-btn" style="font-size:12px;">NHTSA ↗</a>
             </div>
-            <div id="recallsFeed">
-              <div class="recall-none" style="color:var(--text-dim); font-size:13px;">Loading recall data…</div>
+            <p style="font-size:14px; color:var(--text-muted); line-height:1.6; margin-bottom:16px;">Enter your VIN to check for open recalls directly on NHTSA — the official source, always current.</p>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <input
+                id="vinInput"
+                type="text"
+                placeholder="Enter your 17-digit VIN"
+                maxlength="17"
+                class="vin-input"
+              />
+              <a id="vinBtn" href="https://www.nhtsa.gov/vehicle/vin-lookup" target="_blank" rel="noopener noreferrer" class="link-btn" style="white-space:nowrap;">Check on NHTSA →</a>
             </div>
+            <p style="font-size:11px; color:var(--text-dim); margin-top:10px;">Your VIN is on your dashboard (driver's side), door jamb sticker, or registration.</p>
           </div>
 
           <!-- MOBILE-ONLY SIDEBAR CARDS -->
@@ -711,14 +674,14 @@
             </div>
           </div>
 
-         <!-- SOFTWARE TRACKER -->
-<div class="card" style="padding:20px;">
-  <div class="section-label">Software update</div>
-  <div class="sw-version" id="swVersion"> </div>
-  <div class="sw-date" id="swDate"> </div>
-  <div class="sw-highlights" id="swHighlights"></div>
-  <a href="/software/" class="link-btn" style="margin-top:12px;font-size:13px;">Full update history</a>
-</div>
+          <!-- SOFTWARE TRACKER -->
+          <div class="card" style="padding:20px;">
+            <div class="section-label">Software update</div>
+            <div class="sw-version" id="swVersion"> </div>
+            <div class="sw-date" id="swDate"> </div>
+            <div class="sw-highlights" id="swHighlights"></div>
+            <a href="/software/" class="link-btn" style="margin-top:12px;font-size:13px;">Full update history</a>
+          </div>
 
           <!-- ACCESSORIES -->
           <div class="card" id="section-accessories" style="padding:20px;">
@@ -821,7 +784,7 @@
   </footer>
 
   <!-- ─── SCRIPTS ─── -->
- <script src="/nav-init.js"></script>
+  <script src="/nav-init.js"></script>
 
   <script>
 
@@ -832,79 +795,79 @@
     }
 
     /* ── News Teaser — 6 articles, 3-col grid ── */
-async function loadNewsTeaser() {
-  const container = document.getElementById('newsTeaserFeed');
+    async function loadNewsTeaser() {
+      const container = document.getElementById('newsTeaserFeed');
 
-  const FALLBACK_ARTICLES = [
-    {
-      source: 'Rivian Stories',
-      title: 'Introducing Rivian Assistant and Rivian Unified Intelligence',
-      date: 'May 12, 2026',
-      url: 'https://stories.rivian.com/'
-    },
-    {
-      source: 'InsideEVs',
-      title: 'Rivian\'s New AI Voice Assistant Is Rolling Out — Here\'s What It Can Do',
-      date: 'May 13, 2026',
-      url: 'https://insideevs.com/news/795539/rivian-assistant-launch-r1-r2-2026/'
-    },
-    {
-      source: 'Gear Patrol',
-      title: 'Rivian Could Expand R2 With an Affordable Pickup Option to Rival Slate',
-      date: 'May 11, 2026',
-      url: 'https://www.gearpatrol.com/cars/rivian-could-expand-r2-with-affordable-pickup-option/'
-    },
-    {
-      source: 'Autoblog',
-      title: 'Rivian R2 Configurator Is Live — and a Spare Tire Will Cost You $755',
-      date: 'May 17, 2026',
-      url: 'https://www.autoblog.com/news/rivians-adventure-ev-charges-755-for-a-spare-tire'
-    },
-    {
-      source: 'The Weekly Driver',
-      title: 'Rivian\'s 2026 Lineup: Every Model, Every Price, and Which One to Buy',
-      date: 'May 1, 2026',
-      url: 'https://theweeklydriver.com/2026/04/rivian-2026-lineup-guide/'
-    },
-    {
-      source: 'InsideEVs',
-      title: 'Rivian, Lucid, and Slate: How EV Startups Are Navigating Their Most Important Year',
-      date: 'Apr 18, 2026',
-      url: 'https://insideevs.com/features/793324/rivian-slate-lucid-update-2026/'
+      const FALLBACK_ARTICLES = [
+        {
+          source: 'Rivian Stories',
+          title: 'Introducing Rivian Assistant and Rivian Unified Intelligence',
+          date: 'May 12, 2026',
+          url: 'https://stories.rivian.com/'
+        },
+        {
+          source: 'InsideEVs',
+          title: 'Rivian\'s New AI Voice Assistant Is Rolling Out — Here\'s What It Can Do',
+          date: 'May 13, 2026',
+          url: 'https://insideevs.com/news/795539/rivian-assistant-launch-r1-r2-2026/'
+        },
+        {
+          source: 'Gear Patrol',
+          title: 'Rivian Could Expand R2 With an Affordable Pickup Option to Rival Slate',
+          date: 'May 11, 2026',
+          url: 'https://www.gearpatrol.com/cars/rivian-could-expand-r2-with-affordable-pickup-option/'
+        },
+        {
+          source: 'Autoblog',
+          title: 'Rivian R2 Configurator Is Live — and a Spare Tire Will Cost You $755',
+          date: 'May 17, 2026',
+          url: 'https://www.autoblog.com/news/rivians-adventure-ev-charges-755-for-a-spare-tire'
+        },
+        {
+          source: 'The Weekly Driver',
+          title: 'Rivian\'s 2026 Lineup: Every Model, Every Price, and Which One to Buy',
+          date: 'May 1, 2026',
+          url: 'https://theweeklydriver.com/2026/04/rivian-2026-lineup-guide/'
+        },
+        {
+          source: 'InsideEVs',
+          title: 'Rivian, Lucid, and Slate: How EV Startups Are Navigating Their Most Important Year',
+          date: 'Apr 18, 2026',
+          url: 'https://insideevs.com/features/793324/rivian-slate-lucid-update-2026/'
+        }
+      ];
+
+      function renderArticles(articles) {
+        container.innerHTML = articles.map(a => `
+          <a href="${a.url}" target="_blank" rel="noopener noreferrer" class="news-card">
+            <div class="news-card-source">${a.source}</div>
+            <div class="news-card-title">${a.title}</div>
+            <div class="news-card-date">${a.date}</div>
+          </a>
+        `).join('');
+      }
+
+      function cleanTitle(title) { return title.replace(/\s-\s[^-]+$/, ''); }
+      function getSource(title) { const p = title.split(' - '); return p.length > 1 ? p[p.length - 1] : ''; }
+      function formatDate(d) { return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
+
+      try {
+        const res = await fetch('https://newsrivianresourcecom.scott-b9a.workers.dev/');
+        if (!res.ok) throw new Error('Worker failed');
+        const data = await res.json();
+        if (!data.items?.length) throw new Error('No items');
+
+        renderArticles(data.items.slice(0, 6).map(a => ({
+          source: a.source,
+          title: a.title,
+          date: formatDate(a.pubDate),
+          url: a.link
+        })));
+
+      } catch(e) {
+        renderArticles(FALLBACK_ARTICLES);
+      }
     }
-  ];
-
-  function renderArticles(articles) {
-    container.innerHTML = articles.map(a => `
-      <a href="${a.url}" target="_blank" rel="noopener noreferrer" class="news-card">
-        <div class="news-card-source">${a.source}</div>
-        <div class="news-card-title">${a.title}</div>
-        <div class="news-card-date">${a.date}</div>
-      </a>
-    `).join('');
-  }
-
-  function cleanTitle(title) { return title.replace(/\s-\s[^-]+$/, ''); }
-  function getSource(title) { const p = title.split(' - '); return p.length > 1 ? p[p.length - 1] : ''; }
-  function formatDate(d) { return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
-
-  try {
-    const res = await fetch('https://newsrivianresourcecom.scott-b9a.workers.dev/');
-    if (!res.ok) throw new Error('Worker failed');
-    const data = await res.json();
-    if (!data.items?.length) throw new Error('No items');
-
-    renderArticles(data.items.slice(0, 6).map(a => ({
-      source: getSource(a.title),
-      title: cleanTitle(a.title),
-      date: formatDate(a.pubDate),
-      url: a.link
-    })));
-
-  } catch(e) {
-    renderArticles(FALLBACK_ARTICLES);
-  }
-}
 
     /* ── r/Rivian Reddit Feed — tabbed ── */
     let redditCache = { trending: null, latest: null };
@@ -958,7 +921,7 @@ async function loadNewsTeaser() {
       loadRedditTab(tab);
     }
 
- async function loadSoftwareWidget() {
+    async function loadSoftwareWidget() {
       try {
         const res = await fetch('/software/updates.json?v=' + Date.now());
         if (!res.ok) throw new Error();
@@ -983,111 +946,20 @@ async function loadNewsTeaser() {
       }
     }
 
-    /* ── NHTSA Recall Feed ── */
-    async function loadRecalls() {
-      const container = document.getElementById('recallsFeed');
-     const vehicles = [
-  { label: '2026 R1S', make: 'Rivian', model: 'R1S', year: '2026' },
-  { label: '2025 R1S', make: 'Rivian', model: 'R1S', year: '2025' },
-  { label: '2025 R1T', make: 'Rivian', model: 'R1T', year: '2025' },
-  { label: '2024 R1T', make: 'Rivian', model: 'R1T', year: '2024' },
-];
-
-      try {
-        const results = await Promise.all(vehicles.map(v =>
-          fetch(`https://api.nhtsa.gov/recalls/recallsByVehicle?make=${v.make}&model=${v.model}&modelYear=${v.year}`)
-            .then(r => r.json())
-            .then(d => ({ ...v, recalls: d.results || [] }))
-            .catch(() => ({ ...v, recalls: [] }))
-        ));
-
-        // Deduplicate across models by campaign number
-        const seen = new Set();
-        const grouped = results.map(v => ({
-          ...v,
-          recalls: v.recalls.filter(r => {
-            if (seen.has(r.NHTSACampaignNumber)) return false;
-            seen.add(r.NHTSACampaignNumber);
-            return true;
-          })
-        })).filter(v => v.recalls.length > 0);
-
-        if (grouped.length === 0) {
-          container.innerHTML = `<p class="recall-none">No open recalls found for 2025–2026 R1S or R1T.</p>`;
-          return;
-        }
-
-        // Flatten all entries for cap logic
-        const allEntries = grouped.flatMap(v =>
-          v.recalls.map(r => ({ ...r, vehicleLabel: v.label }))
-        );
-        const CAP = 5;
-        const visible = allEntries.slice(0, CAP);
-        const hidden  = allEntries.slice(CAP);
-
-      function renderEntry(r) {
-  const remedyAvailable = r.RemedyDescription && r.RemedyDescription.trim().length > 0;
-  const otaFix = r.RemedyDescription && r.RemedyDescription.toLowerCase().includes('over-the-air');
-  const statusLabel = otaFix
-    ? '<span style="background:#d1fae5;color:#065f46;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;">OTA Fix Available</span>'
-    : remedyAvailable
-      ? '<span style="background:#dbeafe;color:#1e40af;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;">Remedy Available</span>'
-      : '<span style="background:#fef3c7;color:#92400e;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;">Remedy Pending</span>';
-
-  return `<div class="recall-entry">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px;flex-wrap:wrap;">
-      <div class="recall-campaign">${r.NHTSACampaignNumber}</div>
-      ${statusLabel}
-    </div>
-    <div class="recall-component">${r.Component}</div>
-    <div class="recall-consequence" style="margin-top:4px;">${r.Consequence}</div>
-    <a href="https://www.nhtsa.gov/recalls?nhtsaId=${r.NHTSACampaignNumber}" target="_blank" rel="noopener noreferrer"
-      style="display:inline-block;margin-top:8px;font-size:11px;color:var(--green);text-decoration:none;font-weight:600;">
-      Check your VIN on NHTSA →
-    </a>
-  </div>`;
-}
-        // Group visible entries by vehicle label
-        const visibleByVehicle = {};
-        visible.forEach(r => {
-          if (!visibleByVehicle[r.vehicleLabel]) visibleByVehicle[r.vehicleLabel] = [];
-          visibleByVehicle[r.vehicleLabel].push(r);
-        });
-        const hiddenByVehicle = {};
-        hidden.forEach(r => {
-          if (!hiddenByVehicle[r.vehicleLabel]) hiddenByVehicle[r.vehicleLabel] = [];
-          hiddenByVehicle[r.vehicleLabel].push(r);
-        });
-
-        const visibleHTML = Object.entries(visibleByVehicle).map(([label, entries]) => `
-          <div class="recall-group">
-            <div class="recall-vehicle">${label}</div>
-            ${entries.map(renderEntry).join('')}
-          </div>
-        `).join('');
-
-        const hiddenHTML = hidden.length > 0 ? Object.entries(hiddenByVehicle).map(([label, entries]) => `
-          <div class="recall-group">
-            <div class="recall-vehicle">${label}</div>
-            ${entries.map(renderEntry).join('')}
-          </div>
-        `).join('') : '';
-
-        container.innerHTML = visibleHTML
-          + (hidden.length > 0 ? `
-            <div id="recallsExtra" style="display:none;">${hiddenHTML}</div>
-            <a href="#" id="recallsToggle" style="font-size:12px; color:var(--green); text-decoration:none; display:inline-block; margin-top:8px;" onclick="event.preventDefault(); const x=document.getElementById('recallsExtra'); const t=document.getElementById('recallsToggle'); const open=x.style.display==='none'; x.style.display=open?'':'none'; t.textContent=open?'Show less ↑':'See all recalls →';">See all recalls →</a>
-          ` : '');
-      } catch(e) {
-        container.innerHTML = `<p class="recall-none">No open recalls found for 2025–2026 R1S or R1T.</p>`;
-      }
-    }
-
+    /* ── VIN Recall Lookup ── */
     document.addEventListener('DOMContentLoaded', () => {
+      const vinInput = document.getElementById('vinInput');
+      const vinBtn = document.getElementById('vinBtn');
+      vinInput.addEventListener('input', function() {
+        const vin = this.value.trim().toUpperCase();
+        vinBtn.href = vin.length === 17
+          ? `https://www.nhtsa.gov/vehicle/vin-lookup#${vin}`
+          : 'https://www.nhtsa.gov/vehicle/vin-lookup';
+      });
+
       loadNewsTeaser();
       loadRedditTab('trending');
       loadSoftwareWidget();
-      loadRecalls();
     });
 
   </script>
