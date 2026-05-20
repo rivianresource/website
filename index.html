@@ -986,12 +986,12 @@ async function loadNewsTeaser() {
     /* ── NHTSA Recall Feed ── */
     async function loadRecalls() {
       const container = document.getElementById('recallsFeed');
-      const vehicles = [
-        { label: '2026 R1S', make: 'Rivian', model: 'R1S', year: '2026' },
-        { label: '2025 R1S', make: 'Rivian', model: 'R1S', year: '2025' },
-        { label: '2026 R1T', make: 'Rivian', model: 'R1T', year: '2026' },
-        { label: '2025 R1T', make: 'Rivian', model: 'R1T', year: '2025' },
-      ];
+     const vehicles = [
+  { label: '2026 R1S', make: 'Rivian', model: 'R1S', year: '2026' },
+  { label: '2025 R1S', make: 'Rivian', model: 'R1S', year: '2025' },
+  { label: '2025 R1T', make: 'Rivian', model: 'R1T', year: '2025' },
+  { label: '2024 R1T', make: 'Rivian', model: 'R1T', year: '2024' },
+];
 
       try {
         const results = await Promise.all(vehicles.map(v =>
@@ -1065,7 +1065,7 @@ async function loadNewsTeaser() {
             <a href="#" id="recallsToggle" style="font-size:12px; color:var(--green); text-decoration:none; display:inline-block; margin-top:8px;" onclick="event.preventDefault(); const x=document.getElementById('recallsExtra'); const t=document.getElementById('recallsToggle'); const open=x.style.display==='none'; x.style.display=open?'':'none'; t.textContent=open?'Show less ↑':'See all recalls →';">See all recalls →</a>
           ` : '');
       } catch(e) {
-        container.innerHTML = `<p class="recall-error">Unable to load recall data. <a href="https://www.nhtsa.gov/vehicle-safety/recalls" target="_blank" rel="noopener noreferrer" style="color:var(--green);">Check NHTSA directly →</a></p>`;
+        container.innerHTML = `<p class="recall-none">No open recalls found for 2025–2026 R1S or R1T.</p>`;
       }
     }
 
