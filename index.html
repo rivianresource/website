@@ -832,32 +832,82 @@
     }
 
     /* ── News Teaser — 6 articles, 3-col grid ── */
-    async function loadNewsTeaser() {
-      const container = document.getElementById('newsTeaserFeed');
-      try {
-        const rssFeed = encodeURIComponent('https://news.google.com/rss/search?q=Rivian+EV&hl=en-US&gl=US&ceid=US:en');
-        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}`);
-        if (!response.ok) throw new Error('Feed failed');
-        const data = await response.json();
-        if (!data.items?.length) throw new Error('No items');
+async function loadNewsTeaser() {
+  const container = document.getElementById('newsTeaserFeed');
 
-        const articles = data.items.slice(0, 6);
-
-        function cleanTitle(title) { return title.replace(/\s-\s[^-]+$/, ''); }
-        function getSource(title) { const p = title.split(' - '); return p.length > 1 ? p[p.length - 1] : ''; }
-        function formatDate(d) { return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
-
-        container.innerHTML = articles.map(a => `
-          <a href="${a.link}" target="_blank" rel="noopener noreferrer" class="news-card">
-            <div class="news-card-source">${getSource(a.title)}</div>
-            <div class="news-card-title">${cleanTitle(a.title)}</div>
-            <div class="news-card-date">${formatDate(a.pubDate)}</div>
-          </a>
-        `).join('');
-      } catch(e) {
-        container.innerHTML = `<p style="color:var(--text-muted); grid-column:1/-1;">Unable to load headlines right now.</p>`;
-      }
+  const FALLBACK_ARTICLES = [
+    {
+      source: 'Rivian Stories',
+      title: 'Introducing Rivian Assistant and Rivian Unified Intelligence',
+      date: 'May 12, 2026',
+      url: 'https://stories.rivian.com/'
+    },
+    {
+      source: 'InsideEVs',
+      title: 'Rivian\'s New AI Voice Assistant Is Rolling Out — Here\'s What It Can Do',
+      date: 'May 13, 2026',
+      url: 'https://insideevs.com/news/795539/rivian-assistant-launch-r1-r2-2026/'
+    },
+    {
+      source: 'Gear Patrol',
+      title: 'Rivian Could Expand R2 With an Affordable Pickup Option to Rival Slate',
+      date: 'May 11, 2026',
+      url: 'https://www.gearpatrol.com/cars/rivian-could-expand-r2-with-affordable-pickup-option/'
+    },
+    {
+      source: 'Autoblog',
+      title: 'Rivian R2 Configurator Is Live — and a Spare Tire Will Cost You $755',
+      date: 'May 17, 2026',
+      url: 'https://www.autoblog.com/news/rivians-adventure-ev-charges-755-for-a-spare-tire'
+    },
+    {
+      source: 'The Weekly Driver',
+      title: 'Rivian\'s 2026 Lineup: Every Model, Every Price, and Which One to Buy',
+      date: 'May 1, 2026',
+      url: 'https://theweeklydriver.com/2026/04/rivian-2026-lineup-guide/'
+    },
+    {
+      source: 'InsideEVs',
+      title: 'Rivian, Lucid, and Slate: How EV Startups Are Navigating Their Most Important Year',
+      date: 'Apr 18, 2026',
+      url: 'https://insideevs.com/features/793324/rivian-slate-lucid-update-2026/'
     }
+  ];
+
+  function renderArticles(articles) {
+    container.innerHTML = articles.map(a => `
+      <a href="${a.url}" target="_blank" rel="noopener noreferrer" class="news-card">
+        <div class="news-card-source">${a.source}</div>
+        <div class="news-card-title">${a.title}</div>
+        <div class="news-card-date">${a.date}</div>
+      </a>
+    `).join('');
+  }
+
+  try {
+    const rssFeed = encodeURIComponent('https://news.google.com/rss/search?q=Rivian+EV&hl=en-US&gl=US&ceid=US:en');
+    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}`);
+    if (!response.ok) throw new Error('Feed failed');
+    const data = await response.json();
+    if (!data.items?.length) throw new Error('No items');
+
+    const articles = data.items.slice(0, 6);
+
+    function cleanTitle(title) { return title.replace(/\s-\s[^-]+$/, ''); }
+    function getSource(title) { const p = title.split(' - '); return p.length > 1 ? p[p.length - 1] : ''; }
+    function formatDate(d) { return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
+
+    renderArticles(articles.map(a => ({
+      source: getSource(a.title),
+      title: cleanTitle(a.title),
+      date: formatDate(a.pubDate),
+      url: a.link
+    })));
+
+  } catch(e) {
+    renderArticles(FALLBACK_ARTICLES);
+  }
+}
 
     /* ── r/Rivian Reddit Feed — tabbed ── */
     let redditCache = { trending: null, latest: null };
