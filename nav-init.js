@@ -1,4 +1,19 @@
 // nav-init.js — include on every page after the site-nav div
+
+// ─── Google Analytics 4 ───
+(function() {
+  var script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-SB8DBC8NBQ';
+  document.head.appendChild(script);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-SB8DBC8NBQ');
+})();
+
+// ─── Nav ───
 fetch('/nav.html')
   .then(r => r.text())
   .then(html => {
