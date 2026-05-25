@@ -292,6 +292,68 @@
       white-space: nowrap;
     }
 
+    /* ─── ASSISTANT FEATURE CARD ─── */
+    .assistant-card {
+      background: var(--green-dark);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .assistant-card .review-title {
+      font-size: 17px;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .assistant-card .review-excerpt {
+      font-size: 14px;
+      margin-bottom: 0;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .assistant-new-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      color: #9FE1CB;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .assistant-new-badge::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #9FE1CB;
+    }
+
+    .assistant-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .assistant-btn:hover { opacity: 0.9; }
+
     /* ─── MOBILE JUMP NAV ─── */
     .mobile-jump-nav {
       display: none;
@@ -318,6 +380,11 @@
       white-space: nowrap;
     }
     .mobile-jump-pill:hover { border-color: var(--green); color: var(--green); }
+    .mobile-jump-pill.pill-new {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-pale);
+    }
     @media (max-width: 860px) {
       .mobile-jump-nav { display: flex; }
     }
@@ -476,7 +543,7 @@
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         Copy
       </button>
-      <span class="strip-copied" id="stripCopied">✓ Copied!</span>
+      <span class="strip-copied" id="stripCopied">&#10003; Copied!</span>
     </div>
   </div>
 
@@ -484,13 +551,14 @@
   <div class="hero-section">
     <div class="container">
       <div class="hero-eyebrow">Real owner resource</div>
-      <h1 class="hero-title">Rivian tools, reviews, news & resources for R1S, R1T, and R2 owners.</h1>
-      <p class="hero-sub">An independent resource from a Las Vegas-based R1S owner — not Rivian's official site, just real ownership experience.</p>
+      <h1 class="hero-title">Rivian tools, reviews, news &amp; resources for R1S, R1T, and R2 owners.</h1>
+      <p class="hero-sub">An independent resource from a Las Vegas-based R1S owner &mdash; not Rivian&rsquo;s official site, just real ownership experience.</p>
     </div>
   </div>
 
   <!-- ─── MOBILE JUMP NAV ─── -->
   <div class="mobile-jump-nav" id="mobileJumpNav">
+    <a href="#section-assistant" class="mobile-jump-pill pill-new">&#9733; Assistant</a>
     <a href="#section-news" class="mobile-jump-pill">News</a>
     <a href="#section-reddit" class="mobile-jump-pill">Reddit</a>
     <a href="#section-review" class="mobile-jump-pill">Review</a>
@@ -507,21 +575,31 @@
         <!-- LEFT COLUMN -->
         <div class="left-col">
 
+          <!-- ASSISTANT FEATURE CARD -->
+          <div class="assistant-card" id="section-assistant">
+            <div>
+              <div class="assistant-new-badge">New in 2026.15</div>
+              <h2 class="review-title">Hey Rivian &mdash; Voice Assistant Guide</h2>
+              <p class="review-excerpt">Owner-verified commands for climate, navigation, vehicle controls, media, calendar, and more. Includes known issues, tips, and FAQ &mdash; updated for the 2026.15 launch.</p>
+            </div>
+            <a href="/assistant/" class="assistant-btn">View guide &rarr;</a>
+          </div>
+
           <!-- NEWS — 6 cards, 3 columns -->
           <div class="card" id="section-news">
             <div class="news-header">
               <div class="section-label">Latest Rivian &amp; EV news</div>
             </div>
             <div class="news-grid" id="newsTeaserFeed">
-              <div class="news-card"><div class="news-card-source">Loading…</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
-              <div class="news-card"><div class="news-card-source">Loading…</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
-              <div class="news-card"><div class="news-card-source">Loading…</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
-              <div class="news-card"><div class="news-card-source">Loading…</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
-              <div class="news-card"><div class="news-card-source">Loading…</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
-              <div class="news-card"><div class="news-card-source">Loading…</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
+              <div class="news-card"><div class="news-card-source">Loading&hellip;</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
+              <div class="news-card"><div class="news-card-source">Loading&hellip;</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
+              <div class="news-card"><div class="news-card-source">Loading&hellip;</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
+              <div class="news-card"><div class="news-card-source">Loading&hellip;</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
+              <div class="news-card"><div class="news-card-source">Loading&hellip;</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
+              <div class="news-card"><div class="news-card-source">Loading&hellip;</div><div class="news-card-title" style="color:var(--text-dim);">Fetching headlines</div></div>
             </div>
           </div>
-          
+
           <!-- REDDIT FEED — tabbed -->
           <div class="card" id="section-reddit">
             <div class="news-header">
@@ -543,8 +621,8 @@
               <div class="reddit-row skeleton-row"><div class="skeleton" style="height:14px; width:75%; border-radius:4px;"></div></div>
             </div>
           </div>
-          
-  <!-- RECALL VIN LOOKUP -->
+
+          <!-- RECALL VIN LOOKUP -->
           <div class="card recalls-card" id="section-recalls">
             <div class="news-header">
               <div class="section-label">
@@ -552,7 +630,7 @@
                 Recall Check
               </div>
             </div>
-            <p style="font-size:14px; color:var(--text-muted); line-height:1.6; margin-bottom:16px;">Enter your VIN to check for open recalls directly on NHTSA — the official source, always current.</p>
+            <p style="font-size:14px; color:var(--text-muted); line-height:1.6; margin-bottom:16px;">Enter your VIN to check for open recalls directly on NHTSA &mdash; the official source, always current.</p>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
               <input
                 id="vinInput"
@@ -561,11 +639,11 @@
                 maxlength="17"
                 class="vin-input"
               />
-              <a id="vinBtn" href="https://www.nhtsa.gov/vehicle/vin-lookup" target="_blank" rel="noopener noreferrer" class="link-btn" style="white-space:nowrap;">Check on NHTSA →</a>
+              <a id="vinBtn" href="https://www.nhtsa.gov/vehicle/vin-lookup" target="_blank" rel="noopener noreferrer" class="link-btn" style="white-space:nowrap;">Check on NHTSA &rarr;</a>
             </div>
-            <p style="font-size:11px; color:var(--text-dim); margin-top:10px;">Your VIN is on your dashboard (driver's side), door jamb sticker, or registration.</p>
+            <p style="font-size:11px; color:var(--text-dim); margin-top:10px;">Your VIN is on your dashboard (driver&rsquo;s side), door jamb sticker, or registration.</p>
           </div>
-          
+
           <div class="review-card" id="section-review">
             <div class="section-label">Featured review</div>
             <h2 class="review-title">90 Days With My 2026 Rivian R1S</h2>
@@ -575,14 +653,14 @@
               <span class="tag">Sound + Vision</span>
               <span style="font-size:12px; color:var(--text-dim);">May 2025</span>
             </div>
-            <p class="review-excerpt">After 90 days of daily driving, the R1S has become one of the most enjoyable vehicles I've owned. Notes on charging, service, software quirks, tire decisions, and the Sound + Vision package in the real world.</p>
+            <p class="review-excerpt">After 90 days of daily driving, the R1S has become one of the most enjoyable vehicles I&rsquo;ve owned. Notes on charging, service, software quirks, tire decisions, and the Sound + Vision package in the real world.</p>
             <a href="/reviews/2026-rivian-r1s-90-day-review/" class="link-btn">Read full review</a>
           </div>
 
           <div class="guide-card">
             <div>
               <div class="section-label">Featured guide</div>
-              <h2 class="review-title">R1S vs R2 — Full Comparison</h2>
+              <h2 class="review-title">R1S vs R2 &mdash; Full Comparison</h2>
               <p class="review-excerpt">Side-by-side breakdown of range, price, dimensions, towing capacity, and feature differences to help you decide which Rivian is right for you.</p>
             </div>
             <a href="/compare/" class="link-btn">See the comparison</a>
@@ -604,25 +682,25 @@
               <div class="resource-row">
                 <div>
                   <div class="resource-name">Samsung T7 Shield 1TB</div>
-                  <div class="resource-desc">Heat-resistant Gear Guard SSD — plug and play</div>
+                  <div class="resource-desc">Heat-resistant Gear Guard SSD &mdash; plug and play</div>
                 </div>
-                <a href="https://amzn.to/4ttCWun" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon →</a>
+                <a href="https://amzn.to/4ttCWun" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon &rarr;</a>
               </div>
               <div class="resource-row">
                 <div>
                   <div class="resource-name">A2Z CCS1 Adapter</div>
                   <div class="resource-desc">Essential for NACS owners at third-party chargers</div>
                 </div>
-                <a href="https://amzn.to/4eBEaQw" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon →</a>
+                <a href="https://amzn.to/4eBEaQw" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon &rarr;</a>
               </div>
               <div class="resource-row">
                 <div>
                   <div class="resource-name">TWRAPS Wireless Charger</div>
-                  <div class="resource-desc">MagSafe dual charger — looks factory installed</div>
+                  <div class="resource-desc">MagSafe dual charger &mdash; looks factory installed</div>
                 </div>
-                <a href="https://amzn.to/3P3wwE5" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon →</a>
+                <a href="https://amzn.to/3P3wwE5" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon &rarr;</a>
               </div>
-              <a href="/accessories/" class="link-btn" style="margin-top:12px;font-size:13px;">Read full reviews →</a>
+              <a href="/accessories/" class="link-btn" style="margin-top:12px;font-size:13px;">Read full reviews &rarr;</a>
               <p style="font-size:10px; color:var(--text-dim); margin-top:8px; line-height:1.5;">As an Amazon Associate I may earn from qualifying purchases.</p>
             </div>
 
@@ -632,8 +710,8 @@
               <div class="rewards-row"><span class="rewards-row-label">Tri / Quad Motor</span><span class="rewards-row-val">500 pts</span></div>
               <div class="rewards-row"><span class="rewards-row-label">Dual Max Battery</span><span class="rewards-row-val">250 pts</span></div>
               <div class="rewards-row"><span class="rewards-row-label">Dual Standard</span><span class="rewards-row-val">100 pts</span></div>
-              <div class="rewards-row"><span class="rewards-row-label">Free charging</span><span class="rewards-row-val gold">3 months ⚡</span></div>
-              <a href="/rivian-referral-code/" class="link-btn" style="margin-top:16px; font-size:13px; display:flex; justify-content:center;">Use code SCOTT4395475 →</a>
+              <div class="rewards-row"><span class="rewards-row-label">Free charging</span><span class="rewards-row-val gold">3 months &#9889;</span></div>
+              <a href="/rivian-referral-code/" class="link-btn" style="margin-top:16px; font-size:13px; display:flex; justify-content:center;">Use code SCOTT4395475 &rarr;</a>
             </div>
 
           </div>
@@ -669,31 +747,38 @@
             <a href="/software/" class="link-btn" style="margin-top:12px;font-size:13px;">Full update history</a>
           </div>
 
+          <!-- ASSISTANT SIDEBAR CARD -->
+          <div class="card" style="padding:20px; background:var(--green-dark); border-color:transparent;">
+            <div class="section-label" style="color:#9FE1CB;">Hey Rivian</div>
+            <p style="font-size:13px; color:rgba(255,255,255,0.75); line-height:1.65; margin-bottom:12px;">New in 2026.15 &mdash; owner-verified commands, known issues, and tips for the AI voice assistant.</p>
+            <a href="/assistant/" style="display:block; text-align:center; background:var(--green-light); color:var(--green-dark); font-weight:700; font-size:13px; padding:9px 14px; border-radius:6px; text-decoration:none;">View assistant guide &rarr;</a>
+          </div>
+
           <!-- ACCESSORIES -->
           <div class="card" id="section-accessories" style="padding:20px;">
             <div class="section-label">Tested accessories</div>
             <div class="resource-row">
               <div>
                 <div class="resource-name">Samsung T7 Shield 1TB</div>
-                <div class="resource-desc">Heat-resistant Gear Guard SSD — plug and play</div>
+                <div class="resource-desc">Heat-resistant Gear Guard SSD &mdash; plug and play</div>
               </div>
-              <a href="https://amzn.to/4ttCWun" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon →</a>
+              <a href="https://amzn.to/4ttCWun" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon &rarr;</a>
             </div>
             <div class="resource-row">
               <div>
                 <div class="resource-name">A2Z CCS1 Adapter</div>
                 <div class="resource-desc">Essential for NACS owners at third-party chargers</div>
               </div>
-              <a href="https://amzn.to/4eBEaQw" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon →</a>
+              <a href="https://amzn.to/4eBEaQw" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon &rarr;</a>
             </div>
             <div class="resource-row">
               <div>
                 <div class="resource-name">TWRAPS Wireless Charger</div>
-                <div class="resource-desc">MagSafe dual charger — looks factory installed</div>
+                <div class="resource-desc">MagSafe dual charger &mdash; looks factory installed</div>
               </div>
-              <a href="https://amzn.to/3P3wwE5" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon →</a>
+              <a href="https://amzn.to/3P3wwE5" target="_blank" rel="noopener noreferrer" class="resource-link">Amazon &rarr;</a>
             </div>
-            <a href="/accessories/" class="link-btn" style="margin-top:12px;font-size:13px;">Read full reviews →</a>
+            <a href="/accessories/" class="link-btn" style="margin-top:12px;font-size:13px;">Read full reviews &rarr;</a>
             <p style="font-size:10px; color:var(--text-dim); margin-top:8px; line-height:1.5;">As an Amazon Associate I may earn from qualifying purchases.</p>
           </div>
 
@@ -729,12 +814,12 @@
           <!-- REFERRAL REWARDS -->
           <div class="card rewards-card">
             <div class="section-label">Using a referral code?</div>
-            <p style="font-size:13px; color:var(--text-muted); line-height:1.6; margin-bottom:14px;">When you order a Rivian using an owner referral code, both you and the referring owner receive Rivian Rewards points — plus 3 months of complimentary Adventure Network charging. Points vary by configuration:</p>
+            <p style="font-size:13px; color:var(--text-muted); line-height:1.6; margin-bottom:14px;">When you order a Rivian using an owner referral code, both you and the referring owner receive Rivian Rewards points &mdash; plus 3 months of complimentary Adventure Network charging. Points vary by configuration:</p>
             <div class="rewards-row"><span class="rewards-row-label">Tri / Quad Motor</span><span class="rewards-row-val">500 pts</span></div>
             <div class="rewards-row"><span class="rewards-row-label">Dual Max Battery</span><span class="rewards-row-val">250 pts</span></div>
             <div class="rewards-row"><span class="rewards-row-label">Dual Standard</span><span class="rewards-row-val">100 pts</span></div>
-            <div class="rewards-row"><span class="rewards-row-label">Free charging</span><span class="rewards-row-val gold">3 months ⚡</span></div>
-            <a href="/rivian-referral-code/" class="link-btn" style="margin-top:16px; font-size:13px; display:flex; justify-content:center;">Use code SCOTT4395475 →</a>
+            <div class="rewards-row"><span class="rewards-row-label">Free charging</span><span class="rewards-row-val gold">3 months &#9889;</span></div>
+            <a href="/rivian-referral-code/" class="link-btn" style="margin-top:16px; font-size:13px; display:flex; justify-content:center;">Use code SCOTT4395475 &rarr;</a>
           </div>
 
         </div>
@@ -749,7 +834,7 @@
     <div class="contact-card">
       <div class="section-label" style="justify-content:center; margin-bottom:10px;">Get in touch</div>
       <h2 style="font-family:'DM Sans',sans-serif; font-size:clamp(22px,3vw,30px); font-weight:800; color:var(--text); margin-bottom:12px; letter-spacing:-0.02em;">Questions or ownership chat?</h2>
-      <p>Questions, tips, or reader submissions — accessory recommendations, road trip notes, ownership observations. Happy to talk Rivian.</p>
+      <p>Questions, tips, or reader submissions &mdash; accessory recommendations, road trip notes, ownership observations. Happy to talk Rivian.</p>
       <a class="contact-link" href="mailto:rivianresource@gmail.com">rivianresource@gmail.com</a>
     </div>
   </div>
@@ -762,6 +847,8 @@
       Not affiliated with or endorsed by Rivian Automotive, Inc.
       <div class="footer-guides">
         <span class="footer-guides-label">Guides</span>
+        <a href="/assistant/">Assistant</a>
+        <a href="/software/">Software</a>
         <a href="/compare/">R1S vs R2 Comparison</a>
         <a href="/accessories/">Accessories</a>
         <a href="/about/">About</a>
@@ -833,8 +920,6 @@
         `).join('');
       }
 
-      function cleanTitle(title) { return title.replace(/\s-\s[^-]+$/, ''); }
-      function getSource(title) { const p = title.split(' - '); return p.length > 1 ? p[p.length - 1] : ''; }
       function formatDate(d) { return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
 
       try {
@@ -896,7 +981,7 @@
         redditCache[tab] = posts;
         renderRedditPosts(posts);
       } catch(e) {
-        container.innerHTML = `<p style="padding:8px 12px; font-size:13px; color:var(--text-muted);">Visit <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" style="color:var(--green);">r/Rivian on Reddit →</a></p>`;
+        container.innerHTML = `<p style="padding:8px 12px; font-size:13px; color:var(--text-muted);">Visit <a href="https://www.reddit.com/r/Rivian/" target="_blank" rel="noopener noreferrer" style="color:var(--green);">r/Rivian on Reddit &rarr;</a></p>`;
       }
     }
 
@@ -915,7 +1000,7 @@
         const latest = updates[0];
         document.getElementById('swVersion').textContent = latest.version;
         document.getElementById('swDate').textContent = latest.name
-          ? `${latest.name} · ${latest.date}`
+          ? `${latest.name} \u00b7 ${latest.date}`
           : latest.date;
         document.getElementById('swHighlights').innerHTML = latest.highlights
           .slice(0, 4)
@@ -925,7 +1010,7 @@
         const mdEl = document.getElementById('swDateMobile');
         const mhEl = document.getElementById('swHighlightsMobile');
         if (mvEl) mvEl.textContent = latest.version;
-        if (mdEl) mdEl.textContent = latest.name ? `${latest.name} · ${latest.date}` : latest.date;
+        if (mdEl) mdEl.textContent = latest.name ? `${latest.name} \u00b7 ${latest.date}` : latest.date;
         if (mhEl) mhEl.innerHTML = latest.highlights.slice(0, 3).map(h => `<div class="sw-highlight">${h}</div>`).join('');
       } catch(e) {
         document.getElementById('swDate').textContent = 'Unable to load update data';
@@ -938,9 +1023,9 @@
       const vinBtn = document.getElementById('vinBtn');
       vinInput.addEventListener('input', function() {
         const vin = this.value.trim().toUpperCase();
-       vinBtn.href = vin.length === 17
-  ? `https://www.nhtsa.gov/recalls?vymm=${vin}`
-  : 'https://www.nhtsa.gov/recalls';
+        vinBtn.href = vin.length === 17
+          ? `https://www.nhtsa.gov/recalls?vymm=${vin}`
+          : 'https://www.nhtsa.gov/recalls';
       });
 
       loadNewsTeaser();
