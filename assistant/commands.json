@@ -1,50 +1,29 @@
 {
-  "lastUpdated": "May 17, 2026",
+  "lastUpdated": "May 25, 2026",
   "version": "2026.15",
   "requiresConnectPlus": true,
   "connectPlusPrice": "$14.99/month or $149.99/year",
   "activation": [
     "Say 'Hey Rivian' or 'OK Rivian'",
-    "Hold left steering wheel button",
-    "Tap the assistant icon on the center display"
+    "Long-press the left thumbwheel on the steering wheel",
+    "Tap the assistant icon in the status bar on the center display"
   ],
-  "compatibility": "All Gen 1 and Gen 2 R1S and R1T owners. Expected to be available on R2 at launch.",
-  "alexa": "Enabling Rivian Assistant disables Alexa integration — you cannot run both simultaneously.",
-  "ownerNote": "I've been using Hey Rivian since 2026.15 dropped. Sometimes it's great, sometimes it's not.  The biggest thing: you don't need to memorize commands — just talk to it like a person and it figures it out. In my experience, conversational navigation chaining feels noticeably better than Alexa.",
+  "compatibility": "All Gen 1 and Gen 2 R1S and R1T owners in the US and Canada. Expected to be available on R2 at launch.",
+  "alexa": "Enabling Rivian Assistant disables Alexa and all Alexa integrations — you cannot run both simultaneously. Amazon Music can still be played via Bluetooth, but Alexa voice control of Amazon Music will not work.",
+  "ownerNote": "I've been using Hey Rivian since 2026.15 dropped. Sometimes it's great, sometimes it's not. The biggest thing: you don't need to memorize commands — just talk to it like a person and it figures it out. In my experience, conversational navigation chaining feels noticeably better than Alexa. Make sure to enable Memory and Google Calendar in the Rivian app under Account > Rivian Intelligence — both are off by default and worth turning on.",
   "categories": [
     {
       "id": "climate",
       "title": "Climate Control",
       "icon": "thermometer",
       "commands": [
-        {
-          "text": "Set cabin temperature to 70 degrees.",
-          "notes": null
-        },
-        {
-          "text": "Make it warmer.",
-          "notes": null
-        },
-        {
-          "text": "I'm cold.",
-          "notes": null
-        },
-        {
-          "text": "Turn on seat heaters.",
-          "notes": null
-        },
-        {
-          "text": "Turn on passenger seat ventilation.",
-          "notes": null
-        },
-        {
-          "text": "Defrost the windshield.",
-          "notes": null
-        },
-        {
-          "text": "Turn on rear defrost.",
-          "notes": null
-        }
+        { "text": "Set cabin temperature to 70 degrees.", "notes": null },
+        { "text": "Make it warmer.", "notes": null },
+        { "text": "I'm cold.", "notes": null },
+        { "text": "Turn on seat heaters.", "notes": null },
+        { "text": "Turn on passenger seat ventilation.", "notes": null },
+        { "text": "Defrost the windshield.", "notes": null },
+        { "text": "Turn on rear defrost.", "notes": null }
       ]
     },
     {
@@ -52,38 +31,14 @@
       "title": "Vehicle Controls",
       "icon": "truck",
       "commands": [
-        {
-          "text": "Switch to All-Purpose mode.",
-          "notes": null
-        },
-        {
-          "text": "Switch to Off-Road mode.",
-          "notes": null
-        },
-        {
-          "text": "Raise the suspension.",
-          "notes": "Air suspension equipped vehicles only."
-        },
-        {
-          "text": "Open the frunk.",
-          "notes": null
-        },
-        {
-          "text": "Open the garage door.",
-          "notes": "Works with configured HomeLink garage doors."
-        },
-        {
-          "text": "Close the garage door.",
-          "notes": "Works with configured HomeLink garage doors."
-        },
-        {
-          "text": "Turn on camp mode.",
-          "notes": null
-        },
-        {
-          "text": "Show the cameras.",
-          "notes": null
-        }
+        { "text": "Switch to All-Purpose mode.", "notes": null },
+        { "text": "Switch to Off-Road mode.", "notes": null },
+        { "text": "Raise the suspension.", "notes": "Air suspension equipped vehicles only." },
+        { "text": "Open the frunk.", "notes": null },
+        { "text": "Open the garage door.", "notes": "Works with configured HomeLink garage doors." },
+        { "text": "Close the garage door.", "notes": "Works with configured HomeLink garage doors." },
+        { "text": "Turn on camp mode.", "notes": null },
+        { "text": "Show the cameras.", "notes": null }
       ]
     },
     {
@@ -91,34 +46,13 @@
       "title": "Navigation",
       "icon": "map",
       "commands": [
-        {
-          "text": "Navigate home.",
-          "notes": null
-        },
-        {
-          "text": "Take me to the nearest car wash.",
-          "notes": null
-        },
-        {
-          "text": "Navigate to Zion National Park.",
-          "notes": null
-        },
-        {
-          "text": "Find a Buc-ee's along my route.",
-          "notes": "Route-aware POI search — works with any brand or category, not just Buc-ee's."
-        },
-        {
-          "text": "Find a charger nearby.",
-          "notes": null
-        },
-        {
-          "text": "Can I make it there without charging?",
-          "notes": "Range-aware navigation question."
-        },
-        {
-          "text": "Find a place to eat near my next charging stop.",
-          "notes": null
-        }
+        { "text": "Navigate home.", "notes": null },
+        { "text": "Take me to the nearest car wash.", "notes": null },
+        { "text": "Navigate to Zion National Park.", "notes": null },
+        { "text": "Find a Buc-ee's along my route.", "notes": "Route-aware POI search — works with any brand or category, not just Buc-ee's." },
+        { "text": "Find a charger nearby.", "notes": null },
+        { "text": "Can I make it there without charging?", "notes": "Range-aware navigation question." },
+        { "text": "Find a place to eat near my next charging stop.", "notes": null }
       ]
     },
     {
@@ -126,26 +60,11 @@
       "title": "Charging",
       "icon": "zap",
       "commands": [
-        {
-          "text": "Find a fast charger nearby.",
-          "notes": null
-        },
-        {
-          "text": "Navigate to a Rivian Adventure Network charger.",
-          "notes": null
-        },
-        {
-          "text": "What's my charging speed?",
-          "notes": null
-        },
-        {
-          "text": "Set charge limit to 80%.",
-          "notes": null
-        },
-        {
-          "text": "How long until I reach 80%?",
-          "notes": null
-        }
+        { "text": "Find a fast charger nearby.", "notes": null },
+        { "text": "Navigate to a Rivian Adventure Network charger.", "notes": null },
+        { "text": "What's my charging speed?", "notes": null },
+        { "text": "Set charge limit to 80%.", "notes": null },
+        { "text": "How long until I reach 80%?", "notes": null }
       ]
     },
     {
@@ -153,26 +72,11 @@
       "title": "Media",
       "icon": "music",
       "commands": [
-        {
-          "text": "Play Noah Kahan on Spotify.",
-          "notes": "Media commands work with supported music services including Spotify and Apple Music."
-        },
-        {
-          "text": "Volume 10.",
-          "notes": null
-        },
-        {
-          "text": "Skip this song.",
-          "notes": null
-        },
-        {
-          "text": "Resume playback.",
-          "notes": null
-        },
-        {
-          "text": "What song is this?",
-          "notes": null
-        }
+        { "text": "Play Noah Kahan on Spotify.", "notes": "Works with Spotify and Apple Music. Amazon Music requires Bluetooth playback — Alexa voice control of Amazon Music is disabled when Rivian Assistant is active." },
+        { "text": "Volume 10.", "notes": null },
+        { "text": "Skip this song.", "notes": null },
+        { "text": "Resume playback.", "notes": null },
+        { "text": "What song is this?", "notes": null }
       ]
     },
     {
@@ -180,22 +84,10 @@
       "title": "Messaging & Calls",
       "icon": "message",
       "commands": [
-        {
-          "text": "Read my messages.",
-          "notes": null
-        },
-        {
-          "text": "Text Sarah and tell her I'm running late.",
-          "notes": "Natural phrasing works — no need to dictate the exact message."
-        },
-        {
-          "text": "Text John I'll arrive in 20 minutes.",
-          "notes": null
-        },
-        {
-          "text": "Call Mike.",
-          "notes": null
-        }
+        { "text": "Read my messages.", "notes": null },
+        { "text": "Text Sarah and tell her I'm running late.", "notes": "Natural phrasing works — no need to dictate the exact message. One-on-one texts only; group text replies are not supported due to Bluetooth protocol limitations." },
+        { "text": "Text John I'll arrive in 20 minutes.", "notes": null },
+        { "text": "Call Mike.", "notes": null }
       ]
     },
     {
@@ -203,22 +95,10 @@
       "title": "Calendar",
       "icon": "calendar",
       "commands": [
-        {
-          "text": "What's my first appointment today?",
-          "notes": "Requires Google Calendar connected in settings."
-        },
-        {
-          "text": "Navigate to my next meeting.",
-          "notes": "Requires Google Calendar."
-        },
-        {
-          "text": "What's my next meeting?",
-          "notes": "Requires Google Calendar."
-        },
-        {
-          "text": "What time do I need to leave?",
-          "notes": "Requires Google Calendar."
-        }
+        { "text": "What's my first appointment today?", "notes": "Requires Google Calendar connected in the Rivian app under Account > Rivian Intelligence. Google Calendar is off by default." },
+        { "text": "Navigate to my next meeting.", "notes": "Requires Google Calendar." },
+        { "text": "What's my next meeting?", "notes": "Requires Google Calendar." },
+        { "text": "What time do I need to leave?", "notes": "Requires Google Calendar." }
       ]
     },
     {
@@ -226,22 +106,11 @@
       "title": "Owner's Guide",
       "icon": "book",
       "commands": [
-        {
-          "text": "What does this warning light mean?",
-          "notes": "Rivian bills the assistant as an encyclopedia for your vehicle — replaces digging through the owner's manual."
-        },
-        {
-          "text": "How do I use camp mode?",
-          "notes": null
-        },
-        {
-          "text": "How do I open the charge port manually?",
-          "notes": null
-        },
-        {
-          "text": "What tire pressure should I use?",
-          "notes": null
-        }
+        { "text": "What does this warning light mean?", "notes": "Rivian bills the assistant as an encyclopedia for your vehicle — replaces digging through the owner's manual." },
+        { "text": "How do I use camp mode?", "notes": null },
+        { "text": "How do I open the charge port manually?", "notes": null },
+        { "text": "What tire pressure should I use?", "notes": null },
+        { "text": "Walk me through troubleshooting this alert.", "notes": "The assistant can explain in-vehicle alerts and guide you through next steps." }
       ]
     },
     {
@@ -249,75 +118,114 @@
       "title": "General Knowledge",
       "icon": "globe",
       "commands": [
-        {
-          "text": "What's the weather at my destination?",
-          "notes": null
-        },
-        {
-          "text": "Summarize local news.",
-          "notes": null
-        },
-        {
-          "text": "When does the national park close?",
-          "notes": null
-        },
-        {
-          "text": "Tell me a joke.",
-          "notes": "The assistant has personality."
-        }
+        { "text": "What's the weather at my destination?", "notes": null },
+        { "text": "Summarize local news.", "notes": null },
+        { "text": "When does the national park close?", "notes": null },
+        { "text": "Tell me a joke.", "notes": "The assistant has personality." }
       ]
     }
   ],
   "limitations": [
-    "Requires active Connect+ subscription or trial ($14.99/month or $149.99/year)",
-    "English only at launch",
-    "Many assistant features require an internet connection — some local vehicle controls may still function without connectivity",
-    "Some owners report unintentional wake word activations at highway speed",
-    "Google Calendar is the primary third-party integration available at launch — Apple Calendar and Outlook support coming in future updates"
+    "Requires active Connect+ subscription or trial ($14.99/month or $149.99/year) — priced per vehicle, no family or multi-vehicle discount",
+    "English only",
+    "Most features require an internet connection — some local vehicle controls may still function without connectivity",
+    "Cannot reply to group texts — a Bluetooth protocol (MAP) limitation, not specific to Rivian",
+    "Alexa voice control of Amazon Music is disabled when Rivian Assistant is active; Amazon Music can still be played via Bluetooth",
+    "Google Calendar and Memory features are off by default — must be enabled in the Rivian app under Account > Rivian Intelligence",
+    "Memory feature learns preferences over time but is opt-in and can be cleared at any time in the app",
+    "Some owners report unintentional wake word activations, especially at highway speed with wind noise",
+    "Some owners report the audio confirmation sequence (multiple beep tones per command) feels excessive — verbosity can be adjusted via the Chattiness slider in Assistant settings",
+    "Apple Calendar and Outlook support not yet available — expected in a future update"
   ],
   "tips": [
     "Use conversational phrasing rather than keyword commands. 'I'm cold' works better than 'Set HVAC 70'.",
-    "The assistant appears to maintain context during a session — you can say 'make it warmer' after setting a temperature without repeating yourself.",
-    "Connect Google Calendar in Settings for meeting navigation and related assistant features.",
-    "Some preferences and context may be tied to the active driver profile — household members may not see your settings.",
-    "You can disable the Hey Rivian wake word, limit location sharing, or turn off the memory feature in privacy settings."
+    "The assistant maintains context during a session — you can say 'make it warmer' after setting a temperature without repeating yourself.",
+    "Enable Google Calendar and Memory in the Rivian app under Account > Rivian Intelligence — both are off by default but significantly improve the experience.",
+    "Adjust the Chattiness slider in Settings > Apps > Rivian Assistant to reduce audio feedback if the confirmation beeps feel excessive.",
+    "To stop a command mid-interaction, press the left thumbwheel or tap the Rivian Assistant wave graphic on the center display.",
+    "Some preferences and context are tied to the active driver profile — household members may not see your settings.",
+    "You can disable the wake word, limit location sharing, or turn off Memory in Settings > Apps > Rivian Assistant or in the Rivian app."
+  ],
+  "issues": [
+    {
+      "title": "Group text replies don't send",
+      "symptom": "You ask the assistant to reply to a group text and the message never goes to the thread.",
+      "cause": "A Bluetooth protocol limitation (MAP — Message Access Profile). MAP was designed for one-on-one conversations only. Group threads appear as notifications, but the protocol has no mechanism to reply to them.",
+      "fix": "This is a protocol-level limitation, not a Rivian bug. Use your phone directly to reply to group threads. Rivian has not announced a timeline for a workaround."
+    },
+    {
+      "title": "Amazon Music won't play by voice",
+      "symptom": "After enabling Rivian Assistant, asking to play Amazon Music does nothing or returns an error.",
+      "cause": "Enabling Rivian Assistant automatically disables Alexa and all Alexa integrations, including Alexa-based Amazon Music voice control.",
+      "fix": "Amazon Music can still be played via Bluetooth from your phone. If Amazon Music voice control is essential, you'll need to disable Rivian Assistant in Settings > Apps > Rivian Assistant and revert to Alexa."
+    },
+    {
+      "title": "Google Calendar commands not working",
+      "symptom": "Asking about meetings or navigation to appointments returns no results or an error.",
+      "cause": "Google Calendar integration is off by default. It must be manually enabled in the Rivian mobile app.",
+      "fix": "Open the Rivian app > Account > Rivian Intelligence > Google Calendar and connect your account. Requires Rivian app version 3.12 or later."
+    },
+    {
+      "title": "Assistant not available after updating to 2026.15",
+      "symptom": "Software shows 2026.15 but Hey Rivian option doesn't appear or first-time setup never triggers.",
+      "cause": "Rivian Assistant requires an active Connect+ subscription or active trial. It also requires completing first-time setup on the center display after the update installs.",
+      "fix": "Confirm Connect+ is active in the Rivian app. Then go to Settings > Apps > Rivian Assistant on the center display to complete setup. If Connect+ is active and setup still doesn't appear, try a soft reboot by holding the two steering wheel buttons simultaneously."
+    },
+    {
+      "title": "Excessive audio confirmation beeps",
+      "symptom": "Every command triggers multiple beep sequences — some owners report up to 7 sounds for a single interaction.",
+      "cause": "Default audio feedback settings confirm wake word, command recognition, action completion, and session timeout separately.",
+      "fix": "Go to Settings > Apps > Rivian Assistant and adjust the Chattiness slider toward 'Minimal' to reduce response verbosity and audio feedback."
+    },
+    {
+      "title": "Wake word triggering unintentionally",
+      "symptom": "Hey Rivian activates on its own, especially at highway speed or with passengers talking.",
+      "cause": "Wind noise, similar-sounding words, or audio from media can trigger the wake word. A known early limitation acknowledged by multiple owners.",
+      "fix": "You can disable the wake word entirely in Settings > Apps > Rivian Assistant and rely on the left thumbwheel long-press or status bar tap instead. Natural Interruption mode can also be toggled off to reduce false activations."
+    },
+    {
+      "title": "Memory not learning preferences",
+      "symptom": "The assistant doesn't seem to remember frequent destinations, music preferences, or past requests.",
+      "cause": "The Memory feature is off by default and must be manually enabled.",
+      "fix": "Open the Rivian app > Account > Rivian Intelligence > Memory and toggle it on. Note that Memory builds over time — it won't populate immediately after enabling."
+    }
   ],
   "faq": [
     {
       "question": "Does Hey Rivian require Connect+?",
-      "answer": "Yes. Hey Rivian requires an active Connect+ subscription ($14.99/month or $149.99/year). Some local vehicle controls may work without connectivity, but most assistant features require both Connect+ and an internet connection."
+      "answer": "Yes. Hey Rivian requires an active Connect+ subscription ($14.99/month or $149.99/year), priced per vehicle with no family or multi-vehicle discount. Some local vehicle controls may function without connectivity, but most assistant features require both Connect+ and an internet connection."
     },
     {
       "question": "Can I use Hey Rivian and Alexa at the same time?",
-      "answer": "No. Enabling Rivian Assistant disables Alexa integration — you cannot run both simultaneously. You'll need to choose one."
+      "answer": "No. Enabling Rivian Assistant disables Alexa and all Alexa integrations — you cannot run both simultaneously. Amazon Music can still be played via Bluetooth, but Alexa voice control of Amazon Music will not work."
     },
     {
       "question": "What Rivian vehicles support Hey Rivian?",
-      "answer": "All Gen 1 and Gen 2 R1S and R1T owners on software 2026.15 or later. Hey Rivian is expected to be available on R2 at launch."
+      "answer": "All Gen 1 and Gen 2 R1S and R1T owners in the US and Canada on software 2026.15 or later. Hey Rivian is expected to be available on R2 at launch."
     },
     {
       "question": "What software version do I need?",
-      "answer": "Hey Rivian requires software 2026.15 or later. Check your version under Settings → About → Software Version. Updates can be installed via the Rivian app or in-vehicle Settings."
+      "answer": "Hey Rivian requires software 2026.15 or later. Check your version under Settings > About > Software Version. Updates can be installed via the Rivian app or in-vehicle Settings."
     },
     {
       "question": "How do I activate Hey Rivian?",
-      "answer": "Three ways: say 'Hey Rivian' or 'OK Rivian', hold the left steering wheel button, or tap the assistant icon on the center display."
+      "answer": "Three ways: say 'Hey Rivian' or 'OK Rivian', long-press the left thumbwheel on the steering wheel, or tap the assistant icon in the status bar on the center display. To stop an interaction mid-session, press the left thumbwheel or tap the wave graphic on the display."
     },
     {
       "question": "Does Hey Rivian work without cell service?",
       "answer": "Partially. Some local vehicle controls (like adjusting climate or suspension) may still function without connectivity. Navigation, general knowledge, and calendar features require an active internet connection."
     },
     {
-      "question": "Can Hey Rivian read and send text messages?",
-      "answer": "Yes. You can say 'Read my messages' or 'Text Sarah and tell her I'm running late.' Natural phrasing works — you don't need to dictate the exact message word for word."
+      "question": "Can Hey Rivian send and reply to text messages?",
+      "answer": "Yes, for one-on-one texts. You can say 'Read my messages' or 'Text Sarah I'm running late.' However, replying to group texts is not supported — this is a Bluetooth protocol limitation (MAP), not a Rivian-specific bug."
     },
     {
       "question": "Does Hey Rivian integrate with Google Calendar?",
-      "answer": "Yes. Connect Google Calendar in Settings to unlock meeting navigation, departure time estimates, and appointment lookups. Apple Calendar and Outlook support are expected in a future update."
+      "answer": "Yes, but it's off by default. You need to enable it in the Rivian app under Account > Rivian Intelligence > Google Calendar (requires app version 3.12 or later). Once connected, you can navigate to meetings, get departure time estimates, and look up upcoming appointments. Apple Calendar and Outlook support are expected in a future update."
     },
     {
-      "question": "Can Hey Rivian answer questions about my vehicle?",
-      "answer": "Yes. You can ask things like 'What does this warning light mean?' or 'What tire pressure should I use?' Rivian describes the assistant as a built-in encyclopedia for your vehicle."
+      "question": "What is the Memory feature and how do I turn it on?",
+      "answer": "Memory allows Rivian Assistant to learn your preferences over time — favorite music genres, regular destinations, preferred restaurants, and more. It's off by default. Enable it in the Rivian app under Account > Rivian Intelligence > Memory. You can clear stored memory or turn it off at any time."
     },
     {
       "question": "Do I need to memorize exact commands?",
@@ -329,9 +237,11 @@
       "version": "2026.15",
       "date": "May 12, 2026",
       "changes": [
-        "Initial launch — Hey Rivian available to all Gen 1 and Gen 2 R1S and R1T owners on Connect+",
-        "Google Calendar integration — first third-party productivity integration",
-        "Full vehicle control, navigation chaining, media, messaging, and owner's guide categories live"
+        "Initial launch — Hey Rivian available to all Gen 1 and Gen 2 R1S and R1T owners in the US and Canada on Connect+",
+        "Google Calendar integration — first third-party productivity integration (off by default, enable in Rivian app)",
+        "Memory feature — assistant learns preferences over time (off by default, enable in Rivian app)",
+        "Full vehicle control, navigation chaining, media, messaging, and owner's guide categories live",
+        "Profile PIN authentication added alongside assistant launch"
       ]
     }
   ]
