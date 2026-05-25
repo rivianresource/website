@@ -1,28 +1,82 @@
-   <line x1="6" y1="6" x2="18" y2="18"/>
+<nav class="top-nav">
+  <div class="container nav-inner" id="navInner">
+    <a href="/" class="nav-brand">
+      <img src="/images/logo.svg" alt="Rivian Resource">
+      <span>Rivian Resource</span>
+    </a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+      <svg id="navIconMenu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+      <svg id="navIconClose" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
       </svg>
     </button>
     <div class="nav-links" id="navLinks">
-  <a href="/">Home</a>
-  <a href="/delivery/">Delivery Checklist</a>
-  <a href="/charging/">Charging</a>
-  <a href="/software/">Software</a>
-  <a href="/assistant/" style="display:inline-flex;align-items:center;gap:6px;">
-    Assistant
-    <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;background:var(--green);color:#fff;padding:2px 6px;border-radius:3px;line-height:1.4;">New</span>
-  </a>
-  <a href="/accessories/">Accessories</a>
-</div>
-<div class="nav-links" id="navLinks">
-  <a href="/">Home</a>
-  <a href="/delivery/">Delivery Checklist</a>
-  <a href="/charging/">Charging</a>
-  <a href="/software/">Software</a>
-  <a href="/assistant/" style="display:inline-flex;align-items:center;gap:6px;">
-    Assistant
-    <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;background:var(--green);color:#fff;padding:2px 6px;border-radius:3px;line-height:1.4;">New</span>
-  </a>
-  <a href="/accessories/">Accessories</a>
-</div>
+      <a href="/">Home</a>
+      <a href="/delivery/">Delivery Checklist</a>
+      <a href="/charging/">Charging</a>
+      <a href="/software/">Software</a>
+      <a href="/assistant/" style="display:inline-flex;align-items:center;gap:6px;">
+        Assistant
+        <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;background:var(--green);color:#fff;padding:2px 6px;border-radius:3px;line-height:1.4;">New</span>
+      </a>
+      <a href="/accessories/">Accessories</a>
+    </div>
   </div>
 </nav>
 <style>
+  @media (min-width: 781px) {
+    .nav-hamburger { display: none; }
+    .nav-links { gap: 24px; }
+  }
+  @media (max-width: 960px) and (min-width: 781px) {
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 14px; }
+  }
+  @media (max-width: 780px) {
+    .nav-inner {
+      flex-direction: row !important;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 14px 0;
+    }
+    .nav-hamburger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--bg-secondary, #f5f6f8);
+      border: 1px solid var(--border, #e4e6ea);
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--text, #111827);
+      flex-shrink: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-hamburger:hover {
+      background: var(--green-pale, #EAF3DE);
+      border-color: var(--green, #1D9E75);
+      color: var(--green, #1D9E75);
+    }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      width: 100%;
+      padding: 8px 0 12px;
+      border-top: 1px solid var(--border, #e4e6ea);
+      margin-top: 2px;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a {
+      width: 100%;
+      padding: 11px 4px;
+      font-size: 15px;
+      border-bottom: 1px solid va
