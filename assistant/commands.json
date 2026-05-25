@@ -129,11 +129,13 @@
     "Requires active Connect+ subscription or trial ($14.99/month or $149.99/year) — priced per vehicle, no family or multi-vehicle discount",
     "English only",
     "Most features require an internet connection — some local vehicle controls may still function without connectivity",
+    "Response times can be noticeably slow for knowledge queries — depends on signal strength and server load; vehicle control commands tend to respond faster",
     "Cannot reply to group texts — a Bluetooth protocol (MAP) limitation, not specific to Rivian",
     "Alexa voice control of Amazon Music is disabled when Rivian Assistant is active; Amazon Music can still be played via Bluetooth",
+    "CarPlay and Android Auto are not available on R1 models — Rivian Assistant is the native alternative",
     "Google Calendar and Memory features are off by default — must be enabled in the Rivian app under Account > Rivian Intelligence",
     "Memory feature learns preferences over time but is opt-in and can be cleared at any time in the app",
-    "Some owners report unintentional wake word activations, especially at highway speed with wind noise",
+    "Some owners report unintentional wake word activations, especially at highway speed with wind noise or from passengers",
     "Some owners report the audio confirmation sequence (multiple beep tones per command) feels excessive — verbosity can be adjusted via the Chattiness slider in Assistant settings",
     "Apple Calendar and Outlook support not yet available — expected in a future update"
   ],
@@ -144,7 +146,8 @@
     "Adjust the Chattiness slider in Settings > Apps > Rivian Assistant to reduce audio feedback if the confirmation beeps feel excessive.",
     "To stop a command mid-interaction, press the left thumbwheel or tap the Rivian Assistant wave graphic on the center display.",
     "Some preferences and context are tied to the active driver profile — household members may not see your settings.",
-    "You can disable the wake word, limit location sharing, or turn off Memory in Settings > Apps > Rivian Assistant or in the Rivian app."
+    "You can disable the wake word, limit location sharing, or turn off Memory in Settings > Apps > Rivian Assistant or in the Rivian app.",
+    "If you have passengers who frequently trigger the assistant by talking, disable the wake word and use only the left thumbwheel long-press to activate."
   ],
   "issues": [
     {
@@ -172,6 +175,12 @@
       "fix": "Confirm Connect+ is active in the Rivian app. Then go to Settings > Apps > Rivian Assistant on the center display to complete setup. If Connect+ is active and setup still doesn't appear, try a soft reboot by holding the two steering wheel buttons simultaneously."
     },
     {
+      "title": "Slow or delayed response times",
+      "symptom": "The assistant takes noticeably longer to process and respond than expected, especially for navigation or general knowledge queries.",
+      "cause": "Responses require a round-trip to Rivian's cloud servers. Response time varies with signal strength and server load. The assistant processes natural language through multiple AI models, which adds latency compared to keyword-based systems.",
+      "fix": "This is a known early limitation. Voice control of vehicle functions (climate, suspension, media) tends to respond faster than knowledge queries. Ensure you have a strong LTE signal. Rivian is expected to improve latency in future software updates."
+    },
+    {
       "title": "Excessive audio confirmation beeps",
       "symptom": "Every command triggers multiple beep sequences — some owners report up to 7 sounds for a single interaction.",
       "cause": "Default audio feedback settings confirm wake word, command recognition, action completion, and session timeout separately.",
@@ -180,8 +189,14 @@
     {
       "title": "Wake word triggering unintentionally",
       "symptom": "Hey Rivian activates on its own, especially at highway speed or with passengers talking.",
-      "cause": "Wind noise, similar-sounding words, or audio from media can trigger the wake word. A known early limitation acknowledged by multiple owners.",
+      "cause": "Wind noise, similar-sounding words, or audio from media can trigger the wake word. The microphone is not directional-aware — it picks up all cabin audio, not just driver commands.",
       "fix": "You can disable the wake word entirely in Settings > Apps > Rivian Assistant and rely on the left thumbwheel long-press or status bar tap instead. Natural Interruption mode can also be toggled off to reduce false activations."
+    },
+    {
+      "title": "Passengers or children triggering the assistant",
+      "symptom": "The assistant activates in response to passengers or children in the back seat speaking, not just the driver.",
+      "cause": "The microphone is not directional-aware and picks up all cabin audio equally. There is no driver-profile voice recognition to filter out non-driver activations.",
+      "fix": "Disable the wake word entirely in Settings > Apps > Rivian Assistant. Use only the left thumbwheel long-press or status bar tap to activate, which eliminates passive triggering from passengers."
     },
     {
       "title": "Memory not learning preferences",
@@ -230,6 +245,10 @@
     {
       "question": "Do I need to memorize exact commands?",
       "answer": "No. Hey Rivian is designed for conversational phrasing. 'I'm cold' works just as well as 'Set cabin temperature to 70 degrees.' Speaking naturally tends to get better results than keyword-style commands."
+    },
+    {
+      "question": "Why doesn't Rivian have CarPlay or Android Auto?",
+      "answer": "Rivian has chosen not to include CarPlay or Android Auto on R1 models, positioning Rivian Assistant as their native alternative. Rivian argues that deep vehicle integration — controlling suspension, seat heaters, navigation, and third-party apps simultaneously — isn't possible through CarPlay or Android Auto. This remains one of the most debated decisions among owners."
     }
   ],
   "changelog": [
