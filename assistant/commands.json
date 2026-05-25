@@ -212,7 +212,7 @@
           "notes": "Requires Google Calendar."
         },
         {
-          "text": "What’s my next meeting?",
+          "text": "What's my next meeting?",
           "notes": "Requires Google Calendar."
         },
         {
@@ -281,6 +281,48 @@
     "Connect Google Calendar in Settings for meeting navigation and related assistant features.",
     "Some preferences and context may be tied to the active driver profile — household members may not see your settings.",
     "You can disable the Hey Rivian wake word, limit location sharing, or turn off the memory feature in privacy settings."
+  ],
+  "faq": [
+    {
+      "question": "Does Hey Rivian require Connect+?",
+      "answer": "Yes. Hey Rivian requires an active Connect+ subscription ($14.99/month or $149.99/year). Some local vehicle controls may work without connectivity, but most assistant features require both Connect+ and an internet connection."
+    },
+    {
+      "question": "Can I use Hey Rivian and Alexa at the same time?",
+      "answer": "No. Enabling Rivian Assistant disables Alexa integration — you cannot run both simultaneously. You'll need to choose one."
+    },
+    {
+      "question": "What Rivian vehicles support Hey Rivian?",
+      "answer": "All Gen 1 and Gen 2 R1S and R1T owners on software 2026.15 or later. Hey Rivian is expected to be available on R2 at launch."
+    },
+    {
+      "question": "What software version do I need?",
+      "answer": "Hey Rivian requires software 2026.15 or later. Check your version under Settings → About → Software Version. Updates can be installed via the Rivian app or in-vehicle Settings."
+    },
+    {
+      "question": "How do I activate Hey Rivian?",
+      "answer": "Three ways: say 'Hey Rivian' or 'OK Rivian', hold the left steering wheel button, or tap the assistant icon on the center display."
+    },
+    {
+      "question": "Does Hey Rivian work without cell service?",
+      "answer": "Partially. Some local vehicle controls (like adjusting climate or suspension) may still function without connectivity. Navigation, general knowledge, and calendar features require an active internet connection."
+    },
+    {
+      "question": "Can Hey Rivian read and send text messages?",
+      "answer": "Yes. You can say 'Read my messages' or 'Text Sarah and tell her I'm running late.' Natural phrasing works — you don't need to dictate the exact message word for word."
+    },
+    {
+      "question": "Does Hey Rivian integrate with Google Calendar?",
+      "answer": "Yes. Connect Google Calendar in Settings to unlock meeting navigation, departure time estimates, and appointment lookups. Apple Calendar and Outlook support are expected in a future update."
+    },
+    {
+      "question": "Can Hey Rivian answer questions about my vehicle?",
+      "answer": "Yes. You can ask things like 'What does this warning light mean?' or 'What tire pressure should I use?' Rivian describes the assistant as a built-in encyclopedia for your vehicle."
+    },
+    {
+      "question": "Do I need to memorize exact commands?",
+      "answer": "No. Hey Rivian is designed for conversational phrasing. 'I'm cold' works just as well as 'Set cabin temperature to 70 degrees.' Speaking naturally tends to get better results than keyword-style commands."
+    }
   ],
   "changelog": [
     {
