@@ -216,30 +216,15 @@
     }
 
     .cmd-text::before {
-      content: '"';
+      content: '\201C';
       color: var(--green);
       font-weight: 700;
     }
 
     .cmd-text::after {
-      content: '"';
+      content: '\201D';
       color: var(--green);
       font-weight: 700;
-    }
-
-    .cmd-unverified {
-      flex-shrink: 0;
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 3px;
-      background: #fef3e2;
-      color: var(--gold);
-      border: 1px solid rgba(186,117,23,0.2);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-      margin-top: 2px;
     }
 
     .cmd-notes {
@@ -334,6 +319,71 @@
       font-size: 13px;
       color: var(--text-muted);
       line-height: 1.55;
+    }
+
+    /* ─── ISSUES ─── */
+    .issue-list { padding: 4px 0; }
+
+    .issue-item { border-bottom: 1px solid var(--border); }
+    .issue-item:last-child { border-bottom: none; }
+
+    .issue-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 22px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+      transition: color 0.15s;
+    }
+
+    .issue-q:hover { color: var(--green); }
+
+    .issue-chevron {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      color: var(--text-dim);
+      transition: transform 0.2s;
+    }
+
+    .issue-body {
+      padding: 0 22px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .issue-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .issue-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-dim);
+    }
+
+    .issue-label.symptom { color: #A32D2D; opacity: 0.8; }
+    .issue-label.cause { color: #b87a1a; }
+    .issue-label.fix { color: var(--green); }
+
+    .issue-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
     }
 
     /* ─── FAQ ─── */
@@ -507,8 +557,6 @@
     }
     .referral-label { font-size: 10px; color: #ffffff; text-transform: uppercase; letter-spacing: .07em; font-weight: 600; margin-bottom: 3px; }
     .referral-code { font-family: 'DM Sans', sans-serif; font-size: 20px; font-weight: 800; color: var(--green-light); letter-spacing: .04em; margin-bottom: 6px; }
-    .referral-perks { font-size: 11.5px; color: rgba(255,255,255,.7); line-height: 1.55; margin-bottom: 12px; }
-    .referral-perks strong { color: #fff; }
     .referral-btn {
       display: block; text-align: center;
       background: var(--green-light); color: var(--green-dark);
@@ -541,8 +589,8 @@
   <div class="page-header">
     <div class="container">
       <div class="page-eyebrow">Owner Resource &middot; New in 2026.15</div>
-      <h1 class="page-title">Hey Rivian — Voice Assistant Guide</h1>
-      <p class="page-sub">Owner-verified commands for R1S and R1T — climate, navigation, vehicle controls, media, calendar, and more. Built on Rivian Unified Intelligence.</p>
+      <h1 class="page-title">Hey Rivian &mdash; Voice Assistant Guide</h1>
+      <p class="page-sub">Owner-verified commands for R1S and R1T &mdash; climate, navigation, vehicle controls, media, calendar, and more. Built on Rivian Unified Intelligence.</p>
     </div>
   </div>
 
@@ -572,8 +620,15 @@
 
         <div class="connect-card" id="sidebarConnectCard">
           <div class="section-label">Connect+ required</div>
-          <p style="font-size:12px; color:var(--text-muted); line-height:1.6; margin-bottom:12px;">Hey Rivian is included with an active Connect+ subscription.</p>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.6; margin-bottom:12px;">Hey Rivian is included with an active Connect+ subscription. Priced per vehicle &mdash; no family discount.</p>
           <div id="sidebarConnectPricing"></div>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <div class="section-label">Enable in Rivian app</div>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.65; margin-bottom:8px;">Google Calendar and Memory are <strong style="color:var(--text);">off by default</strong>. Enable both in:</p>
+          <p style="font-size:12px; color:var(--green); font-weight:600; line-height:1.65;">Account &rarr; Rivian Intelligence</p>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.65; margin-top:6px;">Requires Rivian app version 3.12 or later.</p>
         </div>
 
         <div class="card" style="padding:20px;">
@@ -598,7 +653,7 @@
 
         <div class="referral-card">
           <div class="referral-label">Using a referral code?</div>
-          <p style="font-size:12px; color:#ffffff; line-height:1.6; margin-bottom:10px;">Owner referral codes give both the buyer and referrer Rivian Rewards points, plus 3 months of free Adventure Network charging. Points range from 100–500 depending on configuration.</p>
+          <p style="font-size:12px; color:#ffffff; line-height:1.6; margin-bottom:10px;">Owner referral codes give both the buyer and referrer Rivian Rewards points, plus 3 months of free Adventure Network charging.</p>
           <div class="referral-code">SCOTT4395475</div>
           <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="referral-btn">Configure Your Rivian &rarr;</a>
         </div>
@@ -643,6 +698,11 @@
     globe: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`
   };
 
+  const ICON_SVG = (key, size=13) => {
+    if (!ICONS[key]) return '';
+    return ICONS[key].replace('<svg', `<svg style="width:${size}px;height:${size}px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"`);
+  };
+
   function renderHero(data) {
     return `
       <div class="ast-hero">
@@ -657,7 +717,6 @@
             <div class="ast-hero-badge-label">Current version</div>
           </div>
         </div>
-
         <div class="ast-hero-meta">
           <div class="ast-meta-item">
             <div class="ast-meta-label">Activation</div>
@@ -672,12 +731,10 @@
             <div class="ast-meta-val">Connect+ &mdash; ${data.connectPlusPrice}</div>
           </div>
         </div>
-
         <div class="ast-alexa-warning">
           <svg class="ast-alexa-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-            <line x1="12" y1="9" x2="12" y2="13"/>
-            <line x1="12" y1="17" x2="12.01" y2="17"/>
+            <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
           </svg>
           <span class="ast-alexa-text"><strong style="color:#f5c265;">Alexa note:</strong> ${data.alexa}</span>
         </div>
@@ -686,23 +743,26 @@
   }
 
   function renderJumpNav(categories) {
+    const catPills = categories.map(cat => `
+      <a href="#cat-${cat.id}" class="jump-pill">
+        <span style="display:inline-flex;width:13px;height:13px;">${ICON_SVG(cat.icon)}</span>
+        ${cat.title}
+      </a>
+    `).join('');
+    const extraPills = `
+      <a href="#cat-issues" class="jump-pill">
+        <span style="display:inline-flex;width:13px;height:13px;"><svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+        Known Issues
+      </a>
+      <a href="#cat-faq" class="jump-pill">
+        <span style="display:inline-flex;width:13px;height:13px;"><svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+        FAQ
+      </a>
+    `;
     return `
       <div class="card" style="padding:16px 20px;">
         <div class="section-label" style="margin-bottom:12px;">Jump to category</div>
-        <div class="jump-nav">
-          ${categories.map(cat => `
-            <a href="#cat-${cat.id}" class="jump-pill">
-              ${ICONS[cat.icon] ? `<span style="display:inline-flex;width:13px;height:13px;stroke:currentColor;fill:none;">${ICONS[cat.icon].replace('<svg', '<svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"')}</span>` : ''}
-              ${cat.title}
-            </a>
-          `).join('')}
-          <a href="#cat-faq" class="jump-pill">
-            <span style="display:inline-flex;width:13px;height:13px;">
-              <svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            </span>
-            FAQ
-          </a>
-        </div>
+        <div class="jump-nav">${catPills}${extraPills}</div>
       </div>
     `;
   }
@@ -779,6 +839,44 @@
     `;
   }
 
+  function renderIssues(issues) {
+    return `
+      <div class="cat-card" id="cat-issues">
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#fff5f0;">
+            <svg viewBox="0 0 24 24" style="stroke:#b84a1a;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="cat-title">Known Issues</div>
+          <span class="cat-count">${issues.length}</span>
+        </div>
+        <div class="issue-list">
+          ${issues.map((issue, i) => `
+            <div class="issue-item" id="issue-${i}">
+              <button class="issue-q" onclick="toggleIssue(${i})" aria-expanded="false">
+                <span>${issue.title}</span>
+                <svg class="issue-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="issue-body" id="issue-b-${i}" hidden>
+                <div class="issue-row">
+                  <div class="issue-label symptom">Symptom</div>
+                  <div class="issue-text">${issue.symptom}</div>
+                </div>
+                <div class="issue-row">
+                  <div class="issue-label cause">Cause</div>
+                  <div class="issue-text">${issue.cause}</div>
+                </div>
+                <div class="issue-row">
+                  <div class="issue-label fix">Fix / Workaround</div>
+                  <div class="issue-text">${issue.fix}</div>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
   function renderFaq(faq) {
     return `
       <div class="cat-card" id="cat-faq">
@@ -804,6 +902,15 @@
         </div>
       </div>
     `;
+  }
+
+  function toggleIssue(i) {
+    const btn = document.querySelector(`#issue-${i} .issue-q`);
+    const body = document.getElementById(`issue-b-${i}`);
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    body.hidden = expanded;
+    btn.querySelector('.issue-chevron').style.transform = expanded ? '' : 'rotate(180deg)';
   }
 
   function toggleFaq(i) {
@@ -839,14 +946,16 @@
     if (!el) return;
     el.innerHTML = categories.map(cat => `
       <a href="#cat-${cat.id}" class="sjump-item">
-        <span style="display:inline-flex;width:13px;height:13px;">${ICONS[cat.icon] ? ICONS[cat.icon].replace('<svg', '<svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"') : ''}</span>
+        <span style="display:inline-flex;width:13px;height:13px;">${ICON_SVG(cat.icon)}</span>
         ${cat.title}
       </a>
     `).join('') + `
+      <a href="#cat-issues" class="sjump-item">
+        <span style="display:inline-flex;width:13px;height:13px;"><svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+        Known Issues
+      </a>
       <a href="#cat-faq" class="sjump-item">
-        <span style="display:inline-flex;width:13px;height:13px;">
-          <svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </span>
+        <span style="display:inline-flex;width:13px;height:13px;"><svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
         FAQ
       </a>
     `;
@@ -882,6 +991,7 @@
       data.categories.forEach(cat => sections.push(renderCategory(cat)));
       sections.push(renderTips(data.tips));
       sections.push(renderLimitations(data.limitations));
+      sections.push(renderIssues(data.issues));
       sections.push(renderFaq(data.faq));
       sections.push(renderChangelog(data.changelog));
 
