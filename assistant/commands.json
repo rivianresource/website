@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "May 25, 2026",
+  "lastUpdated": "May 27, 2026",
   "version": "2026.15",
   "requiresConnectPlus": true,
   "connectPlusPrice": "$14.99/month or $149.99/year",
@@ -11,6 +11,16 @@
   "compatibility": "All Gen 1 and Gen 2 R1S and R1T owners in the US and Canada. Expected to be available on R2 at launch.",
   "alexa": "Enabling Rivian Assistant disables Alexa and all Alexa integrations — you cannot run both simultaneously. Amazon Music can still be played via Bluetooth, but Alexa voice control of Amazon Music will not work.",
   "ownerNote": "I've been using Hey Rivian since 2026.15 dropped. Sometimes it's great, sometimes it's not. The biggest thing: you don't need to memorize commands — just talk to it like a person and it figures it out. In my experience, conversational navigation chaining feels noticeably better than Alexa. Make sure to enable Memory and Google Calendar in the Rivian app under Account > Rivian Intelligence — both are off by default and worth turning on.",
+  "messagingSetup": {
+    "overview": "Before the assistant can read or send texts, you need to complete a one-time Bluetooth setup in your vehicle.",
+    "steps": [
+      "From your vehicle's center display, go to Settings > Connect > Bluetooth and pair your phone.",
+      "In the device list, tap the ellipsis (...) next to your phone's name and enable both 'Sync Messages' and 'Upload Contacts'.",
+      "From your vehicle's center display, go to Phone and find the new Messages tab.",
+      "Tap 'Refresh connection' to finish setup."
+    ],
+    "iphoneExtra": "iPhone users only: On your iPhone, open Settings > Bluetooth and locate 'Rivian Audio.' Tap the blue (i) button, then enable 'Show Message Notifications' and 'Sync Contacts.'"
+  },
   "categories": [
     {
       "id": "climate",
@@ -21,6 +31,7 @@
         { "text": "Make it warmer.", "notes": null },
         { "text": "I'm cold.", "notes": null },
         { "text": "Turn on seat heaters.", "notes": null },
+        { "text": "Warm up everyone's seats except mine.", "notes": "The assistant understands complex context — it will heat all passenger seats while leaving the driver's seat unaffected." },
         { "text": "Turn on passenger seat ventilation.", "notes": null },
         { "text": "Defrost the windshield.", "notes": null },
         { "text": "Turn on rear defrost.", "notes": null }
@@ -52,7 +63,8 @@
         { "text": "Find a Buc-ee's along my route.", "notes": "Route-aware POI search — works with any brand or category, not just Buc-ee's." },
         { "text": "Find a charger nearby.", "notes": null },
         { "text": "Can I make it there without charging?", "notes": "Range-aware navigation question." },
-        { "text": "Find a place to eat near my next charging stop.", "notes": null }
+        { "text": "Find a place to eat near my next charging stop.", "notes": null },
+        { "text": "Find a coffee shop near my destination.", "notes": null }
       ]
     },
     {
@@ -64,7 +76,8 @@
         { "text": "Navigate to a Rivian Adventure Network charger.", "notes": null },
         { "text": "What's my charging speed?", "notes": null },
         { "text": "Set charge limit to 80%.", "notes": null },
-        { "text": "How long until I reach 80%?", "notes": null }
+        { "text": "How long until I reach 80%?", "notes": null },
+        { "text": "What's my range on arrival?", "notes": "Range-on-arrival estimate for your current destination." }
       ]
     },
     {
@@ -76,7 +89,8 @@
         { "text": "Volume 10.", "notes": null },
         { "text": "Skip this song.", "notes": null },
         { "text": "Resume playback.", "notes": null },
-        { "text": "What song is this?", "notes": null }
+        { "text": "What song is this?", "notes": null },
+        { "text": "When did this song come out?", "notes": null }
       ]
     },
     {
@@ -84,7 +98,7 @@
       "title": "Messaging & Calls",
       "icon": "message",
       "commands": [
-        { "text": "Read my messages.", "notes": null },
+        { "text": "Read my messages.", "notes": "The assistant can read and summarize your texts." },
         { "text": "Text Sarah and tell her I'm running late.", "notes": "Natural phrasing works — no need to dictate the exact message. One-on-one texts only; group text replies are not supported due to Bluetooth protocol limitations." },
         { "text": "Text John I'll arrive in 20 minutes.", "notes": null },
         { "text": "Call Mike.", "notes": null }
@@ -95,7 +109,7 @@
       "title": "Calendar",
       "icon": "calendar",
       "commands": [
-        { "text": "What's my first appointment today?", "notes": "Requires Google Calendar connected in the Rivian app under Account > Rivian Intelligence. Google Calendar is off by default." },
+        { "text": "What's my first appointment today?", "notes": "Requires Google Calendar connected in the Rivian app under Profile > Account > Rivian Intelligence. Google Calendar is off by default." },
         { "text": "Navigate to my next meeting.", "notes": "Requires Google Calendar." },
         { "text": "What's my next meeting?", "notes": "Requires Google Calendar." },
         { "text": "What time do I need to leave?", "notes": "Requires Google Calendar." }
@@ -110,6 +124,7 @@
         { "text": "How do I use camp mode?", "notes": null },
         { "text": "How do I open the charge port manually?", "notes": null },
         { "text": "What tire pressure should I use?", "notes": null },
+        { "text": "How do I change the tires?", "notes": null },
         { "text": "Walk me through troubleshooting this alert.", "notes": "The assistant can explain in-vehicle alerts and guide you through next steps." }
       ]
     },
@@ -133,7 +148,7 @@
     "Cannot reply to group texts — a Bluetooth protocol (MAP) limitation, not specific to Rivian",
     "Alexa voice control of Amazon Music is disabled when Rivian Assistant is active; Amazon Music can still be played via Bluetooth",
     "CarPlay and Android Auto are not available on R1 models — Rivian Assistant is the native alternative",
-    "Google Calendar and Memory features are off by default — must be enabled in the Rivian app under Account > Rivian Intelligence",
+    "Google Calendar and Memory features are off by default — must be enabled in the Rivian app under Profile > Account > Rivian Intelligence",
     "Memory feature learns preferences over time but is opt-in and can be cleared at any time in the app",
     "Some owners report unintentional wake word activations, especially at highway speed with wind noise or from passengers",
     "Some owners report the audio confirmation sequence (multiple beep tones per command) feels excessive — verbosity can be adjusted via the Chattiness slider in Assistant settings",
@@ -142,7 +157,7 @@
   "tips": [
     "Use conversational phrasing rather than keyword commands. 'I'm cold' works better than 'Set HVAC 70'.",
     "The assistant maintains context during a session — you can say 'make it warmer' after setting a temperature without repeating yourself.",
-    "Enable Google Calendar and Memory in the Rivian app under Account > Rivian Intelligence — both are off by default but significantly improve the experience.",
+    "Enable Google Calendar and Memory in the Rivian app under Profile > Account > Rivian Intelligence — both are off by default but significantly improve the experience.",
     "Adjust the Chattiness slider in Settings > Apps > Rivian Assistant to reduce audio feedback if the confirmation beeps feel excessive.",
     "To stop a command mid-interaction, press the left thumbwheel or tap the Rivian Assistant wave graphic on the center display.",
     "Some preferences and context are tied to the active driver profile — household members may not see your settings.",
@@ -166,7 +181,7 @@
       "title": "Google Calendar commands not working",
       "symptom": "Asking about meetings or navigation to appointments returns no results or an error.",
       "cause": "Google Calendar integration is off by default. It must be manually enabled in the Rivian mobile app.",
-      "fix": "Open the Rivian app > Account > Rivian Intelligence > Google Calendar and connect your account. Requires Rivian app version 3.12 or later."
+      "fix": "Open the Rivian app > Profile > Account > Rivian Intelligence > Google Calendar and connect your account. Requires Rivian app version 3.12 or later."
     },
     {
       "title": "Assistant not available after updating to 2026.15",
@@ -199,10 +214,16 @@
       "fix": "Disable the wake word entirely in Settings > Apps > Rivian Assistant. Use only the left thumbwheel long-press or status bar tap to activate, which eliminates passive triggering from passengers."
     },
     {
+      "title": "Text messages not syncing",
+      "symptom": "The assistant can't read or send texts, or the Messages tab doesn't appear in the Phone section.",
+      "cause": "Bluetooth message sync requires a one-time setup that isn't automatic. 'Sync Messages' and 'Upload Contacts' must be manually enabled for your paired phone.",
+      "fix": "Go to Settings > Connect > Bluetooth on the center display. Tap the ellipsis (...) next to your phone and enable 'Sync Messages' and 'Upload Contacts.' Then go to Phone > Messages and tap 'Refresh connection.' iPhone users also need to go to Settings > Bluetooth on their phone, tap the (i) next to 'Rivian Audio,' and enable 'Show Message Notifications' and 'Sync Contacts.'"
+    },
+    {
       "title": "Memory not learning preferences",
       "symptom": "The assistant doesn't seem to remember frequent destinations, music preferences, or past requests.",
       "cause": "The Memory feature is off by default and must be manually enabled.",
-      "fix": "Open the Rivian app > Account > Rivian Intelligence > Memory and toggle it on. Note that Memory builds over time — it won't populate immediately after enabling."
+      "fix": "Open the Rivian app > Profile > Account > Rivian Intelligence > Memory and toggle it on. Note that Memory builds over time — it won't populate immediately after enabling."
     }
   ],
   "faq": [
@@ -232,15 +253,15 @@
     },
     {
       "question": "Can Hey Rivian send and reply to text messages?",
-      "answer": "Yes, for one-on-one texts. You can say 'Read my messages' or 'Text Sarah I'm running late.' However, replying to group texts is not supported — this is a Bluetooth protocol limitation (MAP), not a Rivian-specific bug."
+      "answer": "Yes, for one-on-one texts. You can say 'Read my messages' or 'Text Sarah I'm running late.' However, replying to group texts is not supported — this is a Bluetooth protocol limitation (MAP), not a Rivian-specific bug. Before using messaging, you'll need to complete a one-time Bluetooth setup: go to Settings > Connect > Bluetooth, tap the ellipsis next to your phone, and enable 'Sync Messages' and 'Upload Contacts.' iPhone users have an additional step in iOS Settings."
     },
     {
       "question": "Does Hey Rivian integrate with Google Calendar?",
-      "answer": "Yes, but it's off by default. You need to enable it in the Rivian app under Account > Rivian Intelligence > Google Calendar (requires app version 3.12 or later). Once connected, you can navigate to meetings, get departure time estimates, and look up upcoming appointments. Apple Calendar and Outlook support are expected in a future update."
+      "answer": "Yes, but it's off by default. Enable it in the Rivian app under Profile > Account > Rivian Intelligence > Google Calendar (requires app version 3.12 or later). Once connected, you can navigate to meetings, get departure time estimates, and look up upcoming appointments. Apple Calendar and Outlook support are expected in a future update."
     },
     {
       "question": "What is the Memory feature and how do I turn it on?",
-      "answer": "Memory allows Rivian Assistant to learn your preferences over time — favorite music genres, regular destinations, preferred restaurants, and more. It's off by default. Enable it in the Rivian app under Account > Rivian Intelligence > Memory. You can clear stored memory or turn it off at any time."
+      "answer": "Memory allows Rivian Assistant to learn your preferences over time — favorite music genres, regular destinations, preferred restaurants, and more. It's off by default. Enable it in the Rivian app under Profile > Account > Rivian Intelligence > Memory. You can clear stored memory or turn it off at any time."
     },
     {
       "question": "Do I need to memorize exact commands?",
