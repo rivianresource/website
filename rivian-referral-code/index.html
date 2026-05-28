@@ -128,6 +128,18 @@
     /* ─── CONTENT ─── */
     .content-main { display:flex; flex-direction:column; gap:20px; padding-top:40px; }
 
+    /* ─── SECTION LABEL (h2 styled) ─── */
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      margin: 0 0 2px 0;
+      padding: 0;
+    }
+
     .points-section { padding:24px; }
     .points-table { margin-top:14px; border-radius:var(--radius-sm); overflow:hidden; border:1px solid var(--border); }
     .points-row { display:flex; justify-content:space-between; align-items:center; padding:12px 16px; border-bottom:1px solid var(--border); background:var(--bg-card); }
@@ -141,6 +153,25 @@
     .timing-title { font-size:13px; font-weight:700; color:var(--gold); margin-bottom:5px; text-transform:uppercase; letter-spacing:0.05em; }
     .timing-text { font-size:14px; color:var(--text-muted); line-height:1.7; }
     .timing-text strong { color:var(--text); }
+
+    /* ─── HOW-TO SECTION ─── */
+    .howto-section { padding: 28px 24px; }
+    .howto-section h2 { margin-bottom: 16px; }
+    .howto-intro { font-size: 15px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+    .howto-steps { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+    .howto-step { display: flex; gap: 14px; align-items: flex-start; }
+    .howto-num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--green-pale); color: var(--green); font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .howto-step-text { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+    .howto-step-text strong { color: var(--text); }
+    .howto-forgot { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: var(--radius-sm); padding: 14px 16px; margin-top: 6px; }
+    .howto-forgot-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .howto-forgot p { font-size: 13px; color: var(--text-muted); line-height: 1.65; margin: 0; }
+    .howto-body { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-top: 16px; }
+    .howto-body + .howto-body { margin-top: 10px; }
+
+    /* ─── UPDATED BADGE ─── */
+    .updated-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-dim); background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; margin-bottom: 10px; }
+    .updated-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green); display: inline-block; }
 
     .scene-section { padding:24px; }
     .scene-badge { font-size:10px; color:var(--text-dim); letter-spacing:0.1em; text-transform:uppercase; font-weight:600; margin-bottom:14px; font-family:'DM Sans',sans-serif; }
@@ -197,8 +228,8 @@
         <span class="strip-label">Referral code</span>
         <span class="strip-code">SCOTT4395475</span>
         <div class="strip-divider"></div>
-        <span class="strip-perks"><strong>Up to 500 points</strong> + 3 months free charging<strong></span>
-<a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="strip-btn">Configure on Rivian →</a>
+        <span class="strip-perks"><strong>Up to 500 points</strong> + 3 months free charging</span>
+        <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="strip-btn">Configure on Rivian →</a>
       </div>
     </div>
   </div>
@@ -271,7 +302,7 @@
     <div class="content-main">
 
       <div class="card points-section">
-        <div class="section-label">What you get — and what it's worth</div>
+        <h2 class="section-label">What you get — and what it's worth</h2>
         <p style="font-size:14px;color:var(--text-muted);margin-top:6px;margin-bottom:0;">Every qualifying order gets 3 months of free Adventure Network charging. Points are redeemable at $1 each in the Rivian Gear Shop or toward accessories — 500 points = $500.</p>
         <div class="points-table">
           <div class="points-row"><span class="points-config">Tri Motor or Quad Motor</span><span class="points-value">500 pts + free charging</span></div>
@@ -292,8 +323,44 @@
         </div>
       </div>
 
+      <!-- HOW-TO SECTION (new) -->
+      <div class="card howto-section">
+        <div class="updated-badge">Updated May 2026</div>
+        <h2 class="section-label">How to use a Rivian referral code</h2>
+
+        <p class="howto-intro">Using a Rivian referral code takes about 10 seconds at checkout — but the window to apply it closes the moment your order is placed. Here's how it works from start to finish.</p>
+
+        <div class="howto-steps">
+          <div class="howto-step">
+            <div class="howto-num">1</div>
+            <div class="howto-step-text"><strong>Start your configuration on rivian.com.</strong> Head to the R1S, R1T, or R2 configuration page. The referral code field appears at the order summary step — not at the beginning.</div>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">2</div>
+            <div class="howto-step-text"><strong>Enter the code before submitting.</strong> Paste <strong>SCOTT4395475</strong> into the referral code field on your order summary screen. The page will confirm it's applied.</div>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">3</div>
+            <div class="howto-step-text"><strong>Complete your order.</strong> Your free Adventure Network charging activates automatically at delivery — no separate activation needed. Rewards points typically appear in the Rivian app within two weeks of delivery.</div>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">4</div>
+            <div class="howto-step-text"><strong>Use your points in the Gear Shop.</strong> Points are redeemable at $1 each toward Rivian accessories and gear. They expire two years after being credited, so don't let them sit.</div>
+          </div>
+        </div>
+
+        <div class="howto-forgot">
+          <div class="howto-forgot-title">Forgot to enter your referral code?</div>
+          <p>Call a Rivian Guide and ask them to add it before your vehicle is delivered. Once your Rivian is delivered, referral codes cannot be applied retroactively — so call sooner rather than later. Calling is faster than email.</p>
+        </div>
+
+        <p class="howto-body">The referral program is open to all R1S, R1T, and R2 buyers in the US and Canada. It works for both R1 Shop orders and custom configurations — Rivian extended the program to custom builds in early 2026. There's no cost to use someone's referral code; the rewards are funded by Rivian, not added to your purchase price.</p>
+
+        <p class="howto-body">If you're still deciding between an R1S and R2, the referral benefits are identical regardless of which vehicle you choose — the points tier just varies by powertrain configuration. You can read more about how the vehicles compare on the <a href="/compare/" class="inline-link">R1S vs R2 comparison page</a>, or get a full picture of what the R1S is actually like to live with in the <a href="/reviews/2026-rivian-r1s-90-day-review/" class="inline-link">90-day ownership review</a>.</p>
+      </div>
+
       <div class="card scene-section">
-        <div class="section-label">An R1S in every cinematic universe</div>
+        <h2 class="section-label">An R1S in every cinematic universe</h2>
         <div class="scene-badge">You're welcome.</div>
         <div class="scene-stage">
 
@@ -402,7 +469,7 @@
       </div>
 
       <div class="card faq-section">
-        <div class="section-label">Frequently asked</div>
+        <h2 class="section-label">Frequently asked</h2>
         <div class="faq-list">
           <div class="faq-item open">
             <button class="faq-q" onclick="toggleFaq(this)">Does this cost me anything extra?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -421,6 +488,10 @@
             <div class="faq-a"><p>Generally within two weeks of delivery, credited to your Rivian Rewards account in the app. Free charging is auto-linked — no activation needed. Points expire two years after being credited.</p></div>
           </div>
           <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">Does the referral code work on custom orders?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="faq-a"><p>Yes. Rivian extended the referral program to custom configurations in early 2026. Both R1 Shop orders and custom builds qualify. Custom orders still require a $1,000 deposit and take 8–12 weeks; R1 Shop orders typically deliver in 1–6 weeks.</p></div>
+          </div>
+          <div class="faq-item">
             <button class="faq-q" onclick="toggleFaq(this)">Who runs this site?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
             <div class="faq-a"><p>Rivian Resource is an independent, owner-operated site — not affiliated with Rivian Automotive. The referral code belongs to a Las Vegas-based 2026 R1S Dual Max owner. <a href="/about/" class="inline-link">More on the About page →</a></p></div>
           </div>
@@ -428,7 +499,7 @@
       </div>
 
       <div class="card back-section">
-        <div class="section-label">More from this site</div>
+        <h2 class="section-label">More from this site</h2>
         <p>You came for the referral code — totally fair, and I hope it's useful. If any of the other content here is helpful too, that means more to me than the points.</p>
         <div style="display:flex;flex-direction:column;gap:8px;">
           <a href="/" class="inline-link">Back to Rivian Resource homepage</a>
@@ -476,7 +547,6 @@
       collapse.classList.toggle('open');
       arrow.classList.toggle('open');
       if(!isOpen){
-        // Focus canvas after open animation
         setTimeout(()=>{ const cv=document.getElementById('g-canvas'); if(cv) cv.focus(); },420);
       }
     }
@@ -519,7 +589,7 @@
           lb=Array.isArray(parsed)?parsed:[];
         }catch(e){console.error('loadLB error',e);lb=[];}
       }
-      async function saveLB(){} // writes handled by subScore via POST
+      async function saveLB(){}
       function isTop10(s){return lb.length<10||s>lb[lb.length-1].score;}
       async function subScore(name,s){
         try{
