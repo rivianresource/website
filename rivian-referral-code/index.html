@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -196,7 +195,7 @@
     .faq-chevron { flex-shrink:0; width:18px; height:18px; color:var(--text-dim); transition:transform 0.3s; }
     .faq-item.open .faq-chevron { transform:rotate(180deg); }
     .faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease,padding 0.35s ease; padding:0 18px; }
-    .faq-item.open .faq-a { max-height:300px; padding:0 18px 16px; }
+    .faq-item.open .faq-a { max-height:600px; padding:0 18px 16px; }
     .faq-a p { font-size:14px; color:var(--text-muted); line-height:1.7; }
 
     .inline-link { color:var(--green); text-decoration:none; font-weight:600; border-bottom:1px solid rgba(29,158,117,0.3); transition:border-color 0.2s; }
@@ -204,6 +203,22 @@
 
     .back-section { padding:24px; }
     .back-section p { font-size:14px; color:var(--text-muted); line-height:1.7; margin-bottom:14px; }
+
+    /* ─── OWNER INTRO ─── */
+    .owner-intro { display:flex; gap:18px; align-items:flex-start; padding:28px 0 0; }
+    .owner-avatar { flex-shrink:0; width:64px; height:64px; border-radius:50%; overflow:hidden; border:2px solid var(--green); position:relative; }
+    .owner-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+    .owner-avatar-fallback { display:none; width:100%; height:100%; background:var(--green-dark); color:var(--green); font-family:'DM Sans',sans-serif; font-size:24px; font-weight:800; align-items:center; justify-content:center; }
+    .owner-intro-text { flex:1; }
+    .owner-intro-name { font-family:'DM Sans',sans-serif; font-size:13px; font-weight:700; color:var(--text); margin-bottom:6px; }
+    .owner-intro-text p { font-size:14px; color:var(--text-muted); line-height:1.7; margin:0; }
+    @media (max-width:480px) { .owner-intro { gap:14px; } .owner-avatar { width:52px; height:52px; } }
+
+    /* ─── BACK SECTION CARDS ─── */
+    .back-link-item { display:flex; flex-direction:column; gap:3px; padding:14px 0; border-bottom:1px solid var(--border); }
+    .back-link-item:last-child { border-bottom:none; }
+    .back-link-item a { font-size:15px; font-weight:600; }
+    .back-link-item span { font-size:13px; color:var(--text-dim); line-height:1.5; }
 
     /* ─── MOBILE BAR ─── */
     .mobile-copy-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:var(--green-dark); padding:12px 16px; z-index:200; align-items:center; justify-content:space-between; gap:12px; }
@@ -236,7 +251,49 @@
 
   <div class="page-wrap">
 
-    <!-- GAME -->
+    <!-- HEADLINE -->
+    <div class="below-hero">
+      <div class="below-eyebrow">Real owner · Las Vegas · 2026 R1S Dual Max</div>
+      <h1 class="below-title">If you don't have a friend<br>with a Rivian, <span>you found one.</span></h1>
+      <p class="below-sub">If you know a Rivian owner personally, use their code. If not, I'm happy to be your person — the rewards are identical either way.</p>
+
+      <div class="code-block">
+        <div>
+          <div class="code-label">Referral Code</div>
+          <div class="code-value green">SCOTT4395475</div>
+        </div>
+        <div class="code-divider"></div>
+        <div>
+          <div class="code-label">Free Charging</div>
+          <div class="code-value gold">3 Months</div>
+        </div>
+        <div class="code-divider"></div>
+        <div>
+          <div class="code-label">Max Rewards</div>
+          <div class="code-value">500 Points</div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="btn-primary">Configure on Rivian →</a>
+      </div>
+      <p style="font-size:13px;color:var(--text-dim);margin-top:14px;">Code applied automatically. Or <button onclick="heroCopy()" style="background:none;border:none;color:var(--green);font-size:13px;font-weight:600;cursor:pointer;padding:0;font-family:inherit;">copy SCOTT4395475</button> to enter manually.</p>
+      <div class="copied-msg" id="heroCopied">✓ Copied — paste SCOTT4395475 at checkout</div>
+    </div>
+
+    <!-- PERSONAL INTRO -->
+    <div class="owner-intro">
+      <div class="owner-avatar">
+        <img src="/images/scott-r1s.jpg" alt="Scott with his 2026 Rivian R1S in Las Vegas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="owner-avatar-fallback">S</div>
+      </div>
+      <div class="owner-intro-text">
+        <div class="owner-intro-name">Scott — Las Vegas, NV</div>
+        <p>I picked up my 2026 R1S Dual Max in early 2026 and built this site because I wished something like it existed when I was researching. If you're deep in the Rivian rabbit hole, you're in the right place. The referral code is real, the reviews are honest, and yes — the game is canon.</p>
+      </div>
+    </div>
+
+    <!-- GAME (moved below hero) -->
     <div class="game-section">
       <button class="game-toggle" onclick="toggleGame()" id="gameToggle">
         <span>🎮 Play: Rivian R2 vs Tesla Model Y</span>
@@ -268,36 +325,6 @@
       </div><!-- end game-collapse -->
     </div><!-- end game-section -->
 
-    <!-- HEADLINE BELOW GAME -->
-    <div class="below-hero">
-      <div class="below-eyebrow">Rivian Referral Program</div>
-      <h1 class="below-title">If you don't have a friend<br>with a Rivian, <span>you found one.</span></h1>
-      <p class="below-sub">If you know a Rivian owner personally, use their code. If not, I'm happy to be your person — the rewards are identical either way.</p>
-
-      <div class="code-block">
-        <div>
-          <div class="code-label">Referral Code</div>
-          <div class="code-value green">SCOTT4395475</div>
-        </div>
-        <div class="code-divider"></div>
-        <div>
-          <div class="code-label">Free Charging</div>
-          <div class="code-value gold">3 Months</div>
-        </div>
-        <div class="code-divider"></div>
-        <div>
-          <div class="code-label">Max Rewards</div>
-          <div class="code-value">500 Points</div>
-        </div>
-      </div>
-
-      <div class="btn-row">
-        <a href="https://rivian.com/configurations/list?reprCode=SCOTT4395475" target="_blank" rel="noopener noreferrer" class="btn-primary">Configure on Rivian →</a>
-      </div>
-      <p style="font-size:13px;color:var(--text-dim);margin-top:14px;">Code applied automatically. Or <button onclick="heroCopy()" style="background:none;border:none;color:var(--green);font-size:13px;font-weight:600;cursor:pointer;padding:0;font-family:inherit;">copy SCOTT4395475</button> to enter manually.</p>
-      <div class="copied-msg" id="heroCopied">✓ Copied — paste SCOTT4395475 at checkout</div>
-    </div>
-
     <!-- CONTENT -->
     <div class="content-main">
 
@@ -321,44 +348,6 @@
           <div class="timing-title">Timing note worth knowing</div>
           <p class="timing-text">The 3-month free charging period starts from your <strong>delivery date</strong> — not from your first plug-in. The clock runs whether or not you've charged yet. Plan your first road trips early.</p>
         </div>
-      </div>
-
-      <!-- HOW-TO SECTION (new) -->
-      <div class="card howto-section">
-        <div class="updated-badge">Updated May 2026</div>
-        <h2 class="section-label">How to use a Rivian referral code</h2>
-
-        <p class="howto-intro">Using a Rivian referral code takes about 10 seconds at checkout — but the window to apply it closes the moment your order is placed. Here's how it works from start to finish.</p>
-
-        <div class="howto-steps">
-          <div class="howto-step">
-            <div class="howto-num">1</div>
-            <div class="howto-step-text"><strong>Start your configuration on rivian.com.</strong> Head to the R1S, R1T, or R2 configuration page. The referral code field appears at the order summary step — not at the beginning.</div>
-          </div>
-          <div class="howto-step">
-            <div class="howto-num">2</div>
-            <div class="howto-step-text"><strong>Enter the code before submitting.</strong> Paste <strong>SCOTT4395475</strong> into the referral code field on your order summary screen. The page will confirm it's applied.</div>
-          </div>
-          <div class="howto-step">
-            <div class="howto-num">3</div>
-            <div class="howto-step-text"><strong>Complete your order.</strong> Your free Adventure Network charging activates automatically at delivery — no separate activation needed. Rewards points typically appear in the Rivian app within two weeks of delivery.</div>
-          </div>
-          <div class="howto-step">
-            <div class="howto-num">4</div>
-            <div class="howto-step-text"><strong>Use your points in the Gear Shop or R1 Shop.</strong> Points are redeemable toward accessories, gear, and vehicle purchases (final price only — not deposits or fees). They expire two years after being credited, so don't let them sit.</div>
-          </div>
-        </div>
-
-        <div class="howto-forgot">
-          <div class="howto-forgot-title">Forgot to enter your referral code?</div>
-          <p>Call a Rivian Guide and ask them to add it before your vehicle is delivered. Once your Rivian is delivered, referral codes cannot be applied retroactively — so call sooner rather than later. Calling is faster than email.</p>
-        </div>
-
-        <p class="howto-body">The referral program is open to all R1S, R1T, and R2 buyers in the US and Canada. A few state-level restrictions apply: <strong>owners in Ohio and Virginia cannot earn referral rewards</strong> — buyers from those states can still use a code and earn their own points, but the referrer receives nothing. <strong>California owners are capped at 25 referral rewards per year.</strong> On the referrer side, free Adventure Network charging stacks across referrals up to a cumulative maximum of 36 months. It works for both R1 Shop orders and custom configurations — Rivian extended the program to custom builds in early 2026. There's no cost to use someone's referral code; the rewards are funded by Rivian, not added to your purchase price.</p>
-
-        <p class="howto-body">If you're still deciding between an R1S and R2, the referral benefits are identical regardless of which vehicle you choose — the points tier just varies by powertrain configuration. You can read more about how the vehicles compare on the <a href="/compare/" class="inline-link">R1S vs R2 comparison page</a>, or get a full picture of what the R1S is actually like to live with in the <a href="/reviews/2026-rivian-r1s-90-day-review/" class="inline-link">90-day ownership review</a>.</p>
-      </div>
-
       <div class="card scene-section">
         <h2 class="section-label">An R1S in every cinematic universe</h2>
         <div class="scene-badge">You're welcome.</div>
@@ -468,6 +457,44 @@
         </div>
       </div>
 
+      </div>
+
+      <!-- HOW-TO SECTION (new) -->
+      <div class="card howto-section">
+        <div class="updated-badge">Updated May 2026</div>
+        <h2 class="section-label">How to use a Rivian referral code</h2>
+
+        <p class="howto-intro">Using a Rivian referral code takes about 10 seconds at checkout — but the window to apply it closes the moment your order is placed. Here's how it works from start to finish.</p>
+
+        <div class="howto-steps">
+          <div class="howto-step">
+            <div class="howto-num">1</div>
+            <div class="howto-step-text"><strong>Start your configuration on rivian.com.</strong> Head to the R1S, R1T, or R2 configuration page. The referral code field appears at the order summary step — not at the beginning.</div>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">2</div>
+            <div class="howto-step-text"><strong>Enter the code before submitting.</strong> Paste <strong>SCOTT4395475</strong> into the referral code field on your order summary screen. The page will confirm it's applied.</div>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">3</div>
+            <div class="howto-step-text"><strong>Complete your order.</strong> Your free Adventure Network charging activates automatically at delivery — no separate activation needed. Rewards points typically appear in the Rivian app within two weeks of delivery.</div>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">4</div>
+            <div class="howto-step-text"><strong>Use your points in the Gear Shop or R1 Shop.</strong> Points are redeemable toward accessories, gear, and vehicle purchases (final price only — not deposits or fees). They expire two years after being credited, so don't let them sit.</div>
+          </div>
+        </div>
+
+        <div class="howto-forgot">
+          <div class="howto-forgot-title">Forgot to enter your referral code?</div>
+          <p>Call a Rivian Guide and ask them to add it before your vehicle is delivered. Once your Rivian is delivered, referral codes cannot be applied retroactively — so call sooner rather than later. Calling is faster than email.</p>
+        </div>
+
+        <p class="howto-body">The referral program is open to all R1S, R1T, and R2 buyers in the US and Canada. A few state-level restrictions apply: <strong>owners in Ohio and Virginia cannot earn referral rewards</strong> — buyers from those states can still use a code and earn their own points, but the referrer receives nothing. <strong>California owners are capped at 25 referral rewards per year.</strong> On the referrer side, free Adventure Network charging stacks across referrals up to a cumulative maximum of 36 months. It works for both R1 Shop orders and custom configurations — Rivian extended the program to custom builds in early 2026. There's no cost to use someone's referral code; the rewards are funded by Rivian, not added to your purchase price.</p>
+
+        <p class="howto-body">If you're still deciding between an R1S and R2, the referral benefits are identical regardless of which vehicle you choose — the points tier just varies by powertrain configuration. You can read more about how the vehicles compare on the <a href="/compare/" class="inline-link">R1S vs R2 comparison page</a>, or get a full picture of what the R1S is actually like to live with in the <a href="/reviews/2026-rivian-r1s-90-day-review/" class="inline-link">90-day ownership review</a>.</p>
+      </div>
+
       <div class="card faq-section">
         <h2 class="section-label">Frequently asked</h2>
         <div class="faq-list">
@@ -504,12 +531,24 @@
 
       <div class="card back-section">
         <h2 class="section-label">More from this site</h2>
-        <p>You came for the referral code — totally fair, and I hope it's useful. If any of the other content here is helpful too, that means more to me than the points.</p>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <a href="/" class="inline-link">Back to Rivian Resource homepage</a>
-          <a href="/reviews/2026-rivian-r1s-90-day-review/" class="inline-link">Read the 90-day R1S ownership review</a>
-          <a href="/charging/" class="inline-link">Charging range calculator</a>
-          <a href="/software/" class="inline-link">OTA software update tracker</a>
+        <p>You came for the referral code — totally fair, and I hope it's useful. The rest of the site is built around making the Rivian ownership experience less confusing.</p>
+        <div>
+          <div class="back-link-item">
+            <a href="/reviews/2026-rivian-r1s-90-day-review/" class="inline-link">90-Day R1S Ownership Review →</a>
+            <span>What it's actually like to live with — the good, the frustrating, and everything Rivian doesn't mention in the brochure.</span>
+          </div>
+          <div class="back-link-item">
+            <a href="/charging/" class="inline-link">Charging Range Calculator →</a>
+            <span>Estimate real-world range on Adventure Network chargers based on your battery, speed, and weather. Useful before road trips.</span>
+          </div>
+          <div class="back-link-item">
+            <a href="/software/" class="inline-link">OTA Software Update Tracker →</a>
+            <span>Every software release logged — what changed, when it dropped, and what owners are actually saying about it.</span>
+          </div>
+          <div class="back-link-item">
+            <a href="/compare/" class="inline-link">R1S vs R2 Comparison →</a>
+            <span>If you're still deciding which vehicle to order, this breaks down the real differences beyond the spec sheet.</span>
+          </div>
         </div>
       </div>
 
